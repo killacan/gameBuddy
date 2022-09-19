@@ -33,6 +33,7 @@ function App() {
             <SignupForm/>
         </AuthRoute>
         {/* hello im ouha mimi */}
+      {/* hell o ia mwiaho mimi  */}
         {/* <AuthRoute exact path={"/profile/:userId"} component={LoginForm}/>
         <AuthRoute exact path={"/games"} component={SignUpForm}/>
         <AuthRoute exact path={"/games/rooms"} component={LoginForm}/>
