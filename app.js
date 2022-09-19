@@ -1,3 +1,6 @@
+const passport = require('passport');
+require('./config/passport')
+
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -21,6 +24,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 const { isProduction } = require('./config/keys')
+
+app.use(passport.initialize());
 
 if (!isProduction) {
     app.use(cors());
