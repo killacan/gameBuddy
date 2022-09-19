@@ -11,6 +11,7 @@ import LoginForm from './components/SessionForms/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm';
 
 import { getCurrentUser } from './store/session';
+import WebSocketComp from "./components/WebSocketComp/WebSocketComp";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
 
   return loaded && (
     <>
+      <WebSocketComp />
       <NavBar/>
       <Switch>
         <AuthRoute exact path={"/"} component={MainPage} />

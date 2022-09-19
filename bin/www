@@ -39,6 +39,20 @@ mongoose
 
 server.on('error', onError);
 server.on('listening', onListening);
+server.on('upgrade', (req, socket, head) => {
+  console.log({
+      req, socket, head
+  })
+})
+
+;
+[
+    "uncaughtException",
+    "unhandledRejection"
+].forEach(event =>  
+    process.on(event, (err) => {
+        console.error(`something bad happened! event: ${event}, msg: ${err.stack || err}`);
+}));
 
 /**
  * Normalize a port into a number, string, or false.
