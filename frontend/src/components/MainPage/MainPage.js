@@ -1,11 +1,23 @@
+import './MainPage.css';
+import { NavLink } from 'react-router-dom';
+import SplashCarousel from '../SplashCarousel/SplashCarousel';
 const MainPage = () => {
+
+
     return (
-        <>
-            <p>Game Buddy</p>
-            <footer>
-                Copyright &copy;; 2022 Chirper
-            </footer>
-        </>
+        <div className='splash-container'>
+            <div className="splash-buttons-container">
+                <div className="splash-buttons">
+                    <NavLink exact to="/login" id="sign-in"><span>Sign In</span></NavLink>
+                </div>
+                <div>
+                    <NavLink exact to="/signup" id="sign-up"><span>Sign Up</span></NavLink>
+                </div>
+            </div>
+            <div className="title-page-container">
+                <SplashCarousel/>
+            </div>
+        </div>
     )
 }
 
