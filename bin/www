@@ -35,8 +35,7 @@ mongoose
     debug("Connect to MongoDB successfully");
 
     server.listen(port);
-  })
-  .catch(err => debug(err));
+  });
 
 server.on('error', onError);
 server.on('listening', onListening);
