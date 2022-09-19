@@ -4,7 +4,7 @@ const logger = require('morgan');
 
 const debug = require('debug');
 const cors = require('cors');
-const csurf = require('csurf');
+const csrf = require('csurf');
 
 const User = require('./models/User.js');
 // const path = require('path');
@@ -27,7 +27,7 @@ if (!isProduction) {
 }
 
 app.use(
-    csurf({
+    csrf({
         cookie: {
             secure: isProduction,
             sameSite: isProduction && "Lax",

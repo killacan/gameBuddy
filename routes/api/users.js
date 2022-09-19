@@ -1,9 +1,9 @@
 require('../../models/User');
 
+const bcrypt = require('bcryptjs');
 const express = require('express');
 const router = express.Router();
 
-const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
@@ -28,7 +28,7 @@ router.post('/register', async (req, res) => {
       errors.email = "An account is already associated with this email"
     }
     if (user.username === req.body.username) {
-      errors.username = "Sorry, this username is already taken."
+      errors.username = "Sorry, this username is already taken"
     }
     err.errors = errors;
     return next(err);
@@ -46,7 +46,7 @@ router.post('/register', async (req, res) => {
       try {
         newUser.hashedPassword = hashedPassword;
         const user = await newUser.save();
-        return res.json({user})
+        return res.json({ user })
       }
       catch(err) {
         next(err);
