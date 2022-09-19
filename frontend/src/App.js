@@ -23,17 +23,10 @@ function App() {
     <>
       {/* <NavBar/> */}
       <Switch>
-        <AuthRoute exact path={"/"}>
-          <MainPage/>
-        </AuthRoute>
-        <AuthRoute exact path={"/login"}>
-          <LoginForm/>
-        </AuthRoute>
-        <AuthRoute exact path={"/signup"}>
-            <SignupForm/>
-        </AuthRoute>
-        {/* hello im ouha mimi */}
-      {/* hell o ia mwiaho mimi  */}
+        <AuthRoute exact path={"/"} component={MainPage}/>
+        <AuthRoute exact path={"/login"} component={LoginForm}/>
+        <AuthRoute exact path={"/signup"} component={SignupForm}/>
+        {/* <AuthRoute exact path={"/rooms"} component={Rooms}/> */}
         {/* <AuthRoute exact path={"/profile/:userId"} component={LoginForm}/>
         <AuthRoute exact path={"/games"} component={SignUpForm}/>
         <AuthRoute exact path={"/games/rooms"} component={LoginForm}/>
