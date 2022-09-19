@@ -1,5 +1,8 @@
 require('../../models/User');
 
+const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
+
 const bcrypt = require('bcryptjs');
 const express = require('express');
 const router = express.Router();
@@ -21,7 +24,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* POST users create listing. */
-router.post('/register', async (req, res, next) => {
+router.post('/register', validateRegisterInput, async (req, res, next) => {
   const user = await User.findOne({
     $or: [{email: req.body.email}, {username: req.body.username}]
   })
@@ -62,7 +65,7 @@ router.post('/register', async (req, res, next) => {
 })
 
 /* POST users Login listening */
-router.post('/login', async (req, res, next) => {
+router.post('/login', validateLoginInput, async (req, res, next) => {
   passport.authenticate('local', async function(err, user) {
     if (err) return next(err);
     if (!user) {
