@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Switch } from "react-router-dom";
+import { Switch,Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
@@ -10,7 +10,7 @@ import LoginForm from './components/SessionForms/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm';
 
 import { getCurrentUser } from './store/session';
-
+ 
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -24,9 +24,10 @@ function App() {
       {/* <NavBar/> */}
       <Switch>
         <AuthRoute exact path={"/"} component={MainPage}/>
-        <AuthRoute exact path={"/login"} component={LoginForm}/>
         <AuthRoute exact path={"/signup"} component={SignupForm}/>
-        {/* <AuthRoute exact path={"/rooms"} component={Rooms}/> */}
+        <AuthRoute exact path={"/login"} component={LoginForm}/>
+        <Redirect to="/"/>
+        
         {/* <AuthRoute exact path={"/profile/:userId"} component={LoginForm}/>
         <AuthRoute exact path={"/games"} component={SignUpForm}/>
         <AuthRoute exact path={"/games/rooms"} component={LoginForm}/>
