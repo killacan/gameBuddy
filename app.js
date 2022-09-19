@@ -5,11 +5,13 @@ const logger = require('morgan');
 const debug = require('debug');
 const cors = require('cors');
 const csurf = require('csurf');
-const path = require('path');
+
+const User = require('./models/User.js');
+// const path = require('path');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/api/users');
-const csrfRouter = require('./routes/api/csrf')
+const csrfRouter = require('./routes/api/csrf');
 
 const app = express();
 
