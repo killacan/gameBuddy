@@ -1,6 +1,28 @@
+import { Switch } from "react-router-dom";
+import { AuthRoute } from "./components/Routes/Routes";
+
+import MainPage from './components/MainPage/MainPage'
+
 function App() {
   return (
-    <h1>Hello from App</h1>
+    <>
+      <NavBar/>
+      <Switch>
+        <AuthRoute exact path={"/"} component={MainPage} />
+        <AuthRoute exact path={"/login"} component={LoginForm}/>
+        <AuthRoute exact path={"/signup"} component={SignUpForm}/>
+        <AuthRoute exact path={"/profile/:userId"} component={LoginForm}/>
+        <AuthRoute exact path={"/games"} component={SignUpForm}/>
+        <AuthRoute exact path={"/games/rooms"} component={LoginForm}/>
+        <AuthRoute exact path={"/games/rooms/valorant"} component={SignUpForm}/>
+        <AuthRoute exact path={"/games/rooms/leagueoflegends"} component={SignUpForm}/>
+        <AuthRoute exact path={"/games/rooms/tft"} component={SignUpForm}/>
+        <AuthRoute exact path={"/games/rooms/valorant/:roomId"} component={SignUpForm}/>
+        <AuthRoute exact path={"/games/rooms/leagueoflegends/:roomId"} component={SignUpForm}/>
+        <AuthRoute exact path={"/games/rooms/tft/:roomId"} component={SignUpForm}/>
+      </Switch>
+      <Footer/>
+    </>
   );
 }
 
