@@ -1,0 +1,82 @@
+.splash-container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #062354;
+    display: flex;
+    flex-direction: column;
+}
+
+.splash-buttons-container{
+    width: 100vw;
+    height: 6vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 1vw;
+}
+
+#sign-in{
+    font-family: Arial,sans-serif;
+    font-size: 1vw;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    position: relative;  
+    transition: all .35s;
+    text-align: center;
+    width: 5vw;
+    height: 1vh;
+    padding-top: .3vw;
+    padding-bottom: .3vw;
+    padding-right: .5vw;
+    padding-left: .5vw;
+    border-radius: 15%;
+    border-radius: .5vw;
+    transition: all .35s;
+    margin-right: 1vw;
+    text-decoration: none;
+}
+
+#sign-in:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: white;
+    color: black;
+}
+
+#sign-up{
+    font-family: Arial,sans-serif;
+    font-size: 1vw;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    position: relative;  
+    transition: all .35s;
+    text-align: center;
+    width: 5vw;
+    height: 1vh;
+    padding-top: .3vw;
+    padding-bottom: .3vw;
+    padding-right: .5vw;
+    padding-left: .5vw;
+    border-radius: 15%;
+    border-radius: .5vw;
+    transition: all .35s;
+    margin-right: 2vw;
+    text-decoration: none;
+}
+
+#sign-up:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: white;
+    color: black;
+}
+
+
+.title-page-container{
+    width: 100vw;
+    height: 94vh;
+}
+
+
