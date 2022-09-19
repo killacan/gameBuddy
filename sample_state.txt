@@ -1,0 +1,61 @@
+State
+{
+    entities : {
+        users: {
+            userId1 : {
+                id: 1,
+                username: demoUser1,
+                email: demo@user1.io
+            },
+            userId2 : {
+                id: 2,
+                username: demoUser2,
+                email: demo@user2.io
+            }
+        },
+        rooms: {
+            roomId1 : {
+                id: 1,
+                creator : creatorId,
+                title : roomName,
+                body: text,
+                capacity: 5,
+                users : {
+                    userId : user.id
+                    userId2 : user2.id
+                },
+            },
+            roomId2 : {
+                id: 2,
+                creator : creatorId,
+                title : roomName,
+                body: text,
+                capacity: 5,
+                users : {
+                    userId : user.id
+                    userId2 : user2.id
+                },
+            },
+        },
+        reviews: {
+            reviewId1 : {
+                id: 1,
+                rating : 5,
+                body : text,
+            } 
+            reviewId2 : {
+                id: 2,
+                rating: 5,
+                body: text
+            }
+        }
+    }
+    ui: {
+        loading: true/false,
+        modal: true/false
+    },
+    errors: {
+        login: ["Incorrect username/password combination"],
+        chirpForm: ["Chirp body cannot be blank"],
+    },
+}
