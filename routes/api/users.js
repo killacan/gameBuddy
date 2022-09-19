@@ -3,9 +3,12 @@ require('../../models/User');
 const bcrypt = require('bcryptjs');
 const express = require('express');
 const router = express.Router();
+const { restoreUser } = require('../../config/passport')
+const { requireUser } = require('../../config/passport')
 
 const mongoose = require('mongoose');
 const passport = require('passport');
+const { isProduction } = require('../../config/keys');
 const User = mongoose.model('User');
 
 const { loginUser } = require('../../config/passport')
@@ -72,6 +75,19 @@ router.post('/login', async (req, res, next) => {
   })(req, res, next);
 })
 
+/* GET current user listening */
+router.get('/current', restoreUser, (req, res) => {
+  if (!isProduction) {
+    const csrfToken = req.csrfToken();
+    res.cookie("CSRF-TOKEN", csrfToken);
+  }
+  if (!req.user) return res.json(null);
+  res.json({
+    _id: req.user._id,
+    username: req.user.username,
+    email: req.user.email
+  })
+})
 
 
 module.exports = router;
