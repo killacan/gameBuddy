@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+const { secretOrKey } = require('./keys');
 require('./../models/User');
 
 const passport = require('passport');
@@ -19,3 +21,20 @@ passport.use(new LocalStrategy({
         })
     } else done(null, false);
 }));
+
+exports.loginUser = async function(user) {
+    const userInfo = {
+        _id: user._id,
+        username: user.username,
+        email: user.email
+    };
+    const token = await jwt.sign(
+        userInfo,
+        secretOrKey,
+        { expiresIn: 3600 }
+    );
+    return {
+        user: userInfo,
+        token
+    }
+}

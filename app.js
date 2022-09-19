@@ -1,5 +1,6 @@
 const passport = require('passport');
-require('./config/passport')
+require('./config/passport');
+require ('dotenv').config();
 
 const express = require('express');
 const cookieParser = require('cookie-parser');
@@ -9,8 +10,8 @@ const debug = require('debug');
 const cors = require('cors');
 const csrf = require('csurf');
 
-const User = require('./models/User.js');
-// const path = require('path');
+require('./models/User.js');
+const path = require('path');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/api/users');

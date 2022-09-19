@@ -8,6 +8,8 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const User = mongoose.model('User');
 
+const { loginUser } = require('../../config/passport')
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.json({
@@ -16,7 +18,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* POST users create listing. */
-router.post('/register', async (req, res) => {
+router.post('/register', async (req, res, next) => {
   const user = await User.findOne({
     $or: [{email: req.body.email}, {username: req.body.username}]
   })
@@ -47,7 +49,7 @@ router.post('/register', async (req, res) => {
       try {
         newUser.hashedPassword = hashedPassword;
         const user = await newUser.save();
-        return res.json({ user })
+        return res.json(await loginUser(user));
       }
       catch(err) {
         next(err);
@@ -66,7 +68,7 @@ router.post('/login', async (req, res, next) => {
       err.errors = { email: "Invalid credentials" };
       return next(err);
     }
-    return res.json({ user });
+    return res.json(await loginUser(user));
   }) (req, res, next);
 })
 
