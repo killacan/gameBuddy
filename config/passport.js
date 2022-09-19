@@ -10,12 +10,12 @@ const User = mongoose.model('User');
 
 passport.use(new LocalStrategy({
     session: false,
-    useernameField: 'email',
+    usernameField: 'email',
     passwordField: 'password',
 }, async function (email, password, done) {
     const user = await User.findOne({email});
     if (user) {
-        bcrypt.compare(password, user.hashedPassword, (erer, isMatch) => {
+        bcrypt.compare(password, user.hashedPassword, (err, isMatch) => {
             if (err || !isMatch) done (null, false);
             else done(null, user);
         })

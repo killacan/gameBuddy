@@ -69,7 +69,7 @@ router.post('/login', async (req, res, next) => {
       return next(err);
     }
     return res.json(await loginUser(user));
-  }) (req, res, next);
+  })(req, res, next);
 })
 
 
