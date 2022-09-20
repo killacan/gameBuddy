@@ -7,9 +7,10 @@ const validateReviewInput = [
         .isNumeric({ min: 1, max: 5})
         .withMessage('Rating must be between 1 to 5 stars'),
 
-    check('comment')
-        .isLength({ min: 5, max: 100 })
-        .withMessage('Minimum 5 characters, maximum 100 characters'),
+    check('comments')
+        .exists({ checkFalsy: true })
+        .isLength({ min: 1, max: 100 })
+        .withMessage('Minimum 1 characters, maximum 100 characters'),
 
     check('toxic')
         .isBoolean()

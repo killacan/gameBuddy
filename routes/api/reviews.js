@@ -16,11 +16,13 @@ const validateReviewInput = require('../../validation/reviews');
 
 
 /* POST ----- CREATE REVIEW ----- */
-router.post('/create', requireUser, validateReviewInput, async (req, res, next) => {
+router.post('/create', validateReviewInput, async (req, res, next) => {
     try {
         const newReview = new Review({
+            reviewer: req.reviewerId,
+            reviewee: req.revieweeId,
             rating: req.body.rating,
-            comment: req.body.comment,
+            comments: req.body.comments,
             toxic: req.body.toxic,
             friendly: req.body.friendly,
             skilled: req.body.skilled,
