@@ -92,6 +92,43 @@ router.get('/current', restoreUser, (req, res) => {
   })
 })
 
+/* PATCH current user listening */
+router.patch('/:userId', requireUser, validateRegisterInput, async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.userId);
+  
+    if (user) {
+      user.username = req.body.username || user.username;
+      user.email = req.body.email || user.email;
+      user.birthDay = req.body.birthDay || user.birthDay;
+    }
+    if (req.body.password) {
+      bcrypt.genSalt(10, (err, salt) => {
+        if (err) throw err;
+        bcrypt.hash(req.body.password, salt, async (err, hashedPassword) => {
+          if (err) throw err;
+          try {
+            user.hashedPassword = hashedPassword;
+            const updatedUser = await user.save();
+            // return res.json(await loginUser(updatedUser));
+          }
+          catch(err) {
+            next(err);
+          }
+        })
+      });
+    }
+    return res.json(user);
+
+  }
+  catch(err) {
+    next(err)
+  }
+});
+
+
+
+
 
 
 module.exports = router;
