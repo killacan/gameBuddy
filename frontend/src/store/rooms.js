@@ -1,5 +1,3 @@
-import { json } from "express";
-import { header } from "express-validator";
 import jwtFetch from "./jwt";
 import { RECEIVE_USER_LOGOUT } from "./session";
 
@@ -66,11 +64,11 @@ export const fetchRoom = (roomId) => async dispatch => {
         }
     }
 };
-export const createRoom = (room) => async dispatch => {
+export const createRoom = (roomData) => async dispatch => {
     try {
         const res = await jwtFetch(`/api/rooms/`, {
             method: "POST",
-            body: JSON.stringify(room),
+            body: JSON.stringify(roomData),
             headers: {
                 "Content-Type": 'application/json'
             }
@@ -84,11 +82,11 @@ export const createRoom = (room) => async dispatch => {
         }
     }
 }
-export const updateRoom = (room) => async dispatch => {
+export const updateRoom = (roomData) => async dispatch => {
     try {
-        const res = await jwtFetch(`/api/rooms/${room.id}`, {
+        const res = await jwtFetch(`/api/rooms/${roomData.id}`, {
             method: "PATCH",
-            body: JSON.stringify(room),
+            body: JSON.stringify(roomData),
             headers: {
                 "Content-Type": 'application/json'
             }
