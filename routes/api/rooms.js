@@ -40,7 +40,7 @@ router.get('/:roomId', async (req, res, next) => {
 })
 
 router.post('/create',
-    // requireUser,
+    requireUser,
     validateRoomInput,
     async (req, res, next) => {
         try {
@@ -76,7 +76,7 @@ router.delete('/:roomId', requireUser, async (req, res, next) => {
     }
 })
 
-router.patch('/:roomId', async (res, req, next) => {
+router.patch('/:roomId', requireUser, async (req, res, next) => {
     try {
         const room = await Room.findById(req.params.roomId);
 
