@@ -58,4 +58,23 @@ router.post('/create',
     }
 )
 
+router.delete('/remove/:id', requireUser, async (req, res) => {
+    const { id } = req.params;
+
+    Room.findOneAndDelete({
+        _id: id,
+        $or: [{host: req.user._id}]
+    })
+
+    .exec((err, room) => {
+        if (err) {
+            return res.status(500).json({code: 500, message: 'There was a problem deleting your room', error: err})
+        } else {
+            return res.status(200).json({code: 200, message: 'Room deleted', deletedRoom: room})
+        }
+    })
+})
+
+
+
 module.exports = router;
