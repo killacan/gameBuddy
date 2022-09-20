@@ -18,6 +18,10 @@ const SEVEN_BITS_INTEGER_MARKER = 125;
 const SIXTEEN_BITS_INTEGER_MARKER = 126;
 const SIXTYFOUR_BITS_INTEGER_MARKER = 127;
 
+const MAXIMUM_SIXTEEN_BITS_INTEGER = 2 ** 16
+const MASK_KEY_BYTES_LENGTH = 4
+const OPTCODE_TEXT = 0x01 // first bit in binary
+
 const FIRST_BIT = 128
 /**
  * Get port from environment and store in Express.
@@ -42,10 +46,10 @@ mongoose
 
     server.listen(port);
   });
-
-server.on('error', onError);
-server.on('listening', onListening);
-server.on('upgrade', onSocketUpgrade)
+  
+  server.on('error', onError);
+  server.on('listening', onListening);
+  server.on('upgrade', onSocketUpgrade)
 
 function onSocketUpgrade (req, socket, head) {
   const {'sec-websocket-key': webClientSocketKey} = req.headers
@@ -53,6 +57,57 @@ function onSocketUpgrade (req, socket, head) {
   const headers = prepareHandShakeHeaders(webClientSocketKey)
   socket.write(headers)
   socket.on('readable', () => onSocketReadable(socket))
+}
+
+function sendMessage(msg, socket) {
+  const dataFrameBuffer = prepareMessage(msg)
+  socket.write(dataFrameBuffer)
+
+}
+
+function prepareMessage(message) {
+  const msg = Buffer.from(message)
+  const messageSize = msg.length
+
+  let dataFrameBuffer; 
+
+  const firstByte = 0x80 | OPTCODE_TEXT // single frame + text
+
+  if(messageSize <= SEVEN_BITS_INTEGER_MARKER) {
+    const bytes = [firstByte]
+    dataFrameBuffer = Buffer.from(bytes.concat(messageSize))
+  } else if(messageSize <= MAXIMUM_SIXTEEN_BITS_INTEGER) { 
+    const offsetFourBites = 4
+    const target = Buffer.allocUnsafe(offsetFourBites)
+    target[0] = firstByte
+    target[1] = SIXTEEN_BITS_INTEGER_MARKER | 0x0 // just to know the mask
+
+    target.writeUInt16BE(messageSize, 2) // content length is 2 bytes long. 
+    dataFrameBuffer = target
+
+    //alloc 4 bytes
+    // [0] - 129 - 10000001 = 0x81 fin + opcode
+    // [1] - 126 
+  }
+  
+  else {
+    throw new Error('message too long buddy :( ')
+  }
+
+  const totalLength = dataFrameBuffer.byteLength + messageSize
+  const dataFrameResponse = concat([dataFrameBuffer, msg], totalLength)
+  return dataFrameResponse
+}
+
+function concat(bufferList, totalLength) {
+  const target = Buffer.alloc(totalLength)
+  let offset = 0
+  for(const buffer of bufferList) {
+    target.set(buffer, offset)
+    offset += buffer.length
+  }
+
+  return target
 }
 
 function onSocketReadable(socket) {
@@ -65,8 +120,62 @@ function onSocketReadable(socket) {
   const lengthIndicatorInBits = markerAndPayloadLength - FIRST_BIT
 
   let messageLength = 0
+  if(lengthIndicatorInBits <= SEVEN_BITS_INTEGER_MARKER) {
+    messageLength = lengthIndicatorInBits
+  } else if(lengthIndicatorInBits === SIXTEEN_BITS_INTEGER_MARKER) { 
+    // unsigned, big-endian 16-bit integer [0 - 65k] - 
+    messageLength = socket.read(2).readUInt16BE(0)
+  }
+  
+  else {
+    throw new Error("your message is too long! we don't handle 64 bit messages")
+  }
+
+
+  const mastKey = socket.read(MASK_KEY_BYTES_LENGTH)
+  const encoded = socket.read(messageLength)
+  const decoded = unmask(encoded, mastKey)
+  const received = (decoded.toString('utf8'))
+
+  const data = JSON.parse(received)
+  console.log('message received', data)
+
+  const msg = JSON.stringify(
+    data
+  )
+  sendMessage(msg, socket)
 
 }
+
+function unmask(encodedBuffer, maskKey) {
+  const finalBuffer = Buffer.from(encodedBuffer);
+
+  const fillWithEightZeroes = (t) => t.padStart(8, '0')
+  const toBinary = (t) => fillWithEightZeroes(t.toString(2))
+  const fromBinaryToDecimal = (t) => parseInt(toBinary(t), 2)
+  const getCharFromBinary = (t) => String.fromCharCode(fromBinaryToDecimal(t))
+
+  for (let i = 0; i < encodedBuffer.length; i++) {
+    finalBuffer[i] = encodedBuffer[i] ^ maskKey[i % 4];
+    const logger = {
+      unmaskingCalc: `${toBinary(encodedBuffer[i])} ^ ${toBinary(maskKey[i % MASK_KEY_BYTES_LENGTH])} = ${toBinary(finalBuffer[i])}`,
+      decoded: getCharFromBinary(finalBuffer[i]),
+    }
+    console.log(logger)
+  }
+
+  return finalBuffer;
+}
+
+// function unmask(encodedBuffer, maskKey) {
+
+//   // Create the byte Array of decoded payload
+//   const DECODED = Uint8Array.from(encodedBuffer, (elt, i) => elt ^ maskKey[i % 4]); // Perform an XOR on the mask
+
+//   return DECODED
+
+// }
+
 
 function prepareHandShakeHeaders(id) {
   const acceptKey = createSocketAccept(id)
