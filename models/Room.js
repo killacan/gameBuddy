@@ -20,7 +20,8 @@ const roomSchema = Schema({
     },
     privacy: {
         type: Boolean,
-        default: true
+        default: true,
+        required: true
     }
 }, {
     timestamps: true

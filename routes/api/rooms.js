@@ -34,7 +34,7 @@ router.get('/:roomId', async (req, res, next) => {
     catch(_err) {
         const err = new Error("Room not found.");
         err.statusCode = 404;
-        err.errors = { message: "No Room found with that id"};
+        err.errors = { message: "No Room found."};
         return next(err);
     }
 })
@@ -66,7 +66,7 @@ router.delete('/:roomId', requireUser, async (req, res, next) => {
         return res.json(room);
     }
     catch(_err) {
-        const err = new Error('Room not found');
+        const err = new Error('Room not found.');
         err.statusCode = 404;
         err.errors = { message: "No room found." };
         return next(err);

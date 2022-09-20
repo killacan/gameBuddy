@@ -10,6 +10,36 @@ const reviewSchema = Schema({
         type: String,
         required: false
     },
+    toxic: {
+        type: Boolean,
+        default: false,
+        required: true
+    },
+    friendly: {
+        type: Boolean,
+        default: false,
+        required: true
+    },
+    skilled: {
+        type: Boolean,
+        default: false,
+        required: true
+    },
+    griefing: {
+        type: Boolean,
+        default: false,
+        required: true
+    },
+    teamPlayer: {
+        type: Boolean,
+        default: false,
+        required: true
+    },
+    leader: {
+        type: Boolean,
+        default: false,
+        required: true
+    },
     reviewer: {
         type: Schema.Types.ObjectId,
         ref: 'User'
