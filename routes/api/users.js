@@ -93,14 +93,13 @@ router.get('/current', restoreUser, (req, res) => {
 })
 
 /* PATCH current user listening */
-router.patch('/:userId', requireUser, validateRegisterInput, async (req, res, next) => {
+router.patch('/:userId', validateRegisterInput, async (req, res, next) => {
   try {
     const user = await User.findById(req.params.userId);
   
     if (user) {
       user.username = req.body.username || user.username;
       user.email = req.body.email || user.email;
-      user.birthDay = req.body.birthDay || user.birthDay;
     }
     if (req.body.password) {
       bcrypt.genSalt(10, (err, salt) => {
@@ -126,7 +125,16 @@ router.patch('/:userId', requireUser, validateRegisterInput, async (req, res, ne
   }
 });
 
-
+router.delete('/:userId', async (req, res) => {
+  User
+  .findByIdAndRemove(req.params.userId)
+  .exec()
+  .then(data => {
+    if (!data) {return res.status(404).end(); }
+    return res.status(204).end();
+  })
+  .catch(err => next(err))
+});
 
 
 
