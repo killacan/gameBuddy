@@ -43,13 +43,22 @@ mongoose
   .connect(db, {useNewUrlParser: true})
   .then(() => {
     debug("Connect to MongoDB successfully");
-
     server.listen(port);
   });
   
   server.on('error', onError);
   server.on('listening', onListening);
+  
   server.on('upgrade', onSocketUpgrade)
+
+  function debounce(fn, time) {
+  let timeout
+  return function() {
+    const functionCall = () => fn.apply(this, arguments)
+    clearTimeout(timeout)
+    timeout = setTimeout(functionCall, time)
+  }
+}
 
 function onSocketUpgrade (req, socket, head) {
   const {'sec-websocket-key': webClientSocketKey} = req.headers
@@ -161,7 +170,7 @@ function unmask(encodedBuffer, maskKey) {
       unmaskingCalc: `${toBinary(encodedBuffer[i])} ^ ${toBinary(maskKey[i % MASK_KEY_BYTES_LENGTH])} = ${toBinary(finalBuffer[i])}`,
       decoded: getCharFromBinary(finalBuffer[i]),
     }
-    console.log(logger)
+    // console.log(logger)
   }
 
   return finalBuffer;

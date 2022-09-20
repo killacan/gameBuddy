@@ -1,11 +1,13 @@
 import './MainPage.css';
 import { NavLink } from 'react-router-dom';
 import SplashCarousel from '../SplashCarousel/SplashCarousel';
+import WebSocketComp from '../WebSocketComp/WebSocketComp';
 const MainPage = () => {
 
 
     return (
         <div className='splash-container'>
+            <WebSocketComp />
             <div className="splash-buttons-container">
                 <div className="signin-div">
                     <a>
@@ -34,7 +36,7 @@ const MainPage = () => {
             <div id="gamebuddy-splash-title">GAMEBUDDY</div>
             <div id="gamebuddy-slogan">play and connect</div>
             <div className="square-moving-animation">
-            <ul class="circles">
+            <ul className="circles">
                     <li></li>
                     <li></li>
                     <li></li>

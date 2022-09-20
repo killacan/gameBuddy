@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 
 import { login, clearSessionErrors } from '../../store/session';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 function LoginForm () {
   const [email, setEmail] = useState('');
@@ -11,7 +11,7 @@ function LoginForm () {
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
 
-  const sessionUser = useSelector(state=>state.session.user)
+  // const sessionUser = useSelector(state=>state.session.user)
   
   
   useEffect(() => {
