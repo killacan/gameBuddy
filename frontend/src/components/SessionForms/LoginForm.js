@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 
 import { login, clearSessionErrors } from '../../store/session';
+import { Redirect } from 'react-router-dom';
 
 function LoginForm () {
   const [email, setEmail] = useState('');
@@ -10,11 +11,16 @@ function LoginForm () {
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
 
+  const sessionUser = useSelector(state=>state.session.user)
+  
+  
   useEffect(() => {
     return () => {
       dispatch(clearSessionErrors());
     };
   }, [dispatch]);
+  
+  // if (sessionUser) return <Redirect to="/games" />;
 
   const update = (field) => {
     const setState = field === 'email' ? setEmail : setPassword;

@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { Switch,Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
 import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
 // import NavBar from './components/NavBar/NavBar';
 
 import MainPage from './components/MainPage/MainPage'
 import LoginForm from './components/SessionForms/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm';
-
+import Games from "./components/Games/Games";
 import { getCurrentUser } from './store/session';
  
 
@@ -26,6 +25,9 @@ function App() {
         <AuthRoute exact path={"/"} component={MainPage}/>
         <AuthRoute exact path={"/signup"} component={SignupForm}/>
         <AuthRoute exact path={"/login"} component={LoginForm}/>
+        <ProtectedRoute exact path={"/games"} component={Games}/>
+        
+
         <Redirect to="/"/>
         
         {/* <AuthRoute exact path={"/profile/:userId"} component={LoginForm}/>
