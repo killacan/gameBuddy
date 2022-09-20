@@ -13,33 +13,9 @@ const Review = require('../../models/Review');
 const { collection } = require('../../models/User');
 const validateReviewInput = require('../../validation/reviews');
 
-router.get('/', async (_req, res) => {
-    try {
-        const reviews = await Review.find()
-                                    .populate("reviewer", "_id, username")
-                                    .sort({ createdAt: -1});
-        return res.json(reviews);
-    }
-    catch(err) {
-        return res.json([]);
-    }
-    
-})
 
-router.get('/:reviewId', async (req, res, next) => {
-    try {
-        const review = await Review.findById(req.params.reviewId)
-                                    .populate("reviewer", "_id, username");
-        return res.json(review);
-    }
-    catch(_err) {
-        const err = new Error("Review not found.");
-        err.statusCode = 404;
-        err.errors = { message: "No Review found"};
-        return next(err);
-    }
-})
 
+/* POST ----- CREATE REVIEW ----- */
 router.post('/create', requireUser, validateReviewInput, async (req, res, next) => {
     try {
         const newReview = new Review({
@@ -63,20 +39,38 @@ router.post('/create', requireUser, validateReviewInput, async (req, res, next) 
     }
 })
 
-router.delete('/:reviewId', requireUser, validateReviewInput, async (req, res, next) => {
+
+/* GET ----- GET ALL REVIEWS ----- */
+router.get('/', async (_req, res) => {
     try {
-        const review = await Room.findOneAndDelete(req.params.reviewId)
-                                    .populate();
+        const reviews = await Review.find()
+                                    .populate("reviewer", "_id, username")
+                                    .sort({ createdAt: -1});
+        return res.json(reviews);
+    }
+    catch(err) {
+        return res.json([]);
+    }
+    
+})
+
+
+/* GET ----- GET REVIEW ----- */
+router.get('/:reviewId', async (req, res, next) => {
+    try {
+        const review = await Review.findById(req.params.reviewId)
+                                    .populate("reviewer", "_id, username");
         return res.json(review);
     }
     catch(_err) {
-        const err = new Error('Review not found');
+        const err = new Error("Review not found.");
         err.statusCode = 404;
-        err.errors = { message: "No review found." };
+        err.errors = { message: "No Review found"};
         return next(err);
     }
 })
 
+/* PATCH ----- UPDATE REVIEW ----- */
 router.patch('/:reviewId', requireUser, validateReviewInput, async (req, res, next) => {
     try {
         const review = await Review.findById(req.params.reviewId)
@@ -97,5 +91,22 @@ router.patch('/:reviewId', requireUser, validateReviewInput, async (req, res, ne
         next(err);
     }
 })
+
+
+/* DESTROY ----- DESTROY REVIEW ----- */
+router.delete('/:reviewId', requireUser, validateReviewInput, async (req, res, next) => {
+    try {
+        const review = await Room.findOneAndDelete(req.params.reviewId)
+                                    .populate();
+        return res.json(review);
+    }
+    catch(_err) {
+        const err = new Error('Review not found');
+        err.statusCode = 404;
+        err.errors = { message: "No review found." };
+        return next(err);
+    }
+})
+
 
 module.exports = router;
