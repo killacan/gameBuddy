@@ -11,7 +11,7 @@ function NavBar () {
     //     e.preventDefault();
     //     dispatch(logout());
     // }
-  
+    
     // const getLinks = () => {
     //   if (loggedIn) {
     //     return (
@@ -31,6 +31,7 @@ function NavBar () {
     //     );
     //   }
     // }
+
   
     // return (
     //   <>
