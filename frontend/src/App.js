@@ -21,7 +21,7 @@ function App() {
 
   return loaded && (
     <>
-      <WebSocketComp />
+      {/* <WebSocketComp /> */}
       {/* <NavBar/> */}
       <Switch>
         <AuthRoute exact path={"/"} component={MainPage}/>
