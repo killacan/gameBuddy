@@ -6,6 +6,11 @@ const validateRoomInput = [
         .exists({ checkFalsy: true })
         .withMessage('Must be logged in to create a room!'),
 
+    check('title')
+        .exists({ checkFalsy: true})
+        .isLength({ min: 3, max: 50 })
+        .withMessage('Must title your room!'),
+
     check('game')
         .exists({ checkFalsy: true })
         .withMessage('Must select game to create room.'),

@@ -6,6 +6,10 @@ const roomSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    title: {
+        type: String,
+        required: true
+    },
     game: {
         type: String,
         required: true

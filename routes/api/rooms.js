@@ -43,9 +43,9 @@ router.post('/create',
         try {
             const newRoom = new Room({
                 host: req.user._id,
-                game: req.room.game,
-                duration: req.room.duration,
-                private: req.room.private
+                game: req.body.game,
+                duration: req.body.duration,
+                private: req.body.private
             })
 
             let room = await newRoom.save();
