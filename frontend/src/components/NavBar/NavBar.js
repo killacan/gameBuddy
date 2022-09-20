@@ -29,10 +29,10 @@ function NavBar () {
       history.push("/");
     }
 
-    const handleProfile = (e) => [
+    const handleProfile = (e) => {
       e.preventDefault();
       history.push("/profile")
-    ]
+    }
  
 
     return (
