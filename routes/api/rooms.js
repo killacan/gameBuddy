@@ -39,28 +39,25 @@ router.get('/:roomId', async (req, res, next) => {
     }
 })
 
-router.post('/create',
-    requireUser,
-    validateRoomInput,
-    async (req, res, next) => {
-        try {
-            const newRoom = new Room({
-                host: req.hostId,
-                title: req.body.title,
-                game: req.body.game,
-                duration: req.body.duration,
-                privacy: req.body.privacy
-            })
+router.post('/create', requireUser, validateRoomInput, async (req, res, next) => {
+    try {
+        const newRoom = new Room({
+            host: req.hostId,
+            title: req.body.title,
+            game: req.body.game,
+            duration: req.body.duration,
+            privacy: req.body.privacy
+        })
 
-            let room = await newRoom.save();
-            room = await room.populate("host", "_id, username");
-            return res.json(room);
-        }
-        catch(err) {
-            next(err);
-        }
+        let room = await newRoom.save();
+        room = await room.populate("host", "_id, username");
+        return res.json(room);
     }
-)
+    catch(err) {
+        next(err);
+    }
+})
+
 
 router.delete('/:roomId', requireUser, async (req, res, next) => {
     try {
