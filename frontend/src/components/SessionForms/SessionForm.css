@@ -520,3 +520,11 @@
       bottom: 100%;
     }
   }
+
+#demo-user{
+  margin-top: 1vw;
+  background-color: transparent;
+  border: none;
+  font-family: azonix;
+  color: #2efdcd;
+}

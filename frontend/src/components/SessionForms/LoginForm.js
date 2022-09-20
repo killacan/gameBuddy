@@ -31,8 +31,15 @@ function LoginForm () {
     e.preventDefault();
     dispatch(login({ email, password })); 
   }
-  
 
+  const demoUser = (e) => {
+    e.preventDefault();
+    dispatch(login({
+      email: "admin@admin.com",
+      password: "admin123"
+    }))
+  }
+  
   return (
     <div className="login-container">
       <div id="login-background"></div>
@@ -74,6 +81,13 @@ function LoginForm () {
             value="Log In"
             disabled={!email || !password}
           />
+        </a>
+        <a>
+        <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <button onClick={demoUser} id="demo-user">Demo User</button>
         </a>
       </form>
     </div>
