@@ -20,6 +20,8 @@
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "path-browserify": "^1.0.1",
+    "querystring-es3": "^0.2.1",
     "swiper": "^8.4.2"
   },
   "devDependencies": {

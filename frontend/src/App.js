@@ -9,6 +9,7 @@ import LoginForm from './components/SessionForms/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm';
 import Games from "./components/Games/Games";
 import { getCurrentUser } from './store/session';
+import Rooms from "./components/Rooms/Rooms";
  
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <AuthRoute exact path={"/signup"} component={SignupForm}/>
         <AuthRoute exact path={"/login"} component={LoginForm}/>
         <ProtectedRoute exact path={"/games"} component={Games}/>
+        <ProtectedRoute exact path={"/games/rooms"} component={Rooms}/>
         
 
         <Redirect to="/"/>
