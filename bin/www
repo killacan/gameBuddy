@@ -60,7 +60,11 @@ function onSocketReadable(socket) {
   socket.read(1)
 
   const [markerAndPayloadLength] = socket.read(1)
-  const len
+  // because the first bit is always 1 for client to server messages. 
+  // you can subtract one bit (128) from this byte to get rid of the MASK bit
+  const lengthIndicatorInBits = markerAndPayloadLength - FIRST_BIT
+
+  let messageLength = 0
 
 }
 
