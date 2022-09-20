@@ -11,11 +11,13 @@ const cors = require('cors');
 const csrf = require('csurf');
 
 require('./models/User.js');
+require('./models/Room.js');
 const path = require('path');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/api/users');
 const csrfRouter = require('./routes/api/csrf');
+const roomsRouter = require('./routes/api/rooms');
 
 const app = express();
 
@@ -45,6 +47,7 @@ app.use(
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/csrf', csrfRouter);
+app.use('/api/rooms', roomsRouter);
 
 
 app.use((req, res, next) => {
