@@ -8,7 +8,7 @@ const reviewSchema = Schema({
     },
     comments: {
         type: String,
-        required: true
+        required: false
     },
     reviewer: {
         type: Schema.Types.ObjectId,
