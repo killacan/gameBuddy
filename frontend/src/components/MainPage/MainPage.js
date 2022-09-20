@@ -7,12 +7,45 @@ const MainPage = () => {
     return (
         <div className='splash-container'>
             <div className="splash-buttons-container">
-                <div className="splash-buttons">
-                    <NavLink exact to="/login" id="sign-in"><span>Sign In</span></NavLink>
+                <div className="signin-div">
+                    <a>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <NavLink exact to="/login" id="sign-in">
+                            Sign In
+                        </NavLink>
+                    </a>
                 </div>
-                <div>
-                    <NavLink exact to="/signup" id="sign-up"><span>Sign Up</span></NavLink>
+
+                <div className="signup-div">
+                    <a>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <NavLink exact to="/signup" id="sign-up">
+                            Sign up
+                        </NavLink>
+                    </a>
                 </div>
+            </div>
+            <div id="gamebuddy-splash-title">GAMEBUDDY</div>
+            <div id="gamebuddy-slogan">play and connect</div>
+            <div className="square-moving-animation">
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
             </div>
             <div className="title-page-container">
                 <SplashCarousel/>
