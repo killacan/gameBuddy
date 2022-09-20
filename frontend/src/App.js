@@ -22,9 +22,7 @@ function App() {
 
   return loaded && (
     <>
-
       <NavBar/>
-
       <Switch>
         <AuthRoute exact path={"/"} component={MainPage}/>
         <AuthRoute exact path={"/signup"} component={SignupForm}/>
