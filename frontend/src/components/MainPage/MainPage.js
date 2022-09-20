@@ -34,7 +34,7 @@ const MainPage = () => {
             <div id="gamebuddy-splash-title">GAMEBUDDY</div>
             <div id="gamebuddy-slogan">play and connect</div>
             <div className="square-moving-animation">
-            <ul class="circles">
+            <ul className="circles">
                     <li></li>
                     <li></li>
                     <li></li>
