@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Switch,Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
-// import NavBar from './components/NavBar/NavBar';
+import NavBar from './components/NavBar/NavBar';
+import Profile from "./components/Profile/Profile";
 
 import MainPage from './components/MainPage/MainPage'
 import LoginForm from './components/SessionForms/LoginForm';
@@ -21,14 +22,17 @@ function App() {
 
   return loaded && (
     <>
-      <WebSocketComp />
-      {/* <NavBar/> */}
+
+      <NavBar/>
+
       <Switch>
         <AuthRoute exact path={"/"} component={MainPage}/>
         <AuthRoute exact path={"/signup"} component={SignupForm}/>
         <AuthRoute exact path={"/login"} component={LoginForm}/>
         <ProtectedRoute exact path={"/games"} component={Games}/>
-        
+        <AuthRoute exact path={"/profile"} component={Profile} />
+         
+       
 
         <Redirect to="/"/>
         
