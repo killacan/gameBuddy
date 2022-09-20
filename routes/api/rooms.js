@@ -1,12 +1,15 @@
 require('../../models/User');
 require('../../models/Room');
 
+const { json } = require('express');
 const express = require('express');
+const { Result } = require('express-validator');
 const router = express.Router();
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const Room = mongoose.model('Room');
 const { requireUser } = require('../../config/passport');
+const { collection } = require('../../models/User');
 const validateRoomInput = require('../../validation/rooms');
 
 router.get('/', async (_req, res) => {
@@ -22,9 +25,9 @@ router.get('/', async (_req, res) => {
 })
 
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:roomId', async (req, res, next) => {
     try {
-        const room = await Room.findById(req.params.id)
+        const room = await Room.findById(req.params.roomId)
                                 .populate("host", "id, username");
         return res.json(room);
     }
@@ -37,15 +40,16 @@ router.get('/:id', async (req, res, next) => {
 })
 
 router.post('/create',
-    requireUser,
+    // requireUser,
     validateRoomInput,
-    async (res, req, next) => {
+    async (req, res, next) => {
         try {
             const newRoom = new Room({
-                host: req.user._id,
+                host: req.hostId,
+                title: req.body.title,
                 game: req.body.game,
                 duration: req.body.duration,
-                private: req.body.private
+                privacy: req.body.privacy
             })
 
             let room = await newRoom.save();
@@ -58,23 +62,36 @@ router.post('/create',
     }
 )
 
-router.delete('/remove/:id', requireUser, async (req, res) => {
-    const { id } = req.params;
-
-    Room.findOneAndDelete({
-        _id: id,
-        $or: [{host: req.user._id}]
-    })
-
-    .exec((err, room) => {
-        if (err) {
-            return res.status(500).json({code: 500, message: 'There was a problem deleting your room', error: err})
-        } else {
-            return res.status(200).json({code: 200, message: 'Room deleted', deletedRoom: room})
-        }
-    })
+router.delete('/:roomId', requireUser, async (req, res, next) => {
+    try {
+        const room = await Room.findOneAndDelete(req.params.roomId)
+                                .populate();
+        return res.json(room);
+    }
+    catch(_err) {
+        const err = new Error('Room not found');
+        err.statusCode = 404;
+        err.errors = { message: "No room found." };
+        return next(err);
+    }
 })
 
+router.patch('/:roomId', async (res, req, next) => {
+    try {
+        const room = await Room.findById(req.params.roomId);
+
+        if (room) {
+            room.game = req.body.game || room.game;
+            room.duration = req.body.duration || room.duration;
+            room.privacy = req.body.privacy || room.privacy;
+            room.title = req.body.title || room.title;
+        }
+        return res.json(room);
+    }
+    catch (err) {
+        next(err);
+    }
+})
 
 
 module.exports = router;
