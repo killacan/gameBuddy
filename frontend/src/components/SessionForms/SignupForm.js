@@ -52,52 +52,73 @@ function SignupForm () {
   }
 
   return (
-    <form className="session-form" onSubmit={usernameSubmit}>
-      <h2>Sign Up Form</h2>
-      <div className="errors">{errors?.email}</div>
-      <label>
-        <span>Email</span>
-        <input type="text"
-          value={email}
-          onChange={update('email')}
-          placeholder="Email"
-        />
-      </label>
-      <div className="errors">{errors?.username}</div>
-      <label>
-        <span>Username</span>
-        <input type="text"
-          value={username}
-          onChange={update('username')}
-          placeholder="Username"
-        />
-      </label>
-      <div className="errors">{errors?.password}</div>
-      <label>
-        <span>Password</span>
-        <input type="password"
-          value={password}
-          onChange={update('password')}
-          placeholder="Password"
-        />
-      </label>
-      <div className="errors">
-        {password !== password2 && 'Confirm Password field must match'}
-      </div>
-      <label>
-        <span>Confirm Password</span>
-        <input type="password"
-          value={password2}
-          onChange={update('password2')}
-          placeholder="Confirm Password"
-        />
-      </label>
-      <input
-        type="submit"
-        value="Sign Up"
-        disabled={!email || !username || !password || password !== password2}
-      />
-    </form>
+
+    <div className="signup-container">
+      <div id="signup-background"></div>
+      <form className="signup-form" onSubmit={usernameSubmit}>
+        <h2 id="signup-title">Sign Up</h2>
+        <div className="signup-info-container">
+          <input type="text"
+            value={email}
+            onChange={update('email')}
+            required
+            /> 
+          <label id="input-signup">Email</label>
+        </div>
+        <div id="errors-signup-em">
+          <div id="errors-signup-email">{errors?.email}</div>
+        </div>
+
+        <div className="signup-info-container">
+          <input type="text"
+            value={username}
+            onChange={update('username')}
+            required
+            />
+          <label id="input-signup">Username</label>
+        </div>
+        <div id="errors-signup-user">
+          <div id="errors-signup-username">{errors?.username}</div>
+        </div>
+
+        <div className="signup-info-container">
+          <input type="password"
+            value={password}
+            onChange={update('password')}
+            required
+            />
+          <label id="input-signup">Password</label>
+        </div>
+        <div id="errors-signup-pass">
+          <div id="errors-signup-password">{errors?.password}</div>
+        </div>
+
+
+        <div className="signup-info-container">
+          <input type="password"
+            value={password2}
+            onChange={update('password2')}
+            required
+            />
+          <label id="input-signup">Confirm Password</label>
+        </div>
+        <div id="errors-confirm-pass">
+          {password !== password2 && <div id="errors-confirm-password">Confirm Password field must match</div>}
+        </div>
+        <a>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <input
+            id="signup-submit"
+            type="submit"
+            value="Sign Up"
+            disabled={!email || !username || !password || password !== password2}
+          />
+        </a>
+      </form>
+    </div>
   );
 }
 
