@@ -2,9 +2,6 @@ const { check } = require('express-validator');
 const handleValidationErrors = require('./handleValidationErrors');
 
 const validateRoomInput = [
-    check('host')
-        .exists({ checkFalsy: true })
-        .withMessage('Must be logged in to create a room!'),
 
     check('title')
         .exists({ checkFalsy: true})
@@ -20,7 +17,7 @@ const validateRoomInput = [
         .isNumeric({min: 30, max: 240 })
         .withMessage('Select between 30 minutes to 4 hours.'),
     
-    check('private')
+    check('privacy')
         .exists({ checkFalsy: true })
         .isBoolean()
         .withMessage('Select whether you want your room to be private.'),

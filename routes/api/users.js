@@ -92,5 +92,51 @@ router.get('/current', restoreUser, (req, res) => {
   })
 })
 
+/* PATCH current user listening */
+router.patch('/:userId', validateRegisterInput, async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.userId);
+  
+    if (user) {
+      user.username = req.body.username || user.username;
+      user.email = req.body.email || user.email;
+    }
+    if (req.body.password) {
+      bcrypt.genSalt(10, (err, salt) => {
+        if (err) throw err;
+        bcrypt.hash(req.body.password, salt, async (err, hashedPassword) => {
+          if (err) throw err;
+          try {
+            user.hashedPassword = hashedPassword;
+            const updatedUser = await user.save();
+            // return res.json(await loginUser(updatedUser));
+          }
+          catch(err) {
+            next(err);
+          }
+        })
+      });
+    }
+    return res.json(user);
+
+  }
+  catch(err) {
+    next(err)
+  }
+});
+
+router.delete('/:userId', async (req, res) => {
+  User
+  .findByIdAndRemove(req.params.userId)
+  .exec()
+  .then(data => {
+    if (!data) {return res.status(404).end(); }
+    return res.status(204).end();
+  })
+  .catch(err => next(err))
+});
+
+
+
 
 module.exports = router;

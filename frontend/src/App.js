@@ -10,7 +10,8 @@ import LoginForm from './components/SessionForms/LoginForm';
 import SignupForm from './components/SessionForms/SignupForm';
 import Games from "./components/Games/Games";
 import { getCurrentUser } from './store/session';
- 
+import WebSocketComp from "./components/WebSocketComp/WebSocketComp";
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -21,7 +22,9 @@ function App() {
 
   return loaded && (
     <>
+
       <NavBar/>
+
       <Switch>
         <AuthRoute exact path={"/"} component={MainPage}/>
         <AuthRoute exact path={"/signup"} component={SignupForm}/>
