@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
 import NavBar from './components/NavBar/NavBar';
 import Profile from "./components/Profile/Profile";
+import Rooms from "./components/Rooms/Rooms";
 
 import MainPage from './components/MainPage/MainPage'
 import LoginForm from './components/SessionForms/LoginForm';
@@ -28,8 +29,8 @@ function App() {
         <AuthRoute exact path={"/signup"} component={SignupForm}/>
         <AuthRoute exact path={"/login"} component={LoginForm}/>
         <ProtectedRoute exact path={"/games"} component={Games}/>
-        <AuthRoute exact path={"/profile"} component={Profile} />
-         
+        <ProtectedRoute exact path={"/profile"} component={Profile} />
+        <ProtectedRoute exact path={"/games/rooms"} component={Rooms}/>
        
 
         <Redirect to="/"/>
