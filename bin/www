@@ -4,8 +4,6 @@
  * Module dependencies.
  */
 
-
-
 const mongoose = require('mongoose');
 const { mongoURI: db} = require('../config/keys.js');
 const crypto = require('crypto');

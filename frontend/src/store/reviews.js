@@ -34,7 +34,7 @@ const receiveErrors = errors => ({
     errors
 });
 
-const clearReviewErrors = receiveErrors => ({
+const clearReviewErrors = errors => ({
     type: CLEAR_REVIEW_ERRORS,
     errors
 });
@@ -42,11 +42,17 @@ const clearReviewErrors = receiveErrors => ({
 // review, reviews, createReview, updateReview, deleteReview
 
 export const fetchReviews = () => async dispatch => {
+    // console.log("hello from fetch1")
     try {
-        const res = jwtFetch(`/api/reviews`);
+        const res = await jwtFetch(`/api/reviews/`);
+        // console.log(res)
+        // console.log("hello from before res.json")
         const reviews = await res.json();
+        // console.log(reviews)
+        // console.log("hello from after res.json")
         dispatch(receiveReviews(reviews));
     }catch (err) {
+        // console.log("hello from fetch err")
         const resBody = await err.json();
         if (resBody.statusCode === 400){
             dispatch(receiveErrors(resBody.errors));
@@ -69,7 +75,7 @@ export const fetchReview = (reviewId) => async dispatch => {
 
 export const createReview = (reviewData) => async dispatch => {
     try {
-        const res = await jwtFetch(`/api/rooms`, {
+        const res = await jwtFetch(`/api/reviews/create`, {
             method: "POST",
             body: JSON.stringify(reviewData),
             headers: {
@@ -150,5 +156,28 @@ const reviewReducer = (state = {all: {}, user: {}, new: undefined}, action) => {
             return state;
     };
 };
+// const reviewReducer = (state={}, action) => {
+//     Object.freeze(state)
+//     const newState = {...state}
+
+//     switch(action.type){
+//         case RECEIVE_REVIEW:{
+//             const review = action.review;
+//             return { ...newState, [review.id]: review}
+//         }
+//         case RECEIVE_REVIEWS:{
+//             return action.reviews.review;
+//         }
+//         case RECEIVE_NEW_REVIEW:{
+//             return action.reviews
+//         }
+//         case DELETE_REVIEW:{
+//               delete newState[action.review]
+//             return newState
+//         }
+//         default:
+//             return state;
+//     }    
+// }
 
 export default reviewReducer

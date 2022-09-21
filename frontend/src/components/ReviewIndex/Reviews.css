@@ -1,0 +1,11 @@
+.review-index-main{
+    display: flex;
+    flex-direction: column;
+    width: 800vw;
+    text-transform: uppercase;
+}
+#top{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
