@@ -4,7 +4,8 @@ import { useParams,useHistory } from 'react-router-dom';
 import { destroyRoom,updateRoom,fetchRoom } from '../../store/rooms';
 import { getRoom } from '../../store/rooms';
 import { useEffect } from 'react';
-import UpdateRoomModal from '../Rooms/CreateRoomModal';
+import { useState } from 'react';
+import UpdateRoomModal from './UpdateRoomModal';
 
 const GameRoom = () => {
 
@@ -28,7 +29,7 @@ const GameRoom = () => {
 
     const [showUpdateRoomModal, setShowUpdateRoomModal] = useState(false);
 
-    const handleUpdate = async(e) => {
+    const handleUpdate = (e) => {
         e.preventDefault();
         setShowUpdateRoomModal(true);
     }
@@ -61,7 +62,7 @@ const GameRoom = () => {
             <div className="bottom-game-room-container">
 
             </div>
-            {showUpdateRoomModal && < UpdateRoomModal setShowUpdateRoomModal={setShowUpdateRoomModal} room={room}/>}
+            {showUpdateRoomModal && <UpdateRoomModal setShowUpdateRoomModal={setShowUpdateRoomModal} room={room}/>}
         </div>
     )
 }

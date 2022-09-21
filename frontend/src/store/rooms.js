@@ -87,7 +87,7 @@ export const createRoom = (roomData) => async (dispatch) => {
 };
 export const updateRoom = (roomData) => async (dispatch) => {
   try {
-    const res = await jwtFetch(`/api/rooms/${roomData.id}`, {
+    const res = await jwtFetch(`/api/rooms/${roomData._id}`, {
       method: "PATCH",
       body: JSON.stringify(roomData),
       headers: {
@@ -96,6 +96,7 @@ export const updateRoom = (roomData) => async (dispatch) => {
     });
     const room = await res.json();
     dispatch(receiveRoom(room));
+    return room;
   } catch (err) {
     const resBody = await err.json();
     if (resBody.statusCode === 400) {

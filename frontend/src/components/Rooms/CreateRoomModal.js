@@ -102,7 +102,7 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
               id="game-duration-input"
               onChange={(e) => setDuration(e.target.value)}
             >
-              {[...Array(6)].map((time, i) => {
+              {[...Array(6)].map((time, i=30) => {
                 const durationValue = i + 15;
                 return <option value={durationValue}>{durationValue}</option>;
               })}
