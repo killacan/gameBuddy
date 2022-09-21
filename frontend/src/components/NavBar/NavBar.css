@@ -1,12 +1,12 @@
 .navBar-container{
     width: 100vw;
-    height: 6vh;
-    background-image: linear-gradient(#0d0d2d,
-    #002e57);
+    height: 8vh;
+    background-color: #02101d;
     z-index:1000;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    align-items: center;
     position: sticky;
 }
 .hidden{
@@ -77,17 +77,3 @@
     transform: scale(1.1);
 }
 
-.right-create-room-container{
-    justify-content: center;
-    margin-right: 3vw;
-}
-
-#room-duration{
-    color: white;
-    font-family: azonix;
-}
-
-#display-num-user{
-    color: white;
-    font-family: azonix;
-}

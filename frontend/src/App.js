@@ -31,7 +31,7 @@ function App() {
         <ProtectedRoute exact path={"/games"} component={Games}/>
         <ProtectedRoute exact path={"/profile"} component={Profile} />
         <ProtectedRoute exact path={"/games/rooms"} component={Rooms}/>
-       
+        <ProtectedRoute exact path={"/games/rooms/:roomId"} />
 
         <Redirect to="/"/>
         
