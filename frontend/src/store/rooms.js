@@ -24,9 +24,9 @@ const receiveNewRoom = (room) => ({
   room,
 });
 
-const deleteRoom = (room) => ({
+const deleteRoom = (roomId) => ({
   type: DELETE_ROOM,
-  room,
+  roomId,
 });
 
 const receiveErrors = (errors) => ({
@@ -107,8 +107,9 @@ export const destroyRoom = (roomId) => async (dispatch) => {
     const res = await jwtFetch(`/api/rooms/${roomId}`, {
       method: "DELETE",
     });
-    const room = await res.json();
-    dispatch(deleteRoom(room));
+    console.log("hello after fetch")
+    // const room = await res.json();
+    dispatch(deleteRoom(roomId));
   } catch (err) {
     const resBody = await err.json();
     if (resBody.statusCode === 400) {

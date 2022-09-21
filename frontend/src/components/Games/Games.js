@@ -4,7 +4,6 @@ import react from 'react';
 import valorantBg from './valorant-game-image.png'
 import leagueBg from './league-game-image.png'
 import tftBg from './tft-game-image.png'
-import Rooms from '../Rooms/Rooms';
 import {useHistory} from 'react-router-dom'
 // import { useHistory } from 'react-router-dom';
 
@@ -21,7 +20,7 @@ const Games = () => {
                     history.push("/games/rooms?game=Valorant")
                     break;
                 case "league":
-                    history.push("/games/rooms?game=League+of+Legend")
+                    history.push("/games/rooms?game=League+of+Legends")
                     break;
                 case "tft":
                     history.push("/games/rooms?game=TeamFight+Tactics")

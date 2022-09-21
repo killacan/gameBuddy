@@ -5,19 +5,17 @@ import { createRoom } from "../../store/rooms";
 import { useSelector } from "react-redux";
 // import { set } from 'mongoose';
 import { useHistory } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
 const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
   const [title, setTitle] = useState("");
   const [members, setMembers] = useState([]);
-  const [duration, setDuration] = useState(0.5);
+  const [duration, setDuration] = useState(30);
   const [privacy, setPrivacy] = useState(false);
 
   const user = useSelector((state) => state.session.user);
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const { roomId } = useParams();
 
   const handleChange = (e) => {
     if (e.target.checked) {
@@ -105,7 +103,7 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
               onChange={(e) => setDuration(e.target.value)}
             >
               {[...Array(6)].map((time, i) => {
-                const durationValue = i + 0.5;
+                const durationValue = i + 15;
                 return <option value={durationValue}>{durationValue}</option>;
               })}
             </select>

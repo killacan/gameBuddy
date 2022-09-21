@@ -12,7 +12,7 @@ import SignupForm from './components/SessionForms/SignupForm';
 import Games from "./components/Games/Games";
 import { getCurrentUser } from './store/session';
 import WebSocketComp from "./components/WebSocketComp/WebSocketComp";
-
+import GameRoom from "./components/GameRoom/GameRoom";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -31,7 +31,7 @@ function App() {
         <ProtectedRoute exact path={"/games"} component={Games}/>
         <ProtectedRoute exact path={"/profile"} component={Profile} />
         <ProtectedRoute exact path={"/games/rooms"} component={Rooms}/>
-        <ProtectedRoute exact path={"/games/rooms/:roomId"} />
+        <ProtectedRoute exact path={"/games/rooms/:roomId"} component={GameRoom} />
 
         <Redirect to="/"/>
         
