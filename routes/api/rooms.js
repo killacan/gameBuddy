@@ -87,18 +87,15 @@ router.patch('/:roomId', requireUser, async (req, res, next) => {
 
 /* DELETE ----- DESTROY ROOM ----- */
 router.delete('/:roomId', requireUser, async (req, res, next) => {
-    try {
-        const room = await Room.findOneAndDelete(req.params.roomId)
-                                .populate();
-        return res.json(room);
-    }
-    catch(_err) {
-        const err = new Error('Room not found.');
-        err.statusCode = 404;
-        err.errors = { message: "No room found." };
-        return next(err);
-    }
-})
+  Room
+  .findByIdAndRemove(req.params.roomId)
+  .exec()
+  .then(data => {
+    if (!data) {return res.status(404).end(); }
+    return res.status(204).end();
+  })
+  .catch(err => next(err))
+});
 
 
 module.exports = router;
