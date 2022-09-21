@@ -9,35 +9,37 @@ const DELETE_ROOM = "rooms/DELETE_ROOM";
 const RECEIVE_ROOM_ERRORS = "rooms/RECEIVE_ROOM_ERRORS";
 const CLEAR_ROOM_ERRORS = "rooms/CLEAR_ROOM_ERRORS";
 
-const receiveRooms = (rooms) => ({
+export const receiveRooms = (rooms) => ({
   type: RECEIVE_ROOMS,
-  rooms,
+  rooms
 });
 
-const receiveRoom = (room) => ({
+export const receiveRoom = (room) => ({
   type: RECEIVE_ROOM,
   room,
 });
 
-const receiveNewRoom = (room) => ({
+export const receiveNewRoom = (room) => ({
   type: RECEIVE_NEW_ROOM,
   room,
 });
 
-const deleteRoom = (roomId) => ({
+export const deleteRoom = (roomId) => ({
   type: DELETE_ROOM,
   roomId,
 });
 
-const receiveErrors = (errors) => ({
+export const receiveErrors = (errors) => ({
   type: RECEIVE_ROOM_ERRORS,
   errors,
 });
 
-const clearRoomErrors = (errors) => ({
+export const clearRoomErrors = (errors) => ({
   type: CLEAR_ROOM_ERRORS,
   errors,
 });
+
+
 // fetch rooms, fetch room, create room, update room, destroy room
 export const fetchRooms = () => async (dispatch) => {
   try {
@@ -135,22 +137,44 @@ export const roomErrorsReducer = (state = nullErrors, action) => {
 
 //Rooms Reducer
 
-const roomsReducer = (
-  state = { all: {}, user: {}, new: undefined },
-  action
-) => {
-  switch (action.type) {
-    case RECEIVE_ROOMS:
-      return { ...state, all: action.rooms, new: undefined };
-    case RECEIVE_ROOM:
-      return { ...state, user: action.rooms, new: undefined };
-    case RECEIVE_NEW_ROOM:
-      return { ...state, new: action.room };
-    case RECEIVE_USER_LOGOUT:
-      return { ...state, user: {}, new: undefined };
-    default:
-      return state;
-  }
-};
+// const roomsReducer = (
+//   state = { all: {}, user: {}, new: undefined },
+//   action
+//         ) => {
+//   switch (action.type) {
+//     case RECEIVE_ROOMS:
+//       return { ...state, all: action.rooms, new: undefined };
+//     case RECEIVE_ROOM:
+//       return { ...state, user: action.rooms, new: undefined };
+//     case RECEIVE_NEW_ROOM:
+//       return { ...state, new: action.room };
+//     case RECEIVE_USER_LOGOUT:
+//       return { ...state, user: {}, new: undefined };
+//     case DELETE_ROOM:
+//         return {...state, all: {}, user: {}, new: undefined}
+//     default:
+//       return state;
+//   }
+// };
+
+const roomsReducer = (state={},action) => {
+    Object.freeze(state);
+    const newState = {...state}
+    switch(action.type){
+        case RECEIVE_ROOMS: 
+            return {...newState, ...action.rooms}
+        case RECEIVE_ROOM:
+            newState[action.room._id] = action.room
+            return newState
+        case RECEIVE_NEW_ROOM:
+            newState[action.room._id] = action.room
+            return newState
+        case DELETE_ROOM: 
+            delete newState[action.roomId]
+            return newState
+        default: 
+            return state; 
+    }
+}
 
 export default roomsReducer;

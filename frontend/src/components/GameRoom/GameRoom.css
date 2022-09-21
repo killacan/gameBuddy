@@ -1,0 +1,34 @@
+
+.game-room-container{
+    width: 100vw;
+    height: 100vh;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-game-room-container{
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    justify-content: space-between; 
+}
+
+.top-left-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.top-right-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.host-info{
+    display: flex;
+}
+
+.update-del-room-btns{
+    display: flex;
+    justify-content: space-evenly;
+}

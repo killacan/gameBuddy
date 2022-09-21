@@ -1,7 +1,10 @@
 import './GameRoom.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { useParams,useHistory } from 'react-router-dom';
-import { destroyRoom } from '../../store/rooms';
+import { destroyRoom,updateRoom,fetchRoom } from '../../store/rooms';
+import { getRoom } from '../../store/rooms';
+import { useEffect } from 'react';
+import UpdateRoomModal from '../Rooms/CreateRoomModal';
 
 const GameRoom = () => {
 
@@ -9,17 +12,56 @@ const GameRoom = () => {
     const {roomId} = useParams();
     const history = useHistory();
 
-    console.log(roomId);
-
-    const handleClick = (e) => {
+    const handleClick = async(e) => {
         e.preventDefault();
-        dispatch(destroyRoom(roomId))
+        const delRoom = await dispatch(destroyRoom(roomId))
         history.push('/games')
     }
+    
+    useEffect(()=> {
+        dispatch(fetchRoom(roomId))
+    },[roomId])
+
+    const currentUserId = useSelector(state => state.session.user._id)
+    const room = useSelector(state => state.rooms[roomId]);
+    console.log(room)
+
+    const [showUpdateRoomModal, setShowUpdateRoomModal] = useState(false);
+
+    const handleUpdate = async(e) => {
+        e.preventDefault();
+        setShowUpdateRoomModal(true);
+    }
+
+    if (!room) return null; 
+
     return (
-        <div>
-            <h1>hello</h1>
-            <button onClick={handleClick}>End Session</button>
+        <div className="game-room-container">
+            <div className="top-game-room-container">
+                <div className="top-left-container">
+                    <div>Game Title</div>
+                    <div>Game Name</div>
+                </div>
+                <div className="top-right-container">
+                    <div className="host-info">
+                        <div>Room Leader:</div>
+                        <div>Mimi Ly</div>
+                    </div>
+                    <div className="update-del-room-btns">
+                        {currentUserId === room.host ? 
+                        <>
+                            <button onClick={handleClick}>End Session</button>
+                            <button onClick={handleUpdate}> Update Session</button>
+                        </>
+                            : "" }
+                    </div>
+                </div>
+
+            </div>
+            <div className="bottom-game-room-container">
+
+            </div>
+            {showUpdateRoomModal && < UpdateRoomModal setShowUpdateRoomModal={setShowUpdateRoomModal} room={room}/>}
         </div>
     )
 }

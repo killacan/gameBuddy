@@ -32,10 +32,8 @@ const Games = () => {
         }
     }
 
-
     return (
         <>
-      
             <div className = "game-main-container">
                 <div className="game-list">         
                     <div onClick={handleClick("valorant")} id="valorant">
