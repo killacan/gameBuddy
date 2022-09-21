@@ -1,0 +1,26 @@
+.game-main-container{
+    color: white;
+}
+
+.user-profile-box{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 30vh;
+}
+.image-box{
+    margin-right: 5vw;
+    margin-left: 5vw;
+}
+#profile-image{
+    height: 30vh;
+}
+.username-box{
+    margin-bottom: 3vh;
+    color: rgb(180, 179, 179);
+    font-size: 70px;
+}
+.checked {
+    color: orange;
+}
+
