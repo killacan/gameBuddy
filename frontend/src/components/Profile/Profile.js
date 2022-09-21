@@ -36,15 +36,10 @@ const Profile = () => {
                 </div>  
             </div>
             <div className='user-reviews-box'>
-                <ReviewIndex reviews={reviews}/>
+                <ReviewIndex/>
             </div>
 
         </div>
-        
-        {/* <h1> Hello this is profile</h1>
-        <p>{_id}</p>
-        <p>{username}</p>
-        <p>{email}</p> */}
         </>
     )
 }

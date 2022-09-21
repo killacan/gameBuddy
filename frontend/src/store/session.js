@@ -1,4 +1,5 @@
 import jwtFetch from './jwt';
+import { fetchReviews } from './reviews';
 
 const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
 const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
@@ -51,6 +52,7 @@ export const logout = () => dispatch => {
 export const getCurrentUser = () => async dispatch => {
   const res = await jwtFetch('/api/users/current');
   const user = await res.json();
+  dispatch(fetchReviews());
   return dispatch(receiveCurrentUser(user));
 };
 

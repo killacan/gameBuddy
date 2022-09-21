@@ -1,4 +1,3 @@
-import errors from "./errors";
 import jwtFetch from "./jwt";
 import { RECEIVE_USER_LOGOUT } from "./session";
 
@@ -43,11 +42,17 @@ const clearReviewErrors = errors => ({
 // review, reviews, createReview, updateReview, deleteReview
 
 export const fetchReviews = () => async dispatch => {
+    // console.log("hello from fetch1")
     try {
-        const res = jwtFetch(`/api/reviews`);
+        const res = await jwtFetch(`/api/reviews/`);
+        // console.log(res)
+        // console.log("hello from before res.json")
         const reviews = await res.json();
+        // console.log(reviews)
+        // console.log("hello from after res.json")
         dispatch(receiveReviews(reviews));
     }catch (err) {
+        console.log("hello from fetch err")
         const resBody = await err.json();
         if (resBody.statusCode === 400){
             dispatch(receiveErrors(resBody.errors));
@@ -70,7 +75,7 @@ export const fetchReview = (reviewId) => async dispatch => {
 
 export const createReview = (reviewData) => async dispatch => {
     try {
-        const res = await jwtFetch(`/api/rooms`, {
+        const res = await jwtFetch(`/api/reviews/create`, {
             method: "POST",
             body: JSON.stringify(reviewData),
             headers: {
