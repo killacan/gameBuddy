@@ -1,0 +1,11 @@
+.review-form{
+    display: flex;
+    flex-direction: column;
+}
+
+/* input[name="rating"]{
+    display: none;
+} */
+#post-review-button{
+    width: 10vw;
+}

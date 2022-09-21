@@ -12,7 +12,9 @@ import SignupForm from './components/SessionForms/SignupForm';
 import Games from "./components/Games/Games";
 import { getCurrentUser } from './store/session';
 import WebSocketComp from "./components/WebSocketComp/WebSocketComp";
+
 import GameRoom from "./components/GameRoom/GameRoom";
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -20,6 +22,9 @@ function App() {
   useEffect(() => {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
+
+
+  window.jwtFetch = jwtFetch;
 
   return loaded && (
     <>
