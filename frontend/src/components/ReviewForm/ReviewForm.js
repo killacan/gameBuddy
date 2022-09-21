@@ -9,7 +9,7 @@ import './ReviewForm.css'
 const ReviewForm = ({setShowReviewForm}) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
-    const {_id} = useParams();
+    const {userId} = useParams();
 
 
     const [selectedReview, setSelectedReview] = useState({
@@ -22,7 +22,7 @@ const ReviewForm = ({setShowReviewForm}) => {
         teamPlayer: false,
         leader: false,
         reviwer: sessionUser,
-        reviewee: _id
+        reviewee: userId
     });
 
     const [rating, ,setRating] = useState()
