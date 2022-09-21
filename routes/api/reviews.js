@@ -19,8 +19,8 @@ const validateReviewInput = require('../../validation/reviews');
 router.post('/create', validateReviewInput, async (req, res, next) => {
     try {
         const newReview = new Review({
-            reviewer: req.reviewerId,
-            reviewee: req.revieweeId,
+            reviewer: req.user._id,
+            reviewee: req.user._id,
             rating: req.body.rating,
             comments: req.body.comments,
             toxic: req.body.toxic,
@@ -28,9 +28,7 @@ router.post('/create', validateReviewInput, async (req, res, next) => {
             skilled: req.body.skilled,
             griefing: req.body.griefing,
             teamPlayer: req.body.teamPlayer,
-            leader: req.body.leader,
-            reviewer: req.reviewerId,
-            reviewee: req.revieweeId,
+            leader: req.body.leader
         })
         let review = await newReview.save();
         review = await review.populate("reviewer", "_id, username");
