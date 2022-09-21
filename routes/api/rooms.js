@@ -14,7 +14,7 @@ const validateRoomInput = require('../../validation/rooms');
 
 
 
-/* POST ----- CREATE REVIEW ----- */
+/* POST ----- CREATE ROOM ----- */
 router.post('/create', requireUser, validateRoomInput, async (req, res, next) => {
     try {
         const newRoom = new Room({
@@ -35,7 +35,7 @@ router.post('/create', requireUser, validateRoomInput, async (req, res, next) =>
 })
 
 
-/* GET ----- RENDER ALL REVIEWS ----- */
+/* GET ----- RENDER ALL ROOMS ----- */
 router.get('/', async (_req, res) => {
     try {
         const rooms = await Room.find()
@@ -49,7 +49,7 @@ router.get('/', async (_req, res) => {
 })
 
 
-/* GET ----- RENDER REVIEW ----- */
+/* GET ----- RENDER ROOM ----- */
 router.get('/:roomId', async (req, res, next) => {
     try {
         const room = await Room.findById(req.params.roomId)
@@ -65,7 +65,7 @@ router.get('/:roomId', async (req, res, next) => {
 })
 
 
-/* PATCH ----- UPDATE REVIEW ----- */
+/* PATCH ----- UPDATE ROOM ----- */
 router.patch('/:roomId', requireUser, async (req, res, next) => {
     try {
         const room = await Room.findById(req.params.roomId);
@@ -84,7 +84,7 @@ router.patch('/:roomId', requireUser, async (req, res, next) => {
 })
 
 
-/* DELETE ----- DESTROY REVIEW ----- */
+/* DELETE ----- DESTROY ROOM ----- */
 router.delete('/:roomId', requireUser, async (req, res, next) => {
     try {
         const room = await Room.findOneAndDelete(req.params.roomId)
