@@ -23,7 +23,8 @@ router.post('/create', requireUser, validateRoomInput, async (req, res, next) =>
             title: req.body.title,
             game: req.body.game,
             duration: req.body.duration,
-            privacy: req.body.privacy
+            privacy: req.body.privacy,
+            socketKey: req.body.socketKey
         })
 
         let room = await newRoom.save();
