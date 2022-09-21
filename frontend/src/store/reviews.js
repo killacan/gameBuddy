@@ -143,20 +143,6 @@ export const reviewErrorsReducer = (state = nullErrors, action) => {
 
 //reviewReducer
 
-// const reviewReducer = (state = {all: {}, user: {}, new: undefined}, action) => {
-//     switch(action.type){
-//         case RECEIVE_REVIEWS:
-//             return {...state, all: action.reviews, new: undefined};
-//         case RECEIVE_REVIEW:
-//             return {...state, user: action.reviews, new: undefined};
-//         case RECEIVE_NEW_REVIEW:
-//             return {...state, new: action.review};
-//         case RECEIVE_USER_LOGOUT:
-//             return {...state, user: {}, new: undefined};
-//         default: 
-//             return state;
-//     };
-// };
 const reviewReducer = (state={}, action) => {
     Object.freeze(state)
     const newState = {...state}
