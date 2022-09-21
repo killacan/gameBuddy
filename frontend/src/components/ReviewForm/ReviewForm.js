@@ -61,22 +61,22 @@ const ReviewForm = ({setShowReviewForm}) => {
                     <input type="text" onChange={(e) => setSelectedReview({...selectedReview, comments: e.target.value})}></input>
                 </label>
                 <label>Toxic
-                    <input type="radio"></input>
+                    <input type="radio" onChange={(e) => setSelectedReview({...selectedReview, toxic: true})}></input>
                 </label>
                 <label>Friendly
-                    <input type="radio"></input>
+                    <input type="radio" onChange={(e) => setSelectedReview({...selectedReview, friendly: true})}></input>
                 </label>
                 <label>Skilled
-                    <input type="radio"></input>
+                    <input type="radio" onChange={(e) => setSelectedReview({...selectedReview, skilled: true})}></input>
                 </label>
                 <label>Griefing
-                    <input type="radio"></input>
+                    <input type="radio" onChange={(e) => setSelectedReview({...selectedReview, griefing: true})}></input>
                 </label>
                 <label>Team Player
-                    <input type="radio"></input>
+                    <input type="radio" onChange={(e) => setSelectedReview({...selectedReview, teamPlayer: true})}></input>
                 </label>
                 <label>Leader
-                    <input type="radio"></input>
+                    <input type="radio" onChange={(e) => setSelectedReview({...selectedReview, leader: true})}></input>
                 </label>
                 <button type="submit" id="post-review-button">Post Review</button>
              </form>
