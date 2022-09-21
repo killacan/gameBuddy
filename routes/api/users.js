@@ -16,6 +16,8 @@ const User = mongoose.model('User');
 
 const { loginUser } = require('../../config/passport')
 
+
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.json({

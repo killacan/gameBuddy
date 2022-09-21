@@ -42,7 +42,7 @@ router.post('/create', validateReviewInput, async (req, res, next) => {
 })
 
 
-/* GET ----- GET ALL REVIEWS ----- */
+/* GET ----- RENDER ALL REVIEWS ----- */
 router.get('/', async (_req, res) => {
     try {
         const reviews = await Review.find()
@@ -57,7 +57,7 @@ router.get('/', async (_req, res) => {
 })
 
 
-/* GET ----- GET REVIEW ----- */
+/* GET ----- RENDER REVIEW ----- */
 router.get('/:reviewId', async (req, res, next) => {
     try {
         const review = await Review.findById(req.params.reviewId)

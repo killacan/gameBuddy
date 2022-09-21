@@ -12,6 +12,7 @@ const csrf = require('csurf');
 
 require('./models/User.js');
 require('./models/Room.js');
+require('./models/Review.js');
 const path = require('path');
 
 const indexRouter = require('./routes/index');

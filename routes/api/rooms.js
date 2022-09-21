@@ -12,33 +12,9 @@ const { requireUser } = require('../../config/passport');
 const { collection } = require('../../models/User');
 const validateRoomInput = require('../../validation/rooms');
 
-router.get('/', async (_req, res) => {
-    try {
-        const rooms = await Room.find()
-                                .populate()
-                                .sort({ createdAt: -1});
-        return res.json(rooms);
-    }
-    catch(_err) {
-        return res.json([]);
-    }
-})
 
 
-router.get('/:roomId', async (req, res, next) => {
-    try {
-        const room = await Room.findById(req.params.roomId)
-                                .populate();
-        return res.json(room);
-    }
-    catch(_err) {
-        const err = new Error("Room not found.");
-        err.statusCode = 404;
-        err.errors = { message: "No Room found." };
-        return next(err);
-    }
-})
-
+/* POST ----- CREATE ROOM ----- */
 router.post('/create', requireUser, validateRoomInput, async (req, res, next) => {
     try {
         const newRoom = new Room({
@@ -59,20 +35,37 @@ router.post('/create', requireUser, validateRoomInput, async (req, res, next) =>
 })
 
 
-router.delete('/:roomId', requireUser, async (req, res, next) => {
+/* GET ----- RENDER ALL ROOMS ----- */
+router.get('/', async (_req, res) => {
     try {
-        const room = await Room.findOneAndDelete(req.params.roomId)
+        const rooms = await Room.find()
+                                .populate()
+                                .sort({ createdAt: -1});
+        return res.json(rooms);
+    }
+    catch(_err) {
+        return res.json([]);
+    }
+})
+
+
+/* GET ----- RENDER ROOM ----- */
+router.get('/:roomId', async (req, res, next) => {
+    try {
+        const room = await Room.findById(req.params.roomId)
                                 .populate();
         return res.json(room);
     }
     catch(_err) {
-        const err = new Error('Room not found.');
+        const err = new Error("Room not found.");
         err.statusCode = 404;
-        err.errors = { message: "No room found." };
+        err.errors = { message: "No Room found." };
         return next(err);
     }
 })
 
+
+/* PATCH ----- UPDATE ROOM ----- */
 router.patch('/:roomId', requireUser, async (req, res, next) => {
     try {
         const room = await Room.findById(req.params.roomId);
@@ -87,6 +80,22 @@ router.patch('/:roomId', requireUser, async (req, res, next) => {
     }
     catch (err) {
         next(err);
+    }
+})
+
+
+/* DELETE ----- DESTROY ROOM ----- */
+router.delete('/:roomId', requireUser, async (req, res, next) => {
+    try {
+        const room = await Room.findOneAndDelete(req.params.roomId)
+                                .populate();
+        return res.json(room);
+    }
+    catch(_err) {
+        const err = new Error('Room not found.');
+        err.statusCode = 404;
+        err.errors = { message: "No room found." };
+        return next(err);
     }
 })
 
