@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Switch,Redirect } from "react-router-dom";
+import { Switch, Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
 import NavBar from './components/NavBar/NavBar';
@@ -24,7 +24,7 @@ function App() {
   }, [dispatch]);
 
 
-  window.jwtFetch = jwtFetch;
+  // window.jwtFetch = jwtFetch;
 
   return loaded && (
     <>

@@ -9,6 +9,7 @@ const rootReducer = combineReducers({
   session,
   errors,
   rooms
+})
 
 let enhancer;
 
