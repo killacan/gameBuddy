@@ -3,14 +3,12 @@ import thunk from 'redux-thunk';
 import  session  from './session';
 import errors from './errors'
 import rooms from './rooms'
-import reviews from './reviews'
+
 
 const rootReducer = combineReducers({
   session,
   errors,
-  rooms, 
-  reviews
-});
+  rooms
 
 let enhancer;
 

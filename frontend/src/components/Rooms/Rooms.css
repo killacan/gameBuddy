@@ -1,0 +1,207 @@
+.room-container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #c3def5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    border: 3px solid white;
+}
+
+.create-room{
+    width: 80vw;
+    height: 15vh;
+    background-color: #173f62;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 .33vw gray,
+        0 0 1vw gray,
+        0 0 1vw gray,
+        0 0 1vw gray;
+
+}
+
+.left-create-room-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 3vw;
+    justify-content: space-evenly;
+
+}
+
+
+.right-create-room-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 3vw;
+    align-items: flex-end;
+   
+}
+
+.join-room{
+    width: 80vw;
+    height: 100vh;
+    background-color: #0b263e;
+}
+
+.blur-background{
+    /* position: sticky; */
+    position: fixed;
+    top: 0;
+    background-color:#d1d2d4;
+    opacity: .5;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+}
+
+
+#form-close{
+    width: 100%;
+    max-width: 25vw ;
+    height: 4vh;
+    display: flex;
+    margin-left:8vw;
+    padding-right: 0;
+    margin-right: 0;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#room-title{
+    color: white;
+    font-family: azonix;
+}
+
+#title-input{
+    margin-left: 1vw;
+}
+#game-duration-input{
+    margin-left: 1vw;
+}
+#a-checkbox{
+    margin-left: 1vw;
+}
+#room-body{
+    color: white;
+    font-family: azonix;
+    margin-top: .7vw;
+    margin-bottom: .7vw;
+}
+#hosted-by{
+    color: white;
+    font-family: azonix;
+}
+
+#star-value{
+    color: #fcff64;
+  }
+
+#non-star-value{
+color: #a4a4a8; 
+}
+
+#showstar-rating{
+margin-left: 1vw;
+}
+
+#room-duration{
+    color: white;
+    font-family: azonix;
+    font-size: .8vw;
+}
+
+#display-num-user{
+    color: white;
+    font-family: azonix;
+    font-size: .8vw;
+}
+
+#create-rm-btn{
+   background: rgb(23, 23, 68);
+   opacity: .9;
+   color: white;
+   font-family: azonix;
+   border: 1px solid white;
+   padding: none;
+   margin-top: .7vw;
+   margin-bottom: .7vw;
+   height: 4vh;
+}
+#create-rm-btn:hover{
+    transform: scale(1.1);
+    color: yellow;
+}
+
+.game-banner{
+    width: 100vw;
+    height: 13vh;
+    position: relative;
+    top: 0;
+}
+
+.val-banner{
+    background-image: url('./val-banner.png');
+    top:0;
+    z-index: 4;
+    width: 100vw;
+    height: 13vh;
+}
+
+
+#modal-bg-container{
+    position: fixed;
+    background: linear-gradient(to bottom, #061523, #0d1257, #afb8d3);
+    border-radius: .5vw;
+    width: 30vw;
+    height: 72vh;
+    opacity: .8;
+    top:10%;
+    right: 35%;
+}
+
+.create-room-form{
+    position: fixed;
+    border-radius: .5vw;
+    width: 30vw;
+    height: 72vh;
+    opacity: .9;
+    top:10%;
+    right: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#game-duration{
+    color: white;
+    font-family: azonix;
+}
+
+#private-room{
+    color: white;
+    font-family: azonix;
+}
+
+#creating-room{
+    color: white;
+    font-family: brightness;
+    font-size: 2vw;
+}
+
+#submit-room{
+    background-color: transparent;
+    font-family: azonix;
+    color: white;
+    font-size: 1.5vw;
+    padding: .5vw;
+}
+
+#submit-room:hover{
+    background-color: #0b263e;
+}
+
