@@ -16,14 +16,9 @@ const User = mongoose.model('User');
 
 const { loginUser } = require('../../config/passport')
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.json({
-    message: "GET /api/users"
-  })
-});
 
-/* POST users create listing. */
+
+/* POST ----- CREATE USER ----- */
 router.post('/register', validateRegisterInput, async (req, res, next) => {
   const user = await User.findOne({
     $or: [{email: req.body.email}, {username: req.body.username}]
@@ -42,6 +37,30 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     err.errors = errors;
     return next(err);
   }
+
+
+  /* POST ----- CREATE SESSION FOR USER ----- */
+  router.post('/login', validateLoginInput, async (req, res, next) => {
+    passport.authenticate('local', async function(err, user) {
+      if (err) return next(err);
+      if (!user) {
+        const err = new Error('Invalid credentials.');
+        err.statusCode = 400;
+        err.errors = { email: "Invalid credentials." };
+        return next(err);
+      }
+      return res.json(await loginUser(user));
+    })(req, res, next);
+  })
+
+
+/* GET ----- RENDER ALL USERS ----- */
+router.get('/', function(req, res, next) {
+  res.json({
+    message: "GET /api/users"
+  })
+});
+
 
   const newUser = new User({
     username: req.body.username,
@@ -64,21 +83,8 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
   })
 })
 
-/* POST users Login listening */
-router.post('/login', validateLoginInput, async (req, res, next) => {
-  passport.authenticate('local', async function(err, user) {
-    if (err) return next(err);
-    if (!user) {
-      const err = new Error('Invalid credentials.');
-      err.statusCode = 400;
-      err.errors = { email: "Invalid credentials." };
-      return next(err);
-    }
-    return res.json(await loginUser(user));
-  })(req, res, next);
-})
 
-/* GET current user listening */
+/* GET ----- RENDER USER ----- */
 router.get('/current', restoreUser, (req, res) => {
   if (!isProduction) {
     const csrfToken = req.csrfToken();
@@ -92,7 +98,7 @@ router.get('/current', restoreUser, (req, res) => {
   })
 })
 
-/* PATCH current user listening */
+/* PATCH ----- UPDATE USER ----- */
 router.patch('/:userId', validateRegisterInput, async (req, res, next) => {
   try {
     const user = await User.findById(req.params.userId);
@@ -125,6 +131,8 @@ router.patch('/:userId', validateRegisterInput, async (req, res, next) => {
   }
 });
 
+
+/* DELETE ----- DESTROY USER ----- */
 router.delete('/:userId', async (req, res) => {
   User
   .findByIdAndRemove(req.params.userId)
