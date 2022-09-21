@@ -103,7 +103,12 @@ const Rooms = () => {
             <div id="display-num-user">display number of users (count)</div>
           </div>
         </div>
-        <div className="join-room"></div>
+        <div className="join-room">
+        
+
+
+
+        </div>
       </div>
       {showCreateRoomModal && (
         <CreateRoomModal

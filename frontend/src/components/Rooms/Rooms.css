@@ -4,7 +4,6 @@
     background-color: #c3def5;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     overflow: hidden;
     border: 3px solid white;
@@ -139,7 +138,7 @@ margin-left: 1vw;
 
 .game-banner{
     width: 100vw;
-    height: 18vh;
+    height: 13vh;
     position: relative;
     top: 0;
 }
@@ -149,7 +148,7 @@ margin-left: 1vw;
     top:0;
     z-index: 4;
     width: 100vw;
-    height: 18vh;
+    height: 13vh;
 }
 
 
@@ -205,3 +204,4 @@ margin-left: 1vw;
 #submit-room:hover{
     background-color: #0b263e;
 }
+

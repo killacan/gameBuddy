@@ -97,13 +97,13 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
             />
           </label>
           <label id="game-duration">
-            Game Duration
+            Game Duration (minutes)
             <select
               id="game-duration-input"
               onChange={(e) => setDuration(e.target.value)}
             >
-              {[...Array(6)].map((time, i=30) => {
-                const durationValue = i + 15;
+              {[...Array(11)].map((time, i) => {
+                const durationValue = 30 + i*15;
                 return <option value={durationValue}>{durationValue}</option>;
               })}
             </select>
