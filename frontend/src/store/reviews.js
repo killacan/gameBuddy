@@ -1,3 +1,4 @@
+import errors from "./errors";
 import jwtFetch from "./jwt";
 import { RECEIVE_USER_LOGOUT } from "./session";
 
@@ -34,7 +35,7 @@ const receiveErrors = errors => ({
     errors
 });
 
-const clearReviewErrors = receiveErrors => ({
+const clearReviewErrors = errors => ({
     type: CLEAR_REVIEW_ERRORS,
     errors
 });

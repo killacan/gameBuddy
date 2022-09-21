@@ -3,11 +3,13 @@ import './Profile.css'
 import profile from './profile.jpg'
 import { FaStar } from "react-icons/fa";
 import { useState } from 'react';
+import ReviewIndex from "../ReviewIndex/Reviews"
 
 
 const Profile = () => {
     const user = useSelector(state => state.session.user)
     const [rating, setRating] = useState(5)
+    const reviews = useSelector(state => state.session.user)
     const {_id, username, email} = user
     // console.log(user)
     // console.log(user._id)
@@ -34,11 +36,11 @@ const Profile = () => {
                 </div>  
             </div>
             <div className='user-reviews-box'>
-
+                <ReviewIndex reviews={reviews}/>
             </div>
 
         </div>
-
+        
         {/* <h1> Hello this is profile</h1>
         <p>{_id}</p>
         <p>{username}</p>

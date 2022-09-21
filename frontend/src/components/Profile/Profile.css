@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: flex-start;
     height: 30vh;
+    width: 100vw;
 }
 .image-box{
     margin-right: 5vw;
@@ -22,5 +23,12 @@
 }
 .checked {
     color: orange;
+}
+
+.user-reviews-box{
+    display: flex;
+    justify-content: center;
+    height: 70vh;
+    width: 100vw;
 }
 
