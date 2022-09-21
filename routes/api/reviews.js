@@ -20,7 +20,7 @@ router.post('/create', validateReviewInput, async (req, res, next) => {
     try {
         const newReview = new Review({
             reviewer: req.user._id,
-            reviewee: req.user._id,
+            reviewee: req.body.reviewee,
             rating: req.body.rating,
             comments: req.body.comments,
             toxic: req.body.toxic,
