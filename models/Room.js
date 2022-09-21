@@ -25,6 +25,9 @@ const roomSchema = Schema({
     privacy: {
         type: Boolean,
         default: false,
+    },
+    socketKey: {
+        type: String
     }
 }, {
     timestamps: true
