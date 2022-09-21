@@ -10,6 +10,10 @@ const userSchema = Schema({
         type: String,
         required: true
     },
+    friends: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Friend'
+    }],
     hashedPassword: {
         type: String,
         required: true

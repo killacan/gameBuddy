@@ -35,8 +35,7 @@ function App() {
 
         <Redirect to="/"/>
         
-        {/* <AuthRoute exact path={"/profile/:userId"} component={LoginForm}/>
-        <AuthRoute exact path={"/games"} component={SignUpForm}/>
+        {/* 
         <AuthRoute exact path={"/games/rooms"} component={LoginForm}/>
         <AuthRoute exact path={"/games/rooms/valorant"} component={SignUpForm}/>
         <AuthRoute exact path={"/games/rooms/leagueoflegends"} component={SignUpForm}/>

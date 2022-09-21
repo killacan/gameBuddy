@@ -46,9 +46,9 @@ function WebSocketComp () {
                 profession: 'developer'
             }])
     
-            setInterval(() => {
-                socket.send(data)
-            }, 2000)
+            // setInterval(() => {
+            //     socket.send(data)
+            // }, 2000)
         }
         socket.onmessage = (msg) => {
             const message = JSON.parse(msg.data)

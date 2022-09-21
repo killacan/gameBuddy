@@ -6,8 +6,8 @@ const RECEIVE_ROOM = "rooms/RECEIVE_ROOM";
 const RECEIVE_NEW_ROOM = "rooms/RECEIVE_NEW_ROOM";
 const DELETE_ROOM = "rooms/DELETE_ROOM";
 
-const RECEIVE_ROOM_ERRORS = "rooms/RECEIVE_ROOMS_ERRORS";
-const CLEAR_ROOM_ERRORS = "rooms/CLEAR_TWEET_ERRORS";
+const RECEIVE_ROOM_ERRORS = "rooms/RECEIVE_ROOM_ERRORS";
+const CLEAR_ROOM_ERRORS = "rooms/CLEAR_ROOM_ERRORS";
 
 const receiveRooms = (rooms) => ({
   type: RECEIVE_ROOMS,
@@ -129,7 +129,7 @@ export const roomErrorsReducer = (state = nullErrors, action) => {
       return nullErrors;
     default:
       return state;
-  }
+  };
 };
 
 //Rooms Reducer

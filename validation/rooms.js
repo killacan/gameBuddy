@@ -18,7 +18,6 @@ const validateRoomInput = [
         .withMessage('Select between 30 minutes to 4 hours.'),
     
     check('privacy')
-        .exists({ checkFalsy: true })
         .isBoolean()
         .withMessage('Select whether you want your room to be private.'),
 

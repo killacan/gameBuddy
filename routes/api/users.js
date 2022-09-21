@@ -16,6 +16,8 @@ const User = mongoose.model('User');
 
 const { loginUser } = require('../../config/passport')
 
+
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.json({
@@ -34,10 +36,10 @@ router.post('/register', validateRegisterInput, async (req, res, next) => {
     err.statusCode = 400;
     const errors = {};
     if (user.email === req.body.email) {
-      errors.email = "An account is already associated with this email"
+      errors.email = "An account is already associated with this email."
     }
     if (user.username === req.body.username) {
-      errors.username = "Sorry, this username is already taken"
+      errors.username = "Sorry, this username is already taken."
     }
     err.errors = errors;
     return next(err);
@@ -69,9 +71,9 @@ router.post('/login', validateLoginInput, async (req, res, next) => {
   passport.authenticate('local', async function(err, user) {
     if (err) return next(err);
     if (!user) {
-      const err = new Error('Invalid credentials');
+      const err = new Error('Invalid credentials.');
       err.statusCode = 400;
-      err.errors = { email: "Invalid credentials" };
+      err.errors = { email: "Invalid credentials." };
       return next(err);
     }
     return res.json(await loginUser(user));
