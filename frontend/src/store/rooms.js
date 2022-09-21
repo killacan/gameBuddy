@@ -6,8 +6,8 @@ const RECEIVE_ROOM = "rooms/RECEIVE_ROOM";
 const RECEIVE_NEW_ROOM = "rooms/RECEIVE_NEW_ROOM";
 const DELETE_ROOM = "rooms/DELETE_ROOM";
 
-const RECEIVE_ROOM_ERRORS = "rooms/RECEIVE_ROOMS_ERRORS";
-const CLEAR_ROOM_ERRORS = "rooms/CLEAR_TWEET_ERRORS";
+const RECEIVE_ROOM_ERRORS = "rooms/RECEIVE_ROOM_ERRORS";
+const CLEAR_ROOM_ERRORS = "rooms/CLEAR_ROOM_ERRORS";
 
 const receiveRooms = rooms => ({
     type: RECEIVE_ROOMS,
@@ -38,6 +38,7 @@ const clearRoomErrors = errors => ({
     type: CLEAR_ROOM_ERRORS,
     errors
 });
+
 // fetch rooms, fetch room, create room, update room, destroy room 
 export const fetchRooms = () => async dispatch => {
     try {
@@ -48,8 +49,8 @@ export const fetchRooms = () => async dispatch => {
         const resBody = await err.json();
         if (resBody.statusCode === 400){
             dispatch(receiveErrors(resBody.errors));
-        }
-    }
+        };
+    };
 };
 
 export const fetchRoom = (roomId) => async dispatch => {
@@ -61,9 +62,10 @@ export const fetchRoom = (roomId) => async dispatch => {
         const resBody = await err.json();
         if (resBody.statusCode === 400){
             return dispatch(receiveErrors(resBody.errors));
-        }
-    }
+        };
+    };
 };
+
 export const createRoom = (roomData) => async dispatch => {
     try {
         const res = await jwtFetch(`/api/rooms/`, {
@@ -79,9 +81,10 @@ export const createRoom = (roomData) => async dispatch => {
         const resBody = await err.json();
         if (resBody.statusCode === 400){
             return dispatch(receiveErrors(resBody.errors));
-        }
-    }
-}
+        };
+    };
+};
+
 export const updateRoom = (roomData) => async dispatch => {
     try {
         const res = await jwtFetch(`/api/rooms/${roomData.id}`, {
@@ -97,9 +100,9 @@ export const updateRoom = (roomData) => async dispatch => {
         const resBody = await err.json();
         if (resBody.statusCode === 400){
             return dispatch(receiveErrors(resBody.errors));
-        }
-    }
-}
+        };
+    };
+};
 
 export const destroyRoom = (roomId) => async dispatch => {
     try {
@@ -112,9 +115,9 @@ export const destroyRoom = (roomId) => async dispatch => {
         const resBody = await err.json();
         if (resBody.statusCode === 400){
             return dispatch(receiveErrors(resBody.errors));
-        }
-    }
-}
+        };
+    };
+};
 
 //nullError
 const nullErrors = null;
@@ -128,7 +131,7 @@ export const roomErrorsReducer = (state = nullErrors, action) => {
       return nullErrors;
     default:
       return state;
-  }
+  };
 };
 
 //Rooms Reducer
