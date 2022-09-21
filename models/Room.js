@@ -6,6 +6,10 @@ const roomSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    members: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     title: {
         type: String,
         required: true
@@ -20,7 +24,7 @@ const roomSchema = Schema({
     },
     privacy: {
         type: Boolean,
-        default: true
+        default: true,
     }
 }, {
     timestamps: true

@@ -15,7 +15,7 @@ const validateRoomInput = require('../../validation/rooms');
 router.get('/', async (_req, res) => {
     try {
         const rooms = await Room.find()
-                                .populate("host", "_id, username")
+                                .populate()
                                 .sort({ createdAt: -1});
         return res.json(rooms);
     }
@@ -28,13 +28,13 @@ router.get('/', async (_req, res) => {
 router.get('/:roomId', async (req, res, next) => {
     try {
         const room = await Room.findById(req.params.roomId)
-                                .populate("host", "id, username");
+                                .populate();
         return res.json(room);
     }
     catch(_err) {
         const err = new Error("Room not found.");
         err.statusCode = 404;
-        err.errors = { message: "No Room found with that id"};
+        err.errors = { message: "No Room found." };
         return next(err);
     }
 })
@@ -42,7 +42,8 @@ router.get('/:roomId', async (req, res, next) => {
 router.post('/create', requireUser, validateRoomInput, async (req, res, next) => {
     try {
         const newRoom = new Room({
-            host: req.hostId,
+            host: req.user._id,
+            members: [req.body.userId],
             title: req.body.title,
             game: req.body.game,
             duration: req.body.duration,
@@ -50,7 +51,6 @@ router.post('/create', requireUser, validateRoomInput, async (req, res, next) =>
         })
 
         let room = await newRoom.save();
-        room = await room.populate("host", "_id, username");
         return res.json(room);
     }
     catch(err) {
@@ -66,7 +66,7 @@ router.delete('/:roomId', requireUser, async (req, res, next) => {
         return res.json(room);
     }
     catch(_err) {
-        const err = new Error('Room not found');
+        const err = new Error('Room not found.');
         err.statusCode = 404;
         err.errors = { message: "No room found." };
         return next(err);
