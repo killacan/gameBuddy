@@ -5,11 +5,12 @@ import './NavBar.css'
 import { useLocation } from 'react-router-dom';
 import {FaUserAstronaut} from "react-icons/fa";
 import {RiMenuUnfoldFill} from "react-icons/ri";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/session';
 import { useHistory } from 'react-router-dom';
 
 function NavBar () {
+    const user = useSelector(state => state.session.user)
 
     const location = useLocation();
     const toggle = () => {
@@ -31,9 +32,9 @@ function NavBar () {
 
     const handleProfile = (e) => {
       e.preventDefault();
-      history.push("/profile")
+      history.push(`/profile/${user._id}`)
+      
     }
- 
 
     return (
       <div className={toggle()}>

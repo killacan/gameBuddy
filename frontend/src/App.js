@@ -28,14 +28,13 @@ function App() {
         <AuthRoute exact path={"/signup"} component={SignupForm}/>
         <AuthRoute exact path={"/login"} component={LoginForm}/>
         <ProtectedRoute exact path={"/games"} component={Games}/>
-        <AuthRoute exact path={"/profile"} component={Profile} />
+        <ProtectedRoute exact path={"/profile/:userId"} component={Profile}/>
          
        
 
         <Redirect to="/"/>
         
-        {/* <AuthRoute exact path={"/profile/:userId"} component={LoginForm}/>
-        <AuthRoute exact path={"/games"} component={SignUpForm}/>
+        {/* 
         <AuthRoute exact path={"/games/rooms"} component={LoginForm}/>
         <AuthRoute exact path={"/games/rooms/valorant"} component={SignUpForm}/>
         <AuthRoute exact path={"/games/rooms/leagueoflegends"} component={SignUpForm}/>
