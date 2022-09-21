@@ -52,7 +52,7 @@ export const fetchReviews = () => async dispatch => {
         // console.log("hello from after res.json")
         dispatch(receiveReviews(reviews));
     }catch (err) {
-        console.log("hello from fetch err")
+        // console.log("hello from fetch err")
         const resBody = await err.json();
         if (resBody.statusCode === 400){
             dispatch(receiveErrors(resBody.errors));
