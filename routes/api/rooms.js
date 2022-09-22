@@ -91,8 +91,7 @@ router.patch('/:roomId/join/:userId', async(req, res, next) => {
         const user = await User.findById(req.params.userId);
 
         if (room) {
-            room.members = req.body.members.push(user) || room.members;
-            //
+            room.members.push(user);
         }
         return res.json(room);
     }
