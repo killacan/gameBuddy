@@ -84,13 +84,14 @@ router.patch('/:roomId', requireUser, async (req, res, next) => {
     }
 })
 
-/* PATCH ----- UPDAT ROOM/USER JOIN ROOM ----- */
-router.patch('/:roomId/join', requireUser, async(req, res, next) => {
+/* PATCH ----- UPDATE ROOM/USER JOIN ROOM ----- */
+router.patch('/:roomId/join/:userId', requireUser, async(req, res, next) => {
     try {
         const room = await Room.findById(req.params.roomId);
+        const user = await User.findById(req.params.userId);
 
         if (room) {
-            room.members = req.body.members || room.game
+            room.members = req.body.members.push(user) || room.members;
         }
         return res.json(room);
     }
