@@ -47,10 +47,11 @@ const ReviewForm = ({setShowReviewForm}) => {
 
     return(
         <>
-            <div className="blur-background" onClick={() => setShowReviewForm(false)}></div>      
-            <div id="modal-bg-container"></div>
+            <div className="blur-background-review" onClick={() => setShowReviewForm(false)}></div>      
+            <div id="modal-bg-container-review"></div>
             <div className="bg-modal">
-                {/* <form className='review-form' onSubmit={handleSubmit}>
+                <form className='end-review-form' onSubmit={handleSubmit}>
+                    <h1 id="review-end-title">Review</h1>
                     <label className='rating-box'>Rating:
                         <div id='rating-starts'>
                             {[...Array(5)].map((star,i) => {
@@ -71,29 +72,29 @@ const ReviewForm = ({setShowReviewForm}) => {
                             })}
                         </div>
                     </label>
-                    <label>comments
+                    <label className="review-buttons">comments
                         <input type="text" value={selectedReview.comments} onChange={(e) => setSelectedReview({...selectedReview, comments: e.target.value})}></input>
                     </label>
-                    <label>Toxic
+                    <label className="review-buttons">Toxic
                         <input type="radio" value={selectedReview.toxic} onChange={(e) => setSelectedReview({...selectedReview, toxic: true})}></input>
                     </label>
-                    <label>Friendly
+                    <label className="review-buttons">Friendly
                         <input type="radio" value={selectedReview.friendly} onChange={(e) => setSelectedReview({...selectedReview, friendly: true})}></input>
                     </label>
-                    <label>Skilled
+                    <label className="review-buttons">Skilled
                         <input type="radio" value={selectedReview.skilled} onChange={(e) => setSelectedReview({...selectedReview, skilled: true})}></input>
                     </label>
-                    <label>Griefing
+                    <label className="review-buttons">Griefing
                         <input type="radio" value={selectedReview.griefing} onChange={(e) => setSelectedReview({...selectedReview, griefing: true})}></input>
                     </label>
-                    <label>Team Player
+                    <label className="review-buttons">Team Player
                         <input type="radio" value={selectedReview.teamPlayer} onChange={(e) => setSelectedReview({...selectedReview, teamPlayer: true})}></input>
                     </label>
-                    <label>Leader
+                    <label className="review-buttons">Leader
                         <input type="radio" value={selectedReview.leader} onChange={(e) => setSelectedReview({...selectedReview, leader: true})}></input>
                     </label>
                     <button type="submit" id="post-review-button">Post Review</button>
-                </form> */}
+                </form>
             </div>
         </>
     )
