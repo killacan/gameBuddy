@@ -47,7 +47,7 @@ const UpdateRoomModal = ({setShowUpdateRoomModal, room}) => {
             <div id="modal-bg-container"></div>
             <div className="bg-modal">
                 <div id="form-close">
-                <div onClick={() => setShowUpdateRoomModal(false)}>X</div>
+                <div onClick={() => setShowUpdateRoomModal(false)}></div>
                 </div>
                 <form className="update-room-form" onSubmit={handleSubmit}>
                 <h1 id="updating-room">Update Room</h1>
