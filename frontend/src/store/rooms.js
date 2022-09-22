@@ -111,7 +111,7 @@ export const destroyRoom = (roomId) => async (dispatch) => {
     const res = await jwtFetch(`/api/rooms/${roomId}`, {
       method: "DELETE",
     });
-    console.log("hello after fetch")
+    // console.log("hello after fetch")
     dispatch(deleteRoom(roomId));
   } catch (err) {
     const resBody = await err.json();

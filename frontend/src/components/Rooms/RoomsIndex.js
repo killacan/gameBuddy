@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 
 const RoomsIndex = () => {
   const game = new URL(window.location.href).searchParams.get("game");
-  console.log(game);
+  // console.log(game);
 
   const [showCreateRoomModal, setShowCreateRoomModal] = useState(false);
 
@@ -22,7 +22,7 @@ const RoomsIndex = () => {
   const rooms = useSelector(state=> state.rooms)
   const allRooms = Object.values(rooms)
 
-  console.log(allRooms)
+  // console.log(allRooms)
   useEffect(()=>{
     dispatch(fetchRooms())
   },[])
@@ -91,7 +91,7 @@ const RoomsIndex = () => {
   const user = useSelector(state => state.session.user)
 
   const handleJoinRoom = (field) => {
-    console.log(field._id)
+    // console.log(field._id)
     return e => {
       e.preventDefault();
       field.members.push(user)
