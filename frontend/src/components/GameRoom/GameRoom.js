@@ -4,7 +4,9 @@ import { useParams,useHistory } from 'react-router-dom';
 import { destroyRoom,fetchRoom } from '../../store/rooms';
 import { useEffect,useState } from 'react';
 import UpdateRoomModal from './UpdateRoomModal';
+import WebSocketComp from '../WebSocketComp/WebSocketComp';
 import EndRoomModal from './EndRoomModal';
+
 
 const GameRoom = () => {
 
@@ -67,7 +69,7 @@ const GameRoom = () => {
 
             </div>
             <div className="bottom-game-room-container">
-
+                <WebSocketComp roomId={roomId}/>
             </div>
             {showUpdateRoomModal && <UpdateRoomModal setShowUpdateRoomModal={setShowUpdateRoomModal} room={room}/>}
             {showEndRoomModal && <EndRoomModal setShowEndRoomModal={setShowEndRoomModal} room={room}/>}
