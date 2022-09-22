@@ -27,7 +27,7 @@ router.post('/create', requireUser, validateRoomInput, async (req, res, next) =>
             socketKey: req.body.socketKey
         })
 
-        let room = await newRoom.save().populate("host")
+        let room = await newRoom.save();
         return res.json(room);
     }
     catch(err) {
