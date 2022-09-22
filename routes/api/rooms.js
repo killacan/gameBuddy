@@ -19,7 +19,7 @@ router.post('/create', requireUser, validateRoomInput, async (req, res, next) =>
     try {
         const newRoom = new Room({
             host: req.user._id,
-            members: [req.body.userId],
+            members: [],
             title: req.body.title,
             game: req.body.game,
             duration: req.body.duration,
@@ -91,7 +91,8 @@ router.patch('/:roomId/join/:userId', requireUser, async(req, res, next) => {
         const user = await User.findById(req.params.userId);
 
         if (room) {
-            room.members = req.body.members.push(user) || room.members;
+            room.members = req.body.members.push(user._id) || room.members;
+            //
         }
         return res.json(room);
     }
