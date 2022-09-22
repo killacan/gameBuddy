@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const RiotApi = () => {
 
-    const RIOT_API_KEY = "RGAPI-84f95961-a2b7-45cc-b2c3-cf9ff92bf9cb";
+    const RIOT_API_KEY = "RGAPI-608e101d-f834-4f06-8fe9-439e455aac68";
     const [playerSearch, setPlayerSearch] = useState();
     const [playerData, setPlayerData] = useState({});
     const [playerRank, setPlayerRank] = useState({});
@@ -20,11 +20,12 @@ const RiotApi = () => {
         })
 
     }
-    console.log(playerData)
+
+    const playerId = playerData.id;
 
     function getRankForPlayer(event) {
-        const API_CALL_RANK = "https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/2yfFsNsshZzf3sIKcd05VFaRlYkSiF16Yy_bjXtIcN5iub8"
-        + "?api_key=" + RIOT_API_KEY;
+        const API_CALL_RANK = "https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/"
+        + playerId + "?api_key=" + RIOT_API_KEY;
 
         axios.get(API_CALL_RANK).then(function(res) {
             setPlayerRank(res.data);
@@ -32,9 +33,7 @@ const RiotApi = () => {
             console.log(err)
         })
     }
-
     console.log(playerRank)
-
     return (
         <>
         <div className="api-page">
@@ -60,8 +59,10 @@ const RiotApi = () => {
             <button onClick={e => getRankForPlayer(e)}>Get Rank</button>
             {JSON.stringify(playerRank) != '{}' ?
                 <>
-                <h1>{playerRank}</h1>
-                <h1>hi</h1>
+                <h1>{playerRank[0].tier}</h1>
+                <h1>{playerRank[0].rank}</h1>
+
+                {console.log(playerRank[2])}
                 </>
             :
                 <>
