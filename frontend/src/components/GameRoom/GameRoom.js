@@ -6,6 +6,7 @@ import { getRoom } from '../../store/rooms';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import UpdateRoomModal from './UpdateRoomModal';
+import WebSocketComp from '../WebSocketComp/WebSocketComp';
 
 const GameRoom = () => {
 
@@ -60,7 +61,7 @@ const GameRoom = () => {
 
             </div>
             <div className="bottom-game-room-container">
-
+                <WebSocketComp roomId={roomId}/>
             </div>
             {showUpdateRoomModal && <UpdateRoomModal setShowUpdateRoomModal={setShowUpdateRoomModal} room={room}/>}
         </div>

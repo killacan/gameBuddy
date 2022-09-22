@@ -7,7 +7,6 @@ const MainPage = () => {
 
     return (
         <div className='splash-container'>
-            <WebSocketComp />
             <div className="splash-buttons-container">
                 <div className="signin-div">
                     <a>
