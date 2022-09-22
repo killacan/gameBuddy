@@ -102,6 +102,7 @@ router.patch('/:userId', validateRegisterInput, async (req, res, next) => {
     if (user) {
       user.username = req.body.username || user.username;
       user.email = req.body.email || user.email;
+      user.riotUsername = req.body.riotUsername || user.riotUsername;
     }
     if (req.body.password) {
       bcrypt.genSalt(10, (err, salt) => {
