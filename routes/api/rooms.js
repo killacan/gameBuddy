@@ -114,5 +114,4 @@ router.delete('/:roomId', requireUser, async (req, res, next) => {
 });
 
 
-
 module.exports = router;

@@ -1,8 +1,9 @@
 import "./Rooms.css";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import CreateRoomModal from "./CreateRoomModal";
 import { FaGift, FaStar } from "react-icons/fa";
 import { fetchRooms } from "../../store/rooms";
+import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { AiFillLock } from "react-icons/ai";
@@ -167,7 +168,7 @@ const RoomsIndex = () => {
                   <div id="room-title">Title : {room.title} </div>
                   <div className="host-leader-info"> 
                     <div id="hosted-by">Hosted By : </div>
-                    <div id="host-username">{room.host.username}</div>
+                    <div id="host-username">{user.username}</div>
                   </div>
                   <div id="showstar-rating">{showStar(3)}</div>
                 </div>
