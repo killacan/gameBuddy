@@ -92,6 +92,7 @@ router.patch('/:roomId/join/:userId', requireUser, async(req, res, next) => {
 
         if (room) {
             room.members = req.body.members.push(user._id) || room.members;
+            //
         }
         return res.json(room);
     }
