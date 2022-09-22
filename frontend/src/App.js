@@ -34,7 +34,7 @@ function App() {
         <AuthRoute exact path={"/signup"} component={SignupForm}/>
         <AuthRoute exact path={"/login"} component={LoginForm}/>
         <ProtectedRoute exact path={"/games"} component={Games}/>
-        <ProtectedRoute exact path={"/profile"} component={Profile} />
+        <ProtectedRoute exact path={"/profile/:userId"} component={Profile} />
         <ProtectedRoute exact path={"/games/rooms"} component={Rooms}/>
         <ProtectedRoute exact path={"/games/rooms/:roomId"} component={GameRoom} />
 
