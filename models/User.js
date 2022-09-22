@@ -10,10 +10,10 @@ const userSchema = Schema({
         type: String,
         required: true
     },
-    friends: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Friend'
-    }],
+    riotUsername: {
+        type: String,
+        required: false
+    },
     hashedPassword: {
         type: String,
         required: true
