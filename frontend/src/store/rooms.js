@@ -198,6 +198,8 @@ export const roomErrorsReducer = (state = nullErrors, action) => {
 //   }
 // };
 
+
+
 const roomsReducer = (state={},action) => {
     Object.freeze(state);
     const newState = {...state}
@@ -209,7 +211,7 @@ const roomsReducer = (state={},action) => {
             return newState
         case RECEIVE_NEW_ROOM:
             newState[action.room._id] = action.room
-            return newState
+            return newState;
         case DELETE_ROOM: 
             delete newState[action.roomId]
             return newState
@@ -217,5 +219,6 @@ const roomsReducer = (state={},action) => {
             return state; 
     }
 }
+
 
 export default roomsReducer;
