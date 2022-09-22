@@ -3,10 +3,14 @@ import { useHistory } from "react-router-dom";
 import UserReview from "./UserReview";
 import { destroyRoom } from "../../store/rooms";
 
+
 const EndRoomModal = ({setShowEndRoomModal, room}) => {
 
     const dispatch = useDispatch();
     const history = useHistory();
+
+    
+
 
     //mockData! --> need to pull from state.rooms._id.members = [user1,user2,user3]
     const users = ["matt", "mimi", "cameron", "daniel"]

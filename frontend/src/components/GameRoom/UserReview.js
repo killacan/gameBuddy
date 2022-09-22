@@ -1,6 +1,10 @@
 import './GameRoom.css'
+import { useState } from 'react'
+import ReviewForm from '../ReviewForm/ReviewForm.js'
 
 const UserReview = ({user}) => {
+
+    const [showReviewForm, setShowReviewForm] = useState(false)
 
     return (
         <>
@@ -12,6 +16,7 @@ const UserReview = ({user}) => {
                     <p id="review-text">Review this User</p>
                 </div>
             </div>  
+            {showReviewForm && <ReviewForm setShowReviewForm={setShowReviewForm}/> }
         </>
     )
 }
