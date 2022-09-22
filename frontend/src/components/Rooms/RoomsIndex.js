@@ -134,7 +134,7 @@ const RoomsIndex = () => {
               </div>
             </>
           ))}
-      
+
         </div>
       </div>
       {showCreateRoomModal && (

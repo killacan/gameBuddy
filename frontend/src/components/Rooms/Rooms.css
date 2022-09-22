@@ -1,7 +1,7 @@
 .room-container{
     width: 100vw;
     height: 78vh;
-    background-color: #c3def5;
+    /* background-color: #c3def5; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,7 +19,6 @@
         0 0 1vw gray,
         0 0 1vw gray,
         0 0 1vw gray;
-
 }
 
 .left-create-room-container{
@@ -135,7 +134,7 @@ margin-left: 1vw;
     height: 10vh;
     position: relative;
     top: 0;
-    background-color: #02111d;
+    background-image: linear-gradient(#02111d, #0b263e) ;
     display: flex;
     justify-content: center;
     align-items: center;
