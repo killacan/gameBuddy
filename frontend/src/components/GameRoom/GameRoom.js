@@ -11,7 +11,8 @@ const GameRoom = () => {
     const dispatch = useDispatch();
     const {roomId} = useParams();
     const history = useHistory();
-    
+    let user = useSelector(state => state.session.user)
+
     useEffect(()=> {
         dispatch(fetchRoom(roomId))
     },[roomId])
@@ -21,10 +22,8 @@ const GameRoom = () => {
 
     const [showUpdateRoomModal, setShowUpdateRoomModal] = useState(false);
     const [showEndRoomModal, setShowEndRoomModal] = useState(false);
+    const gameUser = useSelector(state => state.session.user)
 
-    useEffect(()=> {
-        dispatch(fetchRoom(roomId))
-    },[roomId])
 
     // useEffect(() =>{
     //     dispatch()
@@ -41,25 +40,29 @@ const GameRoom = () => {
         setShowEndRoomModal(true);
     }
 
+
+
     if (!room) return null; 
+
+    
 
     return (
         <div className="game-room-container">
             <div className="top-game-room-container">
                 <div className="top-left-container">
-                    <div>Game Title</div>
-                    <div>Game Name</div>
+                    <div id="game-room-title">Room Title : {room.title}</div>
+                    <div id="game-room-name"> {room.game}</div>
                 </div>
                 <div className="top-right-container">
                     <div className="host-info">
-                        <div>Room Leader:</div>
-                        <div>Mimi Ly</div>
+                        <div>Room Leader : </div>
+                        <div>{user._id}</div>
                     </div>
                     <div className="update-del-room-btns">
                         {currentUserId === room.host ? 
                         <>
-                            <button onClick={handleEnd}>End Session</button>
-                            <button onClick={handleUpdate}> Update Session</button>
+                            <button id="end-session-btn" onClick={handleEnd}>End Session</button>
+                            <button id="handle-update-btn" onClick={handleUpdate}> Update Session</button>
                         </>
                             : "" }
                     </div>
