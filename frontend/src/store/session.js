@@ -6,10 +6,12 @@ export const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
 export const CLEAR_SESSION_ERRORS = "session/CLEAR_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "session/RECEIVE_USER_LOGOUT";
 
-export const receiveCurrentUser = currentUser => ({
+export const receiveCurrentUser = currentUser => {
+  debugger
+  return {
   type: RECEIVE_CURRENT_USER,
   currentUser
-});
+}};
   
 export const receiveErrors = errors => ({
   type: RECEIVE_SESSION_ERRORS,
@@ -74,6 +76,7 @@ const initialState = {
 };
 
 const sessionReducer = (state = initialState, action) => {
+  // debugger
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return { user: action.currentUser };
