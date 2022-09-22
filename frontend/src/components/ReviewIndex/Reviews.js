@@ -41,9 +41,9 @@ const ReviewIndex = () => {
         <>
         <div className="review-index-main">
             <div className="top">
-                <div>
+                {/* <div>
                     <ReviewForm setShowReviewForm={setShowReviewForm} />
-                </div>
+                </div> */}
             </div>
             <div id="bot">
                 <ul id="products">
