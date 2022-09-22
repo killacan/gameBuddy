@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const RiotApi = () => {
 
-    const RIOT_API_KEY = "RGAPI-608e101d-f834-4f06-8fe9-439e455aac68";
+    const RIOT_API_KEY = process.env.REACT_APP_RIOT_API_KEY
     const [playerSearch, setPlayerSearch] = useState();
     const [playerName, setPlayerName] = useState({});
     const [playerData, setPlayerData] = useState({});
