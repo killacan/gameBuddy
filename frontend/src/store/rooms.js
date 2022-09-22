@@ -6,6 +6,7 @@ const RECEIVE_ROOM = "rooms/RECEIVE_ROOM";
 const RECEIVE_NEW_ROOM = "rooms/RECEIVE_NEW_ROOM";
 const DELETE_ROOM = "rooms/DELETE_ROOM";
 
+
 const RECEIVE_ROOM_ERRORS = "rooms/RECEIVE_ROOM_ERRORS";
 const CLEAR_ROOM_ERRORS = "rooms/CLEAR_ROOM_ERRORS";
 
@@ -111,7 +112,6 @@ export const destroyRoom = (roomId) => async (dispatch) => {
       method: "DELETE",
     });
     console.log("hello after fetch")
-    // const room = await res.json();
     dispatch(deleteRoom(roomId));
   } catch (err) {
     const resBody = await err.json();
@@ -120,6 +120,46 @@ export const destroyRoom = (roomId) => async (dispatch) => {
     }
   }
 };
+
+//joinRoom Thunk #1 NOT TESTED YET
+export const joinRoom = (roomId, userId) => async (dispatch) => {
+  try{
+    const res = await jwtFetch(`/api/rooms/${roomId}/join/${userId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    const roomUsers = await res.json();
+    dispatch(receiveRoom(roomUsers));
+  } catch (err){
+      const resBody = await EvalError.json();
+      if (resBody.statusCode == 400){
+        return dispatch(receiveErrors(resBody.errors))
+      }
+  }
+}
+//Thunk #2 using roomData, userData -> roomData.id, userData.id
+//id vs _id?
+// export const joinRoom = (roomData, userData) => async (dispatch) => {
+//   try{
+//     const res = await jwtFetch(`/api/rooms/${roomData.id}/join/${userData.id}`, {
+//       method: "POST",
+//       body: JSON.stringify(roomData),
+//       headers: {
+//         "Content-Type": "application/json"
+//       }
+//     })
+//     const roomUsers = await res.json();
+//     dispatch(receiveRoom(roomUsers));
+//   } catch (err){
+//       const resBody = await EvalError.json();
+//       if (resBody.statusCode == 400){
+//         return dispatch(receiveErrors(resBody.errors))
+//       }
+//   }
+// }
+
 
 //nullError
 const nullErrors = null;

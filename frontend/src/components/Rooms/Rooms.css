@@ -156,11 +156,11 @@ margin-left: 1vw;
     position: fixed;
     background: linear-gradient(to bottom, #061523, #0d1257, #afb8d3);
     border-radius: .5vw;
-    width: 30vw;
+    width: 50vw;
     height: 72vh;
     opacity: .8;
     top:10%;
-    right: 35%;
+    right: 25%;
 }
 
 .create-room-form{
