@@ -9,10 +9,13 @@ import axios from 'axios';
 
 const Profile = () => {
     const user = useSelector(state => state.session.user)
+
+    const riotUsername = useSelector(state => state.session.user.riotUsername)
+    console.log(riotUsername)
+
     const [rating, setRating] = useState(5)
     const reviews = useSelector(state => state.session.user)
-    const {_id, username, email} = user
-    const riotUsername = useSelector(state => state.sesssion.user.riotUsername);
+    // const {_id, username, email} = user
 
     const RIOT_API_KEY = process.env.REACT_APP_RIOT_API_KEY
     const [playerSearch, setPlayerSearch] = useState();
@@ -29,7 +32,6 @@ const Profile = () => {
         }).catch(function(err) {
             console.log(err)
         })
-
     }
 
     const playerId = playerName.id;
@@ -100,15 +102,15 @@ const Profile = () => {
                 </div>
                 <div className='user-text-box'>
                     <div className='username-box'>
-                        <h1 id='profile-username'>{username}</h1>
+                        <h1 id='profile-username'>Hello</h1>
                     </div>
                     <div className='user-star-rating'>
                         <label >
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            <span className="fa fa-star checked"></span>
+                            <span className="fa fa-star checked"></span>
+                            <span className="fa fa-star checked"></span>
+                            <span className="fa fa-star"></span>
+                            <span className="fa fa-star"></span>
                         </label>
                     </div>
                 </div>  

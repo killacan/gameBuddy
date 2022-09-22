@@ -9,7 +9,7 @@ import { fetchReviews } from "../../store/reviews"
 const ReviewIndex = () => {
 
     const reviews = useSelector(state => Object.values(state.reviews))
-    console.log(reviews)
+    // console.log(reviews)
 
     const [showReviewForm, setShowReviewForm] = useState(false)
 
