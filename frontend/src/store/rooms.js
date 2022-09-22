@@ -133,7 +133,7 @@ export const joinRoom = (roomId, userId) => async (dispatch) => {
     const roomUsers = await res.json();
     dispatch(receiveRoom(roomUsers));
   } catch (err){
-      const resBody = await EvalError.json();
+      const resBody = await EvalError;
       if (resBody.statusCode == 400){
         return dispatch(receiveErrors(resBody.errors))
       }

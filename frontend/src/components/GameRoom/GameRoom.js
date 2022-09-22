@@ -1,7 +1,7 @@
 import './GameRoom.css';
 import { useDispatch,useSelector } from 'react-redux';
 import { useParams,useHistory } from 'react-router-dom';
-import { destroyRoom,fetchRoom } from '../../store/rooms';
+import { destroyRoom,fetchRoom, joinRoom } from '../../store/rooms';
 import { useEffect,useState } from 'react';
 import UpdateRoomModal from './UpdateRoomModal';
 import WebSocketComp from '../WebSocketComp/WebSocketComp';

@@ -1,7 +1,7 @@
 import "./Rooms.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createRoom } from "../../store/rooms";
+import { createRoom, joinRoom } from "../../store/rooms";
 import { useSelector } from "react-redux";
 // import { set } from 'mongoose';
 import { useHistory } from "react-router-dom";
@@ -38,6 +38,8 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
       privacy: privacy,
     };
     const room = await dispatch(createRoom(roomInfo));
+    console.log(room._id, user._id, "room and user id");
+    const send = await dispatch(joinRoom(room._id, user._id));
     history.push(`/games/rooms/${room._id}`);
   };
 

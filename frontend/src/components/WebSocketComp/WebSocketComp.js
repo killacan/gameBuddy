@@ -68,7 +68,7 @@ function WebSocketComp () {
         }
 
         socketNew.onerror = (error) => console.log(`WebSocket error: ${error}`);
-        socketNew.onclose = (event) => socket.send(JSON.stringify({type: 'close', data: 'bye'}));
+        // socketNew.onclose = (event) => socketNew.send(JSON.stringify({type: 'close', data: 'bye'}));
         setSocket(socketNew);
         return () => socketNew.close()
     }, [])
