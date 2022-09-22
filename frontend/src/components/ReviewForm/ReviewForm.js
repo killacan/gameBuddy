@@ -43,8 +43,6 @@ const ReviewForm = ({setShowReviewForm}) => {
             leader: false,
             reviwer: sessionUser,
             reviewee: userId})
-        
-        
         }
 
     return(
