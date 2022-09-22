@@ -27,7 +27,7 @@ router.post('/create', requireUser, validateRoomInput, async (req, res, next) =>
             socketKey: req.body.socketKey
         })
 
-        let room = await newRoom.save();
+        let room = await newRoom.save().populate("host")
         return res.json(room);
     }
     catch(err) {
@@ -40,7 +40,7 @@ router.post('/create', requireUser, validateRoomInput, async (req, res, next) =>
 router.get('/', async (_req, res) => {
     try {
         const rooms = await Room.find()
-                                .populate()
+                                .populate('host')
                                 .sort({ createdAt: -1});
         return res.json(rooms);
     }
@@ -54,7 +54,7 @@ router.get('/', async (_req, res) => {
 router.get('/:roomId', async (req, res, next) => {
     try {
         const room = await Room.findById(req.params.roomId)
-                                .populate();
+                                .populate('host');
         return res.json(room);
     }
     catch(_err) {
@@ -85,14 +85,13 @@ router.patch('/:roomId', requireUser, async (req, res, next) => {
 })
 
 /* PATCH ----- UPDATE ROOM/USER JOIN ROOM ----- */
-router.patch('/:roomId/join/:userId', requireUser, async(req, res, next) => {
+router.patch('/:roomId/join/:userId', async(req, res, next) => {
     try {
         const room = await Room.findById(req.params.roomId);
         const user = await User.findById(req.params.userId);
 
         if (room) {
-            room.members = req.body.members.push(user) || room.members;
-            //
+            room.members.push(user);
         }
         return res.json(room);
     }

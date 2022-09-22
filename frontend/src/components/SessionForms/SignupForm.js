@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
+// import { set } from 'mongoose';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
+  const [riotUsername, setRiotUsername] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const errors = useSelector(state => state.errors.session);
@@ -27,6 +29,9 @@ function SignupForm () {
       case 'username':
         setState = setUsername;
         break;
+      case 'riotUsername':
+        setState = setRiotUsername;
+        break;
       case 'password':
         setState = setPassword;
         break;
@@ -45,6 +50,7 @@ function SignupForm () {
     const user = {
       email,
       username,
+      riotUsername,
       password
     };
 
@@ -57,6 +63,7 @@ function SignupForm () {
       <div id="signup-background"></div>
       <form className="signup-form" onSubmit={usernameSubmit}>
         <h2 id="signup-title">Sign Up</h2>
+
         <div className="signup-info-container">
           <input type="text"
             value={email}
@@ -81,6 +88,14 @@ function SignupForm () {
           <div id="errors-signup-username">{errors?.username}</div>
         </div>
 
+        <div className="signup-info-container">
+          <input type="text"
+            value={riotUsername}
+            onChange={update('riotUsername')}
+            />
+          <label id="input-signup">Riot Username</label>
+        </div>
+    
         <div className="signup-info-container">
           <input type="password"
             value={password}

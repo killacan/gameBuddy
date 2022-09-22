@@ -12,6 +12,7 @@ const Profile = () => {
     const [rating, setRating] = useState(5)
     const reviews = useSelector(state => state.session.user)
     const {_id, username, email} = user
+    const riotUsername = useSelector(state => state.sesssion.user.riotUsername);
 
     const RIOT_API_KEY = process.env.REACT_APP_RIOT_API_KEY
     const [playerSearch, setPlayerSearch] = useState();
