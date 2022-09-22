@@ -4,15 +4,17 @@ import './NavBar.css'
 // import { logout } from '../../store/session'
 import { useLocation } from 'react-router-dom';
 import {FaUserAstronaut} from "react-icons/fa";
-import {RiMenuUnfoldFill} from "react-icons/ri";
+import { AiOutlineRollback } from "react-icons/ai";
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/session';
-import { useHistory } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
 function NavBar () {
     const user = useSelector(state => state.session.user)
-
     const location = useLocation();
+    const dispatch = useDispatch();
+    const history = useHistory();
+
     const toggle = () => {
       if (location.pathname === "/" || location.pathname === "/signup" || location.pathname === "/login") {
         return "hidden"
@@ -21,8 +23,6 @@ function NavBar () {
       }
     }
 
-    const dispatch = useDispatch();
-    const history = useHistory();
 
     const handleLogout = (e) => {
       e.preventDefault();
@@ -39,7 +39,7 @@ function NavBar () {
     return (
       <div className={toggle()}>
         <div className="left-side-nav">
-            <RiMenuUnfoldFill id="menu-icon"/>
+            <AiOutlineRollback onClick={()=>history.goBack()}id="menu-icon"/>
         </div>
 
         <div className="right-side-nav"> 

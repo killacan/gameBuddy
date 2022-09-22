@@ -43,37 +43,7 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
 
   return (
     <>
-      {/* <div onClick={setShowCreateRoomModal(false)} className="blur-bg"></div>
-            <div className="bg-modal">
-                <div className="closing-form">
-                    <div onClick={setShowCreateRoomModal(false)}>X</div>
-                </div>
-                <form className="create-room-form" onClick={handleSubmit}>
-                    <label id="room-title">Room Title 
-                        <input id="title-input"
-                            type="text"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                            required
-                        />
-                    </label>
-                    <label id="game-duration">Game Duration
-                        <select
-                            id="game-duration-input"
-                            onChange={(e) => setDuration(e.target.value)}
-                            >
-                            {[...Array(6)].map((time, i) => {
-                            const durationValue = i + .5;
-                            return <option value={durationValue}>{durationValue}</option>;
-                            })}
-                        </select>
-                    </label>
-                    <label>Private room?
-                        <input type="radio" value="true" onChange={()=>setPrivacy(true)}/> Yes
-                    </label>
-                    <input type="submit"/>
-                </form>
-            </div> */}
+  
       <div
         className="blur-background"
         onClick={() => setShowCreateRoomModal(false)}

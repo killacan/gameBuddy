@@ -58,10 +58,10 @@ const GameRoom = () => {
                 <div className="top-right-container">
                     <div className="host-info">
                         <div>Room Leader : </div>
-                        <div>{user._id}</div>
+                        <div> {room.host.username}</div>
                     </div>
                     <div className="update-del-room-btns">
-                        {currentUserId === room.host ? 
+                        {currentUserId === room.host._id ? 
                         <>
                             <button id="end-session-btn" onClick={handleEnd}>End Session</button>
                             <button id="handle-update-btn" onClick={handleUpdate}> Update Session</button>
