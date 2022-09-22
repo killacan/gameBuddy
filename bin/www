@@ -11,6 +11,7 @@ const crypto = require('crypto');
 var app = require('../app');
 var debug = require('debug')('backend:server');
 var http = require('http');
+
 const WEBSOCKET_MAGIC_STRING_KEY = '258EAFA5-E914-47DA-95CA-C5AB0DC85B11';
 const SEVEN_BITS_INTEGER_MARKER = 125;
 const SIXTEEN_BITS_INTEGER_MARKER = 126;
@@ -33,6 +34,8 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+// const {Server} = require("socket.io");
+// const io = new Server(server); 
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -44,31 +47,38 @@ mongoose
     server.listen(port);
   });
   
-  server.on('error', onError);
-  server.on('listening', onListening);
+server.on('error', onError);
+server.on('listening', onListening);
   
-  server.on('upgrade', onSocketUpgrade)
+server.on('upgrade', onSocketUpgrade)
+// server.on('connection', (ws) => {
+  
+// })
 
-  function debounce(fn, time) {
-  let timeout
-  return function() {
-    const functionCall = () => fn.apply(this, arguments)
-    clearTimeout(timeout)
-    timeout = setTimeout(functionCall, time)
-  }
-}
+const users = {}
 
 function onSocketUpgrade (req, socket, head) {
+  if (users[req.url]) {
+    users[req.url].push(socket) 
+  } else {
+    users[req.url] = [socket]
+  }
   const {'sec-websocket-key': webClientSocketKey} = req.headers
   console.log(`webClientSocketKey: ${webClientSocketKey}`)
   const headers = prepareHandShakeHeaders(webClientSocketKey)
   socket.write(headers)
   socket.on('readable', () => onSocketReadable(socket))
+  // socket.on('close',() => console.log('client disconnected'))
 }
 
-function sendMessage(msg, socket) {
+function sendMessage(msg, socket, roomId) {
   const dataFrameBuffer = prepareMessage(msg)
-  socket.write(dataFrameBuffer)
+  linkId = "/?roomId=" + roomId
+  // console.log(users[linkId], 'msg')
+  users[linkId].forEach (userSocket => {
+    // console.log("inside users Each")
+    userSocket.write(dataFrameBuffer)
+  })
 
 }
 
@@ -118,6 +128,7 @@ function concat(bufferList, totalLength) {
 }
 
 function onSocketReadable(socket) {
+  // console.log(socket, 'socket')
   // consume optcode (first byte)
   socket.read(1)
 
@@ -150,11 +161,12 @@ function onSocketReadable(socket) {
   const msg = JSON.stringify(
     data
   )
-  sendMessage(msg, socket)
+  sendMessage(msg, socket, data.roomId)
 
 }
 
 function unmask(encodedBuffer, maskKey) {
+  // console.log('encodedBuffer', encodedBuffer, 'maskKey', maskKey)
   const finalBuffer = Buffer.from(encodedBuffer);
 
   const fillWithEightZeroes = (t) => t.padStart(8, '0')
