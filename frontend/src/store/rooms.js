@@ -48,7 +48,7 @@ export const fetchRooms = () => async (dispatch) => {
     const rooms = await res.json();
     dispatch(receiveRooms(rooms));
   } catch (err) {
-    const resBody = await err.json();
+    const resBody = await err;
     if (resBody.statusCode === 400) {
       dispatch(receiveErrors(resBody.errors));
     }
@@ -61,7 +61,7 @@ export const fetchRoom = (roomId) => async (dispatch) => {
     const room = await res.json();
     dispatch(receiveRoom(room));
   } catch (err) {
-    const resBody = await err.json();
+    const resBody = await err;
     if (resBody.statusCode === 400) {
       return dispatch(receiveErrors(resBody.errors));
     }
@@ -80,7 +80,7 @@ export const createRoom = (roomData) => async (dispatch) => {
     dispatch(receiveNewRoom(room));
     return room;
   } catch (err) {
-    const resBody = await err.json();
+    const resBody = await err;
     if (resBody.statusCode === 400) {
       return dispatch(receiveErrors(resBody.errors));
     }
@@ -99,7 +99,7 @@ export const updateRoom = (roomData) => async (dispatch) => {
     dispatch(receiveRoom(room));
     return room;
   } catch (err) {
-    const resBody = await err.json();
+    const resBody = await err;
     if (resBody.statusCode === 400) {
       return dispatch(receiveErrors(resBody.errors));
     }
@@ -114,7 +114,7 @@ export const destroyRoom = (roomId) => async (dispatch) => {
     console.log("hello after fetch")
     dispatch(deleteRoom(roomId));
   } catch (err) {
-    const resBody = await err.json();
+    const resBody = await err;
     if (resBody.statusCode === 400) {
       return dispatch(receiveErrors(resBody.errors));
     }
@@ -201,11 +201,13 @@ export const roomErrorsReducer = (state = nullErrors, action) => {
 
 
 const roomsReducer = (state={},action) => {
+  // debugger
     Object.freeze(state);
     const newState = {...state}
     switch(action.type){
         case RECEIVE_ROOMS: 
-            return {...newState, ...action.rooms}
+            action.rooms.forEach(room => newState[room._id] = room)
+            return newState;
         case RECEIVE_ROOM:
             newState[action.room._id] = action.room
             return newState
