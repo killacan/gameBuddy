@@ -116,30 +116,8 @@ const Profile = () => {
                 <div className='user-reviews-box'>
                     <ReviewIndex/>
                 </div>
-<<<<<<< HEAD
-=======
-                <div className='user-text-box'>
-                    <div className='username-box'>
-                        <h1 id='profile-username'>{user.username}</h1>
-                    </div>
-                    <div className='user-star-rating'>
-                        <label >
-                            <span className="fa fa-star checked"></span>
-                            <span className="fa fa-star checked"></span>
-                            <span className="fa fa-star checked"></span>
-                            <span className="fa fa-star"></span>
-                            <span className="fa fa-star"></span>
-                        </label>
-                    </div>
-                </div>  
             </div>
-            <div className='user-reviews-box'>
-                <ReviewIndex/>
-            </div>
->>>>>>> main
-
-            </div>
-            </>
+        </>
     )
 }
 
