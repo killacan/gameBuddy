@@ -43,14 +43,15 @@ const ReviewForm = ({setShowReviewForm}) => {
             leader: false,
             reviwer: sessionUser,
             reviewee: userId})
-        }
+        setShowReviewForm(false)
+    }
 
     return(
         <>
             <div className="blur-background-review" onClick={() => setShowReviewForm(false)}></div>      
             <div id="modal-bg-container-review"></div>
             <div className="bg-modal">
-                <form className='end-review-form' onSubmit={handleSubmit}>
+                <form className='end-review-form' >
                     <h1 id="review-end-title">Review</h1>
                     <label className='rating-box'>Rating:
                         <div id='rating-starts'>
@@ -67,7 +68,6 @@ const ReviewForm = ({setShowReviewForm}) => {
                                         </input>
                                         <FaStar className="star" color={ratingValue <= (rating) ? "#ecc8f8" : "#e4e5e9"}/>
                                     </label>
-                                    
                                 )
                             })}
                         </div>
@@ -93,7 +93,7 @@ const ReviewForm = ({setShowReviewForm}) => {
                     <label className="review-buttons">Leader
                         <input type="radio" value={selectedReview.leader} onChange={(e) => setSelectedReview({...selectedReview, leader: true})}></input>
                     </label>
-                    <button type="submit" id="post-review-button">Post Review</button>
+                    <button id="post-review-button" onClick={() => setShowReviewForm(false)}>Post Review</button>
                 </form>
             </div>
         </>

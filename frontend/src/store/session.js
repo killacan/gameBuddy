@@ -52,7 +52,6 @@ export const logout = () => dispatch => {
 export const getCurrentUser = () => async dispatch => {
   const res = await jwtFetch('/api/users/current');
   const user = await res.json();
-  dispatch(fetchReviews());
   return dispatch(receiveCurrentUser(user));
 };
 
