@@ -53,7 +53,7 @@ export const fetchReviews = () => async dispatch => {
         dispatch(receiveReviews(reviews));
     }catch (err) {
         // console.log("hello from fetch err")
-        const resBody = await err.json();
+        const resBody = await err;
         if (resBody.statusCode === 400){
             dispatch(receiveErrors(resBody.errors));
         };
@@ -66,7 +66,7 @@ export const fetchReview = (reviewId) => async dispatch => {
         const review = await res.json();
         dispatch(receiveReview(review));
     }catch (err) {
-        const resBody = await err.json();
+        const resBody = await err;
         if (resBody.statusCode === 400){
             return dispatch(receiveErrors(resBody.errors));
         };
@@ -86,7 +86,7 @@ export const createReview = (reviewData) => async dispatch => {
         dispatch(receiveNewReview(review));
     }catch (err){
         // debugger
-        const resBody = await err.json();
+        const resBody = await err;
         if (resBody.statusCode === 400){
             return dispatch(receiveErrors(resBody.errors));
         };
@@ -104,7 +104,7 @@ export const updateReview = (reviewData) => async dispatch =>{
             }
         });
     } catch (err){
-        const resBody = await err.json();
+        const resBody = await err;
         if (resBody.statusCode === 400) {
             return dispatch(receiveErrors(resBody.errors));
         };
@@ -119,7 +119,7 @@ export const destroyReview = (reviewId) => async dispatch => {
         const review = await res.json();
         dispatch(deleteReview(review));
     }catch (err) {
-        const resBody = await err.json();
+        const resBody = await err;
         if (resBody.statusCode === 400) {
             return dispatch(receiveErrors(resBody.errors));
         };
@@ -144,25 +144,26 @@ export const reviewErrorsReducer = (state = nullErrors, action) => {
 //reviewReducer
 
 const reviewReducer = (state={}, action) => {
+    // debugger
     Object.freeze(state)
     const newState = {...state}
 
     switch(action.type){
-        case RECEIVE_REVIEW:{
+        case RECEIVE_REVIEW:
             const review = action.review;
             return { ...newState, [review.id]: review}
-        }
-        case RECEIVE_REVIEWS:{
+        
+        case RECEIVE_REVIEWS:
             return action.reviews.review;
-        }
-        case RECEIVE_NEW_REVIEW:{
+        
+        case RECEIVE_NEW_REVIEW:
             newState[action.review._id] = action.review
             return newState
-        }
-        case DELETE_REVIEW:{
+        
+        case DELETE_REVIEW:
               delete newState[action.review]
             return newState
-        }
+        
         default:
             return state;
     }    
