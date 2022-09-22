@@ -1,22 +1,22 @@
 import jwtFetch from './jwt';
 import { fetchReviews } from './reviews';
 
-const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
-const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
-const CLEAR_SESSION_ERRORS = "session/CLEAR_SESSION_ERRORS";
+export const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
+export const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
+export const CLEAR_SESSION_ERRORS = "session/CLEAR_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "session/RECEIVE_USER_LOGOUT";
 
-const receiveCurrentUser = currentUser => ({
+export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
   currentUser
 });
   
-const receiveErrors = errors => ({
+export const receiveErrors = errors => ({
   type: RECEIVE_SESSION_ERRORS,
   errors
 });
 
-const logoutUser = () => ({
+export const logoutUser = () => ({
   type: RECEIVE_USER_LOGOUT
 });
 
@@ -37,7 +37,7 @@ const startSession = (userInfo, route) => async dispatch => {
     localStorage.setItem('jwtToken', token);
     return dispatch(receiveCurrentUser(user));
   } catch(err) {
-    const res = await err.json();
+    const res = await err;
     if (res.statusCode === 400) {
       return dispatch(receiveErrors(res.errors));
     }
@@ -52,7 +52,6 @@ export const logout = () => dispatch => {
 export const getCurrentUser = () => async dispatch => {
   const res = await jwtFetch('/api/users/current');
   const user = await res.json();
-  dispatch(fetchReviews());
   return dispatch(receiveCurrentUser(user));
 };
 
