@@ -168,7 +168,7 @@ const RoomsIndex = () => {
                   <div id="room-title">Title : {room.title} </div>
                   <div className="host-leader-info"> 
                     <div id="hosted-by">Hosted By : </div>
-                    <div id="host-username">{user.username}</div>
+                    <div id="host-username">{room.host.username}</div>
                   </div>
                   <div id="showstar-rating">{showStar(3)}</div>
                 </div>
