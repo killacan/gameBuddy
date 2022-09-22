@@ -79,8 +79,24 @@ router.patch('/:roomId', requireUser, async (req, res, next) => {
         }
         return res.json(room);
     }
-    catch (err) {
+    catch(err) {
         next(err);
+    }
+})
+
+/* PATCH ----- UPDATE ROOM/USER JOIN ROOM ----- */
+router.patch('/:roomId/join/:userId', requireUser, async(req, res, next) => {
+    try {
+        const room = await Room.findById(req.params.roomId);
+        const user = await User.findById(req.params.userId);
+
+        if (room) {
+            room.members = req.body.members.push(user) || room.members;
+        }
+        return res.json(room);
+    }
+    catch(err) {
+        next(err)
     }
 })
 

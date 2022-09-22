@@ -51,13 +51,98 @@
 .update-room-form{
     position: fixed;
     border-radius: .5vw;
-    width: 30vw;
+    width: 50vw;
     height: 72vh;
     opacity: .9;
     top:10%;
-    right: 35%;
+    right: 25%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+}
+.end-room-form{
+    position: fixed;
+    border-radius: .5vw;
+    width: 50vw;
+    height: 72vh;
+    opacity: .9;
+    top:10%;
+    right: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#session-end-title{
+    color: white;
+    font-family: brightness;
+    font-size: 2vw;
+}
+#review-title{
+    color: white;
+    font-family: brightness;
+    font-size: 2vw;
+}
+#close-room{
+    background-color: transparent;
+    font-family: azonix;
+    color: white;
+    font-size: 1.5vw;
+    padding: .5vw;
+}
+
+.review-box{
+    text-transform: capitalize;
+    display: flex;
+    color: white;
+    font-family: azonix;
+    justify-content: space-between;
+    width: 30vw;
+    margin-bottom: 3vh;
+}
+
+.review-username{
+    margin-right: 0.5vw;
+}
+
+#username-text{
+    border: 1px solid darkgrey;
+    margin-left: 0.5vw;
+    box-shadow: 0px 0px 10px 5px grey;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-right: 1vw;
+    padding-left: 1vw;
+
+}
+
+#review-text{
+    border: 1px solid darkgrey;
+    margin-right: 1vw;
+    box-shadow: 0px 0px 10px 5px grey;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-right: 1vw;
+    padding-left: 1vw;
+
+}
+#review-text:hover{
+    cursor: pointer;
+    background-color: yellow;
+    color: black;
+    transform: scale(1.1);
+}
+#close-room{
+    border: 1px solid grey;
+    margin-right: 1vw;
+    box-shadow: 0px 0px 10px 5px black;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-right: 1vw;
+    padding-left: 1vw;
+}
+#close-room:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }
