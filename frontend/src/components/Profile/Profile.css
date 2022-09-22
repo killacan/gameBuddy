@@ -37,13 +37,10 @@
     color: rgb(176, 176, 176);
 }
 .user-reviews-box{
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items: center;
     height: 70vh;
     width: 100vw;
-    background-color: aquamarine;
+    background-color: rgb(74, 74, 74);
+    overflow-y: scroll;
 }
 
 .user-star-rating{

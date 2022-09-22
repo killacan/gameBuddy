@@ -1,12 +1,41 @@
-.reviewIndex-container{
-    width: 100vw;
-    height: 12vh;
-    background-color: beige;
+
+
+.user-rating{
     display: flex;
-    justify-content: space-between;
+    width: 100vw;
+    height: 8vh;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+.star-rating{
+    margin-left: 3vw;
+    width: 10vw;
+    color: black;
+    font-size: 1vw;
+}
+.review-tags{
+    width: 30vw;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.star-rating{
-    width: 20vw;
-    background-color: blueviolet;
+#tags{
+    max-width: 30vw;;
+    display: flex;
+   font-family: azonix;
+   padding: .3vw;
+   font-size: 1vw;
+   border: 1px solid black;
+   margin-top: .5vw;
+   margin-right: 1vw;
+   margin-bottom: .5vw;
+   background-color: rgb(235, 235, 213);
+   opacity: .7;
+}
+
+.review-comments{
+    color: rgb(0, 0, 0);
+    font-family: azonix;
+    font-size: 1vw;
+
 }
