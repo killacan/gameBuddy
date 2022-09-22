@@ -12,10 +12,12 @@ const Profile = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
     const riotUsername = useSelector(state => state.session.user.riotUsername)
-    const RIOT_API_KEY = process.env.REACT_APP_RIOT_API_KEY
-    const reviews = useSelector(state => state.session.user)
 
     const [rating, setRating] = useState(5)
+    const reviews = useSelector(state => state.session.user)
+
+    const RIOT_API_KEY = process.env.REACT_APP_RIOT_API_KEY
+    const [playerSearch, setPlayerSearch] = useState();
     const [playerName, setPlayerName] = useState({});
     const [playerData, setPlayerData] = useState({});
     
@@ -96,7 +98,7 @@ const Profile = () => {
                 </div>
                 <div className='user-text-box'>
                     <div className='username-box'>
-                        <h1 id='profile-username'>Hello</h1>
+                        <h1 id='profile-username'>{user.username}</h1>
                     </div>
                     <div className='user-star-rating'>
                         <label >

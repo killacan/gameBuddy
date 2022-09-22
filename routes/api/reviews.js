@@ -42,10 +42,7 @@ router.post('/create', requireUser, validateReviewInput, async (req, res, next) 
 
 /* GET ----- RENDER ALL REVIEWS ----- */
 router.get('/', async (_req, res) => {
-    // debug("hello")
     try {
-        debug("hello")
-        debug("hello2")
         const reviews = await Review.find()
                                     .populate("reviewer", "_id, username")
                                     .sort({ createdAt: -1});
