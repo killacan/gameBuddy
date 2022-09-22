@@ -19,7 +19,6 @@
     color: white;
 }
 
-
 .right-side-nav{
     margin-right: 6vw;
     font-size: 1.3vw;
@@ -31,13 +30,14 @@
 .drop-down-content {
     display: none;
     position: absolute;
-    background-color: #4a4a4a;
-    opacity: .5;
+    background-color: #02111d;
     box-shadow: 0vw 1vw 2vw 0vw rgba(0,0,0,2);
     z-index: 1;
     color: white;
     font-size: .9vw;
     font-family: azonix;
+    width: 8vw;
+    
 
 }
 
@@ -45,16 +45,20 @@
     color: white;
     text-decoration: none;
     display: block;
+    text-align: center;
+
 }
 
 .right-side-nav:hover .drop-down-content{
     display: block;
-    width: 5vw;
+    width: 8vw;
     height: 4vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    text-align: center;
+
 }
 
 #user-icon:hover{
@@ -70,10 +74,14 @@
 #profile-drop:hover{
     cursor: pointer;
     transform: scale(1.1);
+    text-align: center;
+
 }
 
 #logout-drop:hover{
     cursor: pointer;
     transform: scale(1.1);
+    text-align: center;
+
 }
 

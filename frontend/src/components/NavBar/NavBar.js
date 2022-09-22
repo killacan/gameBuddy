@@ -35,7 +35,7 @@ function NavBar () {
       history.push(`/profile/${user._id}`)
       
     }
-
+//comment
     return (
       <div className={toggle()}>
         <div className="left-side-nav">
