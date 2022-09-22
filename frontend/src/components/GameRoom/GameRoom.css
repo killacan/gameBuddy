@@ -2,7 +2,7 @@
 .game-room-container{
     width: 100vw;
     height: 100vh;
-    background-color: blue;
+    background-color: #091e34;
     display: flex;
     flex-direction: column;
 }
@@ -19,10 +19,6 @@
     flex-direction: column;
 }
 
-.top-right-container{
-    display: flex;
-    flex-direction: column;
-}
 
 .host-info{
     display: flex;
@@ -165,3 +161,80 @@
     cursor: pointer;
     transform: scale(1.1);
 }
+
+#game-room-title{
+    margin-top: 2vw;
+    color: white;
+    font-family: azonix;
+    font-size: 2vw;
+    margin-left: 2vw;
+}
+
+#game-room-name{
+    margin-top: 2vw;
+    color: white;
+    font-family: azonix;
+    font-size: 1vw;
+    margin-left: 2vw;
+}
+
+
+.top-right-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vw;
+    color: white;
+    font-family: azonix;
+    font-size: 1vw;
+    margin-right: 2vw;
+}
+.host-info{
+    font-size: 1vw;
+}
+
+#end-session-btn{
+    background: none;
+	color: inherit;
+	border: 1px solid black;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    font-family: azonix;
+    border: 1px solid black;
+    border-color: white;
+    padding-top: .2vw;
+    
+}
+#end-session-btn:hover{
+    background: none;
+    background-color: aquamarine;
+    border-color: white;
+    padding-top: .2vw;
+    color: black;
+}
+
+
+#handle-update-btn{
+    background: none;
+	color: inherit;
+	border: 1px solid black;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    font-family: azonix;
+    border: 1px solid black;
+    border-color: white;
+    padding-top: .2vw;
+}
+
+#handle-update-btn:hover{
+    background: none;
+    background-color: aquamarine;
+    border-color: white;
+    padding-top: .2vw;
+    color: black;
+}
+
+
+

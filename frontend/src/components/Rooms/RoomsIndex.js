@@ -1,11 +1,19 @@
 import "./Rooms.css";
 import { useState } from "react";
 import CreateRoomModal from "./CreateRoomModal";
-import { FaStar } from "react-icons/fa";
+import { FaGift, FaStar } from "react-icons/fa";
 import { fetchRooms } from "../../store/rooms";
 import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { AiFillLock } from "react-icons/ai";
+import { AiOutlineUnlock} from "react-icons/ai";
+import valBanner from "./val-banner.png"
+import tftBanner from "./tft-banner.png"
+import leagueBanner from "./league-banner.png"
+import brimstoneGif from "./brimstone-gif.gif"
+import zoeyGif from "./zoey-gif.gif"
+import tftGif from "./tft-gif.gif"
 
 const RoomsIndex = () => {
   const game = new URL(window.location.href).searchParams.get("game");
@@ -99,42 +107,89 @@ const RoomsIndex = () => {
     }
     
   }
+  console.log(game)
+  const toggle = () => {
+    if (game === "Valorant"){
+      return valBanner;
+    }else if (game === "League of Legends"){
+      return leagueBanner;
+    }else{
+      return tftBanner;
+    }
+  }
+  const toggleMsg = () => {
+    if (game === "Valorant"){
+      return  "Stand tall. We are Valorant. We are fighters!"
+    }else if (game === "League of Legends"){
+      return "I have found my limit a thousand times, and still I press further."
+    }else{
+      return "The brighter my light, the stronger your shadow.";
+    }
+  }
+  const toggleGif = () => {
+    if (game === "Valorant"){
+      return  brimstoneGif;
+    }else if (game === "League of Legends"){
+      return zoeyGif;
+    }else{
+      return tftGif
+    }
+  }
 
   return (
     <>
       <div className="game-banner">
-        <div className="banner">
+        <div className="banner" >
           {game}
         </div>
       </div>
-      <div className="room-container">
-        <div className="create-room">
-          <div className="left-create-room-container">
+      <div className="gif-room-container">
+        <div id="gif-container">
+          <img id="gif" src={toggleGif()}/>
+        </div> 
+        <div className="room-container">
+          <div className="create-room">
+            <img id="img-banner" src={toggle()} />
+            <div id="quotes-container">
+              <h1 id="quotes">{toggleMsg()}</h1>
+            </div>
+            <div className="left-create-room-container"></div>
+            <div className="right-create-room-container">   
+              <button id="create-rm-btn" onClick={handleClick}>
+                Create Room
+              </button>           
+            </div>
           </div>
-          <div className="right-create-room-container">       
-            <button id="create-rm-btn" onClick={handleClick}>
-              Create Room
-            </button>           
+          <div className="join-room">
+            {allRooms.map(room=>( 
+              room.game === game? 
+              <div className="single-room-container">
+                <div className="left-create-room-container">
+                  <div id="room-title">Title : {room.title} </div>
+                  <div className="host-leader-info"> 
+                    <div id="hosted-by">Hosted By : </div>
+                    <div id="host-username">{user.username}</div>
+                  </div>
+                  <div id="showstar-rating">{showStar(3)}</div>
+                </div>
+                <div className="right-create-room-container">
+                  <div id="room-duration">Room Duration: {room.duration}</div>
+                  <div className="render-room-components">
+                      {room.privacy === true ? <AiFillLock id="lock" /> : <AiOutlineUnlock id="unlock"/>}
+                      {room.members.length > 5 ? 
+                        <button id="room-full-btn">Full Room</button>
+                        :
+                        <button id="create-rm-btn" onClick={handleJoinRoom(room)}>Join Room</button>
+                      }
+                  </div>
+                    
+                <div id="display-num-user">{room.members.length}/5 players </div>
+                </div>
+              </div>
+              :
+              ""
+            ))}
           </div>
-        </div>
-        <div className="join-room">
-          {allRooms.map(room=>(
-            <>
-              <div className="left-create-room-container">
-                <div id="room-title">{room.title} :</div>
-                <div id="hosted-by">Hosted By : Mimi Ly</div>
-                <div id="showstar-rating">{showStar(3)}</div>
-              </div>
-              <div className="right-create-room-container">
-                <div id="room-duration">Room Duration: {room.duration}</div>
-                <button id="create-rm-btn" onClick={handleJoinRoom(room)}>
-                 Join Room
-                </button>
-               <div id="display-num-user">{room.members.length}/5</div>
-              </div>
-            </>
-          ))}
-
         </div>
       </div>
       {showCreateRoomModal && (
