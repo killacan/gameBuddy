@@ -23,12 +23,10 @@ const RiotApi = () => {
 
     const playerId = playerName.id;
 
-    // RANKED_TFT_DOUBLE_UP
-
     function getRankForPlayer(event) {
         const API_CALL_RANK = "https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/"
         + playerId + "?api_key=" + RIOT_API_KEY;
-
+        
         axios.get(API_CALL_RANK).then(function(res) {
             setPlayerData(res.data);
             
@@ -36,19 +34,49 @@ const RiotApi = () => {
             console.log(err)
         })
     }
-    const data = JSON.stringify(playerData);
-    console.log(data)
 
-    let gameMode = 'UNRANKED'
-    data.forEach(game => {
-        for (let key in game) {
-            if (key === 'RANKED_TFT_DOUBLE_UP') {
-                gameMode = game;
-            }
-        }
-    })
+    let playerDataComponent;
 
-
+    if (playerData.length === 3) {
+        playerDataComponent = (
+            <>
+            <h1>{playerData[0].queueType.split("_").slice(0, 2).join(" ")}</h1>
+            <h1>{playerData[0].tier}</h1>
+            <h1>{playerData[0].rank}</h1>
+            <h1>{playerData[1].queueType.split("_").slice(0, 2).join(" ")}</h1>
+            <h1>{playerData[1].tier}</h1>
+            <h1>{playerData[1].rank}</h1>
+            <h1>{playerData[2].queueType.split("_").slice(0, 2).join(" ")}</h1>
+            <h1>{playerData[2].tier}</h1>
+            <h1>{playerData[2].rank}</h1>
+            </>
+        )
+    } else if (playerData.length === 2) {
+        playerDataComponent = (
+            <>
+            <h1>{playerData[0].queueType.split("_").slice(0, 2).join(" ")}</h1>
+            <h1>{playerData[0].tier}</h1>
+            <h1>{playerData[0].rank}</h1>
+            <h1>{playerData[1].queueType.split("_").slice(0, 2).join(" ")}</h1>
+            <h1>{playerData[1].tier}</h1>
+            <h1>{playerData[1].rank}</h1>      
+            </>
+        )
+    } else if (playerData.length === 1) {
+        playerDataComponent = (
+            <>
+            <h1>{playerData[0].queueType.split("_").slice(0, 2).join(" ")}</h1>
+            <h1>{playerData[0].tier}</h1>
+            <h1>{playerData[0].rank}</h1>
+            </>
+        )
+    } else {
+        playerDataComponent = (
+            <>
+            <h1>Rank not Found!</h1>
+            </>
+        )
+    }
 
     return (
         <>
@@ -73,18 +101,7 @@ const RiotApi = () => {
                 </>
             }
             <button onClick={e => getRankForPlayer(e)}>Get Rank</button>
-            {/* {JSON.stringify(playerData) != '{}' ?
-                <>
-                <h1>{playerData[0].tier}</h1>
-                <h1>{playerData[0].rank}</h1>
-
-                {console.log(playerData)}
-                </>
-            :
-                <>
-                <h1>Rank not found!</h1>
-                </>
-            } */}
+            {playerDataComponent}
         </div>
         </>
     )
