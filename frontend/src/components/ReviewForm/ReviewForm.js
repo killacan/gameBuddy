@@ -47,50 +47,54 @@ const ReviewForm = ({setShowReviewForm}) => {
 
     return(
         <>
-            <form className='review-form' onSubmit={handleSubmit}>
-                <label className='rating-box'>Rating:
-                    <div id='rating-starts'>
-                        {[...Array(5)].map((star,i) => {
-                            const ratingValue = i + 1;
-                            
-                            return(
-                                <label >
-                                    <input 
-                                    type="radio"
-                                    name="rating"  
-                                    value={ratingValue} 
-                                    onClick={(e)=> setSelectedReview({...selectedReview, rating: e.target.value})}>
-                                    </input>
-                                    <FaStar className="star" color={ratingValue <= (rating) ? "#ecc8f8" : "#e4e5e9"}/>
-                                </label>
+            <div className="blur-background" onClick={() => setShowReviewForm(false)}></div>      
+            <div id="modal-bg-container"></div>
+            <div className="bg-modal">
+                {/* <form className='review-form' onSubmit={handleSubmit}>
+                    <label className='rating-box'>Rating:
+                        <div id='rating-starts'>
+                            {[...Array(5)].map((star,i) => {
+                                const ratingValue = i + 1;
                                 
-                            )
-                        })}
-                    </div>
-                </label>
-                <label>comments
-                    <input type="text" value={selectedReview.comments} onChange={(e) => setSelectedReview({...selectedReview, comments: e.target.value})}></input>
-                </label>
-                <label>Toxic
-                    <input type="radio" value={selectedReview.toxic} onChange={(e) => setSelectedReview({...selectedReview, toxic: true})}></input>
-                </label>
-                <label>Friendly
-                    <input type="radio" value={selectedReview.friendly} onChange={(e) => setSelectedReview({...selectedReview, friendly: true})}></input>
-                </label>
-                <label>Skilled
-                    <input type="radio" value={selectedReview.skilled} onChange={(e) => setSelectedReview({...selectedReview, skilled: true})}></input>
-                </label>
-                <label>Griefing
-                    <input type="radio" value={selectedReview.griefing} onChange={(e) => setSelectedReview({...selectedReview, griefing: true})}></input>
-                </label>
-                <label>Team Player
-                    <input type="radio" value={selectedReview.teamPlayer} onChange={(e) => setSelectedReview({...selectedReview, teamPlayer: true})}></input>
-                </label>
-                <label>Leader
-                    <input type="radio" value={selectedReview.leader} onChange={(e) => setSelectedReview({...selectedReview, leader: true})}></input>
-                </label>
-                <button type="submit" id="post-review-button">Post Review</button>
-             </form>
+                                return(
+                                    <label >
+                                        <input 
+                                        type="radio"
+                                        name="rating"  
+                                        value={ratingValue} 
+                                        onClick={(e)=> setSelectedReview({...selectedReview, rating: e.target.value})}>
+                                        </input>
+                                        <FaStar className="star" color={ratingValue <= (rating) ? "#ecc8f8" : "#e4e5e9"}/>
+                                    </label>
+                                    
+                                )
+                            })}
+                        </div>
+                    </label>
+                    <label>comments
+                        <input type="text" value={selectedReview.comments} onChange={(e) => setSelectedReview({...selectedReview, comments: e.target.value})}></input>
+                    </label>
+                    <label>Toxic
+                        <input type="radio" value={selectedReview.toxic} onChange={(e) => setSelectedReview({...selectedReview, toxic: true})}></input>
+                    </label>
+                    <label>Friendly
+                        <input type="radio" value={selectedReview.friendly} onChange={(e) => setSelectedReview({...selectedReview, friendly: true})}></input>
+                    </label>
+                    <label>Skilled
+                        <input type="radio" value={selectedReview.skilled} onChange={(e) => setSelectedReview({...selectedReview, skilled: true})}></input>
+                    </label>
+                    <label>Griefing
+                        <input type="radio" value={selectedReview.griefing} onChange={(e) => setSelectedReview({...selectedReview, griefing: true})}></input>
+                    </label>
+                    <label>Team Player
+                        <input type="radio" value={selectedReview.teamPlayer} onChange={(e) => setSelectedReview({...selectedReview, teamPlayer: true})}></input>
+                    </label>
+                    <label>Leader
+                        <input type="radio" value={selectedReview.leader} onChange={(e) => setSelectedReview({...selectedReview, leader: true})}></input>
+                    </label>
+                    <button type="submit" id="post-review-button">Post Review</button>
+                </form> */}
+            </div>
         </>
     )
 }

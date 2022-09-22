@@ -9,3 +9,14 @@
 #post-review-button{
     width: 10vw;
 }
+
+.blur-background{
+    /* position: sticky; */
+    position: fixed;
+    top: 0;
+    background-color:#d1d2d4;
+    opacity: .5;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+}
