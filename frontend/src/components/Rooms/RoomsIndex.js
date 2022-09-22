@@ -2,7 +2,12 @@ import "./Rooms.css";
 import { useState } from "react";
 import CreateRoomModal from "./CreateRoomModal";
 import { FaStar } from "react-icons/fa";
-const Rooms = () => {
+import { fetchRooms } from "../../store/rooms";
+import { useEffect } from "react";
+import { useDispatch,useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+
+const RoomsIndex = () => {
   const game = new URL(window.location.href).searchParams.get("game");
   console.log(game);
 
@@ -12,6 +17,15 @@ const Rooms = () => {
     e.preventDefault();
     setShowCreateRoomModal(true);
   };
+
+  const dispatch = useDispatch();
+  const rooms = useSelector(state=> state.rooms)
+  const allRooms = Object.values(rooms)
+
+  console.log(allRooms)
+  useEffect(()=>{
+    dispatch(fetchRooms())
+  },[])
 
   const showStar = (rating) => {
     if (rating === 1) {
@@ -71,42 +85,55 @@ const Rooms = () => {
     }
   };
 
-  let val = "Valorant";
 
-  const toggle = () => {
-    if (val === "Valorant") {
-      return "val-banner";
-    } else if (val === "League of Legends") {
-      return "league-banner";
-    } else {
-      return "tft-banner";
+
+  const history = useHistory();
+  const user = useSelector(state => state.session.user)
+
+  const handleJoinRoom = (field) => {
+    console.log(field._id)
+    return e => {
+      e.preventDefault();
+      field.members.push(user)
+      history.push(`/games/rooms/${field._id}`)
     }
-  };
+    
+  }
 
   return (
     <>
       <div className="game-banner">
-        <div className={toggle()}></div>
+        <div className="banner">
+          {game}
+        </div>
       </div>
       <div className="room-container">
         <div className="create-room">
           <div className="left-create-room-container">
-            <div id="room-title">Title :</div>
-            <div id="hosted-by">Hosted By : Mimi Ly</div>
-            <div id="showstar-rating">{showStar(3)}</div>
           </div>
-          <div className="right-create-room-container">
-            <div id="room-duration">Room Duration: 3 Hours</div>
+          <div className="right-create-room-container">       
             <button id="create-rm-btn" onClick={handleClick}>
               Create Room
-            </button>
-            <div id="display-num-user">display number of users (count)</div>
+            </button>           
           </div>
         </div>
         <div className="join-room">
-        
-
-
+          {allRooms.map(room=>(
+            <>
+              <div className="left-create-room-container">
+                <div id="room-title">{room.title} :</div>
+                <div id="hosted-by">Hosted By : Mimi Ly</div>
+                <div id="showstar-rating">{showStar(3)}</div>
+              </div>
+              <div className="right-create-room-container">
+                <div id="room-duration">Room Duration: {room.duration}</div>
+                <button id="create-rm-btn" onClick={handleJoinRoom(room)}>
+                 Join Room
+                </button>
+               <div id="display-num-user">{room.members.length}/5</div>
+              </div>
+            </>
+          ))}
 
         </div>
       </div>
@@ -120,4 +147,4 @@ const Rooms = () => {
   );
 };
 
-export default Rooms;
+export default RoomsIndex;

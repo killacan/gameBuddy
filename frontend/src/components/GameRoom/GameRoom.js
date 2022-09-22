@@ -1,24 +1,18 @@
 import './GameRoom.css';
 import { useDispatch,useSelector } from 'react-redux';
 import { useParams,useHistory } from 'react-router-dom';
-import { destroyRoom,updateRoom,fetchRoom } from '../../store/rooms';
-import { getRoom } from '../../store/rooms';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { destroyRoom,fetchRoom } from '../../store/rooms';
+import { useEffect,useState } from 'react';
 import UpdateRoomModal from './UpdateRoomModal';
 import WebSocketComp from '../WebSocketComp/WebSocketComp';
+import EndRoomModal from './EndRoomModal';
+
 
 const GameRoom = () => {
 
     const dispatch = useDispatch();
     const {roomId} = useParams();
     const history = useHistory();
-
-    const handleClick = async(e) => {
-        e.preventDefault();
-        const delRoom = await dispatch(destroyRoom(roomId))
-        history.push('/games')
-    }
     
     useEffect(()=> {
         dispatch(fetchRoom(roomId))
@@ -26,13 +20,27 @@ const GameRoom = () => {
 
     const currentUserId = useSelector(state => state.session.user._id)
     const room = useSelector(state => state.rooms[roomId]);
-    console.log(room)
 
     const [showUpdateRoomModal, setShowUpdateRoomModal] = useState(false);
+    const [showEndRoomModal, setShowEndRoomModal] = useState(false);
+
+    useEffect(()=> {
+        dispatch(fetchRoom(roomId))
+    },[roomId])
+
+    // useEffect(() =>{
+    //     dispatch()
+    // },[room.members])
 
     const handleUpdate = (e) => {
         e.preventDefault();
         setShowUpdateRoomModal(true);
+    }
+
+    //handleClick changed to handleEnd, send to handlesubmit in EndRoomModel to destroy
+    const handleEnd = async(e) => {
+        e.preventDefault();
+        setShowEndRoomModal(true);
     }
 
     if (!room) return null; 
@@ -52,7 +60,7 @@ const GameRoom = () => {
                     <div className="update-del-room-btns">
                         {currentUserId === room.host ? 
                         <>
-                            <button onClick={handleClick}>End Session</button>
+                            <button onClick={handleEnd}>End Session</button>
                             <button onClick={handleUpdate}> Update Session</button>
                         </>
                             : "" }
@@ -64,6 +72,7 @@ const GameRoom = () => {
                 <WebSocketComp roomId={roomId}/>
             </div>
             {showUpdateRoomModal && <UpdateRoomModal setShowUpdateRoomModal={setShowUpdateRoomModal} room={room}/>}
+            {showEndRoomModal && <EndRoomModal setShowEndRoomModal={setShowEndRoomModal} room={room}/>}
         </div>
     )
 }

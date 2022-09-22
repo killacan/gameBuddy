@@ -1,7 +1,7 @@
 .room-container{
     width: 100vw;
-    height: 100vh;
-    background-color: #c3def5;
+    height: 78vh;
+    /* background-color: #c3def5; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,18 +19,16 @@
         0 0 1vw gray,
         0 0 1vw gray,
         0 0 1vw gray;
-
 }
 
 .left-create-room-container{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
     margin-left: 3vw;
-    justify-content: space-evenly;
 
 }
-
 
 .right-create-room-container{
     display: flex;
@@ -41,11 +39,6 @@
    
 }
 
-.join-room{
-    width: 80vw;
-    height: 100vh;
-    background-color: #0b263e;
-}
 
 .blur-background{
     /* position: sticky; */
@@ -138,17 +131,21 @@ margin-left: 1vw;
 
 .game-banner{
     width: 100vw;
-    height: 13vh;
+    height: 10vh;
     position: relative;
     top: 0;
+    background-image: linear-gradient(#02111d, #0b263e) ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.val-banner{
-    background-image: url('./val-banner.png');
-    top:0;
-    z-index: 4;
-    width: 100vw;
-    height: 13vh;
+.banner{
+    position: absolute;
+    font-family: brightness;
+    top: 0;
+    font-size: 3vw;
+    color: white;
 }
 
 
@@ -156,11 +153,11 @@ margin-left: 1vw;
     position: fixed;
     background: linear-gradient(to bottom, #061523, #0d1257, #afb8d3);
     border-radius: .5vw;
-    width: 30vw;
+    width: 50vw;
     height: 72vh;
     opacity: .8;
     top:10%;
-    right: 35%;
+    right: 25%;
 }
 
 .create-room-form{
@@ -203,5 +200,20 @@ margin-left: 1vw;
 
 #submit-room:hover{
     background-color: #0b263e;
+}
+
+.join-room{
+    margin-top: 1vh;
+    width: 80vw;
+    height:80%;
+    background-color: #0b263e;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 .33vw gray,
+    0 0 1vw gray,
+    0 0 1vw gray,
+    0 0 1vw gray;
+    overflow-y: auto;
 }
 

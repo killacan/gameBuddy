@@ -122,7 +122,7 @@
     color: linear-gradient(45deg, #f3ec78, #af4261);
 }
 
-#valorant:hover{
+#valorant-image:hover{
     transform: scale(1.1);
     cursor: pointer;
     box-shadow:0 0 .33vw white,
@@ -132,7 +132,7 @@
     
 }
 
-#league:hover{
+#league-image:hover{
     transform: scale(1.1);
     cursor: pointer;
     box-shadow:0 0 .33vw white,
@@ -141,7 +141,7 @@
         0 0 1vw white;
 }
 
-#tft:hover{
+#tft-image:hover{
     transform: scale(1.1);
     cursor: pointer;
     box-shadow:0 0 .33vw white,
