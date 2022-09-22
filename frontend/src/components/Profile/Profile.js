@@ -3,7 +3,7 @@ import './Profile.css'
 import profile from './profile.jpg'
 import { FaStar } from "react-icons/fa";
 import { useState } from 'react';
-import ReviewIndex from "../ReviewIndex/Reviews";
+import ReviewIndex from "../ReviewIndex/ReviewIndex";
 import axios from 'axios';
 
 
@@ -95,32 +95,32 @@ const Profile = () => {
 
     return(
         <>
-        <div className='game-main-container'>
-            <div className='user-profile-box'>
-                <div className='image-box'>
-                    <img id='profile-image' src={profile}/>
+            <div className='game-main-container'>
+                <div className='user-profile-box'>
+                    <div className='image-box'>
+                        <img id='profile-image' src={profile}/>
+                    </div>
+                    <div className='user-text-box'>
+                        <div className='username-box'>
+                            <h1 id='profile-username'>Hello {user.username},</h1>
+                        </div>
+                        <div className='user-star-rating'>
+                            <label >
+                                <span className="fa fa-star checked"></span>
+                                <span className="fa fa-star checked"></span>
+                                <span className="fa fa-star checked"></span>
+                                <span className="fa fa-star unchecked"></span>
+                                <span className="fa fa-star unchecked"></span>
+                            </label>
+                        </div>
+                    </div>  
                 </div>
-                <div className='user-text-box'>
-                    <div className='username-box'>
-                        <h1 id='profile-username'>Hello</h1>
-                    </div>
-                    <div className='user-star-rating'>
-                        <label >
-                            <span className="fa fa-star checked"></span>
-                            <span className="fa fa-star checked"></span>
-                            <span className="fa fa-star checked"></span>
-                            <span className="fa fa-star"></span>
-                            <span className="fa fa-star"></span>
-                        </label>
-                    </div>
-                </div>  
-            </div>
-            <div className='user-reviews-box'>
-                <ReviewIndex/>
-            </div>
+                <div className='user-reviews-box'>
+                    <ReviewIndex/>
+                </div>
 
-        </div>
-        </>
+            </div>
+            </>
     )
 }
 

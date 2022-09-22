@@ -1,5 +1,7 @@
 .game-main-container{
-    color: white;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
 }
 
 .user-profile-box{
@@ -8,6 +10,12 @@
     justify-content: flex-start;
     height: 30vh;
     width: 100vw;
+}
+
+#profile-username{
+    font-family: azonix;
+    color: #02101d;
+    font-size: 3vw;
 }
 .image-box{
     margin-right: 5vw;
@@ -22,13 +30,22 @@
     font-size: 70px;
 }
 .checked {
-    color: orange;
+    color: rgb(255, 229, 57);
 }
 
+.unchecked{
+    color: rgb(176, 176, 176);
+}
 .user-reviews-box{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
     height: 70vh;
     width: 100vw;
+    background-color: aquamarine;
 }
 
+.user-star-rating{
+    font-size: 2.5vw;
+}
