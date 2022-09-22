@@ -1,10 +1,8 @@
 import './GameRoom.css';
 import { useDispatch,useSelector } from 'react-redux';
 import { useParams,useHistory } from 'react-router-dom';
-import { destroyRoom,updateRoom,fetchRoom } from '../../store/rooms';
-import { getRoom } from '../../store/rooms';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { destroyRoom,fetchRoom } from '../../store/rooms';
+import { useEffect,useState } from 'react';
 import UpdateRoomModal from './UpdateRoomModal';
 
 const GameRoom = () => {
@@ -18,16 +16,19 @@ const GameRoom = () => {
         const delRoom = await dispatch(destroyRoom(roomId))
         history.push('/games')
     }
-    
+  
+    const currentUserId = useSelector(state => state.session.user._id)
+    const room = useSelector(state => state.rooms[roomId]);
+
+    const [showUpdateRoomModal, setShowUpdateRoomModal] = useState(false);
+
     useEffect(()=> {
         dispatch(fetchRoom(roomId))
     },[roomId])
 
-    const currentUserId = useSelector(state => state.session.user._id)
-    const room = useSelector(state => state.rooms[roomId]);
-    console.log(room)
-
-    const [showUpdateRoomModal, setShowUpdateRoomModal] = useState(false);
+    // useEffect(() =>{
+    //     dispatch()
+    // },[room.members])
 
     const handleUpdate = (e) => {
         e.preventDefault();
