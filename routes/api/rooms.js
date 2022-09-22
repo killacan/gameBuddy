@@ -19,7 +19,7 @@ router.post('/create', requireUser, validateRoomInput, async (req, res, next) =>
     try {
         const newRoom = new Room({
             host: req.user._id,
-            members: [req.body.userId],
+            members: [],
             title: req.body.title,
             game: req.body.game,
             duration: req.body.duration,

@@ -11,8 +11,9 @@ const Profile = () => {
     const [rating, setRating] = useState(5)
     const reviews = useSelector(state => state.session.user)
     const {_id, username, email} = user
-    // console.log(user)
-    // console.log(user._id)
+
+    
+
     return(
         <>
         <div className='game-main-container'>
