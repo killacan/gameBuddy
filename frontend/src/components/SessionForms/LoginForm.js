@@ -42,54 +42,55 @@ function LoginForm () {
   
   return (
     <div className="login-container">
-      <div id="login-background"></div>
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2 id="login-title">Login</h2>
-        <div className="email-username-container">
-          <input type="text"
-            id="email-input"
-            value={email}
-            onChange={update('email')}
-            required
-            />
-          <label id="input-login">Email or Username</label>
-        </div>
-        <div id="errors-em">
-          <div id="errors-email">{errors?.email}</div>
-        </div>
-        <div className="email-username-container">
-          <input 
-            id="password-input"
-            type="password"
-            value={password}
-            onChange={update('password')}
-            required
-            />
+      <div id="login-background">
+        <form className="login-form" onSubmit={handleSubmit}>
+          <h2 id="login-title">Login</h2>
+          <div className="email-username-container">
+            <label id="input-login">Email or Username</label>
+            <input type="text"
+              id="email-input"
+              value={email}
+              onChange={update('email')}
+              required
+              />
+          </div>
+          <div id="errors-em">
+            <div id="errors-email">{errors?.email}</div>
+          </div>
+          <div className="email-username-container">
             <label id="input-login">Password</label>
-        </div>
-        <div id="errors-pass">
-          <div id="errors-password">{errors?.password}</div>
-        </div>
-        <a>
+            <input 
+              id="password-input"
+              type="password"
+              value={password}
+              onChange={update('password')}
+              required
+              />
+          </div>
+          <div id="errors-pass">
+            <div id="errors-password">{errors?.password}</div>
+          </div>
+          <a className='login-submit-container'>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <input
+              id="login-submit"
+              type="submit"
+              value="Log In"
+              disabled={!email || !password}
+            />
+          </a>
+          <a className='login-submit-container'>
           <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <input
-            id="login-submit"
-            type="submit"
-            value="Log In"
-            disabled={!email || !password}
-          />
-        </a>
-        <a>
-        <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <button onClick={demoUser} id="demo-user">Demo User</button>
-        </a>
-      </form>
+            <span></span>
+            <span></span>
+            <span></span>
+            <button onClick={demoUser} id="demo-user">Demo User</button>
+          </a>
+        </form>
+      </div>
     </div>
   );
 }
