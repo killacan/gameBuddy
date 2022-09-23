@@ -4,13 +4,15 @@ import  session  from './session';
 import errors from './errors'
 import rooms from './rooms'
 import reviews from './reviews'
+import users from './users'
 
 
 const rootReducer = combineReducers({
   session,
   errors,
   rooms,
-  reviews
+  reviews,
+  users
 })
 
 let enhancer;

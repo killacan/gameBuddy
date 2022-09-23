@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
+import { fetchAllUsers } from '../../store/users';
 // import { set } from 'mongoose';
 
 function SignupForm () {
@@ -12,6 +13,54 @@ function SignupForm () {
   const [password2, setPassword2] = useState('');
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
+
+  const users = useSelector(state => Object.values(state.users))
+
+  let usernames = [];
+  users.map(user => {
+    usernames.push(user.username)
+  })
+
+  let emails = [];
+  users.map(user => {
+    emails.push(user.email)
+  })
+
+  let riotUsernames = [];
+  users.map(user => {
+    riotUsernames.push(user.riotUsername)
+  })
+
+  const checkEmail = (email) => {
+    for (let i = 0; i <=emails.length; i++){
+      if (email === emails[i]){
+        return true
+      }
+    }
+    return false
+  }
+
+  const checkUsername = (username) => {
+    for (let i = 0; i <= usernames.length; i++){
+      if (username === usernames[i]){
+        return true
+      }
+    }
+    return false
+  }
+
+  const checkRiotUsername = (riotUsername) => {
+    for (let i = 0; i <= riotUsernames.length; i++ ){
+      if (riotUsername === riotUsernames[i]){
+        return true
+      }
+    }
+    return false
+  }
+
+  useEffect(()=>{
+    dispatch(fetchAllUsers());
+  },[])
 
   useEffect(() => {
     return () => {
@@ -73,7 +122,7 @@ function SignupForm () {
           <label id="input-signup">Email</label>
         </div>
         <div id="errors-signup-em">
-          <div id="errors-signup-email">{errors?.email}</div>
+          {checkEmail(email) && <div id="errors-confirm-password">Email has already been taken</div>}
         </div>
 
         <div className="signup-info-container">
@@ -85,7 +134,7 @@ function SignupForm () {
           <label id="input-signup">Username</label>
         </div>
         <div id="errors-signup-user">
-          <div id="errors-signup-username">{errors?.username}</div>
+          {checkUsername(username) && <div id="errors-confirm-password">Username has already been taken</div>}
         </div>
 
         <div className="signup-info-container">
@@ -94,6 +143,9 @@ function SignupForm () {
             onChange={update('riotUsername')}
             />
           <label id="input-signup">Riot Username</label>
+        </div>
+        <div id="errors-signup-user">
+          {checkRiotUsername(riotUsername) && <div id="errors-confirm-password">Riot Username has already been taken</div>}
         </div>
     
         <div className="signup-info-container">
@@ -105,9 +157,8 @@ function SignupForm () {
           <label id="input-signup">Password</label>
         </div>
         <div id="errors-signup-pass">
-          <div id="errors-signup-password">{errors?.password}</div>
+          {password.length < 6 && <div id="errors-signup-password">Password is too short</div>}
         </div>
-
 
         <div className="signup-info-container">
           <input type="password"
