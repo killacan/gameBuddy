@@ -4,38 +4,6 @@
     background-color: white;
 }
 
-.user-profile-box{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    height: 30vh;
-    width: 100vw;
-}
-
-#profile-username{
-    font-family: azonix;
-    color: #02101d;
-    font-size: 3vw;
-}
-.image-box{
-    margin-right: 5vw;
-    margin-left: 5vw;
-}
-#profile-image{
-    height: 30vh;
-}
-.username-box{
-    margin-bottom: 3vh;
-    color: rgb(180, 179, 179);
-    font-size: 70px;
-}
-.checked {
-    color: rgb(255, 229, 57);
-}
-
-.unchecked{
-    color: rgb(176, 176, 176);
-}
 .user-reviews-box{
     height: 70vh;
     width: 100vw;
@@ -43,6 +11,89 @@
     overflow-y: scroll;
 }
 
-.user-star-rating{
-    font-size: 2.5vw;
+.user-profile-box{
+    width: 100vw;
+    height: 30vh;
+    position: relative;
+
 }
+
+.icon-img{
+    display: flex;
+    justify-content: flex-start;
+    height: 30vh;
+}
+.league-summoner-container{
+    margin-left: 2vw;
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+}
+
+#league-username{
+    margin-top: 2vw;
+    font-family: azonix;
+    font-size: 2vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#in-game-icon{
+    height:30vh;
+    width: 30vh;
+}
+#in-game-img{
+    height:30vh;
+    width: 30vh;
+}
+#summoner-lvl{
+    font-family: azonix;
+    font-size: 1.2vw;
+    margin-top: 1.5vw;
+}
+
+#player-rank-component{
+    padding-left: 2vw;
+    margin-left: 4vw;
+    border-left: 1px solid black;
+    background-color: rgb(7, 38, 41);
+    width: 30vw;
+    height: 26.7vh;
+    color: white;
+    font-family: azonix;
+    font-size: 1vw;
+    padding-top: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#ranked-solo{
+    color: green;
+}
+
+#ranked-tft{
+    color: rgb(67, 99, 165);
+}
+
+#ranked-flex{
+    color: orange;
+}
+
+#unknown-1{
+    color: rgb(129, 43, 147);
+}
+
+#unknown-2{
+    color: aqua;
+}
+
+#unknown-3{
+    color: rgb(172, 59, 82);
+}
+.rank-info{
+    top: 0;
+    position: absolute;
+    right:0;
+}
+
