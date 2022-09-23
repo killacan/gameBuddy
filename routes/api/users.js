@@ -17,10 +17,18 @@ const User = mongoose.model('User');
 const { loginUser } = require('../../config/passport')
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.json({
-    message: "GET /api/users"
-  })
+router.get('/', async (req, res, next) => {
+  try{
+    const users = await User.find()
+                            .populate("username", "email")
+                            .sort({createdAt: -1});
+    return res.json(users)
+  }catch(err) {
+    return res.json([])
+  }
+  // res.json({
+  //   message: "GET /api/users"
+  // })
 });
 
 /* POST users create listing. */
