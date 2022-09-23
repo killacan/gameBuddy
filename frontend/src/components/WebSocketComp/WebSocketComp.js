@@ -17,7 +17,7 @@ function WebSocketComp () {
     useEffect(() => {
         // const messages = document.getElementById('messages');
         const socketNew = new WebSocket(`ws://localhost:5000/?roomId=${roomId}`);
-
+        
 
         socketNew.onopen = (event) => {
             console.log('Websocket is connected!')
@@ -68,7 +68,7 @@ function WebSocketComp () {
         }
 
         socketNew.onerror = (error) => console.log(`WebSocket error: ${error}`);
-        socketNew.onclose = (event) => socket.send(JSON.stringify({type: 'close', data: 'bye'}));
+        // socketNew.onclose = (event) => socketNew.send(JSON.stringify({type: 'close', data: 'bye'}));
         setSocket(socketNew);
         return () => socketNew.close()
     }, [])
