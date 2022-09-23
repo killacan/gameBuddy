@@ -12,25 +12,26 @@ const Profile = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
     const riotUsername = useSelector(state => state.session.user.riotUsername)
-
+    
+    
     const [rating, setRating] = useState(5)
     const reviews = useSelector(state => state.session.user)
-
+    
     const RIOT_API_KEY = process.env.REACT_APP_RIOT_API_KEY
-
+    
     const [playerInfoComponent, setPlayerInfoComponent] = useState();
     const [playerRankComponent, setPlayerRankComponent] = useState();
-
+    
     useEffect(() => {
-          
-        const result = fetch(("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
-        + riotUsername + "?api_key=" + RIOT_API_KEY), {method: 'GET'})
-        .then(res => res.json())
-        .then(data => {
-            const playerId = data.id;
-            if (playerId) {
-                setPlayerInfoComponent (
-                    <div className="icon-img">
+
+            const result = fetch(("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
+            + riotUsername + "?api_key=" + RIOT_API_KEY), {method: 'GET'})
+            .then(res => res.json())
+            .then(data => {
+                const playerId = data.id;
+                if (playerId) {
+                    setPlayerInfoComponent (
+                        <div className="icon-img">
                         <div id="in-game-icon">
                             <img id="in-game-img" src={'http://ddragon.leagueoflegends.com/cdn/12.18.1/img/profileicon/' + data.profileIconId + ".png" }></img>
                         </div>
@@ -42,18 +43,25 @@ const Profile = () => {
                 )            
             } else {
                 setPlayerInfoComponent (
-                    <>
-                    </>
+                    <div className="icon-img">
+                        <div id="in-game-icon">
+                            <img id="in-game-img" src={profile}></img>
+                        </div>
+                        <div className="league-summoner-container">
+                            <h1 id="league-username">{user.username}</h1>
+                        </div>
+                    </div>
                 )
             }
+
             return fetch("https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/"
             + playerId + "?api_key=" + RIOT_API_KEY)
         })
         .then(res => res.json())
         .then(data => {
-            if (data.length === 3) {
+            if (data && data.length === 3) {
                 setPlayerRankComponent(
-                <div id="player-rank-component">
+                    <div id="player-rank-component">
                     <h1 id="ranked-solo">{data[0].queueType.split("_").slice(0, 2).join(" ")}</h1>
                     <h1>{data[0].tier}</h1>
                     <h1>{data[0].rank}</h1>
@@ -65,9 +73,9 @@ const Profile = () => {
                     <h1>{data[2].rank}</h1>
                 </div>
                 )
-            } else if (data.length === 2) {
+            } else if (data && data.length === 2) {
                 setPlayerRankComponent(
-                <div  id="player-rank-component">
+                    <div  id="player-rank-component">
                     <h1 id="unknown-1">{data[0].queueType.split("_").slice(0, 2).join(" ")}</h1>
                     <h1>{data[0].tier}</h1>
                     <h1>{data[0].rank}</h1>
@@ -76,21 +84,27 @@ const Profile = () => {
                     <h1>{data[1].rank}</h1>      
                 </div>
                 )
-            } else if (data.length === 1) {
+            } else if (data && data.length === 1) {
                 setPlayerRankComponent(
-                <div  id="player-rank-component">
+                    <div  id="player-rank-component">
                     <h1 id="unknown-3">{data[0].queueType.split("_").slice(0, 2).join(" ")}</h1>
                     <h1>{data[0].tier}</h1>
                     <h1>{data[0].rank}</h1>
                 </div>
-                )} 
+                )} else {
+                    setPlayerRankComponent(
+                        <>
+                        </>
+                    )
+                }
             })
             .catch(err => {
                 console.error('Request Failed', err)
             })
-    }, [])
-    return(
-        <>
+            
+        }, [])
+        return(
+            <>
             <div className='game-main-container'>
 
                 <div className='user-profile-box'>
