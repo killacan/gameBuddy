@@ -9,27 +9,27 @@ const MainPage = () => {
         <div className='splash-container'>
             <div className="splash-buttons-container">
                 <div className="signin-div">
-                    <a>
+                    <NavLink exact to="/login" id="sign-in">
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
-                        <NavLink exact to="/login" id="sign-in">
+                        <p>
                             Sign In
-                        </NavLink>
-                    </a>
+                        </p>
+                    </NavLink>
                 </div>
 
                 <div className="signup-div">
-                    <a>
+                    <NavLink exact to="/signup" id="sign-up">
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
-                        <NavLink exact to="/signup" id="sign-up">
+                        <p>
                             Sign up
-                        </NavLink>
-                    </a>
+                        </p>
+                    </NavLink>
                 </div>
             </div>
             <div id="gamebuddy-splash-title">GAMEBUDDY</div>
