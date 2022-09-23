@@ -2,7 +2,7 @@ import "./Rooms.css";
 import { useState } from "react";
 import CreateRoomModal from "./CreateRoomModal";
 import { FaGift, FaStar } from "react-icons/fa";
-import { fetchRooms } from "../../store/rooms";
+import { fetchRooms, joinRoom } from "../../store/rooms";
 import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -102,7 +102,8 @@ const RoomsIndex = () => {
     console.log(field._id)
     return e => {
       e.preventDefault();
-      field.members.push(user)
+      // field.members.push(user)
+      // dispatch(joinRoom(field._id, user._id))
       history.push(`/games/rooms/${field._id}`)
     }
     

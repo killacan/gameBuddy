@@ -15,10 +15,12 @@ export const receiveRooms = (rooms) => ({
   rooms
 });
 
-export const receiveRoom = (room) => ({
-  type: RECEIVE_ROOM,
-  room,
-});
+export const receiveRoom = (room) => {
+  // debugger
+  return {type: RECEIVE_ROOM,
+  room}
+  
+};
 
 export const receiveNewRoom = (room) => ({
   type: RECEIVE_NEW_ROOM,
@@ -60,6 +62,7 @@ export const fetchRoom = (roomId) => async (dispatch) => {
     const res = await jwtFetch(`/api/rooms/${roomId}`);
     const room = await res.json();
     dispatch(receiveRoom(room));
+    return room
   } catch (err) {
     const resBody = await err;
     if (resBody.statusCode === 400) {
@@ -87,6 +90,7 @@ export const createRoom = (roomData) => async (dispatch) => {
   }
 };
 export const updateRoom = (roomData) => async (dispatch) => {
+  console.log(roomData, "roomData");
   try {
     const res = await jwtFetch(`/api/rooms/${roomData._id}`, {
       method: "PATCH",
@@ -133,7 +137,7 @@ export const joinRoom = (roomId, userId) => async (dispatch) => {
     const roomUsers = await res.json();
     dispatch(receiveRoom(roomUsers));
   } catch (err){
-      const resBody = await EvalError.json();
+      const resBody = await EvalError;
       if (resBody.statusCode == 400){
         return dispatch(receiveErrors(resBody.errors))
       }

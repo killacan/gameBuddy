@@ -69,13 +69,17 @@ router.get('/:roomId', async (req, res, next) => {
 /* PATCH ----- UPDATE ROOM ----- */
 router.patch('/:roomId', requireUser, async (req, res, next) => {
     try {
-        const room = await Room.findById(req.params.roomId);
+        // console.log(req, "kanye");
+        let room = await Room.findById(req.params.roomId);
 
         if (room) {
             room.game = req.body.game || room.game;
             room.duration = req.body.duration || room.duration;
             room.privacy = req.body.privacy || room.privacy;
             room.title = req.body.title || room.title;
+            room.members = req.body.members || room.members;
+            room = await room.save();
+            
         }
         return res.json(room);
     }
