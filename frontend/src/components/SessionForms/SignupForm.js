@@ -26,6 +26,11 @@ function SignupForm () {
     emails.push(user.email)
   })
 
+  let riotUsernames = [];
+  users.map(user => {
+    riotUsernames.push(user.riotUsername)
+  })
+
   const checkEmail = (email) => {
     for (let i = 0; i <=emails.length; i++){
       if (email === emails[i]){
@@ -38,6 +43,15 @@ function SignupForm () {
   const checkUsername = (username) => {
     for (let i = 0; i <= usernames.length; i++){
       if (username === usernames[i]){
+        return true
+      }
+    }
+    return false
+  }
+
+  const checkRiotUsername = (riotUsername) => {
+    for (let i = 0; i <= riotUsernames.length; i++ ){
+      if (riotUsername === riotUsernames[i]){
         return true
       }
     }
@@ -129,6 +143,9 @@ function SignupForm () {
             onChange={update('riotUsername')}
             />
           <label id="input-signup">Riot Username</label>
+        </div>
+        <div id="errors-signup-user">
+          {checkRiotUsername(riotUsername) && <div id="errors-confirm-password">Riot Username has already been taken</div>}
         </div>
     
         <div className="signup-info-container">
