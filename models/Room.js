@@ -7,7 +7,7 @@ const roomSchema = Schema({
         ref: 'User'
     },
     members: [{
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.Object,
         ref: 'User'
     }],
     title: {

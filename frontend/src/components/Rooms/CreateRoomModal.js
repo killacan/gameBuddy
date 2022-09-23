@@ -38,8 +38,8 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
       privacy: privacy,
     };
     const room = await dispatch(createRoom(roomInfo));
-    console.log(room._id, user._id, "room and user id");
-    const send = await dispatch(joinRoom(room._id, user._id));
+    // console.log(room._id, user._id, "room and user id");
+    // const send = await dispatch(joinRoom(room._id, user._id));
     history.push(`/games/rooms/${room._id}`);
   };
 

@@ -1,7 +1,7 @@
 import './GameRoom.css';
 import { useDispatch,useSelector } from 'react-redux';
 import { useParams,useHistory } from 'react-router-dom';
-import { destroyRoom,fetchRoom, joinRoom } from '../../store/rooms';
+import { destroyRoom,fetchRoom, joinRoom, updateRoom } from '../../store/rooms';
 import { useEffect,useState } from 'react';
 import UpdateRoomModal from './UpdateRoomModal';
 import WebSocketComp from '../WebSocketComp/WebSocketComp';
@@ -13,23 +13,61 @@ const GameRoom = () => {
     const dispatch = useDispatch();
     const {roomId} = useParams();
     const history = useHistory();
+    const room = useSelector(state => state.rooms[roomId]);
     let user = useSelector(state => state.session.user)
+    const [roomLoad, setRoomLoad] = useState(false);
 
     useEffect(()=> {
-        dispatch(fetchRoom(roomId))
-    },[roomId])
+        dispatch(fetchRoom(roomId)).then((res) => {
+            let flag = false;
+            res.members.forEach(member => {
+                if (member._id === user._id) {
+                    flag = true;
+                }}) 
+                
+                if (!flag) {
+                    res.members.push(user)
+                    console.log(res, "Hello There")
+                    dispatch(updateRoom(res))
+                } 
+        })
+        return () => {dispatch(fetchRoom(roomId))
+            .then((res) => {
+                let result = res.members.filter(member => member._id !== user._id) 
+                let updatedRoom = Object.assign({}, res, {members: result})
+                return updatedRoom})
+            .then((res) => {
+                return dispatch(updateRoom(res))})}
+    },[])
+
+    // useEffect(()=> {
+    //     console.log("room changed")
+    //     setRoomLoad(true)
+    // }, [room])
 
     const currentUserId = useSelector(state => state.session.user._id)
-    const room = useSelector(state => state.rooms[roomId]);
 
+    console.log(room, user, " I am a Room!")
     const [showUpdateRoomModal, setShowUpdateRoomModal] = useState(false);
     const [showEndRoomModal, setShowEndRoomModal] = useState(false);
-    const gameUser = useSelector(state => state.session.user)
+    const [roomMembers, setRoomMembers] = useState([]);
 
 
     // useEffect(() =>{
-    //     dispatch()
-    // },[room.members])
+    //     if (room) {
+    //         console.log(room, roomMembers, "hit room update")
+    //         dispatch(updateRoom({...room, members: roomMembers}))
+    //     }
+    // },[roomMembers])
+
+    // useEffect(() => {
+    //     console.log("no ifs")
+    //     if (room) {
+    //         console.log(user, "hit user update")
+    //         setRoomMembers([room.members, user])
+    //         dispatch(updateRoom({...room, members: roomMembers}))
+    //     }
+    // }, [roomLoad])
 
     const handleUpdate = (e) => {
         e.preventDefault();

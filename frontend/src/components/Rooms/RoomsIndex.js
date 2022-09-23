@@ -103,7 +103,7 @@ const RoomsIndex = () => {
     return e => {
       e.preventDefault();
       // field.members.push(user)
-      dispatch(joinRoom(field._id, user._id))
+      // dispatch(joinRoom(field._id, user._id))
       history.push(`/games/rooms/${field._id}`)
     }
     

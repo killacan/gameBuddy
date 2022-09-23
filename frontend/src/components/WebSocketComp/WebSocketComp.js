@@ -17,7 +17,7 @@ function WebSocketComp () {
     useEffect(() => {
         // const messages = document.getElementById('messages');
         const socketNew = new WebSocket(`ws://localhost:5000/?roomId=${roomId}`);
-
+        
 
         socketNew.onopen = (event) => {
             console.log('Websocket is connected!')
