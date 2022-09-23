@@ -38,7 +38,7 @@ const usersReducer = (state ={}, action) => {
     switch(action.type){
         case RECEIVE_ALL_USERS:
             // return {...newState, ...action.users}
-            action.users.forEach(user => newState[user.username] = user)
+            action.users.forEach(user => newState[user._id] = user)
             return newState;
         default:
             return state

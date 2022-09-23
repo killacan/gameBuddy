@@ -14,9 +14,27 @@ function SignupForm () {
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
 
-  const usernames = useSelector(state => Object.keys(state.users));
-  // console.log(usernames)
-  
+  const users = useSelector(state => Object.values(state.users))
+
+  let usernames = [];
+  users.map(user => {
+    usernames.push(user.username)
+  })
+
+  let emails = [];
+  users.map(user => {
+    emails.push(user.email)
+  })
+
+  const checkEmail = (email) => {
+    for (let i = 0; i <=emails.length; i++){
+      if (email === emails[i]){
+        return true
+      }
+    }
+    return false
+  }
+
   const checkUsername = (username) => {
     for (let i = 0; i <= usernames.length; i++){
       if (username === usernames[i]){
@@ -90,7 +108,7 @@ function SignupForm () {
           <label id="input-signup">Email</label>
         </div>
         <div id="errors-signup-em">
-          <div id="errors-signup-email">{errors?.email}</div>
+          {checkEmail(email) && <div id="errors-confirm-password">Email has already been taken</div>}
         </div>
 
         <div className="signup-info-container">
