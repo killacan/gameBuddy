@@ -82,7 +82,7 @@ function LoginForm () {
               disabled={!email || !password}
             />
           </a>
-          <a className='login-submit-container'>
+          <a className='login-submit-container' onClick={demoUser}>
           <span></span>
             <span></span>
             <span></span>
