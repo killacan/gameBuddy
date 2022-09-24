@@ -1,16 +1,16 @@
 .game-main-container{
     width: 100vw;
-    height: 92vh;
+    height: auto;
     display: flex;
     flex-direction: column;
 }
 
 .game-list{
     width: 100vw;
-    height: 79vh;
+    height: auto;
     display: grid;
     grid-template-columns: 1fr 250px 250px 250px 1fr;
-    grid-template-rows: .5fr 300px .5fr;
+    grid-template-rows: .5fr 300px 70px .5fr;
     grid-gap: 3vw;
     justify-content: space-evenly;
     justify-content: center;
@@ -136,6 +136,8 @@
     width: 100vw;
     height: 15vh;
     display: flex;
+    grid-column: 1/4;
+    grid-row: 3;
     justify-content: center;
     align-items: flex-start;
     background-image: linear-gradient(60deg,#01112c, #0636c4,#3a5164);
@@ -177,3 +179,42 @@
         0 0 1vw white;
 }
 
+@media only screen and (max-width: 850px){
+    .game-list {
+        grid-template-columns: 1fr 250px 1fr;
+        grid-template-rows: 70px repeat(3, 250px);
+    }
+
+    #valorant{
+        grid-column: 2;
+        grid-row: 2;
+        /* overflow: hidden; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #league{
+        grid-column: 2;
+        grid-row: 3;
+        /* overflow: hidden; */
+    }
+
+    #tft{
+        grid-column: 2;
+        grid-row: 4;
+        /* overflow: hidden; */
+    }
+
+    .game-desc-container{
+        grid-column: 1/3;
+        grid-row: 1;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #game-desc{
+        font-size: 18px;
+    }
+}
