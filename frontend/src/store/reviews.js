@@ -42,17 +42,11 @@ const clearReviewErrors = errors => ({
 // review, reviews, createReview, updateReview, deleteReview
 
 export const fetchReviews = () => async dispatch => {
-    // console.log("hello from fetch1")
     try {
-        const res = await jwtFetch(`/api/reviews/`);
-        // console.log(res)
-        // console.log("hello from before res.json")
+        const res = await jwtFetch('/api/reviews');
         const reviews = await res.json();
-        // console.log(reviews)
-        // console.log("hello from after res.json")
         dispatch(receiveReviews(reviews));
     }catch (err) {
-        // console.log("hello from fetch err")
         const resBody = await err;
         if (resBody.statusCode === 400){
             dispatch(receiveErrors(resBody.errors));
@@ -144,7 +138,6 @@ export const reviewErrorsReducer = (state = nullErrors, action) => {
 //reviewReducer
 
 const reviewReducer = (state={}, action) => {
-    // debugger
     Object.freeze(state)
     const newState = {...state}
 
@@ -154,8 +147,7 @@ const reviewReducer = (state={}, action) => {
             return { ...newState, [review.id]: review}
         
         case RECEIVE_REVIEWS:
-            return action.reviews.review;
-        
+            return {...newState,...action.reviews}
         case RECEIVE_NEW_REVIEW:
             newState[action.review._id] = action.review
             return newState

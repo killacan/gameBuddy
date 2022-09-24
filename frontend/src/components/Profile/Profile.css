@@ -1,35 +1,121 @@
 .game-main-container{
-    color: white;
-    color: black;
-}
-
-.user-profile-box{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    height: 30vh;
     width: 100vw;
-}
-.image-box{
-    margin-right: 5vw;
-    margin-left: 5vw;
-}
-#profile-image{
-    height: 30vh;
-}
-.username-box{
-    margin-bottom: 3vh;
-    color: rgb(180, 179, 179);
-    font-size: 70px;
-}
-.checked {
-    color: orange;
+    height: 100vh;
+    background-image: linear-gradient(#aae9f8,#0c242b,#072038);
+    overflow: hidden;
 }
 
 .user-reviews-box{
-    display: flex;
-    justify-content: center;
     height: 70vh;
     width: 100vw;
+    background-color:#02101d;
+    overflow-y: scroll;
 }
 
+.user-profile-box{
+    display: grid;
+    grid-template-columns: auto 1fr 300px;
+    grid-template-rows: 1fr;
+    width: 100vw;
+    height: 30vh;
+    position: relative;
+
+}
+
+.icon-img{
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    justify-content: flex-start;
+    height: 30vh;
+}
+.league-summoner-container{
+    grid-column: 2;
+    grid-row: 1;
+    margin-left: 2vw;
+    display: flex;
+    flex-direction: column;
+    width: 100%
+}
+
+#league-username{
+    margin-top: 2vw;
+    font-family: azonix;
+    font-size: 2vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#in-game-icon{
+    height:30vh;
+    width: 30vh;
+}
+
+.img-box{
+    position: relative;
+}
+
+#in-game-img{
+    height:30vh;
+    width: 30vh;
+}
+#summoner-lvl{
+    font-family: azonix;
+    font-size: 1.2vw;
+    margin-top: 1.5vw;
+}
+
+#player-rank-component{
+    padding-left: 2vw;
+    /* margin-left: 4vw; */
+    border-left: 1px solid black;
+    background-color:  #02101d;
+    /* width: 30vw;
+    height: 26.7vh; */
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-family: azonix;
+    font-size: 1vw;
+    /* padding-top: 2vw; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#ranked-solo{
+    color: green;
+}
+
+#ranked-tft{
+    color: rgb(67, 99, 165);
+}
+
+#ranked-flex{
+    color: orange;
+}
+
+#unknown-1{
+    color: rgb(129, 43, 147);
+}
+
+#unknown-2{
+    color: aqua;
+}
+
+#unknown-3{
+    color: rgb(172, 59, 82);
+}
+.rank-info{
+    grid-column: 3;
+    grid-row: 1;
+    top: 0;
+    right:0;
+    width: 100%;
+    height: 100%;
+}
+
+#avg-rating{
+    font-family: azonix;
+    margin-top: 1.5vw;
+}
