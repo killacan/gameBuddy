@@ -8,7 +8,10 @@
 .game-list{
     width: 100vw;
     height: 79vh;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 250px 250px 250px 1fr;
+    grid-template-rows: .5fr 300px .5fr;
+    grid-gap: 3vw;
     justify-content: space-evenly;
     justify-content: center;
     align-items: center;
@@ -31,9 +34,13 @@
 }
 
 #valorant{
-    width: 20vw;
-    height: 50vh;
-    margin-right: 3vw;
+    grid-column: 2;
+    grid-row: 2;
+    /* width: 20vw;
+    height: 50vh; */
+    width: 100%;
+    height: 100%;
+    /* margin-right: 3vw; */
     border-radius: .8vw;
     position: relative;
     animation-name: floating;
@@ -43,30 +50,30 @@
 
 }
 
-
- 
 @keyframes floating {
     0% { transform: translate(0,  0px); }
     50%  { transform: translate(0, 15px); }
     100%   { transform: translate(0, -0px); }   
 }
-
-
-
-
 
 #valorant-image{
     position: absolute;
     top:0;
-    width: 20vw;
-    height: 50vh;
+    /* width: 20vw;
+    height: 50vh; */
+    width: 100%;
+    height: 100%;
     border-radius: .8vw;
 }
 
 #league{
-    width: 20vw;
-    height: 50vh;
-    margin-right: 3vw;    
+    grid-column: 3;
+    grid-row: 2;
+    /* width: 20vw;
+    height: 50vh; */
+    width: 100%;
+    height: 100%;
+    /* margin-right: 3vw;     */
     border-radius: .8vw;
     position: relative;
     animation-name: floating;
@@ -82,18 +89,23 @@
     100%   { transform: translate(0, -0px); }   
 }
 
-
 #league-image{
     position: absolute;
     top:0;
-    width: 20vw;
-    height: 50vh;
+    /* width: 20vw;
+    height: 50vh; */
+    width: 100%;
+    height: 100%;
     border-radius: .8vw;
 }
 
 #tft{
-    width: 20vw;
-    height: 50vh;
+    grid-column: 4;
+    grid-row: 2;
+    /* width: 20vw;
+    height: 50vh; */
+    width: 100%;
+    height: 100%;
     border-radius: .8vw;
     position: relative;
     animation-name: floating;
@@ -113,8 +125,10 @@
 #tft-image{
     position: absolute;
     top:0;
-    width: 20vw;
-    height: 50vh;
+    /* width: 20vw;
+    height: 50vh; */
+    width: 100%;
+    height: 100%;
     border-radius: .8vw;
 }
 
