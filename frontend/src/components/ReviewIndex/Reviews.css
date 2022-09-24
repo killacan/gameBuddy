@@ -5,7 +5,10 @@
     width: 100vw;
     height: 8vh;
     align-items: center;
-    border-bottom: 1px solid black;
+    padding-top: .4vw;
+    padding-bottom: .4vw;
+    border-bottom: 2px dotted rgb(68, 82, 115);
+    background-image: linear-gradient(#02101d,#08233d);
 }
 .star-rating{
     margin-left: 3vw;
@@ -19,13 +22,73 @@
     flex-wrap: wrap;
 }
 
-#tags{
+#tags-1{
     max-width: 30vw;;
     display: flex;
    font-family: azonix;
    padding: .3vw;
    font-size: 1vw;
-   border: 1px solid black;
+   border: 1px solid rgb(85, 85, 85);
+   margin-top: .5vw;
+   margin-right: 1vw;
+   margin-bottom: .5vw;
+   background-color: rgb(85, 255, 114);
+   opacity: .7;
+}
+
+
+#tags-2{
+    max-width: 30vw;;
+    display: flex;
+   font-family: azonix;
+   padding: .3vw;
+   font-size: 1vw;
+   color: rgb(226, 226, 226);
+   border: 1px solid rgb(85, 85, 85);
+   margin-top: .5vw;
+   margin-right: 1vw;
+   margin-bottom: .5vw;
+   background-color: rgb(29, 4, 38);
+   opacity: .8;
+}
+
+#tags-3{
+    max-width: 30vw;;
+    display: flex;
+   font-family: azonix;
+   padding: .3vw;
+   font-size: 1vw;
+   border: 1px solid rgb(85, 85, 85);
+   margin-top: .5vw;
+   margin-right: 1vw;
+   margin-bottom: .5vw;
+   background-color: rgb(243, 255, 5);
+   opacity: .7;
+}
+
+
+#tags-4{
+    max-width: 30vw;;
+    display: flex;
+   font-family: azonix;
+   padding: .3vw;
+   font-size: 1vw;
+   border: 1px solid rgb(85, 85, 85);
+   margin-top: .5vw;
+   margin-right: 1vw;
+   margin-bottom: .5vw;
+   background-color: rgb(2, 209, 255);
+   opacity: .7;
+}
+
+
+#tags-5{
+    max-width: 30vw;;
+    display: flex;
+   font-family: azonix;
+   padding: .3vw;
+   font-size: 1vw;
+   border: 1px solid rgb(85, 85, 85);
    margin-top: .5vw;
    margin-right: 1vw;
    margin-bottom: .5vw;
@@ -33,8 +96,24 @@
    opacity: .7;
 }
 
+
+#tags-6{
+    max-width: 30vw;;
+    display: flex;
+   font-family: azonix;
+   padding: .3vw;
+   font-size: 1vw;
+   border: 1px solid rgb(85, 85, 85);
+   margin-top: .5vw;
+   margin-right: 1vw;
+   margin-bottom: .5vw;
+   background-color: rgb(255, 12, 12);
+   opacity: .7;
+}
+
 .review-comments{
-    color: rgb(0, 0, 0);
+    margin-left: 2.5vw;
+    color: white;
     font-family: azonix;
     font-size: 1vw;
 

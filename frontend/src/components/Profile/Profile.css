@@ -1,17 +1,21 @@
 .game-main-container{
     width: 100vw;
     height: 100vh;
-    background-color: white;
+    background-image: linear-gradient(#aae9f8,#0c242b,#072038);
+    overflow: hidden;
 }
 
 .user-reviews-box{
     height: 70vh;
     width: 100vw;
-    background-color: rgb(74, 74, 74);
+    background-color:#02101d;
     overflow-y: scroll;
 }
 
 .user-profile-box{
+    display: grid;
+    grid-template-columns: auto 1fr 300px;
+    grid-template-rows: 1fr;
     width: 100vw;
     height: 30vh;
     position: relative;
@@ -19,15 +23,19 @@
 }
 
 .icon-img{
+    grid-column: 1;
+    grid-row: 1;
     display: flex;
     justify-content: flex-start;
     height: 30vh;
 }
 .league-summoner-container{
+    grid-column: 2;
+    grid-row: 1;
     margin-left: 2vw;
     display: flex;
     flex-direction: column;
-    width: 60vw;
+    width: 100%
 }
 
 #league-username{
@@ -42,6 +50,11 @@
     height:30vh;
     width: 30vh;
 }
+
+.img-box{
+    position: relative;
+}
+
 #in-game-img{
     height:30vh;
     width: 30vh;
@@ -54,15 +67,17 @@
 
 #player-rank-component{
     padding-left: 2vw;
-    margin-left: 4vw;
+    /* margin-left: 4vw; */
     border-left: 1px solid black;
-    background-color: rgb(7, 38, 41);
-    width: 30vw;
-    height: 26.7vh;
+    background-color:  #02101d;
+    /* width: 30vw;
+    height: 26.7vh; */
+    width: 100%;
+    height: 100%;
     color: white;
     font-family: azonix;
     font-size: 1vw;
-    padding-top: 2vw;
+    /* padding-top: 2vw; */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -92,8 +107,15 @@
     color: rgb(172, 59, 82);
 }
 .rank-info{
+    grid-column: 3;
+    grid-row: 1;
     top: 0;
-    position: absolute;
     right:0;
+    width: 100%;
+    height: 100%;
 }
 
+#avg-rating{
+    font-family: azonix;
+    margin-top: 1.5vw;
+}

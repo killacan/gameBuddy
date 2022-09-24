@@ -38,7 +38,7 @@ const Games = () => {
                 <div className = "game-main-container">
                     <div className="game-list">         
                         <div onClick={handleClick("valorant")} id="valorant">
-                            <img   id="valorant-image" src={valorantBg}/>
+                            <img id="valorant-image" src={valorantBg}/>
                         </div>
             
                         <div  onClick={handleClick("league")} id="league">

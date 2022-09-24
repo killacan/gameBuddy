@@ -21,6 +21,63 @@ const Profile = () => {
     
     const [playerInfoComponent, setPlayerInfoComponent] = useState();
     const [playerRankComponent, setPlayerRankComponent] = useState();
+    const showStar = (rating)=>{
+        if (rating===1){
+             return (
+                 <div>
+                     <FaStar id="star-value" />
+                     <FaStar id="non-star-value"/>
+                     <FaStar id="non-star-value"/>
+                     <FaStar id="non-star-value"/>
+                     <FaStar id="non-star-value"/>
+                 </div>
+             )
+         } 
+        if (rating===2){
+         return (
+             <div>
+                 <FaStar id="star-value"/>
+                 <FaStar id="star-value"/>
+                 <FaStar id="non-star-value"/>
+                 <FaStar id="non-star-value"/>
+                 <FaStar id="non-star-value"/>
+              </div>
+         )
+         } 
+         if (rating===3){
+                  return (
+             <div>
+                 <FaStar id="star-value"/>
+                 <FaStar id="star-value"/>
+                 <FaStar id="star-value"/>
+                 <FaStar id="non-star-value"/>
+                 <FaStar id="non-star-value"/>
+              </div>
+         )
+         } 
+         if (rating===4){
+                  return (
+             <div>
+                 <FaStar id="star-value"/>
+                 <FaStar id="star-value"/>
+                 <FaStar id="star-value"/>
+                 <FaStar id="star-value"/>
+                 <FaStar id="non-star-value"/>
+              </div>
+         )
+         } 
+         if (rating===5){
+                  return (
+             <div>
+                 <FaStar id="star-value"/>
+                 <FaStar id="star-value"/>
+                 <FaStar id="star-value"/>
+                 <FaStar id="star-value"/>
+                 <FaStar id="star-value"/>
+              </div>
+         )
+         } 
+     }
     
     useEffect(() => {
 
@@ -31,25 +88,29 @@ const Profile = () => {
                 const playerId = data.id;
                 if (playerId) {
                     setPlayerInfoComponent (
-                        <div className="icon-img">
+                    <>
+                       <div className="league-summoner-container">
+                            <h1 id="league-username">League Username : {data.name}</h1>
+                            <h2 id="summoner-lvl">Summoner Level : {data.summonerLevel}</h2>
+                            <div id="avg-rating">Avg Rating:{showStar(3)}</div>
+                        </div>
+                    <div className="icon-img">
                         <div id="in-game-icon">
                             <img id="in-game-img" src={'http://ddragon.leagueoflegends.com/cdn/12.18.1/img/profileicon/' + data.profileIconId + ".png" }></img>
                         </div>
-                        <div className="league-summoner-container">
-                            <h1 id="league-username">League Username : {data.name}</h1>
-                            <h2 id="summoner-lvl">Summoner Level : {data.summonerLevel}</h2>
-                        </div>
                     </div>
+                    </>
                 )            
             } else {
                 setPlayerInfoComponent (
                     <div className="icon-img">
-                        <div id="in-game-icon">
-                            <img id="in-game-img" src={profile}></img>
-                        </div>
                         <div className="league-summoner-container">
                             <h1 id="league-username">{user.username}</h1>
                         </div>
+                        <div id="in-game-icon">
+                            <img id="in-game-img" src={profile}></img>
+                        </div>
+              
                     </div>
                 )
             }
@@ -108,8 +169,9 @@ const Profile = () => {
             <div className='game-main-container'>
 
                 <div className='user-profile-box'>
+                {playerInfoComponent}
                     <div className='img-box'>
-                        {playerInfoComponent}
+                        
                     </div>
                     <div className="rank-info">
                         {playerRankComponent}
