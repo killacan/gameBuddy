@@ -6,6 +6,7 @@ import { useEffect,useState } from 'react';
 import UpdateRoomModal from './UpdateRoomModal';
 import WebSocketComp from '../WebSocketComp/WebSocketComp';
 import EndRoomModal from './EndRoomModal';
+import { fetchAllUsers } from '../../store/users';
 
 
 const GameRoom = () => {
@@ -17,6 +18,11 @@ const GameRoom = () => {
     let user = useSelector(state => state.session.user)
     const [roomLoad, setRoomLoad] = useState(false);
 
+    useEffect(()=>{
+        dispatch(fetchAllUsers())
+    })
+    
+    const users = useSelector(state => state.)
     useEffect(()=> {
         dispatch(fetchRoom(roomId)).then((res) => {
             let flag = false;
@@ -47,7 +53,6 @@ const GameRoom = () => {
 
     const currentUserId = useSelector(state => state.session.user._id)
 
-    console.log(room, user, " I am a Room!")
     const [showUpdateRoomModal, setShowUpdateRoomModal] = useState(false);
     const [showEndRoomModal, setShowEndRoomModal] = useState(false);
     const [roomMembers, setRoomMembers] = useState([]);

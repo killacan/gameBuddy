@@ -99,7 +99,6 @@ const RoomsIndex = () => {
   const user = useSelector(state => state.session.user)
 
   const handleJoinRoom = (field) => {
-    console.log(field._id)
     return e => {
       e.preventDefault();
       // field.members.push(user)
@@ -177,14 +176,14 @@ const RoomsIndex = () => {
                   <div id="room-duration">Room Duration: {room.duration}</div>
                   <div className="render-room-components">
                       {room.privacy === true ? <AiFillLock id="lock" /> : <AiOutlineUnlock id="unlock"/>}
-                      {room.members.length > 5 ? 
+                      {room.members.length > 5 || room.privacy === true ? 
                         <button id="room-full-btn">Full Room</button>
                         :
                         <button id="create-rm-btn" onClick={handleJoinRoom(room)}>Join Room</button>
                       }
                   </div>
                     
-                <div id="display-num-user">{room.members.length}/5 players </div>
+                <div id="display-num-user">{room.members.length}/{room.privacy === true ? 1 : 5}</div>
                 </div>
               </div>
               :
