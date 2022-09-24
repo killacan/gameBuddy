@@ -81,6 +81,19 @@ const Profile = () => {
     
     useEffect(() => {
 
+        if (!riotUsername || riotUsername === undefined) {
+            setPlayerInfoComponent (
+            <div className="icon-img">
+                <div className="league-summoner-container">
+                    <h1 id="league-username">{user.username}</h1>
+                </div>
+                
+                <div id="in-game-icon">
+                    <img id="in-game-img" src={profile}></img>
+                </div>
+            </div>
+            )
+        } else {
             const result = fetch(("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
             + riotUsername + "?api_key=" + RIOT_API_KEY), {method: 'GET'})
             .then(res => res.json())
@@ -101,19 +114,7 @@ const Profile = () => {
                     </div>
                     </>
                 )            
-            } else {
-                setPlayerInfoComponent (
-                    <div className="icon-img">
-                        <div className="league-summoner-container">
-                            <h1 id="league-username">{user.username}</h1>
-                        </div>
-                        <div id="in-game-icon">
-                            <img id="in-game-img" src={profile}></img>
-                        </div>
-              
-                    </div>
-                )
-            }
+            } 
 
             return fetch("https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/"
             + playerId + "?api_key=" + RIOT_API_KEY)
@@ -162,8 +163,10 @@ const Profile = () => {
             .catch(err => {
                 console.error('Request Failed', err)
             })
-            
+        }
+        
         }, [])
+    
         return(
             <>
             <div className='game-main-container'>
