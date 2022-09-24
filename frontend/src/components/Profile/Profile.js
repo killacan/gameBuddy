@@ -164,6 +164,7 @@ const Profile = () => {
                 console.error('Request Failed', err)
             })
         }
+        
         }, [])
     
         return(
