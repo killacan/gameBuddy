@@ -48,9 +48,9 @@ const Games = () => {
                         <div  onClick={handleClick("tft")}   id="tft">
                             <img id="tft-image" src={tftBg}/>
                         </div>
-                    </div>
-                    <div className="game-desc-container">
-                        <h1 id="game-desc">SELECT A GAME TO GET CONNECTED</h1>
+                        <div className="game-desc-container">
+                            <h1 id="game-desc">SELECT A GAME TO GET CONNECTED</h1>
+                        </div>
                     </div>
                 </div>
                 </div>
