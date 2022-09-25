@@ -19,7 +19,7 @@ const UpdateRoomModal = ({setShowUpdateRoomModal, room}) => {
           ...room,
           title: updateTitle,
           game: room.game,
-          host: user._id,
+          host: user,
           members: updateMembers,
           duration: updateDuration,
           privacy: updatePrivacy
