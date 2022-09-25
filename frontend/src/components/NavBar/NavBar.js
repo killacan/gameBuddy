@@ -1,10 +1,9 @@
 import './NavBar.css'
-import { useLocation } from 'react-router-dom';
+import { useLocation,Link,useHistory } from 'react-router-dom';
 import {FaUserAstronaut} from "react-icons/fa";
 import { AiOutlineRollback } from "react-icons/ai";
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../store/session';
-import { useHistory} from 'react-router-dom';
 
 function NavBar () {
     const user = useSelector(state => state.session.user)
@@ -37,7 +36,7 @@ function NavBar () {
       <div className={toggle()}>
         <div className="left-side-nav">
             <AiOutlineRollback onClick={()=>history.goBack()}id="menu-icon"/>
-            <div id="navLogo">GB</div>
+            <Link exact to="/games"id="navLogo">GB</Link>
         </div>
 
         <div className="right-side-nav"> 
