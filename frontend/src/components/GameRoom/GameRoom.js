@@ -98,7 +98,7 @@ const GameRoom = () => {
                 </div>
                 <div className="top-right-container">
                     <div className="host-info">
-                        <div>Room Leader : </div>
+                        <div id="room-leader">Room Leader : </div>
                         <div> {room.host.username}</div>
                     </div>
                     <div className="update-del-room-btns">
@@ -110,10 +110,9 @@ const GameRoom = () => {
                             : "" }
                     </div>
                 </div>
-
             </div>
             <div className="bottom-game-room-container">
-                <WebSocketComp roomId={roomId}/>
+                <WebSocketComp />
             </div>
             {showUpdateRoomModal && <UpdateRoomModal setShowUpdateRoomModal={setShowUpdateRoomModal} room={room}/>}
             {showEndRoomModal && <EndRoomModal setShowEndRoomModal={setShowEndRoomModal} room={room}/>}

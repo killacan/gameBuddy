@@ -1,0 +1,87 @@
+.chat-outer-container{
+    background-color: #072038;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.chat-container{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.display-room-members{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 2vw;
+    font-size: 1.5vw;
+    color: white
+}
+
+#room-member{
+    font-size: 2vw;
+    margin-bottom: .5vw;
+    color: white;
+    font-family: azonix;
+
+}
+
+.room-messages-container{
+   overflow-y: scroll;
+   background-color: #a1bbd4;
+   opacity: .3;
+
+}
+
+
+.websocket-form{
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+}
+
+.message-input{
+    width: 90%;
+    height: 3vh;
+    font-size: 1vw;
+    background-color: white;
+    border: none;
+
+}
+
+.message-submit{
+    background: none;
+	color: white;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    font-size: 1vw;
+    font-family: azonix;
+    border-color: white;
+    width: 11%;
+    height: 3vh;
+    
+}
+.message-submit:hover{
+    background: none;
+    background-color: aquamarine;
+    border-color: white;
+    color: black;
+    font-size: 1vw;
+    width: 11%;
+    height: 3vh;
+}
+
+#member-room-username{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: .5vw;
+    font-family: azonix;
+
+}

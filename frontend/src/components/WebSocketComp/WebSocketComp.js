@@ -1,17 +1,21 @@
 import {useEffect, useState} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-
+import { fetchRoom } from '../../store/rooms';
+import './WebSocket.css'
 
 
 function WebSocketComp () {
     const dispatch = useDispatch();
     const {roomId} = useParams();
-
+    const room = useSelector(state => state.rooms[roomId])
     const [message, setMessage] = useState("");
     const [socket, setSocket] = useState();
     const [messages, setMessages] = useState([]);
-    
+
+    useEffect(()=> {
+        dispatch(fetchRoom(roomId))
+    },[roomId])
 
 
     useEffect(() => {
@@ -82,7 +86,7 @@ function WebSocketComp () {
     if (!socket) return null;
 
     return (
-        <>
+        <div className="chat-outer-container">
             <div className='chat-container'>
                 <div className='room-messages-container'>
                     {messages.map (message => {
@@ -91,13 +95,22 @@ function WebSocketComp () {
                     }
                 </div>
                 <div className='room-input-container'>
-                    <form onSubmit={handleSubmit}>
+                    <form className="websocket-form"onSubmit={handleSubmit}>
                         <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} className='message-input' placeholder='Type a message...' />
                         <button type="submit" className='message-submit'>Send</button>
                     </form>
                 </div>
             </div>
-        </>
+
+            <div className="display-room-members">
+                <h1 id="room-member">Room Members:</h1>
+                {room.members.map(member => (
+                    <div id="member-room-username">
+                        {member.username}
+                    </div>
+                ))}
+            </div>
+        </div>
     )
 }
 
