@@ -38,16 +38,12 @@ const GameRoom = () => {
                 let updatedRoom = Object.assign({}, res, {members: result})
                 return updatedRoom})
             .then((res) => {
-                return dispatch(updateRoom(res))})}
+                return dispatch(updateRoom(res))})
+            .then(() => {
+                if (user._id === room.host._id) {
+                    dispatch(destroyRoom(roomId))}})
+                }
     },[])
-
-
-
-   
-    // useEffect(()=> {
-    //     console.log("room changed")
-    //     setRoomLoad(true)
-    // }, [room])
 
     const currentUserId = useSelector(state => state.session.user._id)
 
@@ -55,22 +51,6 @@ const GameRoom = () => {
     const [showEndRoomModal, setShowEndRoomModal] = useState(false);
     const [roomMembers, setRoomMembers] = useState([]);
 
-
-    // useEffect(() =>{
-    //     if (room) {
-    //         console.log(room, roomMembers, "hit room update")
-    //         dispatch(updateRoom({...room, members: roomMembers}))
-    //     }
-    // },[roomMembers])
-
-    // useEffect(() => {
-    //     console.log("no ifs")
-    //     if (room) {
-    //         console.log(user, "hit user update")
-    //         setRoomMembers([room.members, user])
-    //         dispatch(updateRoom({...room, members: roomMembers}))
-    //     }
-    // }, [roomLoad])
 
     const handleUpdate = (e) => {
         e.preventDefault();

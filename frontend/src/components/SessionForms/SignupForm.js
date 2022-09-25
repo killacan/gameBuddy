@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
 import { fetchAllUsers } from '../../store/users';
-// import { set } from 'mongoose';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
@@ -51,11 +50,19 @@ function SignupForm () {
 
   const checkRiotUsername = (riotUsername) => {
     for (let i = 0; i <= riotUsernames.length; i++ ){
-      if (riotUsername === riotUsernames[i]){
+      if (riotUsername === riotUsernames[i] && riotUsername.length > 0){
         return true
       }
     }
     return false
+  }
+
+  const checkPassword = (password) => {
+    if (password.length > 0 && password.length < 6){
+      return true
+    }else{
+      return false
+    }
   }
 
   useEffect(()=>{
@@ -156,7 +163,7 @@ function SignupForm () {
               required
               />
           <div id="errors-signup-pass">
-            {password.length < 6 && <div id="errors-signup-password">Password is too short</div>}
+            {checkPassword(password) && <div id="errors-signup-password">Password is too short</div>}
           </div>
           </div>
 
