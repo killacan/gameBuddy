@@ -103,6 +103,17 @@ const RoomsIndex = () => {
     }
     
   }
+
+  const toggleGameIndexBg = () => {
+    if (game === "Valorant"){
+      return './val-game-index-bg.png';
+    }else if (game === "League of Legends"){
+      return "";
+    }else{
+      return "";
+    }
+
+  }
   const toggle = () => {
     if (game === "Valorant"){
       return valBanner;
@@ -158,7 +169,7 @@ const RoomsIndex = () => {
             </div>
           </div>
           <div className="game-index-bg-container">
-            <div id="game-index-bg"></div>
+            <div id="game-index-bg" src={toggleGameIndexBg()}></div>
             <div className="join-room">
               {allRooms.map(room=>( 
                 room.game === game ? 

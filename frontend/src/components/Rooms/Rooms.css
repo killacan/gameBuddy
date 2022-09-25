@@ -229,13 +229,12 @@ margin-left: 1vw;
 .game-index-bg-container{
     position: relative;
     width: 80vw;
-    height:83%;
+    height:100%;
 }
 #game-index-bg{
- background-image: url('./val-game-index-bg.png');
  margin-top: 1vh;
  width: 80vw;
- height:83%;
+ height:100%;
  position: absolute;
 
 }
@@ -243,13 +242,12 @@ margin-left: 1vw;
     position: absolute;
     margin-top: 1vh;
     width: 80vw;
-    height:83%;
-    background: linear-gradient(to bottom, #571a2c, #41244c, #24243e);
+    height:100%;
+    background: linear-gradient(to bottom, #2d5271, #1883b1,#8ecaff );
     box-shadow: 0 0 .33vw gray,
     0 0 1vw gray,
     0 0 1vw gray,
     0 0 1vw gray;
-    opacity: .8;
     display: flex;
     flex-direction: column;
     align-items: center;
