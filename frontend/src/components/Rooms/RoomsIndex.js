@@ -164,7 +164,7 @@ const RoomsIndex = () => {
           </div>
           <div className="join-room">
             {allRooms.map(room=>( 
-              room.game === game? 
+              room.game === game ? 
               <div className="single-room-container">
                 <div className="left-create-room-container">
                   <div id="room-title">Title : {room.title} </div>

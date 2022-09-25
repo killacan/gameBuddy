@@ -32,7 +32,7 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
     let roomInfo = {
       title: title,
       game: game,
-      host: user._id,
+      host: user,
       members: members,
       duration: duration,
       privacy: privacy,
