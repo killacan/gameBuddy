@@ -6,6 +6,7 @@ import { useEffect,useState } from 'react';
 import UpdateRoomModal from './UpdateRoomModal';
 import WebSocketComp from '../WebSocketComp/WebSocketComp';
 import EndRoomModal from './EndRoomModal';
+import { fetchAllUsers } from '../../store/users';
 
 
 const GameRoom = () => {
@@ -17,6 +18,7 @@ const GameRoom = () => {
     let user = useSelector(state => state.session.user)
     const [roomLoad, setRoomLoad] = useState(false);
 
+    
     useEffect(()=> {
         dispatch(fetchRoom(roomId)).then((res) => {
             let flag = false;
@@ -27,7 +29,6 @@ const GameRoom = () => {
                 
                 if (!flag) {
                     res.members.push(user)
-                    console.log(res, "Hello There")
                     dispatch(updateRoom(res))
                 } 
         })
@@ -40,6 +41,9 @@ const GameRoom = () => {
                 return dispatch(updateRoom(res))})}
     },[])
 
+
+
+   
     // useEffect(()=> {
     //     console.log("room changed")
     //     setRoomLoad(true)
@@ -47,7 +51,6 @@ const GameRoom = () => {
 
     const currentUserId = useSelector(state => state.session.user._id)
 
-    console.log(room, user, " I am a Room!")
     const [showUpdateRoomModal, setShowUpdateRoomModal] = useState(false);
     const [showEndRoomModal, setShowEndRoomModal] = useState(false);
     const [roomMembers, setRoomMembers] = useState([]);
@@ -95,7 +98,7 @@ const GameRoom = () => {
                 </div>
                 <div className="top-right-container">
                     <div className="host-info">
-                        <div>Room Leader : </div>
+                        <div id="room-leader">Room Leader : </div>
                         <div> {room.host.username}</div>
                     </div>
                     <div className="update-del-room-btns">
@@ -107,10 +110,9 @@ const GameRoom = () => {
                             : "" }
                     </div>
                 </div>
-
             </div>
             <div className="bottom-game-room-container">
-                <WebSocketComp roomId={roomId}/>
+                <WebSocketComp />
             </div>
             {showUpdateRoomModal && <UpdateRoomModal setShowUpdateRoomModal={setShowUpdateRoomModal} room={room}/>}
             {showEndRoomModal && <EndRoomModal setShowEndRoomModal={setShowEndRoomModal} room={room}/>}
