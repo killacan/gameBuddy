@@ -295,7 +295,16 @@
    opacity: .7;
 }
 
+#summoner-lvl{
+    position: absolute;
+    font-family: azonix;
+    font-size: 1.2vw;
+    left: 20vw;
+    top: 12vw;
+    width: 30vw;
 
+
+}
 
 
 
@@ -343,11 +352,7 @@
     height:30vh;
     width: 30vh;
 }
-#summoner-lvl{
-    font-family: azonix;
-    font-size: 1.2vw;
-    margin-top: 1.5vw;
-}
+
 
 
 
