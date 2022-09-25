@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
+import { fetchAllUsers } from '../../store/users';
 
 import { login, clearSessionErrors } from '../../store/session';
 // import { Redirect } from 'react-router-dom';
@@ -11,8 +12,21 @@ function LoginForm () {
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
 
-  // const sessionUser = useSelector(state=>state.session.user)
+  const users = useSelector(state => Object.values(state.users))
+
+  let usernames = [];
+  users.map(user => {
+    usernames.push(user.username)
+  })
+
+  let emails = [];
+  users.map(user => {
+    emails.push(user.email)
+  })
   
+  useEffect(()=>{
+    dispatch(fetchAllUsers());
+  },[])
   
   useEffect(() => {
     return () => {
@@ -20,7 +34,14 @@ function LoginForm () {
     };
   }, [dispatch]);
   
-  // if (sessionUser) return <Redirect to="/games" />;
+  const checkEmail = (email) => {
+    for (let i = 0; i <=emails.length; i++){
+      if (email === emails[i]){
+        return true
+      }
+    }
+    return false
+  }
 
   const update = (field) => {
     const setState = field === 'email' ? setEmail : setPassword;
@@ -29,7 +50,17 @@ function LoginForm () {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login({ email, password })); 
+    try{
+      dispatch(login({ email, password })); 
+    }catch (err){
+      const resBody = err;
+      if (resBody.statusCode === 400){
+        showInvalid()
+      }
+    }
+  }
+  const showInvalid = () => {
+    document.getElementById("errors-login-em").style.display = "block"
   }
 
   const demoUser = (e) => {
@@ -39,7 +70,7 @@ function LoginForm () {
       password: "admin123"
     }))
   }
-  
+
   return (
     <div className="login-container">
       <div id="login-background">
@@ -53,6 +84,9 @@ function LoginForm () {
               onChange={update('email')}
               required
               />
+              <div id="errors-login-em">
+                <div id="errors-confirm-password">Invalid Login Credentials</div>
+              </div>
           </div>
           <div id="errors-em">
             <div id="errors-email">{errors?.email}</div>

@@ -340,6 +340,12 @@
     justify-content: center;
     width: 100vw;
 }
+#errors-login-em{
+  /* position: relative; */
+  display: none;
+  justify-content: center;
+  width: 100vw;
+}
 
 #errors-signup-email{
     /* position: absolute; */
