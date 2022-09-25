@@ -13,9 +13,12 @@ function WebSocketComp () {
     const [socket, setSocket] = useState();
     const [messages, setMessages] = useState([]);
 
+    const sessionUser = useSelector(state => state.session.user)
+
+
     useEffect(()=> {
         dispatch(fetchRoom(roomId))
-    },[roomId])
+    },[roomId, messages])
 
 
     useEffect(() => {
@@ -27,6 +30,7 @@ function WebSocketComp () {
             console.log('Websocket is connected!')
             const id = Math.round(Math.random() * 100)
             console.log('sending...', id)
+            socketNew.send(JSON.stringify({message: `${sessionUser.username} has joined the room`, roomId: roomId}))
             // const data = JSON.stringify(
             // [
             //     {
