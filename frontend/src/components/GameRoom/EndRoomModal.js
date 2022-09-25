@@ -12,7 +12,7 @@ const EndRoomModal = ({setShowEndRoomModal, room}) => {
     const room1 = Object.values(room)
 
     console.log(room1, 'adfdsf');
-
+    const members = room1[2];
     //mockData! --> need to pull from state.rooms._id.members = [user1,user2,user3]
     const users = ["matt", "mimi", "cameron", "daniel"]
 
@@ -23,12 +23,12 @@ const EndRoomModal = ({setShowEndRoomModal, room}) => {
     }
 
     let reviewShow;
-    if (room1.length > 0){
+    if (members.length > 0){
         reviewShow = (
             <div>
-                {/* {Object.values(members).map(user => 
-                    <UserReview user={user}/>
-                    )} */}
+                {(members).map(user => 
+                    <UserReview {...user}/>
+                    )}
             </div>
         )
     }
