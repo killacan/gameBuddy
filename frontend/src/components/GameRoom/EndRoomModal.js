@@ -6,17 +6,12 @@ import { destroyRoom } from "../../store/rooms";
 
 const EndRoomModal = ({setShowEndRoomModal, room}) => {
 
+    console.log(room)
     const dispatch = useDispatch();
     const history = useHistory();
-    const members = room.members;
+    const room1 = Object.values(room)
 
-    let usernames = [];
-
-    for (let i = 0; i < members.length; i++) {
-        usernames.push(members[i].username);
-    }
-
-    console.log(usernames, 'adfdsf');
+    console.log(room1, 'adfdsf');
 
     //mockData! --> need to pull from state.rooms._id.members = [user1,user2,user3]
     const users = ["matt", "mimi", "cameron", "daniel"]
@@ -28,12 +23,12 @@ const EndRoomModal = ({setShowEndRoomModal, room}) => {
     }
 
     let reviewShow;
-    if (usernames.length > 0){
+    if (room1.length > 0){
         reviewShow = (
             <div>
-                {usernames.map(user => 
+                {/* {Object.values(members).map(user => 
                     <UserReview user={user}/>
-                    )}
+                    )} */}
             </div>
         )
     }
