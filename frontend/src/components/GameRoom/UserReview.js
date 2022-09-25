@@ -4,6 +4,8 @@ import ReviewForm from '../ReviewForm/ReviewForm.js'
 
 const UserReview = ({user}) => {
 
+    console.log(user,'fromuserreview')
+
     const [showReviewForm, setShowReviewForm] = useState(false)
 
     return (

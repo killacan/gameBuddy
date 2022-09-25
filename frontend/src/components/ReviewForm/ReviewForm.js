@@ -49,7 +49,7 @@ const ReviewForm = ({setShowReviewForm}) => {
             <div className="blur-background-review" onClick={() => setShowReviewForm(false)}></div>      
             <div id="modal-bg-container-review"></div>
             <div className="bg-modal">
-                <form className='end-review-form' >
+                <form className='end-review-form' onSubmit={handleSubmit}>
                     <h1 id="review-end-title">Review</h1>
                     <label className='rating-box'>Rating:
                         <div id='rating-starts'>

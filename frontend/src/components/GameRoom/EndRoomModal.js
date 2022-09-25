@@ -8,9 +8,15 @@ const EndRoomModal = ({setShowEndRoomModal, room}) => {
 
     const dispatch = useDispatch();
     const history = useHistory();
+    const members = room.members;
 
-    
+    let usernames = [];
 
+    for (let i = 0; i < members.length; i++) {
+        usernames.push(members[i].username);
+    }
+
+    console.log(usernames, 'adfdsf');
 
     //mockData! --> need to pull from state.rooms._id.members = [user1,user2,user3]
     const users = ["matt", "mimi", "cameron", "daniel"]
@@ -22,12 +28,12 @@ const EndRoomModal = ({setShowEndRoomModal, room}) => {
     }
 
     let reviewShow;
-    if (users.length > 0){
+    if (usernames.length > 0){
         reviewShow = (
             <div>
-                {users.map(user => (
+                {usernames.map(user => 
                     <UserReview user={user}/>
-                ))}
+                    )}
             </div>
         )
     }
