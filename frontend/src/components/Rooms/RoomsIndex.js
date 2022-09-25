@@ -137,6 +137,8 @@ const RoomsIndex = () => {
     }
   }
 
+  if (!allRooms) return null;
+
   return (
     <>
       <div className="game-banner">
