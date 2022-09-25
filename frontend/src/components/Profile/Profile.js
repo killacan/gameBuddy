@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './Profile.css'
-import profile from './profile.jpg'
+import profile from './default-profile.png'
 import { FaStar } from "react-icons/fa";
 import { useState } from 'react';
 import ReviewIndex from "../ReviewIndex/ReviewIndex";
 import axios from 'axios';
 import { useEffect } from 'react';
+import profileBg from './profile-bg.png'
+import profileBorder from './profile-border.png'
 
 
 const Profile = () => {
@@ -85,7 +87,9 @@ const Profile = () => {
             setPlayerInfoComponent (
             <div className="icon-img">
                 <div className="league-summoner-container">
-                    <h1 id="league-username">{user.username}</h1>
+                    <div id="league-username">
+                        <div id="league-username-2">{user.username}</div>
+                    </div>
                 </div>
                 
                 <div id="in-game-icon">
@@ -103,7 +107,9 @@ const Profile = () => {
                     setPlayerInfoComponent (
                     <>
                        <div className="league-summoner-container">
-                            <h1 id="league-username">League Username : {data.name}</h1>
+                            <div id="league-username"> League Username :
+                                <div id="league-username-2"> {data.name}</div>
+                            </div>
                             <h2 id="summoner-lvl">Summoner Level : {data.summonerLevel}</h2>
                             <div id="avg-rating">Avg Rating:{showStar(3)}</div>
                         </div>
@@ -153,12 +159,13 @@ const Profile = () => {
                     <h1>{data[0].tier}</h1>
                     <h1>{data[0].rank}</h1>
                 </div>
-                )} else {
-                    setPlayerRankComponent(
-                        <>
-                        </>
-                    )
-                }
+            )} else {
+                setPlayerRankComponent(
+                    <div id="player-rank-component">
+                        <h1 id="testing-testing">hello</h1>
+                    </div>
+                )
+            }
             })
             .catch(err => {
                 console.error('Request Failed', err)
@@ -169,23 +176,50 @@ const Profile = () => {
     
         return(
             <>
-            <div className='game-main-container'>
-
-                <div className='user-profile-box'>
-                {playerInfoComponent}
-                    <div className='img-box'>
+                <div className='game-main-container'>
+                    <div className="profile-bg-container">
+                        <img id="profile-bg" src={profileBg}/>
+                        <div className="profile-image-border">
+                            <img id="profile-border" src={profileBorder}/>
+                            {playerInfoComponent}
+                        </div>
                         
                     </div>
-                    <div className="rank-info">
-                        {playerRankComponent}
-                    </div>
-                </div>
+          
+                 
+                    <div className="bottom-profile-container">
+                        <div className="rank-reviews-info">
+                            <div className="review-tags-display">
+                                <div id="review-tags-display-bg"></div>
+                            </div>
 
-                <div className='user-reviews-box'>
-                    <ReviewIndex/>
+                            
+                            <div className="rank-info">
+                                <div id="rank-review-bg"></div>
+                                {playerRankComponent}
+                            </div>
+                        </div>
+                        <div className="user-reviews-box">
+                            <div id="user-reviews-box-bg"></div>
+                            <ReviewIndex/>
+                        </div>
+                    </div>
+                   
+                    {/* <div className='user-profile-box'>
+                        {playerInfoComponent}
+                        <div className='img-box'>
+                            
+                        </div>
+                        <div className="rank-info">
+                            {playerRankComponent}
+                        </div>
+                    </div>
+
+                    <div className='user-reviews-box'>
+                        <ReviewIndex/>
+                    </div> */}
                 </div>
-            </div>
-        </>
+             </>
 )
 }
 
