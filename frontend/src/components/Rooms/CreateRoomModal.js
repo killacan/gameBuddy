@@ -20,10 +20,8 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
   const handleChange = (e) => {
     if (e.target.checked) {
       setPrivacy(true);
-      // console.log("checked")
     } else {
       setPrivacy(false);
-      // console.log("unchecked")
     }
   };
 
@@ -38,8 +36,6 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
       privacy: privacy,
     };
     const room = await dispatch(createRoom(roomInfo));
-    // console.log(room._id, user._id, "room and user id");
-    // const send = await dispatch(joinRoom(room._id, user._id));
     history.push(`/games/rooms/${room._id}`);
   };
 

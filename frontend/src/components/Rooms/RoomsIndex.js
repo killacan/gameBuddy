@@ -17,7 +17,6 @@ import tftGif from "./tft-gif.gif"
 
 const RoomsIndex = () => {
   const game = new URL(window.location.href).searchParams.get("game");
-  console.log(game);
 
   const [showCreateRoomModal, setShowCreateRoomModal] = useState(false);
 
@@ -30,7 +29,6 @@ const RoomsIndex = () => {
   const rooms = useSelector(state=> state.rooms)
   const allRooms = Object.values(rooms)
 
-  console.log(allRooms)
   useEffect(()=>{
     dispatch(fetchRooms())
   },[])
@@ -101,13 +99,10 @@ const RoomsIndex = () => {
   const handleJoinRoom = (field) => {
     return e => {
       e.preventDefault();
-      // field.members.push(user)
-      // dispatch(joinRoom(field._id, user._id))
       history.push(`/games/rooms/${field._id}`)
     }
     
   }
-  console.log(game)
   const toggle = () => {
     if (game === "Valorant"){
       return valBanner;

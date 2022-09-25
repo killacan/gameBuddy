@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
 import { fetchAllUsers } from '../../store/users';
-// import { set } from 'mongoose';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
