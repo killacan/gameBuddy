@@ -78,21 +78,21 @@ const ReviewIndex = () => {
      }
 
     return(
-        <div className="reviewIndex-container">
+        <>
             {reviews.map(review => (
             review.reviewer._id === userId  ? 
-                <div className="user-rating">
+                <div className="user-rating-profile">
                     <div className="star-rating">
                         {showStar(review.rating)}
                     </div>
-                    <div className="review-tags">
+                    {/* <div className="review-tags">
                         <div>{review.friendly && <div id="tags-1">friendly </div>}</div>
                         <div>{review.griefing && <div id="tags-2">griefing</div>}</div>
                         <div>{review.leader && <div id="tags-3">leader </div>}</div>
                         <div>{review.skilled && <div id="tags-4">skilled </div>}</div>
                         <div>{review.teamPlayer && <div id="tags-5">teamPlayer </div>}</div>
                         <div>{review.toxic && <div id="tags-6">toxic</div>}</div>
-                    </div>
+                    </div> */}
                     <div className="review-comments">
                         {review.comments}
                     </div>
@@ -101,7 +101,7 @@ const ReviewIndex = () => {
                 ""
             ))}
                 
-        </div>
+        </>
     )
 }
 

@@ -13,10 +13,21 @@
     display: none;
 }
 
+#navLogo{
+    color: white;
+    font-family: brightness;
+    margin-left: 2vw;
+    text-align: center;
+    margin-top: .5vh;
+}
+
 .left-side-nav{
     margin-left: 2vw;
     font-size: 1.4vw;
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .right-side-nav{
