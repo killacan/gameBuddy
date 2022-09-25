@@ -37,6 +37,7 @@ function NavBar () {
       <div className={toggle()}>
         <div className="left-side-nav">
             <AiOutlineRollback onClick={()=>history.goBack()}id="menu-icon"/>
+            <div id="navLogo">GB</div>
         </div>
 
         <div className="right-side-nav"> 

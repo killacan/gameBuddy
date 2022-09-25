@@ -9,11 +9,8 @@ const EndRoomModal = ({setShowEndRoomModal, room}) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    
-
-
     //mockData! --> need to pull from state.rooms._id.members = [user1,user2,user3]
-    const users = ["matt", "mimi", "cameron", "daniel"]
+    // const users = ["matt", "mimi", "cameron", "daniel"]
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -21,12 +18,14 @@ const EndRoomModal = ({setShowEndRoomModal, room}) => {
         history.push("/games")
     }
 
+
     let reviewShow;
-    if (users.length > 0){
+    if (Object.values(room.members).length > 0){
         reviewShow = (
             <div>
-                {users.map(user => (
-                    <UserReview user={user}/>
+                {Object.values(room.members).map(member => (
+                    // console.log(member.username)
+                    <UserReview member={member.username}/>
                 ))}
             </div>
         )

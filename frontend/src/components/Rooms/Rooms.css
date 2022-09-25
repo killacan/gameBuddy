@@ -226,15 +226,30 @@ margin-left: 1vw;
     background-color: #0b263e;
 }
 
+.game-index-bg-container{
+    position: relative;
+    width: 80vw;
+    height:83%;
+}
+#game-index-bg{
+ background-image: url('./val-game-index-bg.png');
+ margin-top: 1vh;
+ width: 80vw;
+ height:83%;
+ position: absolute;
+
+}
 .join-room{
+    position: absolute;
     margin-top: 1vh;
     width: 80vw;
     height:83%;
-    background-color: #0b263e;
+    background: linear-gradient(to bottom, #571a2c, #41244c, #24243e);
     box-shadow: 0 0 .33vw gray,
     0 0 1vw gray,
     0 0 1vw gray,
     0 0 1vw gray;
+    opacity: .8;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -294,7 +309,7 @@ margin-left: 1vw;
 #quotes{
     position: absolute;
     font-size: 2.5vw;
-    text-shadow: 2px 1px #03182c;
+    text-shadow: 3px 1px #74253c;
     color: white;
     font-family: coronos;
 }

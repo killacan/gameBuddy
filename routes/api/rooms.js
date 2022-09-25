@@ -28,6 +28,7 @@ router.post('/create', requireUser, validateRoomInput, async (req, res, next) =>
         })
 
         let room = await newRoom.save();
+        room = await room.populate('host');
         return res.json(room);
     }
     catch(err) {
@@ -40,6 +41,7 @@ router.post('/create', requireUser, validateRoomInput, async (req, res, next) =>
 router.get('/', async (_req, res) => {
     try {
         const rooms = await Room.find()
+                                .populate('host','_id, username')
                                 .sort({ createdAt: -1});
         return res.json(rooms);
     }
@@ -53,6 +55,7 @@ router.get('/', async (_req, res) => {
 router.get('/:roomId', async (req, res, next) => {
     try {
         const room = await Room.findById(req.params.roomId)
+                               .populate('host','_id,username')
         return res.json(room);
     }
     catch(_err) {
