@@ -9,6 +9,7 @@ function WebSocketComp () {
     const dispatch = useDispatch();
     const {roomId} = useParams();
     const room = useSelector(state => state.rooms[roomId])
+    const currentUser = useSelector(state => state.session.user)
     const [message, setMessage] = useState("");
     const [socket, setSocket] = useState();
     const [messages, setMessages] = useState([]);
@@ -84,7 +85,8 @@ function WebSocketComp () {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('sending...', message)
-        socket.send(JSON.stringify({message: message, roomId: roomId}))
+        socket.send(JSON.stringify({message: message, roomId: roomId, userName: currentUser.username}))
+        setMessage("")
     }
 
     if (!socket) return null;
@@ -94,7 +96,7 @@ function WebSocketComp () {
             <div className='chat-container'>
                 <div className='room-messages-container'>
                     {messages.map (message => {
-                        return <div>{message.message}</div>
+                        return <div>{`${message.userName}: `}{message.message}</div>
                         })
                     }
                 </div>
