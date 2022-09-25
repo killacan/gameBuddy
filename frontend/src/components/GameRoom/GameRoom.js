@@ -38,7 +38,11 @@ const GameRoom = () => {
                 let updatedRoom = Object.assign({}, res, {members: result})
                 return updatedRoom})
             .then((res) => {
-                return dispatch(updateRoom(res))})}
+                return dispatch(updateRoom(res))})
+            .then(() => {
+                if (user._id === room.host._id) {
+                    dispatch(destroyRoom(roomId))}})
+                }
     },[])
 
 
