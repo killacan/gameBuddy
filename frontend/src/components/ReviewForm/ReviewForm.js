@@ -1,5 +1,5 @@
 import React, { useState } from "react"; 
-import { FaLessThanEqual, FaStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { createReview } from "../../store/reviews";
 import { useHistory, useParams } from "react-router-dom"
@@ -27,10 +27,8 @@ const ReviewForm = ({setShowReviewForm}) => {
     });
 
     const [rating, ,setRating] = useState()
-    // let path = (`profile/${userId}`)
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(userId)
         dispatch(createReview(selectedReview));
         setSelectedReview({...selectedReview, 
             rating: 0,

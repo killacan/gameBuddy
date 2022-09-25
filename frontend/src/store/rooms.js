@@ -93,7 +93,6 @@ export const createRoom = (roomData) => async (dispatch) => {
   }
 };
 export const updateRoom = (roomData) => async (dispatch) => {
-  console.log(roomData, "roomData");
   try {
     const res = await jwtFetch(`/api/rooms/${roomData._id}`, {
       method: "PATCH",
@@ -118,7 +117,6 @@ export const destroyRoom = (roomId) => async (dispatch) => {
     const res = await jwtFetch(`/api/rooms/${roomId}`, {
       method: "DELETE",
     });
-    console.log("hello after fetch")
     dispatch(deleteRoom(roomId));
   } catch (err) {
     const resBody = await err;

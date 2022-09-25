@@ -1,7 +1,4 @@
-// import { Link } from "react-router-dom";
-// import { useSelector, useDispatch } from "react-redux";
 import './NavBar.css'
-// import { logout } from '../../store/session'
 import { useLocation } from 'react-router-dom';
 import {FaUserAstronaut} from "react-icons/fa";
 import { AiOutlineRollback } from "react-icons/ai";

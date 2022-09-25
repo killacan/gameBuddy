@@ -16,7 +16,6 @@ const validateRoomInput = require('../../validation/rooms');
 
 /* POST ----- CREATE ROOM ----- */
 router.post('/create', requireUser, validateRoomInput, async (req, res, next) => {
-    console.log(req)
     try {
         const newRoom = new Room({
             host: req.body.host,
@@ -68,7 +67,6 @@ router.get('/:roomId', async (req, res, next) => {
 /* PATCH ----- UPDATE ROOM ----- */
 router.patch('/:roomId', requireUser, async (req, res, next) => {
     try {
-        // console.log(req, "kanye");
         let room = await Room.findById(req.params.roomId);
 
         if (room) {
