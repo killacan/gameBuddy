@@ -31,7 +31,8 @@ function WebSocketComp () {
             console.log('Websocket is connected!')
             const id = Math.round(Math.random() * 100)
             console.log('sending...', id)
-            socketNew.send(JSON.stringify({message: `${sessionUser.username} has joined the room`, roomId: roomId}))
+            console.log(sessionUser)
+            socketNew.send(JSON.stringify({message: `has joined the room`, roomId: roomId, userName: sessionUser.username}))
             // const data = JSON.stringify(
             // [
             //     {
