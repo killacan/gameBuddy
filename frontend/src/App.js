@@ -39,7 +39,6 @@ function App() {
         <ProtectedRoute exact path={"/profile/:userId"} component={Profile}/>
         <ProtectedRoute exact path={"/games/rooms"} component={RoomsIndex}/>
         <ProtectedRoute exact path={"/games/rooms/:roomId"} component={GameRoom} />
-        <ProtectedRoute exact path={"/riotapi"} component={RiotApi} />
 
         <Redirect to="/"/>
         
