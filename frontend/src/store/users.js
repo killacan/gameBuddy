@@ -32,6 +32,8 @@ export const fetchAllUsers = () => async (dispatch) => {
     }
 }
 
+
+
 const usersReducer = (state ={}, action) => {
     Object.freeze(state)
     const newState = {...state}

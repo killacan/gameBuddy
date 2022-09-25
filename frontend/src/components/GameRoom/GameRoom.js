@@ -18,11 +18,7 @@ const GameRoom = () => {
     let user = useSelector(state => state.session.user)
     const [roomLoad, setRoomLoad] = useState(false);
 
-    useEffect(()=>{
-        dispatch(fetchAllUsers())
-    })
     
-    const users = useSelector(state => state.)
     useEffect(()=> {
         dispatch(fetchRoom(roomId)).then((res) => {
             let flag = false;
@@ -33,7 +29,6 @@ const GameRoom = () => {
                 
                 if (!flag) {
                     res.members.push(user)
-                    console.log(res, "Hello There")
                     dispatch(updateRoom(res))
                 } 
         })
@@ -46,6 +41,9 @@ const GameRoom = () => {
                 return dispatch(updateRoom(res))})}
     },[])
 
+
+
+   
     // useEffect(()=> {
     //     console.log("room changed")
     //     setRoomLoad(true)
