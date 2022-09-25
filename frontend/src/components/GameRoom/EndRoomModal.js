@@ -14,13 +14,14 @@ const EndRoomModal = ({setShowEndRoomModal, room}) => {
     console.log(room1, 'adfdsf');
     const members = room1[2];
     //mockData! --> need to pull from state.rooms._id.members = [user1,user2,user3]
-    const users = ["matt", "mimi", "cameron", "daniel"]
+    // const users = ["matt", "mimi", "cameron", "daniel"]
 
     const handleSubmit = async(e) => {
         e.preventDefault();
         const delRoom = await dispatch(destroyRoom(room._id))
         history.push("/games")
     }
+
 
     let reviewShow;
     if (members.length > 0){

@@ -13,8 +13,8 @@ function WebSocketComp () {
     const [message, setMessage] = useState("");
     const [socket, setSocket] = useState();
     const [messages, setMessages] = useState([]);
-
     const sessionUser = useSelector(state => state.session.user)
+    
 
 
     useEffect(()=> {
@@ -90,6 +90,11 @@ function WebSocketComp () {
         setMessage("")
     }
 
+
+    const handleMouseOver = (e) => {
+        e.preventDefault();
+
+    }
     if (!socket) return null;
 
     return (
@@ -112,7 +117,7 @@ function WebSocketComp () {
             <div className="display-room-members">
                 <h1 id="room-member">Room Members:</h1>
                 {room.members.map(member => (
-                    <div id="member-room-username">
+                    <div id="member-room-username" >
                         {member.username}
                     </div>
                 ))}

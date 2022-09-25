@@ -1,16 +1,306 @@
 .game-main-container{
-    width: 100vw;
-    height: 100vh;
-    background-image: linear-gradient(#aae9f8,#0c242b,#072038);
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.user-reviews-box{
-    height: 70vh;
+.profile-bg-container{
     width: 100vw;
-    background-color:#02101d;
+    height: 45vh;
+}
+#profile-bg{
+    max-width: 100vw;
+    width: 100%;
+    max-height: 45vh;
+    height: 100%;
+}
+
+.profile-image-border{
+    position: relative;
+    width: 18.5vw;
+    height: 31.8vh;
+    top: -8vw;
+    left: 8.5vw;
+} 
+.profile-image-border img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    object-fit: fill;
+    top: 0;
+    left: 0;
+}
+
+.profile-image-border #in-game-icon img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    object-fit: fill;
+    top: 0;
+    left: 0;
+    transform: scale(.85);
+}
+
+#league-username{
+    position: absolute;
+    left: 20vw;
+    top: 0vw;
+    width: 30vw;
+}
+
+#league-username-2{
+    color: rgb(11, 37, 70);
+    font-size: 3vw;
+    text-shadow: 0 1.5px #fee996;
+    margin-top: 1vw;
+}
+
+#league-username{
+    margin-top: 2vw;
+    font-family: azonix;
+    font-size: 2vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bottom-profile-container{
+    width: 100vw;
+    background-image: linear-gradient(180deg,
+    #464458,#957b7a,#1d1f24);
+    height: 100vh;
+    display: flex;
+    padding-top: 2vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+
+.rank-info{
+    margin-left: 1vw;
+    width: 30vw;
+    height: 40vh;
+    position: relative; 
+    box-shadow: 0px 10px 10px 1px #9f9ba2;
+   
+}
+
+#rank-review-bg{
+    background-color: #282d39;
+    top: 0;
+    width: 30vw;
+    height: 40vh;
+    opacity: .4;
+    position: absolute;
+}
+
+#player-rank-component{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-family: azonix;
+    font-size: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+#ranked-solo{
+    color: green;
+}
+
+#ranked-tft{
+    color: rgb(67, 99, 165);
+}
+
+#ranked-flex{
+    color: orange;
+}
+
+#unknown-1{
+    color: rgb(129, 43, 147);
+}
+
+#unknown-2{
+    color: aqua;
+}
+
+#unknown-3{
+    color: rgb(172, 59, 82);
+}
+
+.rank-reviews-info{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.review-tags-display{
+    width: 48vw;
+    height: 40vh;
+    margin-right: 1vw;
+    position: relative;
+    box-shadow: 0px 10px 10px 1px #9f9ba2;
+}
+
+#review-tags-display-bg{
+    background-color: #282d39;
+    width: 48vw;
+    height: 40vh;
+    top: 0;
+    opacity: .4;
+    position: absolute;
+}
+
+
+.user-reviews-box{
+    margin-top: 2vw;
+    width: 80vw;
+    height: 200vh;
+    overflow-y: scroll;
+    position: relative;
+    box-shadow: 0px 10px 10px 1px #9f9ba2;
+
+}
+
+#user-reviews-box-bg{
+    background-color: #282d39;
+    position: absolute;
+    width: 80vw;
+    height: inherit;
+    opacity: .4;
+    top: 0;
     overflow-y: scroll;
 }
+
+.user-rating-profile{
+    width: 80vw;
+    height: 5vh;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    border-bottom: 2px dotted rgb(68, 82, 115);
+}
+
+.review-comments{
+    color: white;
+    font-family: azonix;
+    font-size: .5vw;
+    z-index: 2;
+}
+
+.list-of-tags{
+    position: absolute;
+    color: white;
+    z-index:2; 
+    top: 10vw;
+    left: 1vw;
+    display: flex;
+}
+
+#tags-desc-1{
+    max-width: 30vw;;
+    display: flex;
+   font-family: azonix;
+   color: black;
+   padding: .3vw;
+   font-size: 1vw;
+   border: 1px solid rgb(85, 85, 85);
+   margin-top: .5vw;
+   margin-right: 1vw;
+   margin-bottom: .5vw;
+   background-color: rgb(244, 212, 239);
+   opacity: .7;
+}
+
+#tags-desc-2{
+    max-width: 30vw;;
+    display: flex;
+   font-family: azonix;
+   color: white;
+   padding: .3vw;
+   font-size: 1vw;
+   border: 1px solid rgb(85, 85, 85);
+   margin-top: .5vw;
+   margin-right: 1vw;
+   margin-bottom: .5vw;
+   background-color: rgb(69, 48, 13);
+   opacity: .7;
+}
+
+#tags-desc-3{
+    max-width: 30vw;;
+    display: flex;
+   font-family: azonix;
+   color: black;
+   padding: .3vw;
+   font-size: 1vw;
+   border: 1px solid rgb(85, 85, 85);
+   margin-top: .5vw;
+   margin-right: 1vw;
+   margin-bottom: .5vw;
+   background-color: rgb(255, 248, 43);
+   opacity: .7;
+}
+
+#tags-desc-4{
+    max-width: 30vw;;
+    display: flex;
+   font-family: azonix;
+   color: white;
+   padding: .3vw;
+   font-size: 1vw;
+   border: 1px solid rgb(85, 85, 85);
+   margin-top: .5vw;
+   margin-right: 1vw;
+   margin-bottom: .5vw;
+   background-color: rgb(75, 144, 255);
+   opacity: .7;
+}
+
+
+#tags-desc-5{
+    max-width: 30vw;;
+    display: flex;
+   font-family: azonix;
+   color: black;
+   padding: .3vw;
+   font-size: 1vw;
+   border: 1px solid rgb(85, 85, 85);
+   margin-top: .5vw;
+   margin-right: 1vw;
+   margin-bottom: .5vw;
+   background-color: rgb(79, 255, 114);
+   opacity: .7;
+}
+
+#tags-desc-6{
+    max-width: 30vw;;
+    display: flex;
+   font-family: azonix;
+   color: black;
+   padding: .3vw;
+   font-size: 1vw;
+   border: 1px solid rgb(85, 85, 85);
+   margin-top: .5vw;
+   margin-right: 1vw;
+   margin-bottom: .5vw;
+   background-color: rgb(255, 13, 13);
+   opacity: .7;
+}
+
+
+
+
+
+
+/* 
 
 .user-profile-box{
     display: grid;
@@ -38,20 +328,14 @@
     width: 100%
 }
 
-#league-username{
-    margin-top: 2vw;
-    font-family: azonix;
-    font-size: 2vw;
-    display: flex;
-    flex-wrap: wrap;
-}
+
 
 #in-game-icon{
     height:30vh;
     width: 30vh;
-}
+} */
 
-.img-box{
+/* .img-box{
     position: relative;
 }
 
@@ -65,47 +349,9 @@
     margin-top: 1.5vw;
 }
 
-#player-rank-component{
-    padding-left: 2vw;
-    /* margin-left: 4vw; */
-    border-left: 1px solid black;
-    background-color:  #02101d;
-    /* width: 30vw;
-    height: 26.7vh; */
-    width: 100%;
-    height: 100%;
-    color: white;
-    font-family: azonix;
-    font-size: 1vw;
-    /* padding-top: 2vw; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
 
-#ranked-solo{
-    color: green;
-}
 
-#ranked-tft{
-    color: rgb(67, 99, 165);
-}
 
-#ranked-flex{
-    color: orange;
-}
-
-#unknown-1{
-    color: rgb(129, 43, 147);
-}
-
-#unknown-2{
-    color: aqua;
-}
-
-#unknown-3{
-    color: rgb(172, 59, 82);
-}
 .rank-info{
     grid-column: 3;
     grid-row: 1;
@@ -118,4 +364,4 @@
 #avg-rating{
     font-family: azonix;
     margin-top: 1.5vw;
-}
+} */

@@ -9,6 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/bundle';
 import './SplashCarousel.css'
 import NeonBg from './neon_bg.jpeg'
+// import NeonBg from './neon_bg2.png'
 
 const SplashCarousel  = () => {
 
