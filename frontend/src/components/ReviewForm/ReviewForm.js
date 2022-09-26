@@ -8,7 +8,7 @@ import './ReviewForm.css'
 
 const ReviewForm = ({setShowReviewForm}) => {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user)
+    const sessionUser = useSelector(state => state.session.user._id)
     const {userId} = useParams();
     const history = useHistory();
 
@@ -22,7 +22,7 @@ const ReviewForm = ({setShowReviewForm}) => {
         griefing: false,
         teamPlayer: false,
         leader: false,
-        reviwer: sessionUser,
+        reviewer: sessionUser,
         reviewee: userId
     });
 
@@ -33,14 +33,15 @@ const ReviewForm = ({setShowReviewForm}) => {
         setSelectedReview({...selectedReview, 
             rating: 0,
             comments: "",
-            toxic: null,
-            friendly: null,
-            skilled: null,
+            toxic: false,
+            friendly: false,
+            skilled: false,
             griefing: false,
             teamPlayer: false,
             leader: false,
-            reviwer: sessionUser,
-            reviewee: userId})
+            reviewer: sessionUser,
+            reviewee: userId
+        })
         setShowReviewForm(false)
     }
 

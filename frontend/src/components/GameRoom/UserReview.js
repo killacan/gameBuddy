@@ -2,7 +2,7 @@ import './GameRoom.css'
 import { useState } from 'react'
 import ReviewForm from '../ReviewForm/ReviewForm.js'
 
-const UserReview = ({user}) => {
+const UserReview = ({member}) => {
 
     const [showReviewForm, setShowReviewForm] = useState(false)
 
@@ -10,7 +10,7 @@ const UserReview = ({user}) => {
         <>
             <div className="review-box">
                 <div className="review-username">
-                    <p id="username-text">{user}</p>
+                    <p id="username-text">{member}</p>
                 </div>
                 <div className="review-button">
                     <div onClick={() => setShowReviewForm(true)}>
