@@ -468,6 +468,17 @@
     font-family: azonix;
 }
 
+#update-submit{
+  background: none;
+color: inherit;
+border: none;
+padding: 0;
+font: inherit;
+cursor: pointer;
+outline: inherit;
+  font-family: azonix;
+}
+
 .signup-form a {
     position: relative;
     display: inline-block;
@@ -586,5 +597,65 @@
   font-size: 14px;
   font-family: azonix;
   cursor: pointer;
+}
+
+.updateUserForm-bg{
+  background-image: linear-gradient(90deg, rgb(179, 234, 227), rgb(57, 120, 120));
+  width: 100vw;
+  height: 92vh;
+  position: fixed;
+  top: 8vh;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.updateUserForm{
+  width: 25vw;
+  height: 40vh;
+  background-color: #afaffe;
+
+
+}
+
+.delete-form-container{
+  text-align: center;
+  padding-top: .5vw;
+  width: 13vw;
+  height: 11vh;
+  position: fixed;
+  top: 20vh;
+  right: 20vw;
+  border: 1px dotted black;
+  background-image: linear-gradient(#847686,#c3b6c4);
+  font-family: azonix;
+  font-size: 1vw;
+}
+
+.yes-no-btn{
+  margin-top: .5vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#yes-del-acc{
+  background-color: transparent;
+  font-family: azonix;
+}
+#no-del-acc{
+  background-color: transparent;
+  font-family: azonix;
+}
+
+#yes-del-acc:hover{
+  background-color: #ffa1a1;
+  transform: scale(1.1);
+  font-family: azonix;
+}
+#no-del-acc:hover{
+  background-color: #79fa95;
+  transform:scale(1.1);
+  font-family: azonix;
 }
 

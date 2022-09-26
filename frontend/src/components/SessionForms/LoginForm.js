@@ -13,6 +13,7 @@ function LoginForm () {
 
   const users = useSelector(state => Object.values(state.users))
 
+  //
   let usernames = [];
   users.map(user => {
     usernames.push(user.username)
@@ -66,8 +67,8 @@ function LoginForm () {
   const demoUser = (e) => {
     e.preventDefault();
     dispatch(login({
-      email: "admin@admin.com",
-      password: "admin123"
+      email: "test@admin.com",
+      password: "password"
     }))
   }
 
