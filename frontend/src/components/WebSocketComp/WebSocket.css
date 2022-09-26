@@ -1,5 +1,4 @@
 .chat-outer-container{
-    background-color: #072038;
     display: flex;
     width: 100%;
     height: 100%;
@@ -20,11 +19,19 @@
     flex-direction: column;
     align-items: flex-end;
     padding-right: 2vw;
-    font-size: 1.5vw;
-    color: white
+    font-size: .8vw;
+    color: white;
+    margin-top: 5vh;
+}
+#user-messages{
+    color: white;
+    text-shadow: 1px 1px  black;
+    font: 1vw;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #room-member{
+    margin-top: 2vw;
     font-size: 2vw;
     margin-bottom: .5vw;
     color: white;
@@ -34,9 +41,18 @@
 
 .room-messages-container{
    overflow-y: scroll;
-   background-color: #a1bbd4;
-   opacity: .3;
+   position: relative;
+   border-radius: .3vw;
+}
 
+#msg-bg{
+    position: absolute;
+    top: 0;
+    background-color: #a1bbd4;
+    opacity: .4;
+    width: 60vw;
+    height: 80vh;
+    border-radius: .3vw;
 }
 
 

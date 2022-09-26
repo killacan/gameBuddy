@@ -10,6 +10,8 @@ import 'swiper/css/bundle';
 import './SplashCarousel.css'
 import NeonBg from './neon_bg.jpeg'
 import Slide1 from './slide-1.png'
+import Slide2 from './slide-2.png'
+import Slide3 from './slide-3.png'
 // import NeonBg from './neon_bg2.png'
 
 const SplashCarousel  = () => {
@@ -26,8 +28,8 @@ const SplashCarousel  = () => {
             >
                 <SwiperSlide><img id="neon-ng" src={NeonBg}/></SwiperSlide>
                 <SwiperSlide><img src={Slide1}/></SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
+                <SwiperSlide><img src={Slide2}/></SwiperSlide>
+                <SwiperSlide><img src={Slide3}/></SwiperSlide>
             </Swiper>
         </>
     )

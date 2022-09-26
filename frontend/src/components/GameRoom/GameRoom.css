@@ -1,10 +1,18 @@
 
 .game-room-container{
+    position: fixed;
+    top: 0;
+    padding-top: 8vh;
     width: 100vw;
     height: 92vh;
-    background-color: #091e34;
+    background-image: linear-gradient(60deg,#082038,#123253,#3b6692);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    opacity: .8;
+}
+.top-container-info{
+    display: flex;
     justify-content: space-between;
 }
 
@@ -12,23 +20,154 @@
     width: 100vw;
     height: 60%;
     display: flex;
-    justify-content: space-between; 
+    flex-direction: column;
+
 }
 
+#player1{
+    width: 14vw;
+    height: 41vh;
+    background-image: linear-gradient(#0e2f51,#1a4e82,#4078b0);
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    border-radius: .5vw;
+    font-family: brightness;
+    text-align: center;
+    font-size: 1vw;
+    color: rgb(167, 164, 164);
+    position: relative;  
+    padding-top: 12.5vh;
+    
+}
+
+@keyframes floating {
+0% { transform: translate(0,  0px); }
+50%  { transform: translate(0, 15px); }
+100%   { transform: translate(0, -0px); }   
+}
+
+#player2{
+    width: 14vw;
+    height: 41vh;
+    background-image: linear-gradient(#0e2f51,#1a4e82,#4078b0);
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    border-radius: .5vw;    
+    padding-top: 2vw;
+    font-family: brightness;
+    text-align: center;
+    font-size: 1vw;
+    color: rgb(167, 164, 164);
+    position: relative;
+
+
+}
+
+@keyframes floating {
+0% { transform: translate(0,  0px); }
+50%  { transform: translate(0, 15px); }
+100%   { transform: translate(0, -0px); }   
+}
+
+
+#player3{
+    width: 14vw;
+    height: 41vh;
+    background-image: linear-gradient(#0e2f51,#1a4e82,#4078b0);
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    border-radius: .5vw;
+    padding-top: 2vw;
+    font-family: brightness;
+    text-align: center;
+    font-size: 1vw;
+    color: rgb(167, 164, 164);
+    position: relative;
+
+}
+
+@keyframes floating {
+0% { transform: translate(0,  0px); }
+50%  { transform: translate(0, 15px); }
+100%   { transform: translate(0, -0px); }   
+}
+
+#player4{
+    width: 14vw;
+    height: 41vh;
+    background-image: linear-gradient(#0e2f51,#1a4e82,#4078b0);
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    border-radius: .5vw;
+    padding-top: 2vw;
+    font-family: brightness;
+    text-align: center;
+    font-size: 1vw;
+    color: rgb(167, 164, 164);
+    position: relative;
+}
+
+@keyframes floating {
+0% { transform: translate(0,  0px); }
+50%  { transform: translate(0, 15px); }
+100%   { transform: translate(0, -0px); }   
+}
+
+#player5{
+    width: 14vw;
+    height: 41vh;
+    background-image: linear-gradient(#0e2f51,#1a4e82,#4078b0);
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    border-radius: .5vw;
+    padding-top: 2vw;
+    font-family: brightness;
+    text-align: center;
+    font-size: 1vw;
+    color: rgb(167, 164, 164);
+    position: relative;
+}
+
+@keyframes floating {
+0% { transform: translate(0,  0px); }
+50%  { transform: translate(0, 15px); }
+100%   { transform: translate(0, -0px); }   
+}
 .top-left-container{
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
 }
 
+.loading-screen-images{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 2vw;
+}
 
 .host-info{
     display: flex;
     margin-bottom: 2vw;
+    width: 15vw;
+    font-size: 1vw;
+    justify-content: flex-end;
+
 }
 
 .update-del-room-btns{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
 }
 
 
@@ -177,8 +316,8 @@
 #game-room-name{
     margin-top: 2vw;
     color: white;
-    font-family: azonix;
-    font-size: 1vw;
+    font-family: brightness;
+    font-size: 2vw;
     margin-left: 2vw;
 }
 
@@ -190,11 +329,8 @@
     color: white;
     font-family: azonix;
     font-size: 1vw;
-    margin-right: 2vw;
+    margin-right: 6vw;
 
-}
-.host-info{
-    font-size: 1vw;
 }
 
 #end-session-btn{
@@ -239,14 +375,74 @@
     background-color: aquamarine;
     border-color: white;
     padding-top: .2vw;
-    color: black;
+    color: #000000;
 }
 
 .bottom-game-room-container{
     width: 100%;
-    height: 40%;
+    height: 30%;
 }
 
 #room-leader{
     margin-right: .5vw;
+}
+
+ .game-room-bg-img{
+    width: 100vw;
+    height: 92vh;
+    opacity: .6;
+    padding-top: 8vh;
+}
+
+
+#player1 img{
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    left: 0;
+
+}
+#player2 img{
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    left: 0;
+
+
+}
+#player3 img{
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;    
+    left: 0;
+
+}
+#player4 img{
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    left: 0;
+
+}
+#player5 img{
+    position: absolute;
+    object-fit:cover;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    left: 0;
+
 }
