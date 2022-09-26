@@ -1,6 +1,6 @@
 import './GameRoom.css';
 import { useDispatch,useSelector } from 'react-redux';
-import { useParams,useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { destroyRoom,fetchRoom, joinRoom, updateRoom } from '../../store/rooms';
 import { useEffect,useState } from 'react';
 import UpdateRoomModal from './UpdateRoomModal';
@@ -13,10 +13,8 @@ const GameRoom = () => {
 
     const dispatch = useDispatch();
     const {roomId} = useParams();
-    const history = useHistory();
     const room = useSelector(state => state.rooms[roomId]);
     let user = useSelector(state => state.session.user)
-    const [roomLoad, setRoomLoad] = useState(false);
 
     
     useEffect(()=> {

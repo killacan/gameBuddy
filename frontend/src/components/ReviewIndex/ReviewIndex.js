@@ -80,7 +80,7 @@ const ReviewIndex = () => {
     return(
         <>
             {reviews.map(review => (
-            review.reviewer._id === userId  ? 
+            review.reviewee._id === userId  ? 
                 <div className="user-rating-profile">
                     <div className="star-rating">
                         {showStar(review.rating)}

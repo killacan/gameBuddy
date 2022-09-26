@@ -7,24 +7,24 @@ import ReviewIndex from "../ReviewIndex/ReviewIndex";
 import axios from 'axios';
 import profileBg from './profile-bg.png'
 import profileBorder from './profile-border.png'
-import { useParams } from 'react-router-dom';
+import { useParams,useHistory } from 'react-router-dom';
 import { fetchReviews } from '../../store/reviews';
+import DeleteForm from '../SessionForms/DeleteForm';
+import { fetchAllUsers } from '../../store/users';
 
 const Profile = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
     const riotUsername = useSelector(state => state.session.user.riotUsername)
     const {userId} = useParams();
-
     
-    const [rating, setRating] = useState(5)
     const reviews = useSelector(state => Object.values(state.reviews))
-    useEffect(()=>{
-        dispatch(fetchReviews())
-    },[])
-    
+   
+
+   
     const RIOT_API_KEY = process.env.REACT_APP_RIOT_API_KEY
     
+   
     const [playerInfoComponent, setPlayerInfoComponent] = useState();
     const [playerRankComponent, setPlayerRankComponent] = useState();
     const showStar = (rating)=>{
@@ -92,10 +92,23 @@ const Profile = () => {
      let teamPlayer = 0;
      let toxic = 0;
      
+     const history = useHistory();
+
+     const[showDeleteModal,setShowDeleteModal] = useState(false);
+
+     const handleUpdateAcc = (e) => {
+        e.preventDefault();
+        history.push(`/profile/${user._id}/update`);
+     }
+
+     const handleDeleteAcc = (e) => {
+        e.preventDefault();
+        setShowDeleteModal(true)
+     }
+
      const countTags = () => {
-        console.log(reviews)
         reviews.map(review=> {
-            if (review.reviewer._id === userId) {
+            if (review.reviewee._id === userId) {
                 if (review.friendly){
                     friendly = friendly + 1 ;
                 } else if ( review.griefing){
@@ -220,6 +233,8 @@ const Profile = () => {
                 <div className='game-main-container'>
                     <div className="profile-bg-container">
                         <img id="profile-bg" src={profileBg}/>
+                        <button onClick={handleUpdateAcc} id="update-user-acc" >Update Account</button>
+                        <button onClick={handleDeleteAcc} id="delete-user-acc" >Delete Account</ button>
                         <div className="profile-image-border">
                             <img id="profile-border" src={profileBorder}/>
                             {playerInfoComponent}
@@ -227,7 +242,6 @@ const Profile = () => {
                         
                     </div>
           
-                 
                     <div className="bottom-profile-container">
                         <div className="rank-reviews-info">
                             <div className="review-tags-display">
@@ -260,6 +274,7 @@ const Profile = () => {
                         <ReviewIndex/>
                     </div> */}
                 </div>
+                {showDeleteModal && <DeleteForm setShowDeleteModal={setShowDeleteModal} />}
              </>
 )
 }

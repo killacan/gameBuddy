@@ -11,7 +11,8 @@ import SignupForm from './components/SessionForms/SignupForm';
 import Games from "./components/Games/Games";
 import { getCurrentUser } from './store/session';
 import WebSocketComp from "./components/WebSocketComp/WebSocketComp";
-
+import UpdateForm from "./components/SessionForms/UpdateForm";
+import { Route } from "react-router-dom";
 import GameRoom from "./components/GameRoom/GameRoom";
 
 
@@ -29,7 +30,7 @@ function App() {
     <>
       <NavBar/>
       <Switch>
-        <AuthRoute exact path={"/"} component={MainPage}/>
+        <Route exact path={"/"} component={MainPage}/>
         <AuthRoute exact path={"/signup"} component={SignupForm}/>
         <AuthRoute exact path={"/login"} component={LoginForm}/>
         <ProtectedRoute exact path={"/games"} component={Games}/>
@@ -37,7 +38,7 @@ function App() {
         <ProtectedRoute exact path={"/profile/:userId"} component={Profile}/>
         <ProtectedRoute exact path={"/games/rooms"} component={RoomsIndex}/>
         <ProtectedRoute exact path={"/games/rooms/:roomId"} component={GameRoom} />
-
+        <ProtectedRoute exact path={"/profile/:userId/update"} component={UpdateForm}/>
         <Redirect to="/"/>
         
         {/* 
