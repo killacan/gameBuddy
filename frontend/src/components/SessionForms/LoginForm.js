@@ -34,7 +34,7 @@ function LoginForm () {
     };
   }, [dispatch]);
   
-  const checkEmail = (email) => {
+  const checkLoginEmail = (email) => {
     for (let i = 0; i <=emails.length; i++){
       if (email === emails[i]){
         return true
@@ -48,20 +48,24 @@ function LoginForm () {
     return e => setState(e.currentTarget.value);
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    try{
-      dispatch(login({ email, password })); 
-    }catch (err){
-      const resBody = err;
-      if (resBody.statusCode === 400){
-        showInvalid()
+  const checkLogin = (username) => {
+    for (let i = 0; i <= usernames.length; i++){
+      if (username === usernames[i]){
+        dispatch(login({ email, password}))
       }
     }
+    document.getElementById("errors-login-em").style.display = "flex"
+    setTimeout(function(){
+      document.getElementById("errors-login-em").style.display = "none"
+    }, 3000)
+    console.log("hello from login bad")
   }
-  const showInvalid = () => {
-    document.getElementById("errors-login-em").style.display = "block"
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    checkLogin()
   }
+  
 
   const demoUser = (e) => {
     e.preventDefault();
@@ -77,16 +81,17 @@ function LoginForm () {
         <form className="login-form" onSubmit={handleSubmit}>
           <h2 id="login-title">Login</h2>
           <div className="email-username-container">
-            <label id="input-login">Email or Username</label>
+            <div id="errors-login-em">
+              <div id="errors-confirm-password">Invalid Email</div>
+            </div>
+            <br></br>
+            <label id="input-login">Email</label>
             <input type="text"
               id="email-input"
               value={email}
               onChange={update('email')}
               required
               />
-              <div id="errors-login-em">
-                <div id="errors-confirm-password">Invalid Login Credentials</div>
-              </div>
           </div>
           <div id="errors-em">
             <div id="errors-email">{errors?.email}</div>
@@ -100,6 +105,9 @@ function LoginForm () {
               onChange={update('password')}
               required
               />
+              <div id="errors-signup-pass">
+                {password.length < 6 && <div id="errors-signup-password">Password is too short</div>}
+              </div>
           </div>
           <div id="errors-pass">
             <div id="errors-password">{errors?.password}</div>
