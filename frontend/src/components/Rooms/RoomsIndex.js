@@ -15,6 +15,7 @@ import brimstoneGif from "./brimstone-gif.gif"
 import zoeyGif from "./zoey-gif.gif"
 import tftGif from "./tft-gif.gif"
 
+
 const RoomsIndex = () => {
   const game = new URL(window.location.href).searchParams.get("game");
 

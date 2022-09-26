@@ -7,7 +7,12 @@ import UpdateRoomModal from './UpdateRoomModal';
 import WebSocketComp from '../WebSocketComp/WebSocketComp';
 import EndRoomModal from './EndRoomModal';
 import { fetchAllUsers } from '../../store/users';
-import gameRoomBg from './background-gameroom.jpg'
+import gameRoomBg from './background-gameroom.jpg';
+import player1 from './player1.png';
+import player2 from './player2.png';
+import player3 from './player3.png';
+import player4 from './player4.png';
+import player5 from './player5.png';
 
 
 const GameRoom = () => {
@@ -95,12 +100,12 @@ const GameRoom = () => {
                     </div>
                     <div className="loading-screen-images">
                         <div id="player1">
-                            <div>{room.host.username}</div>
+                            <div>{room.host.username}<img id="p1"src={player1}/></div>
                         </div>
-                        <div id="player2">Player 2</div>
-                        <div id="player3">Player 3</div>
-                        <div id="player4">Player 4</div>
-                        <div id="player5">Player 5</div>
+                        <div id="player2">Player 2 <img id="p2" src={player2}/></div>
+                        <div id="player3">Player 3 <img id="p3" src={player3}/></div>
+                        <div id="player4">Player 4 <img id="p4" src={player4}/></div>
+                        <div id="player5">Player 5 <img id="p5" src={player5}/></div>
                     </div>
 
                 </div>
