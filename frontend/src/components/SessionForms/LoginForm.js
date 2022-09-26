@@ -66,8 +66,8 @@ function LoginForm () {
   const demoUser = (e) => {
     e.preventDefault();
     dispatch(login({
-      email: "admin@admin.com",
-      password: "admin123"
+      email: "test@admin.com",
+      password: "password"
     }))
   }
 
