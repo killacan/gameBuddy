@@ -78,7 +78,7 @@ const GameRoom = () => {
                     <div className="top-right-container">
                         <div className="host-info">
                             <div id="room-leader">Room Leader : </div>
-                            <div> {room.host.username}</div>
+                            <div>{room.host.username}</div>
                         </div>
                         <div className="update-del-room-btns">
                             {currentUserId === room.host._id ? 
@@ -91,7 +91,9 @@ const GameRoom = () => {
                     </div>
                 </div>
                 <div className="loading-screen-images">
-                    <div id="player1">A1</div>
+                    <div id="player1">
+                        <div>room.member.username</div>
+                    </div>
                     <div id="player2">A2</div>
                     <div id="player3">A3</div>
                     <div id="player4">A4</div>

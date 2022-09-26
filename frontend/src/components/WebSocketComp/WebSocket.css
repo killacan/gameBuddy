@@ -22,6 +22,12 @@
     font-size: 1.5vw;
     color: white
 }
+#user-messages{
+    color: white;
+    text-shadow: 1px 1px  black;
+    font: 1vw;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 #room-member{
     font-size: 2vw;
@@ -33,9 +39,18 @@
 
 .room-messages-container{
    overflow-y: scroll;
-   background-color: #a1bbd4;
-   opacity: .3;
+   position: relative;
+   border-radius: .3vw;
+}
 
+#msg-bg{
+    position: absolute;
+    top: 0;
+    background-color: #a1bbd4;
+    opacity: .4;
+    width: 60vw;
+    height: 80vh;
+    border-radius: .3vw;
 }
 
 

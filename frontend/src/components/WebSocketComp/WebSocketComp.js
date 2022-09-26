@@ -101,8 +101,10 @@ function WebSocketComp () {
         <div className="chat-outer-container">
             <div className='chat-container'>
                 <div className='room-messages-container'>
+                        <div id="msg-bg"></div>
                     {messages.map (message => {
-                        return <div>{`${message.userName}: `}{message.message}</div>
+                       
+                        return <div id="user-messages">{`${message.userName}: `}{message.message}</div>
                         })
                     }
                 </div>

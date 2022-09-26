@@ -96,79 +96,83 @@ const UpdateForm  = ({setShowUpdateUserModal,user}) => {
 
  return (
         <div className="updateUserForm-bg">
-            <form className="updateUserForm" onSubmit={handleSubmit}>
-                <h1>Update User Details</h1>
-                <div className="update-info-container">
-                    <label id="input-update">Email</label>
-                        <input type="text"
-                        value={updateEmail}
-                        onChange={(e)=>setUpdateEmail(e.target.value)}
-                        required
-                        /> 
-                    <div id="errors-signup-em">
-                        {checkEmail(updateEmail) && <div id="errors-confirm-password">Email has already been taken</div>}
-                    </div>
-                </div>
+            <div className="user-background">
+                <form className="updateUserForm" onSubmit={handleSubmit}>
+                    <h1 id="update-title">Update Account Details</h1>
+                    <div className="user-update-form-container">
+                        <div className="update-info-container">
+                            <label id="input-update">Email</label>
+                                <input type="text"
+                                value={updateEmail}
+                                onChange={(e)=>setUpdateEmail(e.target.value)}
+                                required
+                                /> 
+                            <div id="errors-signup-em">
+                                {checkEmail(updateEmail) && <div id="errors-confirm-password">Email has already been taken</div>}
+                            </div>
+                        </div>
 
-                <div className="update-info-container">
-                    <label id="input-update">Username</label>
-                    <input type="text"
-                    value={updateUsername}
-                    onChange={(e)=>setUpdateUsername(e.target.value)}
-                    required
-                    />
-                    <div id="errors-signup-user">
-                        {checkUsername(updateUsername) && <div id="errors-confirm-password">Username has already been taken</div>}
-                    </div>
-                </div>
+                        <div className="update-info-container">
+                            <label id="input-update">Username</label>
+                            <input type="text"
+                            value={updateUsername}
+                            onChange={(e)=>setUpdateUsername(e.target.value)}
+                            required
+                            />
+                            <div id="errors-signup-user">
+                                {checkUsername(updateUsername) && <div id="errors-confirm-password">Username has already been taken</div>}
+                            </div>
+                        </div>
 
-                <div className="update-info-container">
-                    <label id="input-update">Riot Username</label>
-                        <input type="text"
-                        value={updateRiotUsername}
-                        onChange={(e)=>setUpdateRiotUsername(e.target.value)}
-                        />
-                    <div id="errors-signup-user">
-                        {checkRiotUsername(updateRiotUsername) && <div id="errors-confirm-password">Riot Username has already been taken</div>}
-                    </div>
-                </div>
-            
-                <div className="update-info-container">
-                    <label id="input-update">Password</label>
-                        <input type="password"
-                        value={updatePassword}
-                        onChange={(e)=>setUpdatePassword(e.target.value)}
-                        required
-                        />
-                    <div id="errors-signup-pass">
-                        {checkPassword(updatePassword) && <div id="errors-signup-password">Password is too short</div>}
-                    </div>
-                </div>
+                        <div className="update-info-container">
+                            <label id="input-update">Riot Username</label>
+                                <input type="text"
+                                value={updateRiotUsername}
+                                onChange={(e)=>setUpdateRiotUsername(e.target.value)}
+                                />
+                            <div id="errors-signup-user">
+                                {checkRiotUsername(updateRiotUsername) && <div id="errors-confirm-password">Riot Username has already been taken</div>}
+                            </div>
+                        </div>
+                    
+                        <div className="update-info-container">
+                            <label id="input-update">Password</label>
+                                <input type="password"
+                                value={updatePassword}
+                                onChange={(e)=>setUpdatePassword(e.target.value)}
+                                required
+                                />
+                            <div id="errors-signup-pass">
+                                {checkPassword(updatePassword) && <div id="errors-signup-password">Password is too short</div>}
+                            </div>
+                        </div>
 
-                <div className="update-info-container">
-                    <label id="input-update">Confirm Password</label>
-                        <input type="password"
-                        value={updateConfirmPassword}
-                        onChange={(e)=>setUpdateConfirmPassword(e.target.value)}
-                        required
-                        />
-                    <div id="errors-confirm-pass">
-                        {updatePassword !== updateConfirmPassword && <div id="errors-confirm-password">Confirm Password field must match</div>}
+                        <div className="update-info-container">
+                            <label id="input-update">Confirm Password</label>
+                                <input type="password"
+                                value={updateConfirmPassword}
+                                onChange={(e)=>setUpdateConfirmPassword(e.target.value)}
+                                required
+                                />
+                            <div id="errors-confirm-pass">
+                                {updatePassword !== updateConfirmPassword && <div id="errors-confirm-password">Confirm Password field must match</div>}
+                            </div>
+                        </div>
+                        <a>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <input
+                            id="update-submit"
+                            type="submit"
+                            value="Update"
+                            disabled={!updateEmail || !updateUsername || !updatePassword || updatePassword !== updateConfirmPassword}
+                            />
+                        </a>
                     </div>
-                </div>
-                <a>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <input
-                    id="update-submit"
-                    type="submit"
-                    value="Update"
-                    disabled={!updateEmail || !updateUsername || !updatePassword || updatePassword !== updateConfirmPassword}
-                    />
-                </a>
-            </form>
+                </form>
+            </div>
         </div>
     )
 }
