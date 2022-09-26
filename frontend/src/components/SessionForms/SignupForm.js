@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
 import { fetchAllUsers } from '../../store/users';
-// import { set } from 'mongoose';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
@@ -51,7 +50,7 @@ function SignupForm () {
 
   const checkRiotUsername = (riotUsername) => {
     for (let i = 0; i <= riotUsernames.length; i++ ){
-      if (riotUsername === riotUsernames[i]){
+      if (riotUsername === riotUsernames[i] && riotUsername.length > 0){
         return true
       }
     }
@@ -66,7 +65,6 @@ function SignupForm () {
     }
   }
   
-
   useEffect(()=>{
     dispatch(fetchAllUsers());
   },[])

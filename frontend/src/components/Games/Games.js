@@ -1,10 +1,10 @@
 import './Games.css'
 import react from 'react';
-import valorantBg from './valorant-game-image.png'
+import valorantBg from './valorant-game-image 2.png'
 import leagueBg from './league-game-image.png'
 import tftBg from './tft-game-image.png'
 import {useHistory} from 'react-router-dom'
-import voltageBg from "./voltage-bg.gif"
+import gameSplashImg from "./gamesSplash.png"
 const Games = () => {
 
 
@@ -33,7 +33,7 @@ const Games = () => {
     return (
         <>
             <div className="voltage-bg-container">
-                <img id="voltage-bg" src={voltageBg}/>
+                <img id="voltage-bg" src={gameSplashImg}/>
                 <div className="game-display-container">
                 <div className = "game-main-container">
                     <div className="game-list">         

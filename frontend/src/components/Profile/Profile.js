@@ -1,21 +1,27 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './Profile.css'
-import profile from './profile.jpg'
+import profile from './default-profile.png'
 import { FaStar } from "react-icons/fa";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import ReviewIndex from "../ReviewIndex/ReviewIndex";
 import axios from 'axios';
-import { useEffect } from 'react';
-
+import profileBg from './profile-bg.png'
+import profileBorder from './profile-border.png'
+import { useParams } from 'react-router-dom';
+import { fetchReviews } from '../../store/reviews';
 
 const Profile = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
     const riotUsername = useSelector(state => state.session.user.riotUsername)
-    
+    const {userId} = useParams();
+
     
     const [rating, setRating] = useState(5)
-    const reviews = useSelector(state => state.session.user)
+    const reviews = useSelector(state => Object.values(state.reviews))
+    useEffect(()=>{
+        dispatch(fetchReviews())
+    },[])
     
     const RIOT_API_KEY = process.env.REACT_APP_RIOT_API_KEY
     
@@ -78,6 +84,43 @@ const Profile = () => {
          )
          } 
      }
+
+     let friendly = 0;
+     let griefing = 0;
+     let leader = 0;
+     let skilled =0;
+     let teamPlayer = 0;
+     let toxic = 0;
+     
+     const countTags = () => {
+        console.log(reviews)
+        reviews.map(review=> {
+            if (review.reviewer._id === userId) {
+                if (review.friendly){
+                    friendly = friendly + 1 ;
+                } else if ( review.griefing){
+                    griefing = griefing + 1;
+                } else if (review.leader) {
+                    leader = leader + 1;
+                } else if (review.skilled) {
+                    skilled = skilled + 1;
+                } else if (review.teamPlayer){
+                    teamPlayer = teamPlayer + 1 ;
+                } else if (review.toxic){
+                    toxic = toxic + 1;
+                }
+            }})
+        return (
+            <div className="list-of-tags">
+                <div id="tags-desc-1">Friendly: {friendly}</div>
+                <div id="tags-desc-2">Griefing: {griefing}</div>
+                <div id="tags-desc-3">Leader: {leader}</div>
+                <div id="tags-desc-4">Skilled: {skilled}</div>
+                <div id="tags-desc-5">TeamPlayer: {teamPlayer}</div>
+                <div id="tags-desc-6">Toxic: {toxic}</div>
+            </div>
+        )
+     }
     
     useEffect(() => {
 
@@ -85,7 +128,9 @@ const Profile = () => {
             setPlayerInfoComponent (
             <div className="icon-img">
                 <div className="league-summoner-container">
-                    <h1 id="league-username">{user.username}</h1>
+                    <div id="league-username">
+                        <div id="league-username-2">{user.username}</div>
+                    </div>
                 </div>
                 
                 <div id="in-game-icon">
@@ -103,7 +148,9 @@ const Profile = () => {
                     setPlayerInfoComponent (
                     <>
                        <div className="league-summoner-container">
-                            <h1 id="league-username">League Username : {data.name}</h1>
+                            <div id="league-username"> League Username :
+                                <div id="league-username-2"> {data.name}</div>
+                            </div>
                             <h2 id="summoner-lvl">Summoner Level : {data.summonerLevel}</h2>
                             <div id="avg-rating">Avg Rating:{showStar(3)}</div>
                         </div>
@@ -153,12 +200,13 @@ const Profile = () => {
                     <h1>{data[0].tier}</h1>
                     <h1>{data[0].rank}</h1>
                 </div>
-                )} else {
-                    setPlayerRankComponent(
-                        <>
-                        </>
-                    )
-                }
+            )} else {
+                setPlayerRankComponent(
+                    <div id="player-rank-component">
+                        <h1 id="testing-testing">No Rankings Available</h1>
+                    </div>
+                )
+            }
             })
             .catch(err => {
                 console.error('Request Failed', err)
@@ -169,23 +217,50 @@ const Profile = () => {
     
         return(
             <>
-            <div className='game-main-container'>
-
-                <div className='user-profile-box'>
-                {playerInfoComponent}
-                    <div className='img-box'>
+                <div className='game-main-container'>
+                    <div className="profile-bg-container">
+                        <img id="profile-bg" src={profileBg}/>
+                        <div className="profile-image-border">
+                            <img id="profile-border" src={profileBorder}/>
+                            {playerInfoComponent}
+                        </div>
                         
                     </div>
-                    <div className="rank-info">
-                        {playerRankComponent}
-                    </div>
-                </div>
+          
+                 
+                    <div className="bottom-profile-container">
+                        <div className="rank-reviews-info">
+                            <div className="review-tags-display">
+                                <div id="review-tags-display-bg"></div>
+                                {countTags()}
+                            </div>
 
-                <div className='user-reviews-box'>
-                    <ReviewIndex/>
+                            <div className="rank-info">
+                                <div id="rank-review-bg"></div>
+                                {playerRankComponent}
+                            </div>
+                        </div>
+                        <div className="user-reviews-box">
+                            <div id="user-reviews-box-bg"></div>
+                            <ReviewIndex/>
+                        </div>
+                    </div>
+                   
+                    {/* <div className='user-profile-box'>
+                        {playerInfoComponent}
+                        <div className='img-box'>
+                            
+                        </div>
+                        <div className="rank-info">
+                            {playerRankComponent}
+                        </div>
+                    </div>
+
+                    <div className='user-reviews-box'>
+                        <ReviewIndex/>
+                    </div> */}
                 </div>
-            </div>
-        </>
+             </>
 )
 }
 

@@ -19,23 +19,20 @@ const UpdateRoomModal = ({setShowUpdateRoomModal, room}) => {
           ...room,
           title: updateTitle,
           game: room.game,
-          host: user._id,
+          host: user,
           members: updateMembers,
           duration: updateDuration,
           privacy: updatePrivacy
         };
         const newRoomInfo = await dispatch(updateRoom(roomInfo));
-        console.log(newRoomInfo);
         setShowUpdateRoomModal(false)
     }
 
     const handleChange = (e) => {
         if (e.target.checked) {
             setUpdatePrivacy(true);
-          // console.log("checked")
         } else {
             setUpdatePrivacy(false);
-          // console.log("unchecked")
         }
       };
 

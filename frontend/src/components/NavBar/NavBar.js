@@ -1,7 +1,4 @@
-// import { Link } from "react-router-dom";
-// import { useSelector, useDispatch } from "react-redux";
 import './NavBar.css'
-// import { logout } from '../../store/session'
 import { useLocation } from 'react-router-dom';
 import {FaUserAstronaut} from "react-icons/fa";
 import { AiOutlineRollback } from "react-icons/ai";
@@ -40,6 +37,7 @@ function NavBar () {
       <div className={toggle()}>
         <div className="left-side-nav">
             <AiOutlineRollback onClick={()=>history.goBack()}id="menu-icon"/>
+            <div id="navLogo">GB</div>
         </div>
 
         <div className="right-side-nav"> 

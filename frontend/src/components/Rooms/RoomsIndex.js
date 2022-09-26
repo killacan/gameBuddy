@@ -17,7 +17,6 @@ import tftGif from "./tft-gif.gif"
 
 const RoomsIndex = () => {
   const game = new URL(window.location.href).searchParams.get("game");
-  console.log(game);
 
   const [showCreateRoomModal, setShowCreateRoomModal] = useState(false);
 
@@ -30,7 +29,6 @@ const RoomsIndex = () => {
   const rooms = useSelector(state=> state.rooms)
   const allRooms = Object.values(rooms)
 
-  console.log(allRooms)
   useEffect(()=>{
     dispatch(fetchRooms())
   },[])
@@ -101,13 +99,21 @@ const RoomsIndex = () => {
   const handleJoinRoom = (field) => {
     return e => {
       e.preventDefault();
-      // field.members.push(user)
-      // dispatch(joinRoom(field._id, user._id))
       history.push(`/games/rooms/${field._id}`)
     }
     
   }
-  console.log(game)
+
+  const toggleGameIndexBg = () => {
+    if (game === "Valorant"){
+      return './val-game-index-bg.png';
+    }else if (game === "League of Legends"){
+      return "";
+    }else{
+      return "";
+    }
+
+  }
   const toggle = () => {
     if (game === "Valorant"){
       return valBanner;
@@ -162,35 +168,38 @@ const RoomsIndex = () => {
               </button>           
             </div>
           </div>
-          <div className="join-room">
-            {allRooms.map(room=>( 
-              room.game === game? 
-              <div className="single-room-container">
-                <div className="left-create-room-container">
-                  <div id="room-title">Title : {room.title} </div>
-                  <div className="host-leader-info"> 
-                    <div id="hosted-by">Hosted By : </div>
-                    <div id="host-username">{room.host.username}</div>
+          <div className="game-index-bg-container">
+            <div id="game-index-bg" src={toggleGameIndexBg()}></div>
+            <div className="join-room">
+              {allRooms.map(room=>( 
+                room.game === game ? 
+                <div className="single-room-container">
+                  <div className="left-create-room-container">
+                    <div id="room-title">Title : {room.title} </div>
+                    <div className="host-leader-info"> 
+                      <div id="hosted-by">Hosted By : </div>
+                      <div id="host-username">{room.host.username}</div>
+                    </div>
+                    <div id="showstar-rating">{showStar(3)}</div>
                   </div>
-                  <div id="showstar-rating">{showStar(3)}</div>
-                </div>
-                <div className="right-create-room-container">
-                  <div id="room-duration">Room Duration: {room.duration}</div>
-                  <div className="render-room-components">
-                      {room.privacy === true ? <AiFillLock id="lock" /> : <AiOutlineUnlock id="unlock"/>}
-                      {room.members.length > 5 || room.privacy === true ? 
-                        <button id="room-full-btn">Full Room</button>
-                        :
-                        <button id="create-rm-btn" onClick={handleJoinRoom(room)}>Join Room</button>
-                      }
+                  <div className="right-create-room-container">
+                    <div id="room-duration">Room Duration: {room.duration}</div>
+                    <div className="render-room-components">
+                        {room.privacy === true ? <AiFillLock id="lock" /> : <AiOutlineUnlock id="unlock"/>}
+                        {room.members.length > 5 || room.privacy === true ? 
+                          <button id="room-full-btn">Full Room</button>
+                          :
+                          <button id="create-rm-btn" onClick={handleJoinRoom(room)}>Join Room</button>
+                        }
+                    </div>
+                      
+                  <div id="display-num-user">{room.members.length}/{room.privacy === true ? 1 : 5}</div>
                   </div>
-                    
-                <div id="display-num-user">{room.members.length}/{room.privacy === true ? 1 : 5}</div>
                 </div>
-              </div>
-              :
-              ""
-            ))}
+                :
+                ""
+              ))}
+            </div>
           </div>
         </div>
       </div>

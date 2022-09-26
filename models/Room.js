@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const roomSchema = Schema({
     host: {
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.Object,
         ref: 'User'
     },
     members: [{
