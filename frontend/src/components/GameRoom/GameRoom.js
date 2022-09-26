@@ -97,10 +97,10 @@ const GameRoom = () => {
                         <div id="player1">
                             <div>{room.host.username}</div>
                         </div>
-                        <div id="player2">A2</div>
-                        <div id="player3">A3</div>
-                        <div id="player4">A4</div>
-                        <div id="player5">A5</div>
+                        <div id="player2">Player 2</div>
+                        <div id="player3">Player 3</div>
+                        <div id="player4">Player 4</div>
+                        <div id="player5">Player 5</div>
                     </div>
 
                 </div>

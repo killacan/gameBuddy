@@ -35,7 +35,10 @@
     border-radius: .5vw;
     font-family: brightness;
     text-align: center;
-    font-size: 2vw;
+    font-size: 1vw;
+    color: rgb(167, 164, 164);
+    padding-top: 2vw;
+  
 }
 
 @keyframes floating {
@@ -52,7 +55,13 @@
     animation-duration: 3s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-    border-radius: .5vw;
+    border-radius: .5vw;    
+    padding-top: 2vw;
+    font-family: brightness;
+    text-align: center;
+    font-size: 1vw;
+    color: rgb(167, 164, 164);
+
 
 }
 
@@ -72,6 +81,11 @@
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     border-radius: .5vw;
+    padding-top: 2vw;
+    font-family: brightness;
+    text-align: center;
+    font-size: 1vw;
+    color: rgb(167, 164, 164);
 
 }
 
@@ -90,7 +104,11 @@
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     border-radius: .5vw;
-
+    padding-top: 2vw;
+    font-family: brightness;
+    text-align: center;
+    font-size: 1vw;
+    color: rgb(167, 164, 164);
 }
 
 @keyframes floating {
@@ -108,7 +126,11 @@
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     border-radius: .5vw;
-
+    padding-top: 2vw;
+    font-family: brightness;
+    text-align: center;
+    font-size: 1vw;
+    color: rgb(167, 164, 164);
 }
 
 @keyframes floating {

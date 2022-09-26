@@ -20,7 +20,8 @@
     align-items: flex-end;
     padding-right: 2vw;
     font-size: 1.5vw;
-    color: white
+    color: white;
+    margin-top: 2vw;
 }
 #user-messages{
     color: white;
