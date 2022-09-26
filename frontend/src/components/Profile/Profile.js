@@ -11,6 +11,7 @@ import { useParams,useHistory } from 'react-router-dom';
 import { fetchReviews } from '../../store/reviews';
 import DeleteForm from '../SessionForms/DeleteForm';
 import { fetchAllUsers } from '../../store/users';
+import UpdateForm from '../SessionForms/UpdateForm';
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Profile = () => {
     
     const reviews = useSelector(state => Object.values(state.reviews))
    
-
+    const [showUpdateUserModal,setShowUpdateUserModal] = useState(false);
    
     const RIOT_API_KEY = process.env.REACT_APP_RIOT_API_KEY
     
@@ -96,11 +97,7 @@ const Profile = () => {
 
      const[showDeleteModal,setShowDeleteModal] = useState(false);
 
-     const handleUpdateAcc = (e) => {
-        e.preventDefault();
-        history.push(`/profile/${user._id}/update`);
-     }
-
+ 
      const handleDeleteAcc = (e) => {
         e.preventDefault();
         setShowDeleteModal(true)
@@ -233,7 +230,7 @@ const Profile = () => {
                 <div className='game-main-container'>
                     <div className="profile-bg-container">
                         <img id="profile-bg" src={profileBg}/>
-                        <button onClick={handleUpdateAcc} id="update-user-acc" >Update Account</button>
+                        <button onClick={()=>setShowUpdateUserModal(true)} id="update-user-acc" >Update Account</button>
                         <button onClick={handleDeleteAcc} id="delete-user-acc" >Delete Account</ button>
                         <div className="profile-image-border">
                             <img id="profile-border" src={profileBorder}/>
@@ -275,6 +272,9 @@ const Profile = () => {
                     </div> */}
                 </div>
                 {showDeleteModal && <DeleteForm setShowDeleteModal={setShowDeleteModal} />}
+               
+                {showUpdateUserModal && <UpdateForm setShowUpdateUserModal={setShowUpdateUserModal} user={user}/>}
+               
              </>
 )
 }

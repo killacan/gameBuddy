@@ -20,7 +20,7 @@
 .voltage-bg-container{
     position: relative;
     width: 100vw;
-    height: 92vh;
+    height: 100vh;
     overflow: hidden;
 
 }
@@ -28,7 +28,7 @@
 #voltage-bg{
     position: absolute;
     width: 100vw;
-    height: 92vh;
+    height: 100vh;
     top: 0;
     
 

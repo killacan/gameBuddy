@@ -19,10 +19,12 @@ const DeleteForm = ({setShowDeleteModal}) => {
     }
 
     return (
-        <div>
+        <div className="delete-form-container">
             <h1>Are you sure you want to delete your acc?</h1>
-            <button onClick={handleDelete}>Yes</button>
-            <button onClick={()=>setShowDeleteModal(false)}>No</button>
+            <div className="yes-no-btn">
+                <button id="yes-del-acc" onClick={handleDelete}>Yes</button>
+                <button id="no-del-acc" onClick={()=>setShowDeleteModal(false)}>No</button>
+            </div>
         </div>
     )
 }

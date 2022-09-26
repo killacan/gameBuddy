@@ -7,7 +7,7 @@
     justify-content: space-between;
     align-items: flex-end;
     align-items: center;
-    position: sticky;
+    position: fixed;
 }
 .hidden{
     display: none;

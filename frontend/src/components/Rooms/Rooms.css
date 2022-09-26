@@ -1,6 +1,6 @@
 .room-container{
     width: 100vw;
-    height: 85vh;
+    height: 92vh;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -315,18 +315,18 @@ margin-left: 1vw;
 .gif-room-container{
     display: flex;
     background-image: url("./container-for-zoey.png");
-    height: 85vh;
+    height: 92vh;
 
 }
 .gif-container{
     position: relative;
-    height: 85vh;
+    height: 92vh;
     width: 37vw;
 
 }
 #gif{
     position: absolute;
-    height: 85vh;
+    height: 92vh;
     width: 37vw;
     left: -8vw;
 

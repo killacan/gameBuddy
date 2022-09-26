@@ -33,14 +33,13 @@ export const deleteUser = (userId) => ({
  
 export const editUser = (userData) => async(dispatch) => {
     try{
-
         const res = await jwtFetch(`/api/users/${userData._id}`,
         {
             method: 'PATCH',
             body: JSON.stringify(userData),
             headers: {
-                'Content-Type' : 'application/json'
-            }
+                'Content-Type' : 'application/json',
+            },
         });
         const user = await res.json();
         dispatch(receiveUser(user));

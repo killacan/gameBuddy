@@ -22,7 +22,7 @@
     z-index: 2;
     width: 9vw;
     height: 4vh;
-    top: 3vw;
+    top: 8vw;
     right: 10vw;
     font-family: azonix;
     background-color: transparent;
@@ -39,7 +39,7 @@
     z-index: 2;
     width: 9vw;
     height: 4vh;
-    top: 6vw;
+    top: 12vw;
     right: 10vw;
     font-family: azonix;
     background-color: transparent;
@@ -51,8 +51,6 @@
     border: 1px dotted black;
     opacity: .6;
 }
-
-
 
 
 

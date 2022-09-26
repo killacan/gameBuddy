@@ -3,20 +3,19 @@ import { useSelector,useDispatch } from 'react-redux'
 import { editUser,fetchAllUsers } from '../../store/users'
 import { useState,useEffect } from 'react'
 import { clearSessionErrors, getCurrentUser, login } from '../../store/session';
+const UpdateForm  = ({setShowUpdateUserModal,user}) => {
 
-const UpdateForm  = () => {
-
-    const dispatch = useDispatch();
     
-
-    const user = useSelector (state=>state.session.user)
+    
+    // const user = useSelector (state=>state.session.user)
     const [updateEmail,setUpdateEmail] = useState(user.email)
     const [updateUsername,setUpdateUsername] = useState(user.username)
     const [updateRiotUsername, setUpdateRiotUsername] = useState(user.riotUsername)
     const [updatePassword, setUpdatePassword] = useState('')
     const [updateConfirmPassword, setUpdateConfirmPassword] = useState('');
-
     
+    const dispatch = useDispatch();
+
     const handleSubmit = async(e) => {
         e.preventDefault();
         let userInfo = {
@@ -24,15 +23,11 @@ const UpdateForm  = () => {
           email: updateEmail,
           username: updateUsername,
           riotUsername: updateRiotUsername,
-          password: updatePassword,
-
+          password: updatePassword
         };
-        let editUserInfo = await dispatch(editUser(userInfo))
-        let editUserInfoLogin = await dispatch(login({
-            email: updateEmail,
-            password: updatePassword
-        }))
-        // navigate(`/profile/${user._id}`)
+        let editUserInfo = await dispatch(editUser(userInfo));
+        setShowUpdateUserModal(false)
+        window.location.reload()
     }
 
 
@@ -103,8 +98,8 @@ const UpdateForm  = () => {
         <div className="updateUserForm-bg">
             <form className="updateUserForm" onSubmit={handleSubmit}>
                 <h1>Update User Details</h1>
-                <div className="signup-info-container">
-                    <label id="input-signup">Email</label>
+                <div className="update-info-container">
+                    <label id="input-update">Email</label>
                         <input type="text"
                         value={updateEmail}
                         onChange={(e)=>setUpdateEmail(e.target.value)}
@@ -115,8 +110,8 @@ const UpdateForm  = () => {
                     </div>
                 </div>
 
-                <div className="signup-info-container">
-                    <label id="input-signup">Username</label>
+                <div className="update-info-container">
+                    <label id="input-update">Username</label>
                     <input type="text"
                     value={updateUsername}
                     onChange={(e)=>setUpdateUsername(e.target.value)}
@@ -127,8 +122,8 @@ const UpdateForm  = () => {
                     </div>
                 </div>
 
-                <div className="signup-info-container">
-                    <label id="input-signup">Riot Username</label>
+                <div className="update-info-container">
+                    <label id="input-update">Riot Username</label>
                         <input type="text"
                         value={updateRiotUsername}
                         onChange={(e)=>setUpdateRiotUsername(e.target.value)}
@@ -138,8 +133,8 @@ const UpdateForm  = () => {
                     </div>
                 </div>
             
-                <div className="signup-info-container">
-                    <label id="input-signup">Password</label>
+                <div className="update-info-container">
+                    <label id="input-update">Password</label>
                         <input type="password"
                         value={updatePassword}
                         onChange={(e)=>setUpdatePassword(e.target.value)}
@@ -150,8 +145,8 @@ const UpdateForm  = () => {
                     </div>
                 </div>
 
-                <div className="signup-info-container">
-                    <label id="input-signup">Confirm Password</label>
+                <div className="update-info-container">
+                    <label id="input-update">Confirm Password</label>
                         <input type="password"
                         value={updateConfirmPassword}
                         onChange={(e)=>setUpdateConfirmPassword(e.target.value)}
