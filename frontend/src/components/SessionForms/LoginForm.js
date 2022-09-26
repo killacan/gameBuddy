@@ -4,7 +4,6 @@ import './SessionForm.css';
 import { fetchAllUsers } from '../../store/users';
 
 import { login, clearSessionErrors } from '../../store/session';
-// import { Redirect } from 'react-router-dom';
 
 function LoginForm () {
   const [email, setEmail] = useState('');
@@ -33,15 +32,6 @@ function LoginForm () {
       dispatch(clearSessionErrors());
     };
   }, [dispatch]);
-  
-  const checkLoginEmail = (email) => {
-    for (let i = 0; i <=emails.length; i++){
-      if (email === emails[i]){
-        return true
-      }
-    }
-    return false
-  }
 
   const update = (field) => {
     const setState = field === 'email' ? setEmail : setPassword;
@@ -58,7 +48,14 @@ function LoginForm () {
     setTimeout(function(){
       document.getElementById("errors-login-em").style.display = "none"
     }, 3000)
-    console.log("hello from login bad")
+  }
+
+  const checkPassword = (password) => {
+    if (password.length > 0 && password.length < 6){
+      return true
+    }else{
+      return false
+    }
   }
 
   const handleSubmit = (e) => {
@@ -66,7 +63,6 @@ function LoginForm () {
     checkLogin()
   }
   
-
   const demoUser = (e) => {
     e.preventDefault();
     dispatch(login({
@@ -82,7 +78,7 @@ function LoginForm () {
           <h2 id="login-title">Login</h2>
           <div className="email-username-container">
             <div id="errors-login-em">
-              <div id="errors-confirm-password">Invalid Email</div>
+              <div id="errors-confirm-password">Invalid Login Credentials</div>
             </div>
             <br></br>
             <label id="input-login">Email</label>
@@ -106,7 +102,7 @@ function LoginForm () {
               required
               />
               <div id="errors-signup-pass">
-                {password.length < 6 && <div id="errors-signup-password">Password is too short</div>}
+                {checkPassword(password) && <div id="errors-signup-password">Password is too short</div>}
               </div>
           </div>
           <div id="errors-pass">
