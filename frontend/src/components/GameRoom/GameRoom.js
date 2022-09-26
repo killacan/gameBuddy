@@ -70,24 +70,34 @@ const GameRoom = () => {
     return (
         <div className="game-room-container">
             <div className="top-game-room-container">
-                <div className="top-left-container">
-                    <div id="game-room-title">Room Title : {room.title}</div>
-                    <div id="game-room-name"> {room.game}</div>
-                </div>
-                <div className="top-right-container">
-                    <div className="host-info">
-                        <div id="room-leader">Room Leader : </div>
-                        <div> {room.host.username}</div>
+                <div className="top-container-info">
+                    <div className="top-left-container">
+                        <div id="game-room-title">Room Title : {room.title}</div>
+                        <div id="game-room-name"> {room.game}</div>
                     </div>
-                    <div className="update-del-room-btns">
-                        {currentUserId === room.host._id ? 
-                        <>
-                            <button id="end-session-btn" onClick={handleEnd}>End Session</button>
-                            <button id="handle-update-btn" onClick={handleUpdate}> Update Session</button>
-                        </>
-                            : "" }
+                    <div className="top-right-container">
+                        <div className="host-info">
+                            <div id="room-leader">Room Leader : </div>
+                            <div> {room.host.username}</div>
+                        </div>
+                        <div className="update-del-room-btns">
+                            {currentUserId === room.host._id ? 
+                            <>
+                                <button id="end-session-btn" onClick={handleEnd}>End Session</button>
+                                <button id="handle-update-btn" onClick={handleUpdate}> Update Session</button>
+                            </>
+                                : "" }
+                        </div>
                     </div>
                 </div>
+                <div className="loading-screen-images">
+                    <div id="player1">A1</div>
+                    <div id="player2">A2</div>
+                    <div id="player3">A3</div>
+                    <div id="player4">A4</div>
+                    <div id="player5">A5</div>
+                </div>
+
             </div>
             <div className="bottom-game-room-container">
                 <WebSocketComp />
