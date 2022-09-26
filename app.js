@@ -32,6 +32,23 @@ const { isProduction } = require('./config/keys')
 
 app.use(passport.initialize());
 
+
+app.use(
+    csrf({
+        cookie: {
+            secure: isProduction,
+            sameSite: isProduction && "Lax",
+            httpOnly: true
+        }
+    })
+)
+
+app.use('/', indexRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/csrf', csrfRouter);
+app.use('/api/rooms', roomsRouter);
+app.use('/api/reviews', reviewsRouter);
+
 if (isProduction) {
     const path = require('path');
     // Serve the frontend's index.html file at the root route
@@ -53,23 +70,6 @@ if (isProduction) {
     );
   });
 }
-
-app.use(
-    csrf({
-        cookie: {
-            secure: isProduction,
-            sameSite: isProduction && "Lax",
-            httpOnly: true
-        }
-    })
-)
-
-app.use('/', indexRouter);
-app.use('/api/users', usersRouter);
-app.use('/api/csrf', csrfRouter);
-app.use('/api/rooms', roomsRouter);
-app.use('/api/reviews', reviewsRouter);
-
 
 app.use((req, res, next) => {
     const err = new Error('Not Found');
