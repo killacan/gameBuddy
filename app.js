@@ -15,7 +15,6 @@ require('./models/Room.js');
 require('./models/Review.js');
 const path = require('path');
 
-const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/api/users');
 const csrfRouter = require('./routes/api/csrf');
 const roomsRouter = require('./routes/api/rooms');
@@ -43,7 +42,6 @@ app.use(
     })
 )
 
-app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/csrf', csrfRouter);
 app.use('/api/rooms', roomsRouter);
