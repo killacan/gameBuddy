@@ -21,13 +21,13 @@ const EndRoomModal = ({setShowEndRoomModal, room}) => {
         history.push("/games")
     }
 
-
+    console.log(Object.values(members))
     let reviewShow;
     if (Object.values(members).length > 0){
         reviewShow = (
             <div>
-                {(members).map(member => (
-                    <UserReview {...member}/>
+                {(Object.values(members)).map(member => (
+                    <UserReview member={member}/>
                ))}
             </div>
         )
