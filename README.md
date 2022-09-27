@@ -9,9 +9,12 @@ Game Buddy resolves this problem by having built in discovery mechanisms to find
 Game Buddy is built with the MERN stack, utilizing 4 different technologies: MongoDB, Express, React, and Node. 
 
 ## Functionality and MVPs
+<img src="/frontend/src/components/SplashCarousel/slide-1.png" alt="splash-page-art"/>
+<img src="/frontend/src/components/SplashCarousel/slide-3.png" alt="game-index-art"/>
+<img src="/frontend/src/components/SplashCarousel/slide-4.png" alt="profile-page-art"/>
 
 -   User Auth (Login, Sign Up, Demo Login)
-	-   User has many GameRooms, User has many Reviews
+-   User has many GameRooms, User has many Reviews
 -   GameRoom/Session CRUD (Create, Delete, Update)
 -   Reviews/Rating CRUD for a User
 -   Riot API to fetch ranking level for each User
