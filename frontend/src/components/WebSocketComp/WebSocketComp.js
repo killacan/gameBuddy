@@ -34,10 +34,10 @@ function WebSocketComp () {
         const socketNew = new WebSocket(urlString);
 
         socketNew.onopen = (event) => {
-            console.log('Websocket is connected!')
+            // console.log('Websocket is connected!')
             const id = Math.round(Math.random() * 100)
-            console.log('sending...', id)
-            console.log(sessionUser)
+            // console.log('sending...', id)
+            // console.log(sessionUser)
             socketNew.send(JSON.stringify({message: `has joined the room`, roomId: roomId, userName: sessionUser.username}))
             // const data = JSON.stringify(
             // [
@@ -91,7 +91,7 @@ function WebSocketComp () {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('sending...', message)
+        // console.log('sending...', message)
         socket.send(JSON.stringify({message: message, roomId: roomId, userName: currentUser.username}))
         setMessage("")
     }
