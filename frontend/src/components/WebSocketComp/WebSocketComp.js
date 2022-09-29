@@ -28,7 +28,7 @@ function WebSocketComp () {
         if (process.env.NODE_ENV !== 'production') {
             urlString = `ws://localhost:5000/?roomId=${roomId}`
         } else {
-            urlString = `ws:/gamebuddy-app.herokuapp.com/?roomId=${roomId}`
+            urlString = `ws://gamebuddy-app.herokuapp.com/?roomId=${roomId}`
         }
         
         const socketNew = new WebSocket(urlString);
