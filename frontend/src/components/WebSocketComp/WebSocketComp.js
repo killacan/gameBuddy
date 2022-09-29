@@ -24,8 +24,14 @@ function WebSocketComp () {
 
     useEffect(() => {
         // const messages = document.getElementById('messages');
-        const socketNew = new WebSocket(`ws://localhost:5000/?roomId=${roomId}`);
+        let urlString
+        if (process.env.NODE_ENV !== 'production') {
+            urlString = `ws://localhost:5000/?roomId=${roomId}`
+        } else {
+            urlString = `ws:/gamebuddy-app.herokuapp.com/?roomId=${roomId}`
+        }
         
+        const socketNew = new WebSocket(urlString);
 
         socketNew.onopen = (event) => {
             console.log('Websocket is connected!')
