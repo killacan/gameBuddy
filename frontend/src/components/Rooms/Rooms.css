@@ -1,7 +1,10 @@
 .room-container{
     width: 100vw;
     height: 92vh;
-    display: flex;
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 150px auto;
     flex-direction: column;
     align-items: flex-end;
     overflow: hidden;
@@ -10,8 +13,10 @@
 }
 
 .create-room{
-    width: 80vw;
-    height: 15vh;
+    width: 100%;
+    height: 100%;
+    grid-column: 2;
+    grid-row: 1;
     background-color: #173f62;
     display: flex;
     justify-content: space-between;
@@ -25,8 +30,8 @@
 #img-banner{
     position: absolute;
     top: 0;
-    width: 80vw;
-    height: 15vh;
+    width: 100%;
+    height: 100%;
 }
 
 .left-create-room-container{
@@ -83,18 +88,22 @@
 #title-input{
     margin-left: 1vw;
 }
+
 #game-duration-input{
     margin-left: 1vw;
 }
+
 #a-checkbox{
     margin-left: 1vw;
 }
+
 #room-body{
     color: white;
     font-family: azonix;
     margin-top: .7vw;
     margin-bottom: .7vw;
 }
+
 #hosted-by{
     color: white;
     font-family: azonix;
@@ -102,7 +111,7 @@
 
 #star-value{
     color: #fcff64;
-  }
+}
 
 #non-star-value{
 color: #a4a4a8; 
@@ -228,6 +237,8 @@ margin-left: 1vw;
 
 .game-index-bg-container{
     position: relative;
+    grid-column: 2;
+    grid-row: 2;
     width: 80vw;
     height:100%;
 }
@@ -298,8 +309,8 @@ margin-left: 1vw;
 
 #quotes-container{
     position: absolute;
-    width: 80vw;
-    height: 15vh;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -320,15 +331,63 @@ margin-left: 1vw;
 }
 .gif-container{
     position: relative;
+    grid-column: 1;
+    grid-row: 1/3;
     height: 92vh;
     width: 37vw;
+    min-width: 500px;
 
 }
 #gif{
     position: absolute;
     height: 92vh;
     width: 37vw;
+    min-width: 500px;
     left: -8vw;
 
 
 }
+
+@media screen and (max-width: 850px ) {
+    
+    .gif-container {
+        display: none;
+    }
+
+    #gif{
+        display: none;
+    }
+
+    .create-room {
+        width: 100%;
+        grid-column: 1/3;
+    }
+
+    .game-index-bg-container {
+        width: 100%;
+        grid-column: 1/3;
+    }
+
+    #quotes-container {
+        width: 100vw;
+    }
+
+    #img-banner {
+        width: 100vw;
+    }
+
+    #game-index-bg {
+        width: 100vw;
+    }
+
+    .join-room {
+        width: 100vw;
+    }
+
+    .single-room-container {
+        width: 100vw;
+    }
+
+
+}
+
