@@ -18,7 +18,7 @@ function WebSocketComp () {
 
 
     useEffect(()=> {
-        dispatch(fetchRoom(roomId))
+        const timer = setTimeout(() => dispatch(fetchRoom(roomId)), 1000)
     },[roomId, messages])
 
 
