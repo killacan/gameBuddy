@@ -107,12 +107,13 @@ function WebSocketComp () {
         <div className="chat-outer-container">
             <div className='chat-container'>
                 <div className='room-messages-container'>
-                        <div id="msg-bg"></div>
+                <div id="msg-bg"></div>
                     {messages.map (message => {
                        
                         return <div id="user-messages">{`${message.userName}: `}{message.message}</div>
                         })
                     }
+                    
                 </div>
                 <div className='room-input-container'>
                     <form className="websocket-form"onSubmit={handleSubmit}>

@@ -26,9 +26,10 @@ const FIRST_BIT = 128
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '5000');
 app.set('port', port);
-console.log(process.env.MONGO_URI)
+// console.log(process.env.MONGO_URI)
+
 /**
  * Create HTTP server.
  */
