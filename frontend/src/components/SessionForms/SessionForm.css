@@ -347,13 +347,6 @@
   width: 100vw;
 }
 
-#errors-confirm-password{
-  font-family: azonix;
-  font-size: 12px;
-  color: #3dcbd5;
-  top: -3.6vw;
-}
-
 #errors-signup-email{
     /* position: absolute; */
     font-family: azonix;
@@ -402,7 +395,7 @@
 #errors-confirm-password{
     /* position: absolute; */
     font-family: azonix;
-    font-size: .8vw;
+    font-size: .615vw;
     color: #3dcbd5;
     top: -3.6vw;
 }
