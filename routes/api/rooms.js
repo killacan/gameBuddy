@@ -55,7 +55,7 @@ router.get('/', async (_req, res) => {
 router.get('/:roomId', async (req, res, next) => {
     try {
         const room = await Room.findById(req.params.roomId)
-                               .populate('host','_id,username')
+                               .populate('host','_id, username')
         return res.json(room);
     }
     catch(_err) {
