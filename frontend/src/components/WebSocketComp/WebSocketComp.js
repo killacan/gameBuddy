@@ -122,7 +122,6 @@ function WebSocketComp () {
                     </form>
                 </div>
             </div>
-
             <div className="display-room-members">
                 <h1 id="room-member">Room Members:</h1>
                 {room.members.map(member => (
@@ -131,7 +130,6 @@ function WebSocketComp () {
                     </div>
                 ))}
             </div>
-        </div>
         <div className="room-input-container">
           <form className="websocket-form" onSubmit={handleSubmit}>
             <input
@@ -146,7 +144,6 @@ function WebSocketComp () {
             </button>
           </form>
         </div>
-      </div>
 
       <div className="display-room-members">
         <h1 id="room-member">Room Members:</h1>
