@@ -19,12 +19,10 @@ import GameRoom from "./components/GameRoom/GameRoom";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
-
-
-  // window.jwtFetch = jwtFetch;
 
   return loaded && (
     <>
@@ -34,23 +32,13 @@ function App() {
         <AuthRoute exact path={"/signup"} component={SignupForm}/>
         <AuthRoute exact path={"/login"} component={LoginForm}/>
         <ProtectedRoute exact path={"/games"} component={Games}/>
-        {/* <ProtectedRoute exact path={"/profile"} component={Profile} /> */}
         <ProtectedRoute exact path={"/profile/:userId"} component={Profile}/>
         <ProtectedRoute exact path={"/games/rooms"} component={RoomsIndex}/>
         <ProtectedRoute exact path={"/games/rooms/:roomId"} component={GameRoom} />
         <ProtectedRoute exact path={"/profile/:userId/update"} component={UpdateForm}/>
         <Redirect to="/"/>
         
-        {/* 
-        <AuthRoute exact path={"/games/rooms"} component={LoginForm}/>
-        <AuthRoute exact path={"/games/rooms/valorant"} component={SignUpForm}/>
-        <AuthRoute exact path={"/games/rooms/leagueoflegends"} component={SignUpForm}/>
-        <AuthRoute exact path={"/games/rooms/tft"} component={SignUpForm}/>
-        <AuthRoute exact path={"/games/rooms/valorant/:roomId"} component={SignUpForm}/>
-        <AuthRoute exact path={"/games/rooms/leagueoflegends/:roomId"} component={SignUpForm}/>
-        <AuthRoute exact path={"/games/rooms/tft/:roomId"} component={SignUpForm}/> */}
       </Switch>
-      {/* <Footer/> */}
     </>
   );
 }
