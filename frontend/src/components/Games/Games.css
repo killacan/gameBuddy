@@ -139,7 +139,7 @@
 
 .game-desc-container{
     width: 100%;
-    height: 4vh;
+    height: 100%;
     display: flex;
     grid-column: 1/4;
     grid-row: 3;
@@ -154,7 +154,6 @@
 #game-desc{
     font-family: azonix;
     font-size: 30px;
-    
 }
 
 #valorant-image:hover{
@@ -189,11 +188,13 @@
     .game-list {
         grid-template-columns: 1fr 250px 1fr;
         grid-template-rows: 70px repeat(3, 250px);
+        height: 820px;
+        /* overflow: auto; */
     }
 
     #valorant{
         grid-column: 2;
-        grid-row: 2;
+        grid-row: 3;
         /* overflow: hidden; */
         display: flex;
         justify-content: center;
@@ -202,28 +203,44 @@
 
     #league{
         grid-column: 2;
-        grid-row: 3;
+        grid-row: 4;
         /* overflow: hidden; */
     }
 
     #tft{
         grid-column: 2;
-        grid-row: 4;
+        grid-row: 5;
         /* overflow: hidden; */
     }
 
     .game-desc-container{
         grid-column: 1/4;
-        grid-row: 1;
+        grid-row: 2;
         height: 100%;
         justify-content: center;
         align-items: center;
-        grid-row: 4;
 
     }
 
     #game-desc{
         font-size: 18px;
-        
+        grid-column: 1/4;
+        grid-row: 1;
+    }
+
+    .game-list {
+        display: grid;
+        grid-template-columns: 1fr 250px 1fr; 
+        grid-template-rows: 50px 70px repeat(3, 250px);
+    }
+
+    #voltage-bg {
+        width: 150vw;
+        height: 1000px;
+        overflow: scroll;
+    }
+
+    .voltage-bg-container {
+        overflow-y: scroll;
     }
 }

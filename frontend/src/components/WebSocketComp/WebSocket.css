@@ -1,20 +1,28 @@
 .chat-outer-container{
-    display: flex;
+    display: grid;
+    grid-template-columns: 600px 1fr 250px;
+    grid-template-rows: 1fr;
     width: 100%;
     height: 100%;
 }
 
 .chat-container{
-    width: 60%;
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    margin: 10px;
+    overflow-y: auto;
 }
 
 .display-room-members{
-    width: 60%;
+    width: 100%;
     height: 100%;
+    grid-column: 3;
+    grid-row: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -28,12 +36,13 @@
     text-shadow: 1px 1px  black;
     font: 1vw;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #a1bbd4;
 }
 
 #room-member{
-    margin-top: 2vw;
-    font-size: 2vw;
-    margin-bottom: .5vw;
+    margin-top: 20px;
+    font-size: 27px;
+    margin-bottom: 4px;
     color: white;
     font-family: azonix;
 
@@ -42,17 +51,19 @@
 .room-messages-container{
    overflow-y: scroll;
    position: relative;
-   border-radius: .3vw;
+   width: 100%;
+   border-radius: 2px;
+   /* background-color: #a1bbd4; */
 }
 
 #msg-bg{
     position: absolute;
     top: 0;
-    background-color: #a1bbd4;
+    /* background-color: #a1bbd4; */
     opacity: .4;
-    width: 60vw;
-    height: 80vh;
-    border-radius: .3vw;
+    width: 100%;
+    height: 10px;
+    border-radius: 1px;
 }
 
 
@@ -60,6 +71,7 @@
     width: 100%;
     background-color: transparent;
     display: flex;
+    margin-bottom: 10px;
 }
 
 .message-input{
@@ -68,6 +80,7 @@
     font-size: 1vw;
     background-color: white;
     border: none;
+    padding: 2xp;
 
 }
 
@@ -97,8 +110,18 @@
 #member-room-username{
     display: flex;
     flex-direction: column;
-    margin-bottom: .5vw;
+    margin-bottom: 4px;
     font-family: azonix;
-
+    font-size: 11px;
 }
 
+@media only screen and (max-width: 850px) {
+    .chat-outer-container{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        width: 100%;
+        height: 100%;
+    }
+
+}
