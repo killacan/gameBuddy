@@ -14,8 +14,10 @@ const ReviewIndex = () => {
     useEffect(()=>{
         dispatch(fetchReviews())
     },[])
+
     const {userId} = useParams();
     const reviews = useSelector(state => Object.values(state.reviews))
+    console.log(reviews,'asdf')
 
     const showStar = (rating)=>{
         if (rating===1){

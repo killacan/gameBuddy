@@ -26,6 +26,10 @@ const roomSchema = Schema({
         type: Boolean,
         default: false,
     },
+    password: {
+        type: String,
+        required: false
+    },
     socketKey: {
         type: String
     }

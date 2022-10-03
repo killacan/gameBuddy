@@ -20,6 +20,11 @@ const validateRoomInput = [
     check('privacy')
         .isBoolean()
         .withMessage('Select whether you want your room to be private.'),
+    
+    check('comments')
+        .exists({ checkFalsy: true })
+        .isLength({ min: 7, max: 50 })
+        .withMessage('Minimum 7 characters, maximum 50 characters'),
 
     handleValidationErrors
 ]
