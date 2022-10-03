@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { createReview } from "../../store/reviews";
-import { useHistory, useParams } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 import './ReviewForm.css'
 
-const ReviewForm = ({setShowReviewForm}) => {
+const ReviewForm = ({setShowReviewForm,member}) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user._id)
-    const {userId} = useParams();
+
     const history = useHistory();
 
     const [selectedReview, setSelectedReview] = useState({
@@ -22,11 +22,13 @@ const ReviewForm = ({setShowReviewForm}) => {
         teamPlayer: false,
         leader: false,
         reviewer: sessionUser,
-        reviewee: userId
+        reviewee: member._id
     });
 
     const [rating, ,setRating] = useState()
     const handleSubmit = (e) => {
+        console.log("hello from inside review")
+        console.log(selectedReview,"checking selected review")
         e.preventDefault();
         dispatch(createReview(selectedReview));
         setSelectedReview({...selectedReview, 
@@ -39,7 +41,7 @@ const ReviewForm = ({setShowReviewForm}) => {
             teamPlayer: false,
             leader: false,
             reviewer: sessionUser,
-            reviewee: userId
+            reviewee: member._id
         })
         setShowReviewForm(false)
     }
@@ -49,7 +51,7 @@ const ReviewForm = ({setShowReviewForm}) => {
             <div className="blur-background-review" onClick={() => setShowReviewForm(false)}></div>      
             <div id="modal-bg-container-review"></div>
             <div className="bg-modal">
-                <form className='end-review-form' >
+                <form className='end-review-form' onSubmit={handleSubmit}>
                     <h1 id="review-end-title">Review</h1>
                     <label className='rating-box'>Rating:
                         <div id='rating-starts'>
@@ -91,7 +93,7 @@ const ReviewForm = ({setShowReviewForm}) => {
                     <label className="review-buttons">Leader
                         <input type="radio" value={selectedReview.leader} onChange={(e) => setSelectedReview({...selectedReview, leader: true})}></input>
                     </label>
-                    <button id="post-review-button" onClick={() => setShowReviewForm(false)}>Post Review</button>
+                    <button id="post-review-button" >Post Review</button>
                 </form>
             </div>
         </>
