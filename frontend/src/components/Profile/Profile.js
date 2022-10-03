@@ -4,13 +4,10 @@ import profile from './default-profile.png'
 import { FaStar } from "react-icons/fa";
 import { useState,useEffect } from 'react';
 import ReviewIndex from "../ReviewIndex/ReviewIndex";
-import axios from 'axios';
 import profileBg from './profile-bg.png'
 import profileBorder from './profile-border.png'
 import { useParams,useHistory } from 'react-router-dom';
-import { fetchReviews } from '../../store/reviews';
 import DeleteForm from '../SessionForms/DeleteForm';
-import { fetchAllUsers } from '../../store/users';
 import UpdateForm from '../SessionForms/UpdateForm';
 
 const Profile = () => {

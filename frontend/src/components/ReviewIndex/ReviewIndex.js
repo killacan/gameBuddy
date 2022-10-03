@@ -10,8 +10,6 @@ import { FaStar } from 'react-icons/fa';
 
 const ReviewIndex = () => {
 
-
-
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(fetchReviews())

@@ -1,13 +1,11 @@
 import './Games.css'
-import react from 'react';
 import valorantBg from './valorant-game-image 2.png'
 import leagueBg from './league-game-image.png'
 import tftBg from './tft-game-image.png'
 import {useHistory} from 'react-router-dom'
 import gameSplashImg from "./gamesSplash.png"
+
 const Games = () => {
-
-
 
     const history = useHistory();
 
@@ -48,6 +46,7 @@ const Games = () => {
                         <div  onClick={handleClick("tft")}   id="tft">
                             <img id="tft-image" src={tftBg}/>
                         </div>
+
                         <div className="game-desc-container">
                             <h1 id="game-desc">SELECT A GAME TO GET CONNECTED</h1>
                         </div>
@@ -55,7 +54,6 @@ const Games = () => {
                 </div>
                 </div>
             </div>
-           
         </>
     )
 }

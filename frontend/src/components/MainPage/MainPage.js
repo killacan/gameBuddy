@@ -1,9 +1,8 @@
 import './MainPage.css';
 import { NavLink } from 'react-router-dom';
 import SplashCarousel from '../SplashCarousel/SplashCarousel';
-// import WebSocketComp from '../WebSocketComp/WebSocketComp';
-const MainPage = () => {
 
+const MainPage = () => {
 
     return (
         <div className='splash-container'>

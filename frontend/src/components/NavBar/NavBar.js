@@ -19,7 +19,6 @@ function NavBar () {
       }
     }
 
-
     const handleLogout = (e) => {
       e.preventDefault();
       dispatch(logout());
@@ -31,7 +30,7 @@ function NavBar () {
       history.push(`/profile/${user._id}`)
       
     }
-//comment
+
     return (
       <div className={toggle()}>
         <div className="left-side-nav">
@@ -40,13 +39,11 @@ function NavBar () {
         </div>
 
         <div className="right-side-nav"> 
-
             <FaUserAstronaut id="user-icon" />
             <div className="drop-down-content">
                 <div onClick={handleProfile} id="profile-drop">Profile</div>
                 <div onClick={handleLogout} id="logout-drop">Log out</div>
             </div>
-
         </div>
       </div>
     )
