@@ -1,8 +1,8 @@
 import "./Rooms.css";
 import { useState } from "react";
 import CreateRoomModal from "./CreateRoomModal";
-import { FaGift, FaStar } from "react-icons/fa";
-import { fetchRooms, joinRoom } from "../../store/rooms";
+import { FaStar } from "react-icons/fa";
+import { fetchRooms,fetchRoom,updateRoom } from "../../store/rooms";
 import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -98,10 +98,24 @@ const RoomsIndex = () => {
   const user = useSelector(state => state.session.user)
 
   const handleJoinRoom = (field) => {
+
     return async e => {
       e.preventDefault();
       //await dispatch update room
-      history.push(`/games/rooms/${field._id}`)
+      dispatch(fetchRoom(field._id)).then((res) => {
+        console.log(res)
+        let flag = false;
+        res.members.forEach(member =>  {
+            if (member._id === user._id) {
+                flag = true;
+            }}) 
+            
+            if (!flag) {
+                res.members.push(user)
+                dispatch(updateRoom(res)).then(history.push(`/games/rooms/${field._id}`))
+
+            } 
+    })
     }
     
   }
