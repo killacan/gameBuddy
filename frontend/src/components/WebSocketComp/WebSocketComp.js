@@ -132,8 +132,30 @@ function WebSocketComp () {
                 ))}
             </div>
         </div>
-    )
+        <div className="room-input-container">
+          <form className="websocket-form" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="message-input"
+              placeholder="Type a message..."
+            />
+            <button type="submit" className="message-submit">
+              Send
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div className="display-room-members">
+        <h1 id="room-member">Room Members:</h1>
+        {room.members.map((member) => (
+          <div id="member-room-username">{member.username}</div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default WebSocketComp;
-

@@ -98,8 +98,9 @@ const RoomsIndex = () => {
   const user = useSelector(state => state.session.user)
 
   const handleJoinRoom = (field) => {
-    return e => {
+    return async e => {
       e.preventDefault();
+      //await dispatch update room
       history.push(`/games/rooms/${field._id}`)
     }
     
