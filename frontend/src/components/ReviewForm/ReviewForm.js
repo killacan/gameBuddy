@@ -12,7 +12,6 @@ const ReviewForm = ({setShowReviewForm}) => {
     const {userId} = useParams();
     const history = useHistory();
 
-
     const [selectedReview, setSelectedReview] = useState({
         rating: 0,
         comments: "",

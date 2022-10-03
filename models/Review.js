@@ -47,7 +47,7 @@ const reviewSchema = Schema({
     reviewee: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    } 
 }, {
     timestamps: true
 })
