@@ -15,19 +15,18 @@ const EndRoomModal = ({setShowEndRoomModal, room}) => {
     //mockData! --> need to pull from state.rooms._id.members = [user1,user2,user3]
     // const users = ["matt", "mimi", "cameron", "daniel"]
 
-    const handleSubmit = async(e) => {
+    const handleCloseReviewModal = async(e) => {
         e.preventDefault();
         const delRoom = await dispatch(destroyRoom(room._id))
         history.push("/games")
     }
 
-    console.log(members.length, "mimi is the best")
     let reviewShow;
     if (members.length > 0){
         reviewShow = (
             <div>
                 {(members).map(member => (
-                    <UserReview member={member.username}/>
+                    <UserReview member={member} />
                ))}
             </div>
         )
@@ -38,14 +37,14 @@ const EndRoomModal = ({setShowEndRoomModal, room}) => {
             <div className="blur-background" onClick={() => setShowEndRoomModal(false)}></div>
             <div id="modal-bg-container"></div>
             <div className="bg-modal">
-                <form className="end-room-form" onSubmit={handleSubmit}>
+                <div className="end-room-form" /*onSubmit={handleSubmit}*/>
                     <h1 id="session-end-title">Session Ended!</h1>
                     <h2 id="review-title">Write a Review</h2>
                     {reviewShow}
-                        <button id="close-room" type="submit">
+                        <button onClick={handleCloseReviewModal} id="close-room" type="submit">
                             Close
                         </button>
-                </form>
+                </div>
             </div>
         </>
     )

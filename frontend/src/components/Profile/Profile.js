@@ -108,15 +108,15 @@ const Profile = () => {
             if (review.reviewee._id === userId) {
                 if (review.friendly){
                     friendly = friendly + 1 ;
-                } else if ( review.griefing){
+                } if ( review.griefing){
                     griefing = griefing + 1;
-                } else if (review.leader) {
+                } if (review.leader) {
                     leader = leader + 1;
-                } else if (review.skilled) {
+                } if (review.skilled) {
                     skilled = skilled + 1;
-                } else if (review.teamPlayer){
+                } if (review.teamPlayer){
                     teamPlayer = teamPlayer + 1 ;
-                } else if (review.toxic){
+                } if (review.toxic){
                     toxic = toxic + 1;
                 }
             }})

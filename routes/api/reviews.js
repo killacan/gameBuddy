@@ -44,6 +44,7 @@ router.post('/create', requireUser, validateReviewInput, async (req, res, next) 
 router.get('/', async (_req, res) => {
     try {
         const reviews = await Review.find()
+                                    .populate("reviewee", "_id, username")
                                     .populate("reviewer", "_id, username")
                                     .sort({ createdAt: -1});
         return res.json(reviews);
@@ -59,7 +60,8 @@ router.get('/', async (_req, res) => {
 router.get('/:reviewId', async (req, res, next) => {
     try {
         const review = await Review.findById(req.params.reviewId)
-                                    .populate("reviewer", "_id, username");
+                                    .populate("reviewee", "_id, username")
+                                    .populate("reviewer", "_id, username")
         return res.json(review);
     }
     catch(_err) {

@@ -3,15 +3,14 @@ import { useState } from 'react'
 import ReviewForm from '../ReviewForm/ReviewForm.js'
 
 const UserReview = ({member}) => {
-
-    console.log(member)
+    console.log(member, "hello checking what member")
     const [showReviewForm, setShowReviewForm] = useState(false)
 
     return (
         <>
             <div className="review-box">
                 <div className="review-username">
-                    <p id="username-text">{member}</p>
+                    <p id="username-text">{member.username}</p>
                 </div>
                 <div className="review-button">
                     <div onClick={() => setShowReviewForm(true)}>
@@ -19,7 +18,7 @@ const UserReview = ({member}) => {
                     </div>
                 </div>
             </div>  
-            {showReviewForm && <ReviewForm setShowReviewForm={setShowReviewForm}/> }
+            {showReviewForm && <ReviewForm setShowReviewForm={setShowReviewForm} member={member}/> }
         </>
     )
 }
