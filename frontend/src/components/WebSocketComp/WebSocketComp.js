@@ -130,7 +130,7 @@ function WebSocketComp () {
                     </div>
                 ))}
             </div>
-        <div className="room-input-container">
+        {/* <div className="room-input-container">
           <form className="websocket-form" onSubmit={handleSubmit}>
             <input
               type="text"
@@ -143,7 +143,7 @@ function WebSocketComp () {
               Send
             </button>
           </form>
-        </div>
+        </div> */}
 
       <div className="display-room-members">
         <h1 id="room-member">Room Members:</h1>
