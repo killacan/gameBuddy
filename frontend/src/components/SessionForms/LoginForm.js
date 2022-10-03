@@ -38,16 +38,20 @@ function LoginForm () {
     return e => setState(e.currentTarget.value);
   }
 
-  const checkLogin = (username) => {
-    for (let i = 0; i <= usernames.length; i++){
-      if (username === usernames[i]){
-        dispatch(login({ email, password}))
+  const checkLogin = (email) => {
+    let hitSomething = false
+    for (let i = 0; i <= emails.length; i++){
+      if (email === emails[i]){
+        hitSomething = true
+        dispatch(login({email, password}))
       }
     }
-    document.getElementById("errors-login-em").style.display = "flex"
-    setTimeout(function(){
-      document.getElementById("errors-login-em").style.display = "none"
-    }, 3000)
+    if (!hitSomething){
+      document.getElementById("errors-login-em").style.display = "flex"
+      setTimeout(function(){
+        document.getElementById("errors-login-em").style.display = "none"
+      }, 3000)
+    }
   }
 
   const checkPassword = (password) => {
@@ -60,7 +64,7 @@ function LoginForm () {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    checkLogin()
+    checkLogin(email)
   }
   
   const demoUser = (e) => {
