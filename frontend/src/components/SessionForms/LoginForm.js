@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { fetchAllUsers } from '../../store/users';
+import { useHistory } from "react-router-dom";
 
 import { login, clearSessionErrors } from '../../store/session';
 
 function LoginForm () {
+  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(state => state.errors.session);
@@ -75,6 +77,11 @@ function LoginForm () {
     }))
   }
 
+  const signUpPage = (e) => {
+    e.preventDefault();
+    history.push('/signup')
+  }
+
   return (
     <div className="login-container">
       <div id="login-background">
@@ -125,11 +132,18 @@ function LoginForm () {
             />
           </a>
           <a className='login-submit-container' onClick={demoUser}>
-          <span></span>
+            <span></span>
             <span></span>
             <span></span>
             <span></span>
             <button onClick={demoUser} id="demo-user">Demo User</button>
+          </a>
+          <a className='login-submit-container' onClick={signUpPage}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <button onClick={signUpPage} id="demo-user">New to GameBuddy? <br></br> Sign Up!</button>
           </a>
         </form>
       </div>
