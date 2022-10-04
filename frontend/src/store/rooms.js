@@ -103,7 +103,6 @@ export const updateRoom = (roomData) => async (dispatch) => {
       },
     });
     const room = await res.json();
-    console.log(room,"hello from thunk update")
     dispatch(receiveRoom(room));
     return room;
   } catch (err) {
