@@ -85,7 +85,7 @@ router.patch('/:roomId', requireUser, async (req, res, next) => {
             
         }
         // console.log(res,"hello from res");
-        console.log(room,"hello from back end room")
+        // console.log(room,"hello from back end room")
         return res.json(room);
     }
     catch(err) {

@@ -23,7 +23,6 @@ function WebSocketComp () {
 
 
     useEffect(() => {
-        // const messages = document.getElementById('messages');
         let urlString
         if (process.env.NODE_ENV !== 'production') {
             urlString = `ws://localhost:5000/?roomId=${roomId}`
@@ -34,47 +33,8 @@ function WebSocketComp () {
         const socketNew = new WebSocket(urlString);
 
         socketNew.onopen = (event) => {
-            // console.log('Websocket is connected!')
             const id = Math.round(Math.random() * 100)
-            // console.log('sending...', id)
-            // console.log(sessionUser)
             socketNew.send(JSON.stringify({message: `has joined the room`, roomId: roomId, userName: sessionUser.username}))
-            // const data = JSON.stringify(
-            // [
-            //     {
-            //     id,
-            //     name: `[${id}] Jimmothy`,
-            //     address: {
-            //         street: '123 Main St',
-            //         city: 'Anytown',
-            //         state: 'CA'
-            //     },
-            //     profession: 'developer'
-            // },
-            // {
-            //     id,
-            //     name: `[${id}] Juan`,
-            //     address: {
-            //         street: '123 Main St',
-            //         city: 'Anytown',
-            //         state: 'CA'
-            //     },
-            //     profession: 'developer'
-            // },
-            // {
-            //     id,
-            //     name: `[${id}] Marry Santos`,
-            //     address: {
-            //         street: '123 Main St',
-            //         city: 'Anytown',
-            //         state: 'CA'
-            //     },
-            //     profession: 'developer'
-            // }])
-    
-            // setInterval(() => {
-            //     socket.send(data)
-            // }, 2000)
         }
 
         socketNew.onmessage = (message) => {
@@ -84,23 +44,20 @@ function WebSocketComp () {
         }
 
         socketNew.onerror = (error) => console.log(`WebSocket error: ${error}`);
-        // socketNew.onclose = (event) => socketNew.send(JSON.stringify({type: 'close', data: 'bye'}));
+        socketNew.onclose = (event) => socketNew.send(JSON.stringify({message: `has left the room`, roomId: roomId, userName: sessionUser.username}));
         setSocket(socketNew);
-        return () => socketNew.close()
+        return () => {
+            socketNew.send(JSON.stringify({message: `has left the room`, roomId: roomId, userName: sessionUser.username}));
+            socketNew.close()
+        }
     }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log('sending...', message)
         socket.send(JSON.stringify({message: message, roomId: roomId, userName: currentUser.username}))
         setMessage("")
     }
 
-
-    const handleMouseOver = (e) => {
-        e.preventDefault();
-
-    }
     if (!socket) return null;
 
     return (
@@ -130,20 +87,6 @@ function WebSocketComp () {
                     </div>
                 ))}
             </div>
-        {/* <div className="room-input-container">
-          <form className="websocket-form" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className="message-input"
-              placeholder="Type a message..."
-            />
-            <button type="submit" className="message-submit">
-              Send
-            </button>
-          </form>
-        </div> */}
 
       <div className="display-room-members">
         <h1 id="room-member">Room Members:</h1>
