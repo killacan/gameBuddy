@@ -32,11 +32,17 @@ function SignupForm () {
     riotUsernames.push(user.riotUsername)
   })
 
-  const checkEmail = (email) => {
+  const checkEmailTaken = (email) => {
     for (let i = 0; i <=emails.length; i++){
       if (email === emails[i]){
         return true
       }
+    }
+    return false
+  }
+  const checkEmailValid = (email) => {
+    if ((!email.includes("@") || !email.includes(".com")) && email.length > 0){
+      return true
     }
     return false
   }
@@ -111,7 +117,6 @@ function SignupForm () {
       riotUsername,
       password
     };
-
     dispatch(signup(user)); 
   }
 
@@ -126,7 +131,6 @@ function SignupForm () {
       <div id="signup-background">
         <form className="signup-form" onSubmit={usernameSubmit}>
           <h2 id="signup-title">Sign Up</h2>
-
           <div className="signup-info-container">
           <label id="input-signup">Email</label>
             <input type="text"
@@ -135,7 +139,8 @@ function SignupForm () {
               required
               /> 
           <div id="errors-signup-em">
-            {checkEmail(email) && <div id="errors-confirm-password">Email has already been taken</div>}
+            {checkEmailValid(email) && <div id="errors-confirm-password">Not a Valid Email</div>}
+            {checkEmailTaken(email) && <div id="errors-confirm-password">Email has already been taken</div>}
           </div>
           </div>
 
@@ -194,7 +199,7 @@ function SignupForm () {
               id="signup-submit"
               type="submit"
               value="Sign Up"
-              disabled={!email || !username || !password || password !== password2}
+              // disabled={!email || !username || !password || password !== password2}
             />
           </a>
 
