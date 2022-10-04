@@ -9,7 +9,8 @@ const UpdateRoomModal = ({setShowUpdateRoomModal, room}) => {
     const [updateMembers,setUpdateMembers] = useState([]);
     const [updateDuration, setUpdateDuration] = useState(room.duration);
     const [updatePrivacy,setUpdatePrivacy] = useState(room.privacy);
-
+    const [updatePrivacyPassword,setUpdatePrivacyPassword] = useState(room.password);
+    
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
 
@@ -22,7 +23,9 @@ const UpdateRoomModal = ({setShowUpdateRoomModal, room}) => {
           host: user,
           members: updateMembers,
           duration: updateDuration,
-          privacy: updatePrivacy
+          privacy: updatePrivacy,
+          password: updatePrivacyPassword
+
         };
         const newRoomInfo = await dispatch(updateRoom(roomInfo));
         setShowUpdateRoomModal(false)

@@ -29,7 +29,8 @@ router.post('/create', requireUser, validateRoomInput, async (req, res, next) =>
         })
 
         let room = await newRoom.save();
-        room = await room.populate('host');
+        room = await room.populate('host')
+        
         return res.json(room);
     }
     catch(err) {
