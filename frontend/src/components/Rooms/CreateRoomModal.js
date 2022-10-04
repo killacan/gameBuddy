@@ -18,7 +18,7 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleChange = (e) => {
+  const handleChangeYes = (e) => {
     let labelPassword = document.getElementById("room-password")
     let inputPrivacyPassword = document.getElementById("room-password-input")
     if (e.target.checked) {
@@ -32,6 +32,21 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
       inputPrivacyPassword.classList.add("hidden")
     }
   };
+
+  const handleChangeNo = (e) => {
+    let labelPassword = document.getElementById("room-password")
+    let inputPrivacyPassword = document.getElementById("room-password-input")
+    if (e.target.checked) {
+      setPrivacy(false);
+      setPrivacyPassword("")
+      labelPassword.classList.add("hidden")
+      inputPrivacyPassword.classList.add("hidden")
+    } else {
+      setPrivacy(true);
+      labelPassword.classList.remove("hidden")
+      inputPrivacyPassword.classList.remove("hidden")
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -87,11 +102,19 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
             <input
               id="a-checkbox"
               name="a-checkbox"
-              type="checkbox"
+              type="radio"
               value={privacy}
-              onChange={handleChange}
+              onChange={handleChangeYes}
             />
             Yes
+            <input
+              id="a-checkbox"
+              name="a-checkbox"
+              type="radio"
+              value={privacy}
+              onChange={handleChangeNo}
+            />
+            No
           </label>
           <label id="room-password" className="hidden">
             Room Password

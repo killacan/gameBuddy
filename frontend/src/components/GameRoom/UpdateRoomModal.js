@@ -31,13 +31,37 @@ const UpdateRoomModal = ({setShowUpdateRoomModal, room}) => {
         setShowUpdateRoomModal(false)
     }
 
-    const handleChange = (e) => {
+    const handleChangeYes = (e) => {
+        let labelPassword = document.getElementById("room-password")
+        let inputPrivacyPassword = document.getElementById("room-password-input")
         if (e.target.checked) {
+            console.log("privacy true")
             setUpdatePrivacy(true);
+            labelPassword.classList.remove("hidden")
+            inputPrivacyPassword.classList.remove("hidden")
         } else {
             setUpdatePrivacy(false);
+            setUpdatePrivacyPassword("")
+            labelPassword.classList.add("hidden")
+            inputPrivacyPassword.classList.add("hidden")
         }
       };
+    
+      const handleChangeNo = (e) => {
+        let labelPassword = document.getElementById("room-password")
+        let inputPrivacyPassword = document.getElementById("room-password-input")
+        if (e.target.checked) {
+            console.log("privacy false")
+            setUpdatePrivacy(false);
+            setUpdatePrivacyPassword("")
+            labelPassword.classList.add("hidden")
+            inputPrivacyPassword.classList.add("hidden")
+        } else {
+            setUpdatePrivacy(true);
+            labelPassword.classList.remove("hidden")
+            inputPrivacyPassword.classList.remove("hidden")
+        }
+      }
 
     return (
         <>
@@ -78,11 +102,30 @@ const UpdateRoomModal = ({setShowUpdateRoomModal, room}) => {
                     <input
                     id="a-checkbox"
                     name="a-checkbox"
-                    type="checkbox"
+                    type="radio"
                     value={updatePrivacy}
-                    onChange={handleChange}
+                    onChange={handleChangeYes}
                     />
                     Yes
+                    <input
+                    id="a-checkbox"
+                    name="a-checkbox"
+                    type="radio"
+                    value={updatePrivacy}
+                    onChange={handleChangeNo}
+                    />
+                    No
+                </label>
+                <label id="room-password" className="hidden">
+                    Room Password
+                        <input
+                        className="hidden"
+                        id="room-password-input"
+                        name="room-password-input"
+                        type="password"
+                        value={updatePrivacyPassword}
+                        onChange={(e) => setUpdatePrivacyPassword(e.target.value)}
+                        />
                 </label>
                 <button id="update-room" type="submit">
                     submit

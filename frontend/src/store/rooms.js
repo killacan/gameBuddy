@@ -93,6 +93,7 @@ export const createRoom = (roomData) => async (dispatch) => {
   }
 };
 export const updateRoom = (roomData) => async (dispatch) => {
+
   try {
     const res = await jwtFetch(`/api/rooms/${roomData._id}`, {
       method: "PATCH",
@@ -102,6 +103,7 @@ export const updateRoom = (roomData) => async (dispatch) => {
       },
     });
     const room = await res.json();
+    console.log(room,"hello from thunk update")
     dispatch(receiveRoom(room));
     return room;
   } catch (err) {

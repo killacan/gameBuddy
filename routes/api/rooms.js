@@ -77,12 +77,15 @@ router.patch('/:roomId', requireUser, async (req, res, next) => {
         if (room) {
             room.game = req.body.game || room.game;
             room.duration = req.body.duration || room.duration;
-            room.privacy = req.body.privacy || room.privacy;
+            if (req.body.privacy !== room.privacy) {room.privacy = !room.privacy};
+            room.password = req.body.password || room.password;
             room.title = req.body.title || room.title;
             room.members = req.body.members || room.members;
             room = await room.save();
             
         }
+        // console.log(res,"hello from res");
+        console.log(room,"hello from back end room")
         return res.json(room);
     }
     catch(err) {
