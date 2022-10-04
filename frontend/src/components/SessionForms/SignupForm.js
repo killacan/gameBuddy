@@ -3,8 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
 import { fetchAllUsers } from '../../store/users';
+import { useHistory } from 'react-router-dom';
 
 function SignupForm () {
+  const history = useHistory();
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [riotUsername, setRiotUsername] = useState('');
@@ -111,7 +113,11 @@ function SignupForm () {
     };
 
     dispatch(signup(user)); 
-    
+  }
+
+  const logInPage = (e) => {
+    e.preventDefault();
+    history.push('/login')
   }
 
   return (
@@ -191,6 +197,15 @@ function SignupForm () {
               disabled={!email || !username || !password || password !== password2}
             />
           </a>
+
+          <a className='login-submit-container' onClick={logInPage}>
+          <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <button onClick={logInPage} id="logInPage">Already have an Account? <br/> Log In!</button>
+          </a>
+          
         </form>
       </div>
     </div>
