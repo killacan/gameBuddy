@@ -84,6 +84,7 @@ router.patch('/:roomId', requireUser, async (req, res, next) => {
             room = await room.save();
             
         }
+
         return res.json(room);
     }
     catch(err) {
