@@ -210,9 +210,15 @@ margin-left: 1vw;
 #game-duration{
     color: white;
     font-family: azonix;
+    position: relative;
 }
 
 #private-room{
+    color: white;
+    font-family: azonix;
+}
+
+#room-password{
     color: white;
     font-family: azonix;
 }
@@ -222,6 +228,7 @@ margin-left: 1vw;
     font-family: brightness;
     font-size: 2vw;
 }
+
 
 #submit-room{
     background-color: transparent;

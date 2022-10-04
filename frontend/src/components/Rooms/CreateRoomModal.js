@@ -11,19 +11,42 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
   const [members, setMembers] = useState([]);
   const [duration, setDuration] = useState(30);
   const [privacy, setPrivacy] = useState(false);
+  const [privacyPassword, setPrivacyPassword] = useState("");
 
   const user = useSelector((state) => state.session.user);
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleChange = (e) => {
+  const handleChangeYes = (e) => {
+    let labelPassword = document.getElementById("room-password")
+    let inputPrivacyPassword = document.getElementById("room-password-input")
     if (e.target.checked) {
       setPrivacy(true);
+      labelPassword.classList.remove("hidden")
+      inputPrivacyPassword.classList.remove("hidden")
     } else {
       setPrivacy(false);
+      setPrivacyPassword("")
+      labelPassword.classList.add("hidden")
+      inputPrivacyPassword.classList.add("hidden")
     }
   };
+
+  const handleChangeNo = (e) => {
+    let labelPassword = document.getElementById("room-password")
+    let inputPrivacyPassword = document.getElementById("room-password-input")
+    if (e.target.checked) {
+      setPrivacy(false);
+      setPrivacyPassword("")
+      labelPassword.classList.add("hidden")
+      inputPrivacyPassword.classList.add("hidden")
+    } else {
+      setPrivacy(true);
+      labelPassword.classList.remove("hidden")
+      inputPrivacyPassword.classList.remove("hidden")
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,8 +57,10 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
       members: members,
       duration: duration,
       privacy: privacy,
+      password: privacyPassword
     };
     const room = await dispatch(createRoom(roomInfo));
+    console.log(room,"checking what room is")
     history.push(`/games/rooms/${room._id}`);
   };
 
@@ -77,11 +102,30 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
             <input
               id="a-checkbox"
               name="a-checkbox"
-              type="checkbox"
+              type="radio"
               value={privacy}
-              onChange={handleChange}
+              onChange={handleChangeYes}
             />
             Yes
+            <input
+              id="a-checkbox"
+              name="a-checkbox"
+              type="radio"
+              value={privacy}
+              onChange={handleChangeNo}
+            />
+            No
+          </label>
+          <label id="room-password" className="hidden">
+            Room Password
+            <input
+              className="hidden"
+              id="room-password-input"
+              name="room-password-input"
+              type="password"
+              value={privacyPassword}
+              onChange={(e) => setPrivacyPassword(e.target.value)}
+            />
           </label>
           <button id="submit-room" type="submit">
             submit
