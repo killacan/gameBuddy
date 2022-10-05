@@ -136,14 +136,14 @@ function LoginForm () {
             <span></span>
             <span></span>
             <span></span>
-            <button onClick={demoUser} id="demo-user">Demo User</button>
+            <button onClick={demoUser} id="demo-user-login">Demo User</button>
           </a>
           <a className='login-submit-container' onClick={signUpPage}>
             <span></span>
             <span></span>
             <span></span>
             <span></span>
-            <button onClick={signUpPage} id="demo-user">New to GameBuddy? <br></br> Sign Up!</button>
+            <button onClick={signUpPage} id="demo-user-login">New to GameBuddy? <br></br> Sign Up!</button>
           </a>
         </form>
       </div>
