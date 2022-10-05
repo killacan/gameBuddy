@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 // import { set } from 'mongoose';
 import { useHistory } from "react-router-dom";
 
-const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
+const CreateRoomModal = ({ setShowCreateRoomModal, game, msgRoomUpdate }) => {
   const [title, setTitle] = useState("");
   const [members, setMembers] = useState([]);
   const [duration, setDuration] = useState(30);

@@ -3,7 +3,7 @@ import { useState } from "react";
 import CreateRoomModal from "./CreateRoomModal";
 import RoomPasswordModal from "./RoomPasswordModal";
 import { FaStar } from "react-icons/fa";
-import { fetchRooms,fetchRoom,updateRoom } from "../../store/rooms";
+import { fetchRooms,fetchRoom,updateRoom, destroyRoom } from "../../store/rooms";
 import { useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -15,12 +15,14 @@ import leagueBanner from "./league-banner.png"
 import brimstoneGif from "./brimstone-gif.gif"
 import zoeyGif from "./zoey-gif.gif"
 import tftGif from "./tft-gif.gif"
+import WebsocketRoomIndex from "../WebsocketRoomIndex";
 
 
 const RoomsIndex = () => {
   const game = new URL(window.location.href).searchParams.get("game");
 
   const [showCreateRoomModal, setShowCreateRoomModal] = useState(false);
+  const [socket, setSocket] = useState(); 
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -32,8 +34,44 @@ const RoomsIndex = () => {
   const allRooms = Object.values(rooms)
 
   useEffect(()=>{
-    dispatch(fetchRooms())
+    // dispatch(fetchRooms())
+
+    const socketNew = new WebSocket(`ws://localhost:5000/rooms?game=${game}`)
+    setSocket(socketNew)
+
+    socketNew.onopen = () => {
+        // console.log("I'm a little socket short and stout")
+        socketNew.send(JSON.stringify({message: 'I am a message!', userName: user.userName, gameId: game}))
+    }
+
+
+    socketNew.onmessage = (message) => {
+      let parsedMessage = JSON.parse(message.data)
+      // console.log(parsedMessage)
+      if (parsedMessage.message === "I am a message!") {
+  
+        setTimeout(dispatch(fetchRooms()), 5000)
+      } else if (parsedMessage.message === 'destroy room message') {
+        dispatch(destroyRoom(parsedMessage.destroyId))
+      }
+    }
+
+
+    return () => {
+      socketNew.send(JSON.stringify({message: 'I am a message!', userName: user.userName, gameId: game}))
+      socketNew.close()
+    }
   },[])
+
+  // const msgRoomUpdate = () => {
+  //   console.log("I am an update request")
+  //   socket.send(JSON.stringify({message: 'I am a message!', userName: user.userName, gameId: game}))
+
+  // }
+
+ 
+
+  // if (!socket) return null
 
   const showStar = (rating) => {
     if (rating === 1) {
@@ -166,6 +204,7 @@ const RoomsIndex = () => {
 
   return (
     <>
+    {/* <WebsocketRoomIndex game={game} user={user} msgRoomUpdate={msgRoomUpdate} /> */}
       <div className="game-banner">
         <div className="banner" >
           {game}

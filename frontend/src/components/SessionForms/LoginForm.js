@@ -73,7 +73,7 @@ function LoginForm () {
     e.preventDefault();
     dispatch(login({
       email: "admin@admin.com",
-      password: "password"
+      password: "admin123"
     }))
   }
 
