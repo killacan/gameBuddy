@@ -60,7 +60,6 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
       password: privacyPassword
     };
     const room = await dispatch(createRoom(roomInfo));
-    console.log(room,"checking what room is")
     history.push(`/games/rooms/${room._id}`);
   };
 

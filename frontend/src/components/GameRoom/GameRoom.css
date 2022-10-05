@@ -21,10 +21,9 @@
     height: 60%;
     display: flex;
     flex-direction: column;
-
 }
 
-#player1{
+#player{
     width: 16vw;
     height: 37vh;
     background-image: linear-gradient(#0e2f51,#1a4e82,#4078b0);
@@ -39,32 +38,7 @@
     color: rgb(167, 164, 164);
     position: relative;  
     padding-top: 12.5vh;
-    
-}
-
-@keyframes floating {
-0% { transform: translate(0,  0px); }
-50%  { transform: translate(0, 15px); }
-100%   { transform: translate(0, -0px); }   
-}
-
-#player2{
-    width: 16vw;
-    height: 37vh;
-    background-image: linear-gradient(#0e2f51,#1a4e82,#4078b0);
-    animation-name: floating;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    border-radius: .5vw;    
-    padding-top: 2vw;
-    font-family: brightness;
-    text-align: center;
-    font-size: 1vw;
-    color: rgb(167, 164, 164);
-    position: relative;
-
-
+    color: rgb(255, 255, 255);
 }
 
 @keyframes floating {
@@ -74,75 +48,7 @@
 }
 
 
-#player3{
-    width: 16vw;
-    height: 37vh;
-    background-image: linear-gradient(#0e2f51,#1a4e82,#4078b0);
-    animation-name: floating;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    border-radius: .5vw;
-    padding-top: 2vw;
-    font-family: brightness;
-    text-align: center;
-    font-size: 1vw;
-    color: rgb(167, 164, 164);
-    position: relative;
 
-}
-
-@keyframes floating {
-0% { transform: translate(0,  0px); }
-50%  { transform: translate(0, 15px); }
-100%   { transform: translate(0, -0px); }   
-}
-
-#player4{
-    width: 16vw;
-    height: 37vh;
-    background-image: linear-gradient(#0e2f51,#1a4e82,#4078b0);
-    animation-name: floating;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    border-radius: .5vw;
-    padding-top: 2vw;
-    font-family: brightness;
-    text-align: center;
-    font-size: 1vw;
-    color: rgb(167, 164, 164);
-    position: relative;
-}
-
-@keyframes floating {
-0% { transform: translate(0,  0px); }
-50%  { transform: translate(0, 15px); }
-100%   { transform: translate(0, -0px); }   
-}
-
-#player5{
-    width: 16vw;
-    height: 37vh;
-    background-image: linear-gradient(#0e2f51,#1a4e82,#4078b0);
-    animation-name: floating;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    border-radius: .5vw;
-    padding-top: 2vw;
-    font-family: brightness;
-    text-align: center;
-    font-size: 1vw;
-    color: rgb(167, 164, 164);
-    position: relative;
-}
-
-@keyframes floating {
-0% { transform: translate(0,  0px); }
-50%  { transform: translate(0, 15px); }
-100%   { transform: translate(0, -0px); }   
-}
 .top-left-container{
     display: flex;
     flex-direction: column;
@@ -154,6 +60,7 @@
     justify-content: space-evenly;
     align-items: center;
     margin-top: 2vw;
+
 }
 
 .host-info{
@@ -389,7 +296,7 @@
     margin-right: .5vw;
 }
 
- .game-room-bg-img{
+.game-room-bg-img{
     width: 100vw;
     height: 91.5vh;
     opacity: .6;
@@ -397,7 +304,7 @@
 }
 
 
-#player1 img{
+#player img{
     position: absolute;
     object-fit: cover;
     top: 0;
@@ -405,49 +312,46 @@
     width: 100%;
     height: 100%;
     left: 0;
-
 }
-#player2 img{
+
+
+
+#player-nav-bar{
     position: absolute;
-    object-fit: cover;
-    top: 0;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    left: 0;
+    z-index: 3;
+    bottom: 0;
+    width: 5vw;
+    height: 5vh;
+}
 
+#player-nav-bar:hover{
+    cursor: pointer;
+}
+
+#view-prof:hover{
+    color: white;
+    text-decoration: none;
+    font-family: azonix;
+}
+
+#view-prof{
+    color: rgb(136, 223, 238);
+    text-decoration: none;
+    font-family: azonix;
+    text-shadow: #000000;
 
 }
-#player3 img{
-    position: absolute;
-    object-fit: cover;
-    top: 0;
-    z-index: 2;
-    width: 100%;
-    height: 100%;    
-    left: 0;
 
-}
-#player4 img{
-    position: absolute;
-    object-fit: cover;
-    top: 0;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    left: 0;
 
-}
-#player5 img{
-    position: absolute;
-    object-fit:cover;
-    top: 0;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    left: 0;
 
-}
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 850px) {
     .loading-screen-images {
@@ -465,7 +369,7 @@
         height: auto;
     }
 
-    #player1 img{
+    #player img{
         position: absolute;
         object-fit: cover;
         top: 0;
@@ -475,48 +379,8 @@
         left: 0;
     
     }
-    #player2 img{
-        position: absolute;
-        object-fit: cover;
-        top: 0;
-        z-index: 2;
-        width: 100%;
-        height: 100%;
-        left: 0;
-    
-    
-    }
-    #player3 img{
-        position: absolute;
-        object-fit: cover;
-        top: 0;
-        z-index: 2;
-        width: 100%;
-        height: 100%;    
-        left: 0;
-    
-    }
-    #player4 img{
-        position: absolute;
-        object-fit: cover;
-        top: 0;
-        z-index: 2;
-        width: 100%;
-        height: 100%;
-        left: 0;
-    
-    }
-    #player5 img{
-        position: absolute;
-        object-fit:cover;
-        top: 0;
-        z-index: 2;
-        width: 100%;
-        height: 100%;
-        left: 0;
-    
-    }
-
+  
+  
     #player1{
         width: 180px;
         height: 150px;
@@ -532,7 +396,6 @@
         color: rgb(167, 164, 164);
         position: relative;  
         padding-top: 12.5vh;
-        
     }
     
     @keyframes floating {
@@ -541,101 +404,6 @@
     100%   { transform: translate(0, -0px); }   
     }
     
-    #player2{
-        width: 180px;
-        height: 240px;
-        background-image: linear-gradient(#0e2f51,#1a4e82,#4078b0);
-        animation-name: floating;
-        animation-duration: 3s;
-        animation-iteration-count: infinite;
-        animation-timing-function: ease-in-out;
-        border-radius: .5vw;    
-        padding-top: 2vw;
-        font-family: brightness;
-        text-align: center;
-        font-size: 1vw;
-        color: rgb(167, 164, 164);
-        position: relative;
-    
-    
-    }
-    
-    @keyframes floating {
-    0% { transform: translate(0,  0px); }
-    50%  { transform: translate(0, 15px); }
-    100%   { transform: translate(0, -0px); }   
-    }
-    
-    
-    #player3{
-        width: 180px;
-        height: 240px;
-        background-image: linear-gradient(#0e2f51,#1a4e82,#4078b0);
-        animation-name: floating;
-        animation-duration: 3s;
-        animation-iteration-count: infinite;
-        animation-timing-function: ease-in-out;
-        border-radius: .5vw;
-        padding-top: 2vw;
-        font-family: brightness;
-        text-align: center;
-        font-size: 1vw;
-        color: rgb(167, 164, 164);
-        position: relative;
-    
-    }
-    
-    @keyframes floating {
-    0% { transform: translate(0,  0px); }
-    50%  { transform: translate(0, 15px); }
-    100%   { transform: translate(0, -0px); }   
-    }
-    
-    #player4{
-        width: 180px;
-        height: 240px;
-        background-image: linear-gradient(#0e2f51,#1a4e82,#4078b0);
-        animation-name: floating;
-        animation-duration: 3s;
-        animation-iteration-count: infinite;
-        animation-timing-function: ease-in-out;
-        border-radius: .5vw;
-        padding-top: 2vw;
-        font-family: brightness;
-        text-align: center;
-        font-size: 1vw;
-        color: rgb(167, 164, 164);
-        position: relative;
-    }
-    
-    @keyframes floating {
-    0% { transform: translate(0,  0px); }
-    50%  { transform: translate(0, 15px); }
-    100%   { transform: translate(0, -0px); }   
-    }
-    
-    #player5{
-        width: 180px;
-        height: 240px;
-        background-image: linear-gradient(#0e2f51,#1a4e82,#4078b0);
-        animation-name: floating;
-        animation-duration: 3s;
-        animation-iteration-count: infinite;
-        animation-timing-function: ease-in-out;
-        border-radius: .5vw;
-        padding-top: 2vw;
-        font-family: brightness;
-        text-align: center;
-        font-size: 1vw;
-        color: rgb(167, 164, 164);
-        position: relative;
-    }
-    
-    @keyframes floating {
-    0% { transform: translate(0,  0px); }
-    50%  { transform: translate(0, 15px); }
-    100%   { transform: translate(0, -0px); }   
-    }
     .top-left-container{
         display: flex;
         flex-direction: column;
@@ -647,6 +415,13 @@
         height: auto;
         display: flex;
         flex-direction: column;
-    
     }
 }
+
+
+
+
+
+
+
+

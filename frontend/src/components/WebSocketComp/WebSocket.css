@@ -26,11 +26,11 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    padding-right: 2vw;
     font-size: .8vw;
     color: white;
     margin-top: 5vh;
 }
+
 #user-messages{
     color: white;
     text-shadow: 1px 1px  black;
@@ -42,10 +42,10 @@
 #room-member{
     margin-top: 20px;
     font-size: 27px;
-    margin-bottom: 4px;
+    margin-bottom: .5vw;
     color: white;
     font-family: azonix;
-
+    margin-right: 4vw;
 }
 
 .room-messages-container{
@@ -80,8 +80,7 @@
     font-size: 1vw;
     background-color: white;
     border: none;
-    padding: 2xp;
-
+    padding: 2px;
 }
 
 .message-submit{
@@ -94,8 +93,7 @@
     font-family: azonix;
     border-color: white;
     width: 11%;
-    height: 3vh;
-    
+    height: 3vh;  
 }
 .message-submit:hover{
     background: none;
@@ -110,9 +108,10 @@
 #member-room-username{
     display: flex;
     flex-direction: column;
-    margin-bottom: 4px;
+    margin-bottom: .5vw;
     font-family: azonix;
-    font-size: 11px;
+    font-size: 1vw;
+    margin-right: 5vw;
 }
 
 @media only screen and (max-width: 850px) {

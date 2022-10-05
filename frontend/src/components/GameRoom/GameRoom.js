@@ -6,13 +6,14 @@ import { useEffect,useState } from 'react';
 import UpdateRoomModal from './UpdateRoomModal';
 import WebSocketComp from '../WebSocketComp/WebSocketComp';
 import EndRoomModal from './EndRoomModal';
-import { fetchAllUsers } from '../../store/users';
 import gameRoomBg from './background-gameroom.jpg';
 import player1 from './player1.png';
 import player2 from './player2.png';
 import player3 from './player3.png';
 import player4 from './player4.png';
 import player5 from './player5.png';
+import RoomMemberNav from './RoomMemberNav';
+
 
 
 const GameRoom = () => {
@@ -53,8 +54,8 @@ const GameRoom = () => {
 
     const [showUpdateRoomModal, setShowUpdateRoomModal] = useState(false);
     const [showEndRoomModal, setShowEndRoomModal] = useState(false);
-    const [roomMembers, setRoomMembers] = useState([]);
 
+    const playersArr = [player1, player2, player3, player4, player5]
 
     const handleUpdate = (e) => {
         e.preventDefault();
@@ -67,11 +68,20 @@ const GameRoom = () => {
         setShowEndRoomModal(true);
     }
 
+    // const playerEnter = (e) => {
+    //     e.target.style.background='black';
+    //     e.target.style.opacity=.8; 
+    // }
 
+    // const playerLeave = (e) => {
+    //     e.target.style.background = "transparent"
+    //     e.target.style.opacity=1;
+    // }
+
+ 
 
     if (!room) return null; 
 
-    
 
     return (
         <>
@@ -99,13 +109,42 @@ const GameRoom = () => {
                         </div>
                     </div>
                     <div className="loading-screen-images">
-                        <div id="player1">
-                            <div>{room.host.username}<img id="p1"src={player1}/></div>
+                        {room.members.map((mem,idx) => (
+                              <div id="player">
+                                <div>
+                                    <RoomMemberNav mem={mem} idx={idx} playersArr={playersArr} />
+                                </div>
+                            </div>
+                        ))}
+                         {[...Array(5 - room.members.length)].map((ele,i) => { 
+                            const leftOverMems = 4 - i ; 
+                            return (
+                                <div id="player">
+                                    <div>
+                                        <img id="p1" src={playersArr[leftOverMems]}/>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                        {/* <div id="player1">
+                            <div>
+                                {room.members[0]?.username}<img id="p1" src={player1} onMouseEnter={playerEnter} onMouseLeave={playerLeave}/>
+                            </div>
+                            <NavLink id="direct-profile" to ={`/profile/${room.members[0]?._id}`}></NavLink>
                         </div>
-                        <div id="player2">Player 2 <img id="p2" src={player2}/></div>
-                        <div id="player3">Player 3 <img id="p3" src={player3}/></div>
-                        <div id="player4">Player 4 <img id="p4" src={player4}/></div>
-                        <div id="player5">Player 5 <img id="p5" src={player5}/></div>
+
+                        <div id="player2"> 
+                            <div>{room.members[1]?.username}<img id="p2" src={player2} onMouseEnter={playerEnter} onMouseLeave={playerLeave}/></div>
+                        </div>
+                        <div id="player3"> 
+                            <div>{room.members[2]?.username}<img id="p3" src={player3} onMouseEnter={playerEnter} onMouseLeave={playerLeave}/></div>
+                        </div>
+                        <div id="player4">
+                            <div>{room.members[3]?.username}<img id="p4" src={player4} onMouseEnter={playerEnter} onMouseLeave={playerLeave}/></div>
+                        </div>
+                        <div id="player5">
+                            <div>{room.members[4]?.username}<img id="p5" src={player5} onMouseEnter={playerEnter} onMouseLeave={playerLeave}/></div>
+                        </div> */}
                     </div>
 
                 </div>
