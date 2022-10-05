@@ -1,6 +1,7 @@
 import "./Rooms.css";
 import { useState } from "react";
 import CreateRoomModal from "./CreateRoomModal";
+import RoomPasswordModal from "./RoomPasswordModal";
 import { FaStar } from "react-icons/fa";
 import { fetchRooms,fetchRoom,updateRoom } from "../../store/rooms";
 import { useEffect } from "react";
@@ -104,28 +105,31 @@ const RoomsIndex = () => {
   const history = useHistory();
   const user = useSelector(state => state.session.user)
 
-  const handleJoinRoom = (field) => {
 
-    return async e => {
-      e.preventDefault();
-      //await dispatch update room
-      dispatch(fetchRoom(field._id)).then((res) => {
-        console.log(res)
-        let flag = false;
-        res.members.forEach(member =>  {
-            if (member._id === user._id) {
-                flag = true;
-            }}) 
-            
-            if (!flag) {
-                res.members.push(user)
-                dispatch(updateRoom(res)).then(history.push(`/games/rooms/${field._id}`))
-
-            } 
-    })
-    }
-    
-  }
+  // const handleJoinRoom = (field) => {
+  //   return async e => {
+  //     e.preventDefault();
+  //     //await dispatch update room
+  //     if (field.privacy === true){
+  //       setShowRoomPasswordModal(true)
+  //     } else{
+  //       dispatch(fetchRoom(field._id)).then((res) => {
+  //         console.log(res)
+  //         let flag = false;
+  //         res.members.forEach(member =>  {
+  //             if (member._id === user._id) {
+  //                 flag = true;
+  //             }}) 
+              
+  //             if (!flag) {
+  //                 res.members.push(user)
+  //                 dispatch(updateRoom(res)).then(history.push(`/games/rooms/${field._id}`))
+  
+  //       } 
+  //     })
+  //     }
+  //   }
+  // }
 
   const toggleGameIndexBg = () => {
     if (game === "Valorant"){
@@ -213,12 +217,16 @@ const RoomsIndex = () => {
                         {room.members.length > 5 ? 
                           <button id="room-full-btn">Full Room</button>
                           :
-                          <button id="create-rm-btn" onClick={handleJoinRoom(room)}>Join Room</button>
+                          // <button id="create-rm-btn" onClick={handleJoinRoom(room)}>Join Room</button>
+                          <RoomPasswordModal  room={room} user={user}/>
+
                         }
                     </div>
                       
                   {/* <div id="display-num-user">{room.members.length}/{room.privacy === true ? 1 : 5}</div> */}
                   </div>
+                 
+          
                 </div>
                 :
                 ""
@@ -233,6 +241,7 @@ const RoomsIndex = () => {
           game={game}
         />
       )}
+      
     </>
   );
 };
