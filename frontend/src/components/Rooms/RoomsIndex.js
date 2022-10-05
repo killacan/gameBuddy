@@ -14,6 +14,7 @@ import leagueBanner from "./league-banner.png"
 import brimstoneGif from "./brimstone-gif.gif"
 import zoeyGif from "./zoey-gif.gif"
 import tftGif from "./tft-gif.gif"
+import WebsocketRoomIndex from "../WebsocketRoomIndex";
 
 
 const RoomsIndex = () => {
@@ -32,7 +33,13 @@ const RoomsIndex = () => {
 
   useEffect(()=>{
     dispatch(fetchRooms())
+    return msgRoomUpdate()
   },[])
+
+  const msgRoomUpdate = () => {
+    console.log("I am an update request")
+    setTimeout(dispatch(fetchRooms()), 3000)
+  }
 
   const showStar = (rating) => {
     if (rating === 1) {
@@ -162,6 +169,7 @@ const RoomsIndex = () => {
 
   return (
     <>
+    <WebsocketRoomIndex game={game} user={user} msgRoomUpdate={msgRoomUpdate} />
       <div className="game-banner">
         <div className="banner" >
           {game}

@@ -57,14 +57,21 @@ server.on('upgrade', onSocketUpgrade)
 // })
 
 const users = {}
+const gamers = {}
 
 function onSocketUpgrade (req, socket, head) {
+  // console.log(req, "I am a request")
+  console.log(users, "I am a list of users")
+  // console.log(socket, "I am a socket")
+  // console.log(head, "I am a head")
   if (users[req.url]) {
     users[req.url].push(socket) 
   } else {
     users[req.url] = [socket]
   }
-  const {'sec-websocket-key': webClientSocketKey} = req.headers
+
+  // console.log(users[req.url], "its socket time")
+  const {'sec-websocket-key': webClientSocketKey} =  req.headers
   console.log(`webClientSocketKey: ${webClientSocketKey}`)
   const headers = prepareHandShakeHeaders(webClientSocketKey)
   socket.write(headers)
@@ -72,9 +79,14 @@ function onSocketUpgrade (req, socket, head) {
   // socket.on('close',() => console.log('client disconnected'))
 }
 
-function sendMessage(msg, socket, roomId) {
+function sendMessage(msg, socket, roomId, gameId) {
   const dataFrameBuffer = prepareMessage(msg)
+  console.log(msg)
   linkId = "/?roomId=" + roomId
+
+  if (!roomId) {
+    linkId = "/rooms?game=" + gameId
+  }
   // console.log(users[linkId], 'msg')
   users[linkId].forEach (userSocket => {
     // console.log("inside users Each")
@@ -157,12 +169,12 @@ function onSocketReadable(socket) {
   const received = (decoded.toString('utf8'))
 
   const data = JSON.parse(received)
-  console.log('message received', data)
+  // console.log('message received', data)
 
   const msg = JSON.stringify(
     data
   )
-  sendMessage(msg, socket, data.roomId)
+  sendMessage(msg, socket, data.roomId, data.gameId)
 
 }
 
