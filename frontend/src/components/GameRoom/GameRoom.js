@@ -12,6 +12,7 @@ import player2 from './player2.png';
 import player3 from './player3.png';
 import player4 from './player4.png';
 import player5 from './player5.png';
+import Timer from './Timer';
 import RoomMemberNav from './RoomMemberNav';
 
 
@@ -68,20 +69,18 @@ const GameRoom = () => {
         setShowEndRoomModal(true);
     }
 
-    // const playerEnter = (e) => {
-    //     e.target.style.background='black';
-    //     e.target.style.opacity=.8; 
-    // }
+    if (!room) return null;
 
-    // const playerLeave = (e) => {
-    //     e.target.style.background = "transparent"
-    //     e.target.style.opacity=1;
-    // }
-
- 
-
-    if (!room) return null; 
-
+    //timer
+    
+    const getTimeFromDurationMs = () => {
+        const duration = room.duration //in miuntes * 60 = seconds * 1000 = ms
+        const durationInMs = (duration * 60 * 1000)
+        const nowInMs = Date.now();
+        const timeFromDurationMs = durationInMs + nowInMs
+        console.log(timeFromDurationMs)
+        return timeFromDurationMs
+    }    
 
     return (
         <>
@@ -98,6 +97,7 @@ const GameRoom = () => {
                                 <div id="room-leader">Room Leader : </div>
                                 <div>{room.host.username}</div>
                             </div>
+                            <div><Timer countdownTimestampMs={getTimeFromDurationMs()}/></div>
                             <div className="update-del-room-btns">
                                 {currentUserId === room.host._id ? 
                                 <>
