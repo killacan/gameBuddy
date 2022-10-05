@@ -36,7 +36,15 @@ const RoomsIndex = () => {
   useEffect(()=>{
     // dispatch(fetchRooms())
 
-    const socketNew = new WebSocket(`ws://localhost:5000/rooms?game=${game}`)
+    let urlString
+    if (process.env.NODE_ENV !== 'production') {
+      urlString = `ws://localhost:5000/rooms?game=${game}`
+    } else {
+      urlString = `wss://gamebuddy-app.herokuapp.com/rooms?game=${game}`
+    }
+    
+    const socketNew = new WebSocket(urlString)
+    
     setSocket(socketNew)
 
     socketNew.onopen = () => {
