@@ -151,6 +151,7 @@ const Profile = () => {
             .then(res => res.json())
             .then(data => {
                 const playerId = data.id;
+
                 if (playerId) {
                     setPlayerInfoComponent (
                     <>
@@ -161,14 +162,14 @@ const Profile = () => {
                             <h2 id="summoner-lvl">Summoner Level : {data.summonerLevel}</h2>
                             <div id="avg-rating">Avg Rating:{showStar(3)}</div>
                         </div>
-                    <div className="icon-img">
-                        <div id="in-game-icon">
-                            <img id="in-game-img" src={'http://ddragon.leagueoflegends.com/cdn/12.18.1/img/profileicon/' + data.profileIconId + ".png" }></img>
+                        <div className="icon-img">
+                            <div id="in-game-icon">
+                                <img id="in-game-img" src={'http://ddragon.leagueoflegends.com/cdn/12.18.1/img/profileicon/' + data.profileIconId + ".png" }></img>
+                            </div>
                         </div>
-                    </div>
                     </>
-                )            
-            } 
+                )
+            }
 
             return fetch("https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/"
             + playerId + "?api_key=" + RIOT_API_KEY)
