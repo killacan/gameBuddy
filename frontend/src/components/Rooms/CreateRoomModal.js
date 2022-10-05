@@ -73,6 +73,9 @@ const CreateRoomModal = ({ setShowCreateRoomModal, game }) => {
       <div id="modal-bg-container"></div>
       <div className="bg-modal">
         <form className="create-room-form" onSubmit={handleSubmit}>
+          <div id="x-close-review-form" onClick={() => setShowCreateRoomModal(false)}>
+              <div id="x-close-review">X</div>
+          </div>
           <h1 id="creating-room">Creating Room</h1>
           <label id="room-title">
             Room Title

@@ -104,7 +104,7 @@ const GameRoom = () => {
                                     <button id="end-session-btn" onClick={handleEnd}>End Session</button>
                                     <button id="handle-update-btn" onClick={handleUpdate}> Update Session</button>
                                 </>
-                                    : "" }
+                                    : <button id="end-session-btn" onClick={handleEnd}>Review Players</button> }
                             </div>
                         </div>
                     </div>
@@ -152,7 +152,7 @@ const GameRoom = () => {
                     <WebSocketComp />
                 </div>
                 {showUpdateRoomModal && <UpdateRoomModal setShowUpdateRoomModal={setShowUpdateRoomModal} room={room}/>}
-                {showEndRoomModal && <EndRoomModal setShowEndRoomModal={setShowEndRoomModal} room={room}/>}
+                {showEndRoomModal && <EndRoomModal setShowEndRoomModal={setShowEndRoomModal} currentUserId={currentUserId}room={room} user={user} />}
             </div>
         </>
     )
