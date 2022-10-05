@@ -89,7 +89,7 @@ function sendMessage(msg, socket, roomId, gameId) {
   }
   // console.log(users[linkId], 'msg')
   users[linkId].forEach (userSocket => {
-    // console.log("inside users Each")
+    console.log("inside users Each")
     userSocket.write(dataFrameBuffer)
   })
 
