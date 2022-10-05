@@ -110,33 +110,33 @@ router.delete('/:reviewId', requireUser, validateReviewInput, async (req, res, n
     }
 })
 
-router.get('avgRating',(req,res) => {
-    // db.collection('rating').aggregate([
-    //     {
-    //         $group: {
-    //             _id: "avg",
-    //             avgRating: {
-    //                 $avg: "$rating"
-    //             }
-    //         }
-    //     }
-    // ])
-    db.User.aggregate([
-        {
-            $group: {
-                _id: null,
-                ratingAvg: {
-                    $avg: "$rating"
-                }
-            }
-        }
+// router.get('avgRating',(req,res) => {
+//     // db.collection('rating').aggregate([
+//     //     {
+//     //         $group: {
+//     //             _id: "avg",
+//     //             avgRating: {
+//     //                 $avg: "$rating"
+//     //             }
+//     //         }
+//     //     }
+//     // ])
+//     db.User.aggregate([
+//         {
+//             $group: {
+//                 _id: null,
+//                 ratingAvg: {
+//                     $avg: "$rating"
+//                 }
+//             }
+//         }
 
-    ])
-    .then(results => {
-        res.send({rating: results[0].avgRating});
-    })
-    .catch(error => console.log(error))
-});
+//     ])
+//     .then(results => {
+//         res.send({rating: results[0].avgRating});
+//     })
+//     .catch(error => console.log(error))
+// });
 
 
 
