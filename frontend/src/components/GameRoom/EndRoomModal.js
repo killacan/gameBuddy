@@ -4,21 +4,23 @@ import UserReview from "./UserReview";
 import { destroyRoom } from "../../store/rooms";
 
 
-const EndRoomModal = ({setShowEndRoomModal, room}) => {
+const EndRoomModal = ({setShowEndRoomModal, room, user,currentUserId}) => {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    console.log(room, 'bababooey');
     const members = room.members;
-    console.log(members, 'members')
 
     //mockData! --> need to pull from state.rooms._id.members = [user1,user2,user3]
     // const users = ["matt", "mimi", "cameron", "daniel"]
 
     const handleCloseReviewModal = async(e) => {
         e.preventDefault();
-        const delRoom = await dispatch(destroyRoom(room._id))
-        history.push("/games")
+        if (currentUserId === room.host._id) {
+            const delRoom = await dispatch(destroyRoom(room._id))
+            history.push("/games")
+        }else{
+            setShowEndRoomModal(false)
+        }
     }
 
     let reviewShow;
@@ -26,7 +28,7 @@ const EndRoomModal = ({setShowEndRoomModal, room}) => {
         reviewShow = (
             <div>
                 {(members).map(member => (
-                    <UserReview member={member} />
+                    <UserReview member={member} user={user}  />
                ))}
             </div>
         )
@@ -38,6 +40,7 @@ const EndRoomModal = ({setShowEndRoomModal, room}) => {
             <div id="modal-bg-container"></div>
             <div className="bg-modal">
                 <div className="end-room-form" /*onSubmit={handleSubmit}*/>
+                    
                     <h1 id="session-end-title">Session Ended!</h1>
                     <h2 id="review-title">Write a Review</h2>
                     {reviewShow}

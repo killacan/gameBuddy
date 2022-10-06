@@ -228,8 +228,12 @@ const Profile = () => {
                 <div className='game-main-container'>
                     <div className="profile-bg-container">
                         <img id="profile-bg" src={profileBg}/>
+                        {userId === "6334c4faa562e0cb1de3e0cc" ? "" : 
+                        <>
                         <button onClick={()=>setShowUpdateUserModal(true)} id="update-user-acc" >Update Account</button>
                         <button onClick={handleDeleteAcc} id="delete-user-acc" >Delete Account</ button>
+                        </>
+                        }
                         <div className="profile-image-border">
                             <img id="profile-border" src={profileBorder}/>
                             {playerInfoComponent}

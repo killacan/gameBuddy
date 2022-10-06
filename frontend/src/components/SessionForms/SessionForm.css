@@ -22,7 +22,8 @@
 
 
 .login-container{
-    background-image: url('./login-bg.jpeg');
+    background-image: url('./login-bg2.png');
+    background-size: 100vw 100vh;
     width: 100vw;
     height: 100vh;
     min-height: 900px;
@@ -281,7 +282,8 @@
   /* **** SIGN UP CSS***** */
 
 .signup-container{
-    background-image: url('./league-bg.jpeg');
+    background-image: url('./signup-bg.png');
+    background-size: 100vw 100vh;
     width: 100vw;
     height: 100vh;
     display: grid;
@@ -295,7 +297,7 @@
 
     grid-column: 2;
     grid-row: 2;
-    background: linear-gradient(to bottom, #adcce2, #8e6234, #252d26);
+    background: linear-gradient(to bottom, #571a2c, #41244c, #24243e);
     border-radius: 5px;
     /* width: 28vw;
     height: 71vh; */
@@ -486,7 +488,7 @@
     position: relative;
     display: inline-block;
     padding: 10px;
-    color: #e4cf35;
+    color: #00bbca;
     font-size: 17px;
     text-decoration: none;
     text-transform: uppercase;
@@ -497,13 +499,13 @@
 }
 
 .signup-form a:hover {
-    background: #e4cf35;
+    background: #00bbca;
     color: #fff;
     border-radius: .2vw;
-    box-shadow: 0 0 .33vw #e4cf35,
-                0 0 1.65vw #e4cf35,
-                0 0 3.3vw #e4cf35,
-                0 0 6.6vw #e4cf35;
+    box-shadow: 0 0 .33vw #00bbca,
+                0 0 1.65vw #00bbca,
+                0 0 3.3vw #00bbca,
+                0 0 6.6vw #00bbca;
   }
 
   .signup-form a span {
@@ -517,7 +519,7 @@
     left: -100%;
     width: 100%;
     height: .24vh;
-    background: linear-gradient(90deg, transparent, #e4cf35);
+    background: linear-gradient(90deg, transparent, #00bbca);
     animation: btn-anim1 1s linear infinite;
   }
   
@@ -535,7 +537,7 @@
     right: 0;
     width: .13vw;
     height: 100%;
-    background: linear-gradient(180deg, transparent, #e4cf35);
+    background: linear-gradient(180deg, transparent, #00bbca);
     animation: btn-anim2 1s linear infinite;
     animation-delay: .25s
   }
@@ -554,7 +556,7 @@
     right: -100%;
     width: 100%;
     height: .24vh;
-    background: linear-gradient(270deg, transparent, #e4cf35);
+    background: linear-gradient(270deg, transparent, #00bbca);
     animation: btn-anim3 1s linear infinite;
     animation-delay: .5s
   }
@@ -573,7 +575,7 @@
     left: 0;
     width: .13vw;
     height: 100%;
-    background: linear-gradient(360deg, transparent, #e4cf35);
+    background: linear-gradient(360deg, transparent, #00bbca);
     animation: btn-anim4 1s linear infinite;
     animation-delay: .75s
   }

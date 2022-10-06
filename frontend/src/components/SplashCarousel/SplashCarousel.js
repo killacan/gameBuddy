@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/bundle';
 import './SplashCarousel.css'
-import NeonBg from './neon_bg.jpeg'
+import splashBg from './splash-bg2.png'
 import Slide1 from './slide-1.png'
 import Slide2 from './slide-2.png'
 import Slide3 from './slide-3.png'
@@ -26,7 +26,7 @@ const SplashCarousel  = () => {
                 keyboard={true}
                 modules={[Navigation,Pagination,Mousewheel,Keyboard]}
             >
-                <SwiperSlide><img id="neon-ng" src={NeonBg}/></SwiperSlide>
+                <SwiperSlide><img id="neon-ng" src={splashBg}/></SwiperSlide>
                 <SwiperSlide><img src={Slide1}/></SwiperSlide>
                 <SwiperSlide><img src={Slide2}/></SwiperSlide>
                 <SwiperSlide><img src={Slide3}/></SwiperSlide>

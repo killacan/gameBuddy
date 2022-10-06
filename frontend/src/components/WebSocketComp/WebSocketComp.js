@@ -70,7 +70,6 @@ function WebSocketComp () {
                 <div className='room-messages-container'>
                 <div id="msg-bg"></div>
                     {messages.map (message => {
-                       
                         return <div id="user-messages">{`${message.userName}: `}{message.message}</div>
                         })
                     }

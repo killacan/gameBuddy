@@ -262,7 +262,7 @@ const RoomsIndex = () => {
                         }
                     </div>
                       
-                  {/* <div id="display-num-user">{room.members.length}/{room.privacy === true ? 1 : 5}</div> */}
+                  <div id="display-num-user">{room.members.length}/5</div>
                   </div>
                  
           

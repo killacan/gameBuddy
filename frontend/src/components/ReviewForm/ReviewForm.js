@@ -27,6 +27,7 @@ const ReviewForm = ({setShowReviewForm,member}) => {
 
     const [rating, ,setRating] = useState()
     const handleSubmit = (e) => {
+        console.log("hello from inside review")
         console.log(selectedReview,"checking selected review")
         e.preventDefault();
         dispatch(createReview(selectedReview));
@@ -51,6 +52,9 @@ const ReviewForm = ({setShowReviewForm,member}) => {
             <div id="modal-bg-container-review"></div>
             <div className="bg-modal">
                 <form className='end-review-form' onSubmit={handleSubmit}>
+                    <div id="x-close-review-form" onClick={() => setShowReviewForm(false)}>
+                        <div id="x-close-review">X</div>
+                    </div>
                     <h1 id="review-end-title">Review</h1>
                     <label className='rating-box'>Rating:
                         <div id='rating-starts'>
