@@ -587,7 +587,7 @@
     }
   }
 
-#demo-user{
+#demo-user-login{
   /* margin-top: 10px; */
   /* padding-top: 10px; */
   background-color: transparent;
@@ -595,7 +595,14 @@
   font-family: azonix;
   color: #2efdcd;
 }
-
+#demo-user-signup{
+  /* margin-top: 10px; */
+  /* padding-top: 10px; */
+  background-color: transparent;
+  border: none;
+  font-family: azonix;
+  color: #e4cf35;
+}
 #demo-user{
   font-size: 14px;
   font-family: azonix;

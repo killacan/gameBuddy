@@ -4,6 +4,7 @@ import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
 import { fetchAllUsers } from '../../store/users';
 import { useHistory } from 'react-router-dom';
+import { login } from '../../store/session';
 
 function SignupForm () {
   const history = useHistory();
@@ -120,6 +121,14 @@ function SignupForm () {
     dispatch(signup(user)); 
   }
 
+  const demoUser = (e) => {
+    e.preventDefault();
+    dispatch(login({
+      email: "admin@admin.com",
+      password: "admin123"
+    }))
+  }
+
   const logInPage = (e) => {
     e.preventDefault();
     history.push('/login')
@@ -202,7 +211,13 @@ function SignupForm () {
               // disabled={!email || !username || !password || password !== password2}
             />
           </a>
-
+          <a className='login-submit-container' onClick={demoUser}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <button onClick={demoUser} id="demo-user-signup">Demo User</button>
+          </a>
           <a className='login-submit-container' onClick={logInPage}>
           <span></span>
             <span></span>
