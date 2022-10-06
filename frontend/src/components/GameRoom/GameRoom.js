@@ -121,7 +121,7 @@ const GameRoom = () => {
                             return (
                                 <div id="player">
                                     <div>
-                                        <img id="p1" src={playersArr[leftOverMems]}/>
+                                        <img id="p2" src={playersArr[leftOverMems]}/>
                                     </div>
                                 </div>
                             )
