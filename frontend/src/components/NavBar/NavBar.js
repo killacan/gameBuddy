@@ -35,7 +35,10 @@ function NavBar () {
       <div className={toggle()}>
         <div className="left-side-nav">
             <AiOutlineRollback onClick={()=>history.goBack()}id="menu-icon"/>
+            {location.pathname === "/games" ? "" 
+            : 
             <Link exact to="/games"id="navLogo">GB</Link>
+            }
         </div>
 
         <div className="right-side-nav"> 
