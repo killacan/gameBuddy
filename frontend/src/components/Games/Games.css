@@ -1,8 +1,8 @@
 .game-main-container{
     width: 100vw;
     height: auto;
-    /* display: flex;
-    flex-direction: column; */
+    display: flex;
+    flex-direction: column;
 }
 
 .game-list{

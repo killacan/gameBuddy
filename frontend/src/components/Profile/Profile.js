@@ -225,16 +225,18 @@ const Profile = () => {
     
         return(
             <>
-                <div className='game-main-container'>
+                <div className='profile-main-container'>
+                  
+                    {/* <img id="profile-bg" src={profileBg}/> */}
                     <div className="profile-bg-container">
-                        <img id="profile-bg" src={profileBg}/>
                         <button onClick={()=>setShowUpdateUserModal(true)} id="update-user-acc" >Update Account</button>
                         <button onClick={handleDeleteAcc} id="delete-user-acc" >Delete Account</ button>
+                    </div>
+                    <div className='playercard-container' >
                         <div className="profile-image-border">
                             <img id="profile-border" src={profileBorder}/>
                             {playerInfoComponent}
                         </div>
-                        
                     </div>
           
                     <div className="bottom-profile-container">
