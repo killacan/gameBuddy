@@ -131,7 +131,7 @@ const Profile = () => {
     
     useEffect(() => {
 
-        if (!riotUsername || riotUsername === undefined) {
+        if (riotUsername.length === 0) {
             setPlayerInfoComponent (
             <div className="icon-img">
                 <div className="league-summoner-container">
