@@ -1,19 +1,21 @@
 .game-main-container{
-    display: flex;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 5% 20% 50%;
     flex-direction: column;
     align-items: center;
 }
 
 .profile-bg-container{
-    width: 100vw;
-    height: 45vh;
-    position: relative;
+    grid-row: 1;
+    grid-column: 1/3;
+    width: 100%;
+    height: 100%;
+    /* position: relative; */
 
 }
 #profile-bg{
-    max-width: 100vw;
     width: 100%;
-    max-height: 45vh;
     height: 100%;
 }
 
