@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { secretOrKey } = require('./keys');
+const { secretOrKey, reactAppRiotApiKey } = require('./keys');
 const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
 require('./../models/User');
 
