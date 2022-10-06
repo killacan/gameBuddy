@@ -83,6 +83,7 @@ function LoginForm () {
   }
 
   return (
+    <div className='background-login'>
     <div className="login-container">
       <div id="login-background">
         <form className="login-form" onSubmit={handleSubmit}>
@@ -93,6 +94,7 @@ function LoginForm () {
             </div>
             <br></br>
             <label id="input-login">Email</label>
+            <br></br>
             <input type="text"
               id="email-input"
               value={email}
@@ -147,6 +149,7 @@ function LoginForm () {
           </a>
         </form>
       </div>
+    </div>
     </div>
   );
 }

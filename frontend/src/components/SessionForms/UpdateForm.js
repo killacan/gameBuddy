@@ -98,7 +98,7 @@ const UpdateForm  = ({setShowUpdateUserModal,user}) => {
         <div className="updateUserForm-bg">
             <div className="user-background">
                 <form className="updateUserForm" onSubmit={handleSubmit}>
-                    <h1 id="update-title">Update Account Details</h1>
+                    <h2 id="update-title">Update Account Details</h2>
                     <div className="user-update-form-container">
                         <div className="update-info-container">
                             <label id="input-update">Email</label>

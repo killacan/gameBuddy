@@ -220,7 +220,7 @@ const RoomsIndex = () => {
       </div>
       <div className="gif-room-container">
         <div id="gif-container">
-          <img id="gif" src={toggleGif()}/>
+          {/* <img id="gif" src={toggleGif()}/> */}
         </div> 
         <div className="room-container">
           <div className="create-room">
