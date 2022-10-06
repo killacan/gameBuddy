@@ -13,6 +13,7 @@ const User = mongoose.model('User');
 const options = {};
 options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 options.secretOrKey = secretOrKey;
+options.reactAppRiotApiKey = reactAppRiotApiKey;
 
 passport.use(new JwtStrategy(options, async (jwtPayload, done) => {
     try {
