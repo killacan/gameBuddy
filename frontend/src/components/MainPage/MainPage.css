@@ -276,8 +276,20 @@
     left: 60%;
     font-size: 2vw;
     color: white;
+    color: white;
+    -webkit-animation: gbSlogan 1s infinite; 
+    animation: gbSlogan 1s infinite;
 }
 
+@-webkit-keyframes gbSlogan {
+    0%   {text-shadow: 0 0 6px #FFF;}
+    100%  {text-shadow: 0 0 0px #000;}
+}
+
+@keyframes gbSlogan {
+    0%   {text-shadow: 0 0 6px #FFF;}
+    100%  {text-shadow: 0 0 0px #000;}
+}
 
 .square-moving-animation{
     background: transparent;  

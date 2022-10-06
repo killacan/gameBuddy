@@ -144,17 +144,35 @@
     grid-column: 1/4;
     grid-row: 3;
     justify-content: center;
-    align-items: center;
-    background-image: linear-gradient(60deg,#4f3653, #3d5ab1,#ffe1bd);
-    
-    background-clip: text;
+    align-items: center;    
     color: transparent;
+    font-family: azonix;
+    font-size: 4vh;
+    color: white;
+    text-shadow: 2px 2px 1px black;
 }
+
 
 #game-desc{
     font-family: azonix;
-    font-size: 30px;
+    font-size: 4vh;
+    overflow: hidden; 
+    background-image: linear-gradient(90deg, #4f172a, #254879, #3bc6d5);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: animateText 2s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
 }
+
+@keyframes animateText {
+    0% {
+      background-position: -500%;
+    }
+    100% {
+      background-position: 500%;
+    }
+  }
 
 #valorant-image:hover{
     transform: scale(1.1);

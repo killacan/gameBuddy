@@ -3,7 +3,7 @@ import valorantBg from './valorant-game-image 2.png'
 import leagueBg from './league-game-image.png'
 import tftBg from './tft-game-image.png'
 import {useHistory} from 'react-router-dom'
-import gameSplashImg from "./gamesSplash.png"
+import gameSplashImg from "./games-bg.png"
 
 const Games = () => {
 
@@ -48,7 +48,9 @@ const Games = () => {
                         </div>
 
                         <div className="game-desc-container">
-                            <h1 id="game-desc">SELECT A GAME TO GET CONNECTED</h1>
+                            <h1>SELECT A
+                            <a id="game-desc"> Game </a>
+                            TO GET CONNECTED</h1>
                         </div>
                     </div>
                 </div>

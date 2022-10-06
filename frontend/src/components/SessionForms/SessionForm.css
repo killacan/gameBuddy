@@ -470,7 +470,7 @@
 {
     top: -1.5vw;
     left: 0;
-    color: #e4cf35;
+    color: #00bbca;
     transform: scale(.7);
     animation-fill-mode: forwards;
 }
@@ -480,7 +480,7 @@
 {
     top: -1.5vw;
     left: 0;
-    color: #e4cf35;
+    color: #00bbca;
     transform: scale(.7);
     text-align: center;
     animation-fill-mode: forwards;
@@ -637,7 +637,7 @@
   background-color: transparent;
   border: none;
   font-family: azonix;
-  color: #e4cf35;
+  color: #00bbca;
 }
 #demo-user{
   font-size: 14px;
