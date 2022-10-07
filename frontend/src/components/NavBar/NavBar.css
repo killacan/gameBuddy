@@ -68,7 +68,7 @@
 
 .right-side-nav:hover .drop-down-content{
     width: 100px;
-    height: 4vw;
+    height: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
