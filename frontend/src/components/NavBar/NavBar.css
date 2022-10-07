@@ -16,10 +16,11 @@
 #navLogo{
     color: white;
     font-family: brightness;
-    margin-left: 2vw;
+    margin-left: 20px;
     text-align: center;
     margin-top: .5vh;
     text-decoration: none;
+    font-size: 20px;
 }
 
 #navLogo:hover{
@@ -27,7 +28,7 @@
 }
 
 .left-side-nav{
-    margin-left: 2vw;
+    margin-left: 100px;
     font-size: 1.4vw;
     color: white;
     display: flex;
@@ -36,7 +37,7 @@
 }
 
 .right-side-nav{
-    margin-right: 6vw;
+    margin-right: 100px;
     font-size: 1.3vw;
     color: white;
     position: relative;
@@ -50,7 +51,7 @@
     box-shadow: 0vw 1vw 2vw 0vw rgba(0,0,0,2);
     z-index: 1;
     color: white;
-    font-size: .9vw;
+    font-size: 15px;
     font-family: azonix;
     width: 8vw;
     
@@ -66,7 +67,7 @@
 }
 
 .right-side-nav:hover .drop-down-content{
-    width: 8vw;
+    width: 100px;
     height: 4vw;
     display: flex;
     flex-direction: column;
@@ -99,4 +100,13 @@
     text-align: center;
 
 }
+
+#user-icon {
+    font-size: 20px;
+}
+
+#menu-icon {
+    font-size: 20px;
+}
+
 
