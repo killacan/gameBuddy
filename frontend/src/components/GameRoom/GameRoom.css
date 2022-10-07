@@ -377,12 +377,12 @@
         justify-items: center;
     }
 
-    #root {
+    /* #root {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
         height: auto;
-    }
+    } */
 
     #player img{
         position: absolute;

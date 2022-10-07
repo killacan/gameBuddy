@@ -6,7 +6,8 @@
 
 .profile-bg-container{
     width: 100vw;
-    height: 45vh;
+    height: 40vw;
+    max-height: 45vh;
     position: relative;
 
 }
@@ -57,7 +58,7 @@
 .profile-image-border{
     position: relative;
     width: 18.5vw;
-    height: 31.8vh;
+    height: 18.5vw;
     top: -8vw;
     left: 8.5vw;
 } 
@@ -113,14 +114,14 @@
     padding-top: 2vw;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
 
 }
 
 .rank-info{
     margin-left: 1vw;
     width: 30vw;
-    height: 40vh;
+    height: 20vw;
     position: relative; 
     box-shadow: 0px 10px 10px 1px #9f9ba2;
    
@@ -130,7 +131,7 @@
     background-color: #282d39;
     top: 0;
     width: 30vw;
-    height: 40vh;
+    height: 20vw;
     opacity: .4;
     position: absolute;
 }
@@ -181,7 +182,7 @@
 
 .review-tags-display{
     width: 48vw;
-    height: 40vh;
+    height: 20vw;
     margin-right: 1vw;
     position: relative;
     box-shadow: 0px 10px 10px 1px #9f9ba2;
@@ -190,7 +191,7 @@
 #review-tags-display-bg{
     background-color: #282d39;
     width: 48vw;
-    height: 40vh;
+    height: 20vw;
     top: 0;
     opacity: .4;
     position: absolute;
@@ -201,6 +202,7 @@
     margin-top: 2vw;
     width: 80vw;
     height: 200vh;
+    max-height: 100vw;
     overflow-y: scroll;
     position: relative;
     box-shadow: 0px 10px 10px 1px #9f9ba2;
@@ -343,7 +345,14 @@
     width: 30vw;
 }
 
+@media screen and (max-width: 850px) {
 
+    .profile-bg-container {
+        height: 40vw;
+
+    }
+    
+}
 
 
 /* 
