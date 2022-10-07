@@ -637,7 +637,7 @@
   background-color: transparent;
   border: none;
   font-family: azonix;
-  color: #e4cf35;
+  color: inherit;
 }
 #demo-user{
   font-size: 14px;
