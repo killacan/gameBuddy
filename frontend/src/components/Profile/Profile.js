@@ -255,7 +255,7 @@ const Profile = () => {
                     <div className='playercard-container' >
                         <div className="profile-image-border">
                             <img id="profile-border" src={profileBorder}/>
-                            {playerInfoComponent}
+                        {playerInfoComponent}
                         </div>
                     </div>
                    
