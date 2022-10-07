@@ -377,6 +377,7 @@
         justify-items: center;
     }
 
+
     #player {
         max-height: 100px;
     }
@@ -384,13 +385,12 @@
     #member-room-username {
         font-size: 20px;
     }
-
-    #root {
+    /* #root {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
         height: auto;
-    }
+    } */
 
     #player img{
         position: absolute;
