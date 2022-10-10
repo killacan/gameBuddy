@@ -9,19 +9,28 @@ const defaultRemainingTime = {
 }
 
 const Timer = ({countdownTimestampMs}) => {
+    // console.log(countdownTimestampMs, "from timer" )
     const [remainingTime, setRemainingTime] = useState(defaultRemainingTime);
+    const user = useSelector(state => state.session.user)
+    // console.log(user, "from timer")
+    const {roomId} = useParams();
+    const room = useSelector(state => state.rooms[roomId])
+    // console.log(room, "from timer")
 
     useEffect(() => {
-        const intervalId = setInterval(()=> {
-            updateRemainingTime(countdownTimestampMs);
-        }, 1000)
-        return () => clearInterval(intervalId);
+        // if (user._id === room.host._id){
+            const intervalId = setInterval(()=> {
+                updateRemainingTime(countdownTimestampMs);
+            }, 1000)
+            return () => clearInterval(intervalId);
+        // } 
     },[countdownTimestampMs])
-
+    
     const updateRemainingTime = (countdown) => {
         setRemainingTime(getRemainingTimeUntilMsTimestamp(countdown));
     }
-
+    
+        
     return (
         <>
             <div className="countDown-timer">

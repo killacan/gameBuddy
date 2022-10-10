@@ -131,7 +131,7 @@ const Profile = () => {
     
     useEffect(() => {
 
-        if (!riotUsername || riotUsername === undefined) {
+        if (riotUsername.length === 0) {
             setPlayerInfoComponent (
             <div className="icon-img">
                 <div className="league-summoner-container">
@@ -217,7 +217,25 @@ const Profile = () => {
             }
             })
             .catch(err => {
-                console.error('Request Failed', err)
+                setPlayerInfoComponent (
+                    <div className="icon-img">
+                        <div className="league-summoner-container">
+                            <div id="league-username">
+                                <div id="league-username-2">{user.username}</div>
+                            </div>
+                        </div>
+                        
+                        <div id="in-game-icon">
+                            <img id="in-game-img" src={profile}></img>
+                        </div>
+                    </div>
+                    )
+                    setPlayerRankComponent(
+                        <div id="player-rank-component">
+                            <h1 id="testing-testing">No Rankings Available</h1>
+                        </div>
+                    )
+                // console.error('Request Failed', err)
             })
         }
         

@@ -45,9 +45,9 @@ const GameRoom = () => {
                 return updatedRoom})
             .then((res) => {
                 return dispatch(updateRoom(res))})
-            .then(() => {
-                if (user._id === room.host._id) {
-                    dispatch(destroyRoom(roomId))}})
+            // .then(() => {
+            //     if (user._id === room.host._id) {
+            //         dispatch(destroyRoom(roomId))}})
                 }
     },[])
 
@@ -72,13 +72,13 @@ const GameRoom = () => {
     if (!room) return null;
 
     //timer
-    
+    //this needs to go into a useEffect?
     const getTimeFromDurationMs = () => {
         const duration = room.duration //in miuntes * 60 = seconds * 1000 = ms
         const durationInMs = (duration * 60 * 1000)
         const nowInMs = Date.now();
         const timeFromDurationMs = durationInMs + nowInMs
-        console.log(timeFromDurationMs)
+        // console.log(timeFromDurationMs)
         return timeFromDurationMs
     }    
 

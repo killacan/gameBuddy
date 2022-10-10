@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { secretOrKey } = require('./keys');
+const { secretOrKey, reactAppRiotApiKey } = require('./keys');
 const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
 require('./../models/User');
 
@@ -13,6 +13,7 @@ const User = mongoose.model('User');
 const options = {};
 options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 options.secretOrKey = secretOrKey;
+options.reactAppRiotApiKey = reactAppRiotApiKey;
 
 passport.use(new JwtStrategy(options, async (jwtPayload, done) => {
     try {
