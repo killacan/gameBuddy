@@ -8,26 +8,27 @@ import { login, clearSessionErrors } from '../../store/session';
 
 function LoginForm () {
   const history = useHistory();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
 
-  const users = useSelector(state => Object.values(state.users))
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const errors = useSelector(state => state.errors.session);
+  const users = useSelector(state => Object.values(state.users));
 
   let usernames = [];
   users.map(user => {
     usernames.push(user.username)
-  })
+  });
 
   let emails = [];
   users.map(user => {
     emails.push(user.email)
-  })
+  });
   
   useEffect(()=>{
     dispatch(fetchAllUsers());
-  },[])
+  },[]);
   
   useEffect(() => {
     return () => {
@@ -38,7 +39,7 @@ function LoginForm () {
   const update = (field) => {
     const setState = field === 'email' ? setEmail : setPassword;
     return e => setState(e.currentTarget.value);
-  }
+  };
 
   const checkLogin = (email) => {
     let hitSomething = false
@@ -47,40 +48,40 @@ function LoginForm () {
         hitSomething = true
         dispatch(login({email, password}))
       }
-    }
+    };
     if (!hitSomething){
       document.getElementById("errors-login-em").style.display = "flex"
       setTimeout(function(){
         document.getElementById("errors-login-em").style.display = "none"
       }, 3000)
-    }
-  }
+    };
+  };
 
   const checkPassword = (password) => {
     if (password.length > 0 && password.length < 6){
       return true
     }else{
       return false
-    }
-  }
+    };
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    checkLogin(email)
-  }
+    checkLogin(email);
+  };
   
   const demoUser = (e) => {
     e.preventDefault();
     dispatch(login({
       email: "admin@admin.com",
       password: "admin123"
-    }))
-  }
+    }));
+  };
 
   const signUpPage = (e) => {
     e.preventDefault();
-    history.push('/signup')
-  }
+    history.push('/signup');
+  };
 
   return (
     <div className='background-login'>
@@ -152,6 +153,6 @@ function LoginForm () {
     </div>
     </div>
   );
-}
+};
 
 export default LoginForm;
