@@ -12,9 +12,6 @@ import { AiOutlineUnlock} from "react-icons/ai";
 import valBanner from "./val-banner.png"
 import tftBanner from "./tft-banner.png"
 import leagueBanner from "./league-banner.png"
-import brimstoneGif from "./brimstone-gif.gif"
-import zoeyGif from "./zoey-gif.gif"
-import tftGif from "./tft-gif.gif"
 import WebsocketRoomIndex from "../WebsocketRoomIndex";
 
 
@@ -71,15 +68,6 @@ const RoomsIndex = () => {
     }
   },[])
 
-  // const msgRoomUpdate = () => {
-  //   console.log("I am an update request")
-  //   socket.send(JSON.stringify({message: 'I am a message!', userName: user.userName, gameId: game}))
-
-  // }
-
- 
-
-  // if (!socket) return null
 
   const showStar = (rating) => {
     if (rating === 1) {
@@ -145,31 +133,6 @@ const RoomsIndex = () => {
   const user = useSelector(state => state.session.user)
 
 
-  // const handleJoinRoom = (field) => {
-  //   return async e => {
-  //     e.preventDefault();
-  //     //await dispatch update room
-  //     if (field.privacy === true){
-  //       setShowRoomPasswordModal(true)
-  //     } else{
-  //       dispatch(fetchRoom(field._id)).then((res) => {
-  //         console.log(res)
-  //         let flag = false;
-  //         res.members.forEach(member =>  {
-  //             if (member._id === user._id) {
-  //                 flag = true;
-  //             }}) 
-              
-  //             if (!flag) {
-  //                 res.members.push(user)
-  //                 dispatch(updateRoom(res)).then(history.push(`/games/rooms/${field._id}`))
-  
-  //       } 
-  //     })
-  //     }
-  //   }
-  // }
-
   const toggleGameIndexBg = () => {
     if (game === "Valorant"){
       return './val-game-index-bg.png';
@@ -198,15 +161,17 @@ const RoomsIndex = () => {
       return "The brighter my light, the stronger your shadow.";
     }
   }
-  const toggleGif = () => {
+
+  const toggleSideImg = () => {
     if (game === "Valorant"){
-      return  brimstoneGif;
+      return 'gif-container';
     }else if (game === "League of Legends"){
-      return zoeyGif;
+      return "gif-container2";
     }else{
-      return tftGif
+      return "gif-container3";
     }
   }
+
 
   if (!allRooms) return null;
 
@@ -219,10 +184,10 @@ const RoomsIndex = () => {
         </div>
       </div>
       <div className="gif-room-container">
-        <div id="gif-container">
-          {/* <img id="gif" src={toggleGif()}/> */}
-        </div> 
+        
         <div className="room-container">
+        <div id={toggleSideImg()}>
+        </div> 
           <div className="create-room">
             <img id="img-banner" src={toggle()} />
             <div id="quotes-container">
