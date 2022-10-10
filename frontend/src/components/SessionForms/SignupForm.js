@@ -13,66 +13,65 @@ function SignupForm () {
   const [riotUsername, setRiotUsername] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
-  const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
 
-  const users = useSelector(state => Object.values(state.users))
+  const users = useSelector(state => Object.values(state.users));
 
   let usernames = [];
   users.map(user => {
-    usernames.push(user.username)
-  })
+    usernames.push(user.username);
+  });
 
   let emails = [];
   users.map(user => {
-    emails.push(user.email)
-  })
+    emails.push(user.email);
+  });
 
   let riotUsernames = [];
   users.map(user => {
-    riotUsernames.push(user.riotUsername)
-  })
+    riotUsernames.push(user.riotUsername);
+  });
 
   const checkEmailTaken = (email) => {
     for (let i = 0; i <=emails.length; i++){
       if (email === emails[i]){
-        return true
-      }
-    }
-    return false
-  }
+        return true;
+      };
+    };
+    return false;
+  };
   const checkEmailValid = (email) => {
     if ((!email.includes("@") || !email.includes(".com")) && email.length > 0){
-      return true
-    }
-    return false
-  }
+      return true;
+    };
+    return false;
+  };
 
   const checkUsername = (username) => {
     for (let i = 0; i <= usernames.length; i++){
       if (username === usernames[i]){
-        return true
-      }
-    }
-    return false
-  }
+        return true;
+      };
+    };
+    return false;
+  };
 
   const checkRiotUsername = (riotUsername) => {
     for (let i = 0; i <= riotUsernames.length; i++ ){
       if (riotUsername === riotUsernames[i] && riotUsername.length > 0){
         return true
-      }
-    }
-    return false
-  }
+      };
+    };
+    return false;
+  };
 
   const checkPassword = (password) => {
     if (password.length > 0 && password.length < 6){
       return true
     }else{
       return false
-    }
-  }
+    };
+  };
   
   useEffect(()=>{
     dispatch(fetchAllUsers());
@@ -105,10 +104,10 @@ function SignupForm () {
         break;
       default:
         throw Error('Unknown field in Signup Form');
-    }
+    };
 
     return e => setState(e.currentTarget.value);
-  }
+  };
 
   const usernameSubmit = e => {
     e.preventDefault();
@@ -119,20 +118,20 @@ function SignupForm () {
       password
     };
     dispatch(signup(user)); 
-  }
+  };
 
   const demoUser = (e) => {
     e.preventDefault();
     dispatch(login({
       email: "admin@admin.com",
       password: "admin123"
-    }))
-  }
+    }));
+  };
 
   const logInPage = (e) => {
     e.preventDefault();
-    history.push('/login')
-  }
+    history.push('/login');
+  };
 
   return (
 
@@ -208,7 +207,6 @@ function SignupForm () {
               id="signup-submit"
               type="submit"
               value="Sign Up"
-              // disabled={!email || !username || !password || password !== password2}
             />
           </a>
           <a className='login-submit-container' onClick={demoUser}>
@@ -225,11 +223,10 @@ function SignupForm () {
             <span></span>
             <button onClick={logInPage} id="logInPage">Already have an Account? <br/> Log In!</button>
           </a>
-          
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default SignupForm;
