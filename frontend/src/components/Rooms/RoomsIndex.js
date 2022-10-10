@@ -34,7 +34,7 @@ const RoomsIndex = () => {
   const allRooms = Object.values(rooms)
 
   useEffect(()=>{
-    // dispatch(fetchRooms())
+    dispatch(fetchRooms());
 
     let urlString
     if (process.env.NODE_ENV !== 'production') {
@@ -54,13 +54,17 @@ const RoomsIndex = () => {
 
 
     socketNew.onmessage = (message) => {
-      let parsedMessage = JSON.parse(message.data)
+      let parsedMessage = JSON.parse(message.data);
       // console.log(parsedMessage)
-      if (parsedMessage.message === "I am a message!") {
-  
-        setTimeout(dispatch(fetchRooms()), 5000)
-      } else if (parsedMessage.message === 'destroy room message') {
-        dispatch(destroyRoom(parsedMessage.destroyId))
+      try {
+        if (parsedMessage.message === "I am a message!") {
+    
+          setTimeout(dispatch(fetchRooms()), 5000);
+        } else if (parsedMessage.message === 'destroy room message') {
+          dispatch(destroyRoom(parsedMessage.destroyId))
+        }
+      } catch {
+        console.log("error")
       }
     }
 
