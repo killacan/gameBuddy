@@ -47,8 +47,10 @@
 100%   { transform: translate(0, -0px); }   
 }
 
-
-
+#p2{
+    background-color: black;
+    opacity: .25;
+}
 .top-left-container{
     display: flex;
     flex-direction: column;

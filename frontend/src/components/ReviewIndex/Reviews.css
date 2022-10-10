@@ -1,14 +1,14 @@
 
-
-.user-rating{
+.user-rating-profile{
     display: flex;
-    width: 100vw;
+    width: 80vw;
     height: 8vh;
     align-items: center;
     padding-top: .4vw;
     padding-bottom: .4vw;
     border-bottom: 2px dotted rgb(68, 82, 115);
     background-image: linear-gradient(#02101d,#08233d);
+    flex-wrap: wrap;
 }
 .star-rating{
     margin-left: 3vw;
@@ -17,8 +17,13 @@
     font-size: 1vw;
 }
 
-
-
+.review-comments{
+    color: #b5b6ba;
+    font-family: azonix;
+    font-size: .9vw;
+    z-index: 2;
+    width: 76%;
+}
 
 
 

@@ -1,8 +1,8 @@
-.game-main-container{
+
+
+.games-main-container{
     width: 100vw;
     height: auto;
-    /* display: flex;
-    flex-direction: column; */
 }
 
 .game-list{
@@ -69,6 +69,14 @@
     width: 100%;
     height: 100%;
     border-radius: .8vw;
+    color: white;
+    -webkit-animation: valImg 2s infinite; 
+    animation: valImg 2s infinite;
+}
+
+@keyframes valImg {
+    0%   {box-shadow: 4px 4px 10px #254879;}
+    100%  {box-shadow: 4px 4px 10px #4f172a;}
 }
 
 #league{
@@ -102,6 +110,14 @@
     width: 100%;
     height: 100%;
     border-radius: .8vw;
+    color: white;
+    -webkit-animation: leagueImg 2s infinite; 
+    animation: leagueImg 2s infinite;
+}
+
+@keyframes leagueImg {
+    0%   {box-shadow: 4px 4px 10px #254879;}
+    100%  {box-shadow: 4px 4px 10px #4f172a;}
 }
 
 #tft{
@@ -135,6 +151,17 @@
     width: 100%;
     height: 100%;
     border-radius: .8vw;
+    color: white;
+    -webkit-animation: tftImg 2s infinite; 
+    animation: tftImg 2s infinite;
+}
+
+@keyframes tftImg {
+
+    0% {box-shadow: 2px 4px 10px #254879;}
+    30% {box-shadow: 2px 4px 10px #4f172a;}
+    60% {box-shadow: 2px 4px 10px #254879;}
+    100% {box-shadow: 2px 4px 10px #4f172a;}
 }
 
 .game-desc-container{
@@ -144,29 +171,48 @@
     grid-column: 1/4;
     grid-row: 3;
     justify-content: center;
-    align-items: center;
-    background-image: linear-gradient(60deg,#4f3653, #3d5ab1,#ffe1bd);
-    
-    background-clip: text;
+    align-items: center;    
     color: transparent;
+    font-family: azonix;
+    font-size: 4vh;
+    color: white;
+    text-shadow: 2px 2px 1px black;
 }
+
 
 #game-desc{
     font-family: azonix;
-    font-size: 30px;
+    font-size: 4vh;
+    overflow: hidden; 
+    background-image: linear-gradient(90deg, #4f172a, #254879, #3bc6d5);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: animateText 2s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
 }
 
+@keyframes animateText {
+    0% {
+      background-position: -500%;
+    }
+    100% {
+      background-position: 500%;
+    }
+  }
+
 #valorant-image:hover{
+    -webkit-animation: 0;
     transform: scale(1.1);
     cursor: pointer;
     box-shadow:0 0 .33vw white,
                 0 0 1vw white,
                 0 0 1vw white,
                 0 0 1vw white;
-    
 }
 
 #league-image:hover{
+    -webkit-animation: 0;
     transform: scale(1.1);
     cursor: pointer;
     box-shadow:0 0 .33vw white,
@@ -176,6 +222,7 @@
 }
 
 #tft-image:hover{
+    -webkit-animation: 0;
     transform: scale(1.1);
     cursor: pointer;
     box-shadow:0 0 .33vw white,
