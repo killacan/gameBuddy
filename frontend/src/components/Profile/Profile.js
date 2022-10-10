@@ -272,24 +272,11 @@ const Profile = () => {
                             </div>
                         </div>
                         <div className="user-reviews-box">
-                            <div id="user-reviews-box-bg"></div>
                             <ReviewIndex/>
                         </div>
                     </div>
                    
-                    {/* <div className='user-profile-box'>
-                        {playerInfoComponent}
-                        <div className='img-box'>
-                            
-                        </div>
-                        <div className="rank-info">
-                            {playerRankComponent}
-                        </div>
-                    </div>
-
-                    <div className='user-reviews-box'>
-                        <ReviewIndex/>
-                    </div> */}
+                 
                 </div>
                 {showDeleteModal && <DeleteForm setShowDeleteModal={setShowDeleteModal} />}
                

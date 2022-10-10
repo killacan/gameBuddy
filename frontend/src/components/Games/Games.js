@@ -33,7 +33,7 @@ const Games = () => {
             <div className="voltage-bg-container">
                 <img id="voltage-bg" src={gameSplashImg}/>
                 <div className="game-display-container">
-                <div className = "game-main-container">
+                <div className = "games-main-container">
                     <div className="game-list">         
                         <div onClick={handleClick("valorant")} id="valorant">
                             <img id="valorant-image" src={valorantBg}/>

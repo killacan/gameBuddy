@@ -346,6 +346,7 @@ margin-left: 1vw;
 
 
 #gif-container{
+    background-image: url("./container-for-roomindex 1.png"),url("./container-for-roomindex 2.png"),url("./container-for-roomindex 3.png"), url("./container-for-roomindex 4.png"),url("./container-for-roomindex 5.png") ;
     position: relative;
     grid-column: 1;
     grid-row: 1/3;
@@ -367,6 +368,7 @@ margin-left: 1vw;
 
 
 #gif-container2{
+    background-image:  url("./container-for-roomindex 6.png"),url("./container-for-roomindex 7.png"),url("./container-for-roomindex 8.png"),url("./container-for-roomindex 9.png"),url("./container-for-roomindex 10.png");
     position: relative;
     grid-column: 1;
     grid-row: 1/3;
@@ -389,6 +391,7 @@ margin-left: 1vw;
 
 
 #gif-container3{
+    background-image: url("./container-for-roomindex 11.png"),url("./container-for-roomindex 12.png"),url("./container-for-roomindex 13.png"),url("./container-for-roomindex 14.png"),url("./container-for-roomindex 15.png");
     position: relative;
     grid-column: 1;
     grid-row: 1/3;
@@ -400,7 +403,7 @@ margin-left: 1vw;
 
 }
 @keyframes gameIndexAlternateBg3{
-    0%,100% {background-image:  url("./container-for-roomindex 11.png")}
+    0%,100% {background-image: url("./container-for-roomindex 11.png")}
     20% {background-image: url("./container-for-roomindex 12.png")}
     40% {background-image: url("./container-for-roomindex 13.png")}
     60% {background-image: url("./container-for-roomindex 14.png")}
