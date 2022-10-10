@@ -45,9 +45,9 @@ const GameRoom = () => {
                 return updatedRoom})
             .then((res) => {
                 return dispatch(updateRoom(res))})
-            .then(() => {
-                if (user._id === room.host._id) {
-                    dispatch(destroyRoom(roomId))}})
+            // .then(() => {
+            //     if (user._id === room.host._id) {
+            //         dispatch(destroyRoom(roomId))}})
                 }
     },[])
 
