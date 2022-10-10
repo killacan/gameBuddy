@@ -333,6 +333,11 @@
     background-size: 100% 100%;
     height: auto;
   }
+
+  .login-container {
+    background-size: 100% 100%;
+    height: 580px;
+  }
   
 }
 #signup-background{
