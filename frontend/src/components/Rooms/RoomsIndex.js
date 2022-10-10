@@ -34,7 +34,7 @@ const RoomsIndex = () => {
   const allRooms = Object.values(rooms)
 
   useEffect(()=>{
-    // dispatch(fetchRooms())
+    dispatch(fetchRooms())
 
     let urlString
     if (process.env.NODE_ENV !== 'production') {
