@@ -303,6 +303,7 @@
     background-image: url('./signup-bg.png');
     background-size: 100vw 100vh;
     width: 100vw;
+    /* min-height: 580px; */
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr 300px 1fr;
@@ -323,6 +324,19 @@
 
   .signup-container {
     background-size: 180vh;
+  }
+  
+}
+
+@media screen and (max-height: 580px) {
+  .signup-container {
+    background-size: 100% 100%;
+    height: auto;
+  }
+
+  .login-container {
+    background-size: 100% 100%;
+    height: 580px;
   }
   
 }
@@ -490,7 +504,7 @@
     background: none;
 	color: inherit;
 	border: none;
-	padding: 0;
+	padding: 10px;
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
@@ -505,6 +519,7 @@
   cursor: pointer;
   outline: inherit;
   font-family: azonix;
+  margin: 10px;
 }
 
 #update-submit{
@@ -521,7 +536,7 @@
 .signup-form a {
     position: relative;
     display: inline-block;
-    padding: 10px;
+    padding: 0;
     color: #00bbca;
     font-size: 17px;
     text-decoration: none;
@@ -634,11 +649,14 @@
 #demo-user-signup{
   /* margin-top: 10px; */
   /* padding-top: 10px; */
+  padding: 10px;
   background-color: transparent;
   border: none;
   font-family: azonix;
   color: #00bbca;
+  cursor: pointer;
 }
+
 #demo-user{
   font-size: 14px;
   font-family: azonix;
