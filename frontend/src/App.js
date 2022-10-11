@@ -12,9 +12,7 @@ import Games from "./components/Games/Games";
 import { getCurrentUser } from './store/session';
 import WebSocketComp from "./components/WebSocketComp/WebSocketComp";
 import UpdateForm from "./components/SessionForms/UpdateForm";
-import { Route } from "react-router-dom";
 import GameRoom from "./components/GameRoom/GameRoom";
-
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -37,7 +35,6 @@ function App() {
         <ProtectedRoute exact path={"/games/rooms/:roomId"} component={GameRoom} />
         <ProtectedRoute exact path={"/profile/:userId/update"} component={UpdateForm}/>
         <Redirect to="/"/>
-        
       </Switch>
     </>
   );
