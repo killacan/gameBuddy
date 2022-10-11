@@ -22,10 +22,41 @@
     right: 25%;
     z-index: 10;
 }
+#close-review-form{
+    width: 90%;
+    color: white;
+    font-family: azonix;
+    font-size: 1.4vw;
+    display: flex;
+    justify-content: flex-end;  
+}
+
+#close-review-x:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    color: yellow;
+}
+
+#no-player-review{
+    color: white;
+    font-family: azonix;
+}
+.rating-box{
+    color: white;
+    font-family: azonix;
+    text-align: center;
+    font-size: 1vw;
+
+}
 .review-buttons{
     text-transform: uppercase;
-    color: black;
+    color: white;
     z-index: 11;
+    font-family: azonix;
+}
+
+#review-comments{
+    margin-left: 1vw;
 }
 #end-review-title{
     color: white;
@@ -40,6 +71,7 @@
     padding-bottom: 1vh;
     padding-right: 1vw;
     padding-left: 1vw;
+    font-family: azonix;
 }
 
 #post-review-button:hover{

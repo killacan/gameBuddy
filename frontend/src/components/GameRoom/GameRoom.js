@@ -97,7 +97,9 @@ const GameRoom = () => {
                                 <div id="room-leader">Room Leader : </div>
                                 <div>{room.host.username}</div>
                             </div>
-                            <div><Timer countdownTimestampMs={getTimeFromDurationMs()}/></div>
+                            <div>
+                                <Timer countdownTimestampMs={getTimeFromDurationMs()}/>
+                            </div>
                             <div className="update-del-room-btns">
                                 {currentUserId === room.host._id ? 
                                 <>
@@ -126,25 +128,7 @@ const GameRoom = () => {
                                 </div>
                             )
                         })}
-                        {/* <div id="player1">
-                            <div>
-                                {room.members[0]?.username}<img id="p1" src={player1} onMouseEnter={playerEnter} onMouseLeave={playerLeave}/>
-                            </div>
-                            <NavLink id="direct-profile" to ={`/profile/${room.members[0]?._id}`}></NavLink>
-                        </div>
-
-                        <div id="player2"> 
-                            <div>{room.members[1]?.username}<img id="p2" src={player2} onMouseEnter={playerEnter} onMouseLeave={playerLeave}/></div>
-                        </div>
-                        <div id="player3"> 
-                            <div>{room.members[2]?.username}<img id="p3" src={player3} onMouseEnter={playerEnter} onMouseLeave={playerLeave}/></div>
-                        </div>
-                        <div id="player4">
-                            <div>{room.members[3]?.username}<img id="p4" src={player4} onMouseEnter={playerEnter} onMouseLeave={playerLeave}/></div>
-                        </div>
-                        <div id="player5">
-                            <div>{room.members[4]?.username}<img id="p5" src={player5} onMouseEnter={playerEnter} onMouseLeave={playerLeave}/></div>
-                        </div> */}
+        
                     </div>
 
                 </div>

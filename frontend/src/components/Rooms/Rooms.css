@@ -410,6 +410,24 @@ margin-left: 1vw;
     80% {background-image:  url("./container-for-roomindex 15.png")}
 }
 
+#enter-rm-pw{
+    color: white;
+    font-family: azonix;
+    font-size: .7vw;
+    margin-left: .5vw;
+}
+
+#enter-pw{
+    margin-left: .5vw;
+}
+
+#invalid-room-pw{
+    color:#ad0000;
+    font-family: azonix;
+    font-size: .6vw;
+    margin-left: .5vw;
+    
+}
 
 @media screen and (max-width: 850px ) {
     

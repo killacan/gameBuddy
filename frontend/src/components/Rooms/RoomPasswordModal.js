@@ -65,8 +65,8 @@ const RoomPasswordModal = ({room,user}) => {
         { showRoomPasswordModal && 
         <div>
             <form onSubmit={handleSubmit}>
-                    <label> Enter Room Password
-                        <input
+                    <label id="enter-rm-pw"> Enter Room Password:
+                        <input id="enter-pw"
                          type="password"
                          value={confirmRoomPassword}
                          onChange={(e)=>setConfirmRoomPassword(e.target.value)}
