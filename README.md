@@ -10,8 +10,8 @@ Game Buddy is built with the MERN stack, utilizing 4 different technologies: Mon
 
 ## Functionality and MVPs
 <img src="/frontend/src/components/SplashCarousel/slide-1.png" alt="splash-page-art"/>
-<img src="/frontend/src/components/SplashCarousel/slide-3.png" alt="game-index-art"/>
-<img src="/frontend/src/components/SplashCarousel/slide-4.png" alt="profile-page-art"/>
+<img src="/frontend/src/components/SplashCarousel/slide-2.png" alt="game-index-art"/>
+<img src="/frontend/src/components/SplashCarousel/slide-3.png" alt="profile-page-art"/>
 
 -   User Auth (Login, Sign Up, Demo Login)
 -   User has many GameRooms, User has many Reviews
