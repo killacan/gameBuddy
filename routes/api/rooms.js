@@ -44,7 +44,7 @@ router.get('/', async (_req, res) => {
     try {
         const rooms = await Room.find()
                                 .populate('host','_id, username')
-                                .sort({ createdAt: -1});
+                                .sort({ createdAt: -1})
         return res.json(rooms);
     }
     catch(_err) {

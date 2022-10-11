@@ -34,7 +34,7 @@ const RoomsIndex = () => {
   const allRooms = Object.values(rooms)
 
   useEffect(()=>{
-    // dispatch(fetchRooms())
+    dispatch(fetchRooms())
 
     let urlString
     if (process.env.NODE_ENV !== 'production') {
@@ -58,7 +58,7 @@ const RoomsIndex = () => {
       // console.log(parsedMessage)
       if (parsedMessage.message === "I am a message!") {
   
-        setTimeout(dispatch(fetchRooms()), 5000)
+        setTimeout(() => dispatch(fetchRooms()), 5000)
       } else if (parsedMessage.message === 'destroy room message') {
         dispatch(destroyRoom(parsedMessage.destroyId))
       }
