@@ -75,8 +75,8 @@ const ReviewForm = ({setShowReviewForm,member}) => {
                             })}
                         </div>
                     </label>
-                    <label className="review-buttons">comments
-                        <input type="text" value={selectedReview.comments} onChange={(e) => setSelectedReview({...selectedReview, comments: e.target.value})}></input>
+                    <label className="review-buttons" >comments
+                        <input id="review-comments" type="text" value={selectedReview.comments} onChange={(e) => setSelectedReview({...selectedReview, comments: e.target.value})}></input>
                     </label>
                     <label className="review-buttons">Toxic
                         <input type="radio" value={selectedReview.toxic} onChange={(e) => setSelectedReview({...selectedReview, toxic: true})}></input>
