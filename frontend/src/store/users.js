@@ -52,7 +52,7 @@ export const editUser = (userData) => async(dispatch) => {
 }
 
 export const removeUser = (userId) => async(dispatch) => {
-    console.log(userId)
+    // console.log(userId)
     try{
         const res = await jwtFetch(`/api/users/${userId}`,{
             method: 'DELETE'

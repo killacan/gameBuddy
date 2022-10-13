@@ -9,13 +9,13 @@ function WebSocketRoomIndex ({game, user, msgRoomUpdate}) {
         const socketNew = new WebSocket(`ws://localhost:5000/rooms?game=${game}`)
 
         socketNew.onopen = () => {
-            console.log("I'm a little socket short and stout")
+            // console.log("I'm a little socket short and stout")
             socketNew.send(JSON.stringify({message: 'I am a message!', userName: user.userName, gameId: game}))
         }
 
 
         socketNew.onmessage = (message) => {
-            console.log(JSON.parse(message.data))
+            // console.log(JSON.parse(message.data))
             msgRoomUpdate()
         }
 

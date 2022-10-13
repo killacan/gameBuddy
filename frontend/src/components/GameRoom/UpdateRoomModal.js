@@ -35,7 +35,7 @@ const UpdateRoomModal = ({setShowUpdateRoomModal, room}) => {
         let labelPassword = document.getElementById("room-password")
         let inputPrivacyPassword = document.getElementById("room-password-input")
         if (e.target.checked) {
-            console.log("privacy true")
+            // console.log("privacy true")
             setUpdatePrivacy(true);
             labelPassword.classList.remove("hidden")
             inputPrivacyPassword.classList.remove("hidden")
@@ -51,7 +51,7 @@ const UpdateRoomModal = ({setShowUpdateRoomModal, room}) => {
         let labelPassword = document.getElementById("room-password")
         let inputPrivacyPassword = document.getElementById("room-password-input")
         if (e.target.checked) {
-            console.log("privacy false")
+            // console.log("privacy false")
             setUpdatePrivacy(false);
             setUpdatePrivacyPassword("")
             labelPassword.classList.add("hidden")
