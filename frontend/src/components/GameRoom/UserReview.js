@@ -3,7 +3,7 @@ import { useState } from 'react'
 import ReviewForm from '../ReviewForm/ReviewForm.js'
 
 const UserReview = ({member,user}) => {
-    console.log(member, "hello checking what member")
+    // console.log(member, "hello checking what member")
     const [showReviewForm, setShowReviewForm] = useState(false)
 
     return (

@@ -49,7 +49,7 @@ function WebSocketComp () {
         return () => {
             socketNew.send(JSON.stringify({message: `has left the room`, roomId: roomId, userName: sessionUser.username}))
             if (currentUser._id === room.host._id) {
-                console.log(currentUser._id === room.host._id, "hit big if")
+                // console.log(currentUser._id === room.host._id, "hit big if")
                 socketNew.send(JSON.stringify({message: `destroy room message`, gameId: room.game, destroyId: roomId}))
             }
             socketNew.close()

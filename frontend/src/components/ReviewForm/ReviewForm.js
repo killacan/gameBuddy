@@ -27,8 +27,8 @@ const ReviewForm = ({setShowReviewForm,member}) => {
 
     const [rating, ,setRating] = useState()
     const handleSubmit = (e) => {
-        console.log("hello from inside review")
-        console.log(selectedReview,"checking selected review")
+        // console.log("hello from inside review")
+        // console.log(selectedReview,"checking selected review")
         e.preventDefault();
         dispatch(createReview(selectedReview));
         setSelectedReview({...selectedReview, 

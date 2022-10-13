@@ -22,7 +22,7 @@ const Games = () => {
                     history.push("/games/rooms?game=TeamFight+Tactics")
                     break;
                 default:
-                    console.log('error');
+                    // console.log('error');
                     break; 
             }
         }
