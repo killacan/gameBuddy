@@ -12,7 +12,9 @@ const DeleteForm = ({setShowDeleteModal}) => {
 
     const handleDelete = async(e) => {
         e.preventDefault();
-        dispatch(removeUser(user._id))
+        if (user.username !== "demo") {
+            dispatch(removeUser(user._id))
+        }
         dispatch(logout())
         history.push('/')
      
