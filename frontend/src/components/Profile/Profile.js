@@ -6,7 +6,7 @@ import { useState,useEffect } from 'react';
 import ReviewIndex from "../ReviewIndex/ReviewIndex";
 import profileBg from './profile-bg.png'
 import profileBorder from './profile-border.png'
-import { useParams,useHistory } from 'react-router-dom';
+import { useParams,useHistory, useLocation } from 'react-router-dom';
 import DeleteForm from '../SessionForms/DeleteForm';
 import UpdateForm from '../SessionForms/UpdateForm';
 
@@ -14,6 +14,21 @@ const Profile = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
     const riotUsername = useSelector(state => state.session.user.riotUsername)
+
+    let location = useLocation();
+
+    const mem = location.state
+    let riot;
+    let username;
+    
+    if (riotUsername == mem.state.riotUsername) {
+        riot = riotUsername
+        username = user.username
+    } else {
+        riot = mem.state.riotUsername
+        username = mem.state.username
+    }
+
     const {userId} = useParams();
     
     const reviews = useSelector(state => Object.values(state.reviews))
@@ -130,13 +145,12 @@ const Profile = () => {
      }
     
     useEffect(() => {
-
-        if (riotUsername.length === 0) {
+        if (riot.length === 0) {
             setPlayerInfoComponent (
             <div className="icon-img">
                 <div className="league-summoner-container">
                     <div id="league-username">
-                        <div id="league-username-2">{user.username}</div>
+                        <div id="league-username-2">{username}</div>
                     </div>
                 </div>
                 
@@ -147,11 +161,10 @@ const Profile = () => {
             )
         } else {
             const result = fetch(("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" 
-            + riotUsername + "?api_key=" + RIOT_API_KEY), {method: 'GET'})
+            + riot + "?api_key=" + RIOT_API_KEY), {method: 'GET'})
             .then(res => res.json())
             .then(data => {
                 const playerId = data.id;
-
                 if (playerId) {
                     setPlayerInfoComponent (
                     <>
@@ -221,7 +234,7 @@ const Profile = () => {
                     <div className="icon-img">
                         <div className="league-summoner-container">
                             <div id="league-username">
-                                <div id="league-username-2">{user.username}</div>
+                                <div id="league-username-2">{username}</div>
                             </div>
                         </div>
                         
@@ -239,7 +252,7 @@ const Profile = () => {
             })
         }
         
-        }, [])
+        }, [mem])
     
         return(
             <>

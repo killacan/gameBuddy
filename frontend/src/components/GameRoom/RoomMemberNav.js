@@ -1,10 +1,17 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import './GameRoom.css'
 
 const RoomMemberNav = ({mem,playersArr,idx}) => {
-
+    
     const [showMemberInfo, setShowMemberInfo] = useState(false);
+
+    const history = useHistory();
+
+  const routeChange = () => { 
+    let path = `/profile/${mem._id}`; 
+    history.push(path, {state: mem});
+  }
 
     const playerEnter = (e) => {
         e.target.style.background='black';
@@ -23,9 +30,14 @@ const RoomMemberNav = ({mem,playersArr,idx}) => {
             {mem.username}<img id="p1" src={playersArr[idx]}  />
             {showMemberInfo && 
                 <div id="player-nav-bar" >
-                    <NavLink id="view-prof" exact to={`/profile/${mem._id}`}>
+                    {/* <NavLink id="view-prof" exact to={`/profile/${mem._id}`}>
                         View Profile
-                    </NavLink>
+                    </NavLink> */}
+                    <button
+            onClick={routeChange}>
+                View Profile
+                    </button>
+
                 </div>
             }
         </div>
