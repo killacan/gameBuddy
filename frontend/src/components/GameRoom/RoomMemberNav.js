@@ -33,10 +33,10 @@ const RoomMemberNav = ({mem,playersArr,idx}) => {
                     {/* <NavLink id="view-prof" exact to={`/profile/${mem._id}`}>
                         View Profile
                     </NavLink> */}
-                    <button
+                    <div id='view-prof'
             onClick={routeChange}>
                 View Profile
-                    </button>
+                    </div>
 
                 </div>
             }
