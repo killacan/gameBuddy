@@ -9,13 +9,49 @@ import profileBorder from './profile-border.png'
 import { useParams,useHistory } from 'react-router-dom';
 import DeleteForm from '../SessionForms/DeleteForm';
 import UpdateForm from '../SessionForms/UpdateForm';
+import { fetchAllUsers, fetchUser } from '../../store/users';
 
 const Profile = () => {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.session.user)
-    const riotUsername = useSelector(state => state.session.user.riotUsername)
     const {userId} = useParams();
+    // const [paramsUrl, setParamsUrl] = useState()
+    const user = useSelector(state => state.users[userId])
+    const [correctUser, setCorrectUser ] = useState(user)
     
+    // const [riotUsername, setRiotUsername ] = useState("")
+    
+    useEffect( () => {
+        // dispatch(fetchAllUsers())
+        dispatch(fetchUser(userId))
+    },[])
+    
+    const users = useSelector(state => Object.values(state.users))
+    // const correctUser = users.filter(user => {
+    //     if ( user._id === userId){
+    //         return user
+    //     }
+    // })
+    // users.filter(user => {
+    //     if (user._id === userId){
+    //         setCorrectUser(user)
+    //         setRiotUsername(user.riotUsername)
+    //         return
+    //     }
+    // })
+    // console.log(correctUser)
+    
+    // console.log(correctUser[0].riotUsername)
+    // const correctUser
+    // const user = correctUser[0]
+    // console.log(user)
+    // const riotUsername = user.riotUsername
+    // const user = 
+    // const riotUsername = correctUser[0].riotUsername
+
+
+
+    const riotUsername = useSelector(state => state.session.user.riotUsername)
+
     const reviews = useSelector(state => Object.values(state.reviews))
    
     const [showUpdateUserModal,setShowUpdateUserModal] = useState(false);
@@ -130,8 +166,8 @@ const Profile = () => {
      }
     
     useEffect(() => {
-
-        if (riotUsername.length === 0) {
+        
+        if (user !== undefined) {
             setPlayerInfoComponent (
             <div className="icon-img">
                 <div className="league-summoner-container">
@@ -239,8 +275,9 @@ const Profile = () => {
             })
         }
         
-        }, [])
-    
+        }, [user])
+        if (user === undefined) return null;
+        console.log(user)
         return(
             <>
                 <div className='game-main-container'>

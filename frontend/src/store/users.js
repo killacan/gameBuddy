@@ -7,6 +7,7 @@ const CLEAR_USERS_ERRORS = "users/RECEIVE_USERS_ERRORS"
 const RECEIVE_USER = "users/RECEIVE_USER"
 const DELETE_USER = "users/DELETE_USER"
 
+
 export const receiveAllUsers = (users) => ({
     type: RECEIVE_ALL_USERS,
     users
@@ -77,6 +78,20 @@ export const fetchAllUsers = () => async (dispatch) => {
     }catch(err) {
         const resBody = await err;
         if (resBody.statusCode === 400){
+            dispatch(receiveErrors(resBody.errors))
+        }
+    }
+}
+
+export const fetchUser = (userId) => async (dispatch) => {
+    console.log("in fetch user hello")
+    try{
+        const res = await jwtFetch(`/api/users/${userId}`);
+        const user = await res.json();
+        dispatch(receiveUser(user))
+    }catch(err){
+        const resBody = await err;
+        if (resBody.statusCode === 400) {
             dispatch(receiveErrors(resBody.errors))
         }
     }

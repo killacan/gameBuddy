@@ -31,6 +31,55 @@ router.get('/', async (req, res, next) => {
   // })
 });
 
+/* GET current user listening */
+router.get('/current', restoreUser, (req, res) => {
+  console.log("hi from inside /current")
+  if (!isProduction) {
+    const csrfToken = req.csrfToken();
+    res.cookie("CSRF-TOKEN", csrfToken);
+  }
+  if (!req.user) return res.json(null);
+  res.json({
+    _id: req.user._id,
+    username: req.user.username,
+    email: req.user.email,
+    riotUsername: req.user.riotUsername
+  })
+})
+
+router.get('/:userId', async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    console.log("get User")
+    if (user) {
+      user.username = req.body.username || user.username;
+      user.email = req.body.email || user.email;
+      user.riotUsername = req.body.riotUsername || user.riotUsername;
+    }
+    // if (req.body.password) {
+    //   bcrypt.genSalt(10, (err, salt) => {
+    //     if (err) throw err;
+    //     bcrypt.hash(req.body.password, salt, async (err, hashedPassword) => {
+    //       if (err) throw err;
+    //       try {
+    //         user.hashedPassword = hashedPassword;
+    //         const updatedUser = await user.save();
+    //         // return res.json(await loginUser(updatedUser));
+    //       }
+    //       catch(err) {
+    //         next(err);
+    //       }
+    //     })
+    //   });
+    // }
+    return res.json(user);
+
+  }
+  catch(err) {
+    next(err)
+  }
+});
+
 /* POST users create listing. */
 router.post('/register', validateRegisterInput, async (req, res, next) => {
   const user = await User.findOne({
@@ -85,21 +134,6 @@ router.post('/login', validateLoginInput, async (req, res, next) => {
     }
     return res.json(await loginUser(user));
   })(req, res, next);
-})
-
-/* GET current user listening */
-router.get('/current', restoreUser, (req, res) => {
-  if (!isProduction) {
-    const csrfToken = req.csrfToken();
-    res.cookie("CSRF-TOKEN", csrfToken);
-  }
-  if (!req.user) return res.json(null);
-  res.json({
-    _id: req.user._id,
-    username: req.user.username,
-    email: req.user.email,
-    riotUsername: req.user.riotUsername
-  })
 })
 
 /* PATCH current user listening */
