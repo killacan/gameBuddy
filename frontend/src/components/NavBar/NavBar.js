@@ -27,7 +27,7 @@ function NavBar () {
 
     const handleProfile = (e) => {
       e.preventDefault();
-      history.push(`/profile/${user._id}`)
+      history.push(`/profile/${user._id}`, {state: user})
       
     }
 
